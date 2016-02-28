@@ -8,12 +8,16 @@ package model.manager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import model.entity.User;
 
 /**
  *
  * @author Son
  */
 public class UserManager {
+    List<User> userList = new ArrayList<>();
     
     public boolean checkUser(String user, String pass) {
         boolean status = false;
@@ -31,5 +35,24 @@ public class UserManager {
         }
 
         return status;
+    }
+    
+    public List<User> getAllUsers() {
+        boolean status = false;
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select * from tblEmployee");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {                
+                User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                userList.add(user);
+            }
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userList;
     }
 }

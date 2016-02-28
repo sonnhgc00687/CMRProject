@@ -45,5 +45,8 @@
             </c:forEach>
         </table> 
         <br/>
+        <form action="getAllUser" method="post">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add new course</button>
+        </form>
     </body>
 </html>

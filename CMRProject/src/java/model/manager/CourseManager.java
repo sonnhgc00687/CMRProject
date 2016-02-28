@@ -8,6 +8,7 @@ package model.manager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.entity.Course;
@@ -42,5 +43,22 @@ public class CourseManager {
             e.printStackTrace();
         }
         return courseList;
+    }
+    
+    public void AddCourse(String courseCode, String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate){
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("insert into tblCourse values(?,?,?,?,?,?,1)");
+            ps.setString(1, courseCode);
+            ps.setString(2, courseTitle);
+            ps.setString(3, courseLeader);
+            ps.setString(4, courseMod);
+            ps.setTimestamp(5, startDate);
+            ps.setTimestamp(6, endDate);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
