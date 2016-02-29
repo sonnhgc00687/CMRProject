@@ -31,17 +31,20 @@ insert into tblCourse values('COMP1649', 'Interaction Design', 'mainghia', 'sond
 go
 create table tblCMR
 (
-cmr_code nvarchar(8) primary key,
+cmr_code int primary key IDENTITY,
 course_code nvarchar(8) references tblCourse(course_code),
 course_title nvarchar(50),
 course_leader nvarchar(50),
 student_count int,
-comment nvarchar(1000)
+comment nvarchar(1000),
+[status] int
 )
 go
 create table tblStaticalData
 (
-id int primary key,
+id int primary key IDENTITY,
+id_cmr int references tblCMR(cmr_code),
+id_mark int,
 mean int,
 median float,
 standard_deviation int
@@ -49,7 +52,8 @@ standard_deviation int
 
 create table tblGradeData
 (
-id nvarchar(8) primary key references tblCMR(cmr_code),
+id int primary key IDENTITY,
+id_cmr int references tblCMR(cmr_code),
 id_mark int,
 mark0 int,
 mark1 int,
