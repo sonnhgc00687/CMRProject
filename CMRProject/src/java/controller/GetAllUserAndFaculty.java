@@ -14,15 +14,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.entity.Faculty;
 import model.entity.User;
+import model.manager.FacultyManager;
 import model.manager.UserManager;
 
 /**
  *
  * @author Phuc
  */
-@WebServlet(name = "getAllUser", urlPatterns = {"/getAllUser"})
-public class getAllUser extends HttpServlet {
+@WebServlet(name = "GetAllUserAndFaculty", urlPatterns = {"/GetAllUserAndFaculty"})
+public class GetAllUserAndFaculty extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,9 +40,13 @@ public class getAllUser extends HttpServlet {
         List<User> allUser = new ArrayList<>();
         List<User> leader = new ArrayList<>();
         List<User> moderator = new ArrayList<>();
+        List<Faculty> facultyList = new ArrayList<>();
         
         UserManager userManager = new UserManager();
         allUser = userManager.getAllUsers();
+        
+        FacultyManager facultyManager = new FacultyManager();
+        facultyList = facultyManager.getAllFaculty();
         
         for (User user : allUser) {
             if(user.getRole() == 1){
@@ -52,6 +58,7 @@ public class getAllUser extends HttpServlet {
         
         request.setAttribute("leader", leader);
         request.setAttribute("moderator", moderator);
+        request.setAttribute("facultyList", facultyList);
         request.getRequestDispatcher("addNewCourse.jsp").forward(request, response);
         
     }

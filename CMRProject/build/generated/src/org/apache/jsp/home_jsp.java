@@ -57,6 +57,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
+      out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("        \r\n");
@@ -92,7 +93,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("        </table> \r\n");
       out.write("        <br/>\r\n");
-      out.write("        <form action=\"getAllUser\" method=\"post\">\r\n");
+      out.write("        <form action=\"GetAllUserAndFaculty\" method=\"post\">\r\n");
       out.write("            <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Add new course</button>\r\n");
       out.write("        </form>\r\n");
       out.write("    </body>\r\n");

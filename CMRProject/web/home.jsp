@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,7 +25,7 @@
         List Course: 
         <br/><br/>
 
-        <table BORDER=5 BORDERCOLOR=BLACK>
+        <table class="table table-striped" BORDER=5 BORDERCOLOR=BLACK>
             <tr>
                 <td>Code</td>
                 <td>Name</td>
@@ -45,7 +46,7 @@
             </c:forEach>
         </table> 
         <br/>
-        <form action="getAllUser" method="post">
+        <form action="GetAllUserAndFaculty" method="post">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Add new course</button>
         </form>
     </body>

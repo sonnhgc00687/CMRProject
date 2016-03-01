@@ -19,6 +19,12 @@
                 <h2>Add New Course</h2>
                 <input class="form-control" type="text" required="" placeholder="Course code" name="courseCode" maxlength="50"/>
                 <input class="form-control" type="text" required="" placeholder="Course title" name="courseTitle" maxlength="50"/>
+                <select class="form-control" required="" name="courseFaculty">
+                    <option value="" disabled selected>Course Faculty</option>
+                    <c:forEach items="${facultyList}" var="faculty">
+                        <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
+                    </c:forEach>                
+                </select>
                 <select class="form-control" required="" name="courserLeader">
                     <option value="" disabled selected>Course leader</option>
                     <c:forEach items="${leader}" var="user">

@@ -51,44 +51,44 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Add new course</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("         <div class=\"container\">\n");
-      out.write("            <form action=\"AddCourse\" method=\"post\">\n");
-      out.write("                <h2>Add New Course</h2>\n");
-      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course code\" name=\"courseCode\" maxlength=\"50\"/>\n");
-      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course title\" name=\"courseTitle\" maxlength=\"50\"/>\n");
-      out.write("                <select class=\"form-control\" required=\"\" name=\"courserLeader\">\n");
-      out.write("                    <option value=\"\" disabled selected>Course leader</option>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>Add new course</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
+      out.write("         <div class=\"container\">\r\n");
+      out.write("            <form action=\"AddCourse\" method=\"post\">\r\n");
+      out.write("                <h2>Add New Course</h2>\r\n");
+      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course code\" name=\"courseCode\" maxlength=\"50\"/>\r\n");
+      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course title\" name=\"courseTitle\" maxlength=\"50\"/>\r\n");
+      out.write("                <select class=\"form-control\" required=\"\" name=\"courserLeader\">\r\n");
+      out.write("                    <option value=\"\" disabled selected>Course leader</option>\r\n");
       out.write("                    ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("                \n");
-      out.write("                </select>\n");
-      out.write("                <select class=\"form-control\" required=\"\" name=\"courseMod\">\n");
-      out.write("                    <option value=\"\" disabled selected>Course mod</option>\n");
+      out.write("                \r\n");
+      out.write("                </select>\r\n");
+      out.write("                <select class=\"form-control\" required=\"\" name=\"courseMod\">\r\n");
+      out.write("                    <option value=\"\" disabled selected>Course mod</option>\r\n");
       out.write("                    ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("                </select>\n");
-      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"Start date\" name=\"startDate\" maxlength=\"50\"/>\n");
-      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"End date\" name=\"endDate\" maxlength=\"50\"/>\n");
-      out.write("                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Add course</button>\n");
-      out.write("            </form>\n");
-      out.write("        </div>\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("                </select>\r\n");
+      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"Start date\" name=\"startDate\" maxlength=\"50\"/>\r\n");
+      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"End date\" name=\"endDate\" maxlength=\"50\"/>\r\n");
+      out.write("                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Add course</button>\r\n");
+      out.write("            </form>\r\n");
+      out.write("        </div>\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -117,13 +117,13 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("                        <option value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("                    ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -159,13 +159,13 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
       if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("                        <option value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("                    ");
           int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

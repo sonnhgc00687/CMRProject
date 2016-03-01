@@ -37,6 +37,7 @@ public class AddCourse extends HttpServlet {
             throws ServletException, IOException {
         try {
             String courseCode = request.getParameter("courseCode");
+            String courseFaculty = request.getParameter("courseFaculty");
             String courseTitle = request.getParameter("courseTitle");
             String courseLeader = request.getParameter("courserLeader");
             String courseMod = request.getParameter("courseMod");
@@ -48,7 +49,7 @@ public class AddCourse extends HttpServlet {
             java.sql.Timestamp endDate2 = new Timestamp(endDate1.getTime());
             CourseManager courseManager = new CourseManager();
             
-            courseManager.AddCourse(courseCode, courseTitle, courseLeader, courseMod, startDate2, endDate2);
+            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, courseLeader, courseMod, startDate2, endDate2);
             
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } catch (Exception e) {
