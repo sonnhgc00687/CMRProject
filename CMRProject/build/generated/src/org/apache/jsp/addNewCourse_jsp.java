@@ -66,24 +66,31 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("         <div class=\"container\">\r\n");
       out.write("            <form action=\"AddCourse\" method=\"post\">\r\n");
       out.write("                <h2>Add New Course</h2>\r\n");
-      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course code\" name=\"courseCode\" maxlength=\"50\"/>\r\n");
-      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course title\" name=\"courseTitle\" maxlength=\"50\"/>\r\n");
-      out.write("                <select class=\"form-control\" required=\"\" name=\"courserLeader\">\r\n");
-      out.write("                    <option value=\"\" disabled selected>Course leader</option>\r\n");
+      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course code\" name=\"courseCode\" maxlength=\"50\"/><br/>\r\n");
+      out.write("                <input class=\"form-control\" type=\"text\" required=\"\" placeholder=\"Course title\" name=\"courseTitle\" maxlength=\"50\"/><br/>\r\n");
+      out.write("                <select class=\"form-control\" required=\"\" name=\"courseFaculty\">\r\n");
+      out.write("                    <option value=\"\" disabled selected>Course Faculty</option>\r\n");
       out.write("                    ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("                \r\n");
       out.write("                </select>\r\n");
-      out.write("                <select class=\"form-control\" required=\"\" name=\"courseMod\">\r\n");
-      out.write("                    <option value=\"\" disabled selected>Course mod</option>\r\n");
+      out.write("                <select class=\"form-control\" required=\"\" name=\"courserLeader\">\r\n");
+      out.write("                    <option value=\"\" disabled selected>Course leader</option>\r\n");
       out.write("                    ");
       if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
+      out.write("                \r\n");
+      out.write("                </select>\r\n");
+      out.write("                <select class=\"form-control\" required=\"\" name=\"courseMod\"><br/>\r\n");
+      out.write("                    <option value=\"\" disabled selected>Course mod</option>\r\n");
+      out.write("                    ");
+      if (_jspx_meth_c_forEach_2(_jspx_page_context))
+        return;
       out.write("\r\n");
       out.write("                </select>\r\n");
-      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"Start date\" name=\"startDate\" maxlength=\"50\"/>\r\n");
-      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"End date\" name=\"endDate\" maxlength=\"50\"/>\r\n");
+      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"Start date\" name=\"startDate\" maxlength=\"50\"/><br/>\r\n");
+      out.write("                <input class=\"form-control\" type=\"date\" required=\"\" placeholder=\"End date\" name=\"endDate\" maxlength=\"50\"/><br/>\r\n");
       out.write("                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Add course</button>\r\n");
       out.write("            </form>\r\n");
       out.write("        </div>\r\n");
@@ -110,8 +117,8 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${leader}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    _jspx_th_c_forEach_0.setVar("user");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${facultyList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("faculty");
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
@@ -119,10 +126,10 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
         do {
           out.write("\r\n");
           out.write("                        <option value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${faculty.facultyCode}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${faculty.facultyTitle}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</option>\r\n");
           out.write("                    ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
@@ -152,7 +159,7 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_1.setParent(null);
-    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${moderator}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${leader}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     _jspx_th_c_forEach_1.setVar("user");
     int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
     try {
@@ -182,6 +189,48 @@ public final class addNewCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
     } finally {
       _jspx_th_c_forEach_1.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_2.setParent(null);
+    _jspx_th_c_forEach_2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${moderator}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_2.setVar("user");
+    int[] _jspx_push_body_count_c_forEach_2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_2 = _jspx_th_c_forEach_2.doStartTag();
+      if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                        <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option>\r\n");
+          out.write("                    ");
+          int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_2.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_2);
     }
     return false;
   }

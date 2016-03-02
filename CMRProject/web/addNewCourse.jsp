@@ -17,8 +17,8 @@
          <div class="container">
             <form action="AddCourse" method="post">
                 <h2>Add New Course</h2>
-                <input class="form-control" type="text" required="" placeholder="Course code" name="courseCode" maxlength="50"/>
-                <input class="form-control" type="text" required="" placeholder="Course title" name="courseTitle" maxlength="50"/>
+                <input class="form-control" type="text" required="" placeholder="Course code" name="courseCode" maxlength="50"/><br/>
+                <input class="form-control" type="text" required="" placeholder="Course title" name="courseTitle" maxlength="50"/><br/>
                 <select class="form-control" required="" name="courseFaculty">
                     <option value="" disabled selected>Course Faculty</option>
                     <c:forEach items="${facultyList}" var="faculty">
@@ -31,14 +31,14 @@
                         <option value="${user.userName}">${user.fullName}</option>
                     </c:forEach>                
                 </select>
-                <select class="form-control" required="" name="courseMod">
+                <select class="form-control" required="" name="courseMod"><br/>
                     <option value="" disabled selected>Course mod</option>
                     <c:forEach items="${moderator}" var="user">
                         <option value="${user.userName}">${user.fullName}</option>
                     </c:forEach>
                 </select>
-                <input class="form-control" type="date" required="" placeholder="Start date" name="startDate" maxlength="50"/>
-                <input class="form-control" type="date" required="" placeholder="End date" name="endDate" maxlength="50"/>
+                <input class="form-control" type="date" required="" placeholder="Start date" name="startDate" maxlength="50"/><br/>
+                <input class="form-control" type="date" required="" placeholder="End date" name="endDate" maxlength="50"/><br/>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Add course</button>
             </form>
         </div>
