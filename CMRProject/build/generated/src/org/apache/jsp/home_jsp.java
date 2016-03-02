@@ -78,7 +78,7 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        List Course: \r\n");
       out.write("        <br/><br/>\r\n");
       out.write("\r\n");
-      out.write("        <table BORDER=5 BORDERCOLOR=BLACK>\r\n");
+      out.write("        <table class=\"table table-striped\" BORDER=5 BORDERCOLOR=BLACK>\r\n");
       out.write("            <tr>\r\n");
       out.write("                <td>Code</td>\r\n");
       out.write("                <td>Name</td>\r\n");
