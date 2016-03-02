@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.manager.CourseManager;
 
 /**
@@ -36,6 +37,8 @@ public class AddCourse extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            HttpSession session = request.getSession();
+            
             String courseCode = request.getParameter("courseCode");
             String courseFaculty = request.getParameter("courseFaculty");
             String courseTitle = request.getParameter("courseTitle");
@@ -50,7 +53,7 @@ public class AddCourse extends HttpServlet {
             CourseManager courseManager = new CourseManager();
             
             courseManager.AddCourse(courseCode, courseFaculty, courseTitle, courseLeader, courseMod, startDate2, endDate2);
-            
+
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
