@@ -9,13 +9,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.entity.Course;
 import model.manager.CourseManager;
 
 /**
@@ -24,6 +27,8 @@ import model.manager.CourseManager;
  */
 @WebServlet(name = "AddCourse", urlPatterns = {"/AddCourse"})
 public class AddCourse extends HttpServlet {
+
+    private List<Course> courseList = new ArrayList<>();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,7 +43,7 @@ public class AddCourse extends HttpServlet {
             throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            
+
             String courseCode = request.getParameter("courseCode");
             String courseFaculty = request.getParameter("courseFaculty");
             String courseTitle = request.getParameter("courseTitle");
@@ -51,14 +56,15 @@ public class AddCourse extends HttpServlet {
             Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
             java.sql.Timestamp endDate2 = new Timestamp(endDate1.getTime());
             CourseManager courseManager = new CourseManager();
-            
-            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, courseLeader, courseMod, startDate2, endDate2);
 
+            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, courseLeader, courseMod, startDate2, endDate2);
+            courseList = courseManager.getAllCourse();
+            request.setAttribute("courseList", courseList);
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
