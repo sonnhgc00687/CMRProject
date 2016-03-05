@@ -49,6 +49,32 @@ footer {
 #addCourseGroup input, select{
    margin-bottom: 12px;
 }
+
+#addCMRGroup input, select{
+   border: 0px;
+   box-shadow: none;
+   -webkit-box-shadow: none;
+   padding: 4px 12px;
+   height: 34px;
+}
+
+#addCMRGroup table td{
+    padding: 0px;
+}
+
+#addCMRGroup table td:first-child{
+    padding: 7px;
+}
+
+#addCMRGroup table th{
+    text-align: center;
+}
+
+::-webkit-inner-spin-button { -webkit-appearance: none;}
+::-webkit-outer-spin-button { -webkit-appearance: none;}
+input[type=number] {-moz-appearance: textfield;}
+
+
 /*
  * Off Canvas
  * --------------------------------------------------

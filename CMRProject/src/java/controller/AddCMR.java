@@ -81,22 +81,22 @@ public class AddCMR extends HttpServlet {
             cmrm.AddCMR(c);
             for (int i = 1; i < 7; i++) {
                 int id_mark = i;
-                int mean = Integer.parseInt(request.getParameter("mean" + i + ""));
-                float median = Float.parseFloat(request.getParameter("median" + i + ""));
-                int standard_deviation = Integer.parseInt(request.getParameter("sd" + i + ""));
+                int mean = Integer.parseInt(request.getParameter("mean" + i));
+                float median = Float.parseFloat(request.getParameter("median" + i));
+                int standard_deviation = Integer.parseInt(request.getParameter("sd" + i));
                 CMR_StaticalData s = new CMR_StaticalData(courseCode, id_mark, mean, median, standard_deviation);
                 cmrm.AddCMR_StaticalData(s);
 
-                int mark0 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 0 + ""));
-                int mark1 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 1 + ""));
-                int mark2 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 2 + ""));
-                int mark3 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 3 + ""));
-                int mark4 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 4 + ""));
-                int mark5 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 5 + ""));
-                int mark6 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 6 + ""));
-                int mark7 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 7 + ""));
-                int mark8 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 8 + ""));
-                int mark9 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 9 + ""));
+                int mark0 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 0));
+                int mark1 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 1));
+                int mark2 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 2));
+                int mark3 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 3));
+                int mark4 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 4));
+                int mark5 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 5));
+                int mark6 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 6));
+                int mark7 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 7));
+                int mark8 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 8));
+                int mark9 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 9));
                 CMR_GradeData g = new CMR_GradeData(courseCode, id_mark, mark0, mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9);
                 cmrm.AddCMR_GradeData(g);
             }
