@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.entity.CMR;
 import model.entity.CMR_GradeData;
 import model.entity.CMR_StaticalData;
+import model.entity.Course;
 import model.manager.CMRManager;
 import model.manager.CourseManager;
 
@@ -55,6 +56,14 @@ public class AddCMR extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        String courseID = request.getParameter("courseID");
+        CourseManager courseManager = new CourseManager();
+        Course course = courseManager.getCourseByID(courseID);
+        String title = course.getCourseTitle();
+        String leader = course.getCourseLeader();
+        request.setAttribute("courseTitle", course.getCourseTitle());
+        request.setAttribute("courseLeader", course.getCourseLeader());
+        request.setAttribute("courseID", courseID);
         request.getRequestDispatcher("addNewCMR.jsp").forward(request, response);
     }
 

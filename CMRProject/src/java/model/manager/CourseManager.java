@@ -62,4 +62,22 @@ public class CourseManager {
             e.printStackTrace();
         }
     }
+    
+    public Course getCourseByID(String courseID){
+        SqlConnection sql = new SqlConnection();
+        Course couse = new Course();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select * from tblCourse where course_code = ?");
+            ps.setString(1, courseID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                couse.setCourseTitle(rs.getString("course_title"));
+                couse.setCourseLeader(rs.getString("course_leader"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return couse;
+    }
 }
