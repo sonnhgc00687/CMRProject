@@ -30,6 +30,7 @@ public class CourseManager {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();
+                c.setId(rs.getInt("id"));
                 c.setCourseCode(rs.getString("course_code"));
                 c.setCourseTitle(rs.getString("course_title"));
                 c.setCourseLeader(rs.getString("course_leader"));
@@ -61,5 +62,24 @@ public class CourseManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public Course getCourseByID(int courseID){
+        SqlConnection sql = new SqlConnection();
+        Course course = new Course();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select * from tblCourse where id = ?");
+            ps.setInt(1, courseID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                course.setCourseCode(rs.getString("course_code"));
+                course.setCourseTitle(rs.getString("course_title"));
+                course.setCourseLeader(rs.getString("course_leader"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return course;
     }
 }

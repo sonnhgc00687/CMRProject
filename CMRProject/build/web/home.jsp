@@ -81,6 +81,7 @@
                         <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
                     </div>
                     <div class="row">
+<<<<<<< HEAD
                         <ul id="navigationTab" class="nav nav-tabs" role="tablist">
                             <li><a href="#">
                                     Home <img src="img/ic_next.png" width="20px"/>
@@ -102,6 +103,16 @@
                                     <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
                                     <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
                                 </div>
+=======
+                        <c:forEach items="${courseList}" var="c">
+                            <div id="courseInfo" class="col-xs-6 col-lg-4">
+                                <h3>${c.courseTitle}</h3>
+                                <p>Start Date: ${c.courseStarted}</p>
+                                <p>Finish Date: ${c.courseFinished}</p>
+                                <td></td>
+                                <p><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR for this course »</a></p>
+                                <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+>>>>>>> bfd41bb6bee02b17c0cc71c5cc809a08bddbb842
                             </div>
 
                             <hr class="featurette-divider">

@@ -93,16 +93,16 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td>Academic Session</td> <td><input class="form-control" type="text" required="" placeholder="Course code" name="studentCount" maxlength="50"/></td>
+                                                    <td>Academic Session</td> <td><input class="form-control" type="text" required="" value="${courseID}" readonly="" name="id" maxlength="50"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Course Code + title</td> <td><input class="form-control" type="number" required="" placeholder="" name="" min="0" max="100"/></td> 
+                                                    <td>Course Title</td> <td><input class="form-control" type="text" required="" value="${courseTitle}" disabled="" name="" min="0" max="100"/></td> 
                                                 </tr>
                                                 <tr>
-                                                    <td>Course Leader</td> <td><input class="form-control" type="number" required="" placeholder="" name="" min="0" max="100"/></td> 
+                                                    <td>Course Leader</td> <td><input class="form-control" type="text" required="" value="${courseLeader}" disabled="" name="" min="0" max="100"/></td> 
                                                 </tr>
                                                 <tr>
-                                                    <td>Student count</td> <td><input class="form-control" type="number" required="" placeholder="" name="" min="0" max="100"/></td> 
+                                                    <td>Student count</td> <td><input class="form-control" type="number" required="" placeholder="" name="studentCount" min="0" max="100"/></td> 
                                                 </tr>
                                             </tbody>
                                         </table>

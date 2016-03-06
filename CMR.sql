@@ -1,6 +1,7 @@
 create database Project_CMR
 go
 use Project_CMR
+
 go
 create table tblEmployee
 (
@@ -34,7 +35,8 @@ insert into tblFaculty values('FPT2016', 'Honours Programme', 'ducphuc', 'hoangh
 go
 create table tblCourse
 (
-course_code nvarchar(8) primary key,
+id int primary key IDENTITY,
+course_code nvarchar(8),
 course_faculty nvarchar(8) references tblFaculty(faculty_code),
 course_title nvarchar(50),
 course_leader nvarchar(50) references tblEmployee(username),
@@ -48,7 +50,7 @@ insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'maing
 go
 create table tblCMR
 (
-cmr_code nvarchar(8) primary key references tblCourse(course_code),
+cmr_code int primary key references tblCourse(id),
 student_count int,
 comment nvarchar(1000),
 [status] int
@@ -56,7 +58,8 @@ comment nvarchar(1000),
 go
 create table tblStaticalData
 (
-id nvarchar(8) primary key references tblCMR(cmr_code), 
+id int primary key IDENTITY,
+cmr_id int references tblCMR(cmr_code), 
 id_mark int,
 mean int,
 median float,
@@ -65,7 +68,8 @@ standard_deviation int
 go
 create table tblGradeData
 (
-id nvarchar(8) primary key references tblCMR(cmr_code),
+id int primary key IDENTITY,
+cmr_id int references tblCMR(cmr_code),
 id_mark int,
 mark0 int,
 mark1 int,
@@ -78,3 +82,6 @@ mark7 int,
 mark8 int,
 mark9 int
 )
+select * from tblCMR
+select * from tblStaticalData
+select * from tblGradeData

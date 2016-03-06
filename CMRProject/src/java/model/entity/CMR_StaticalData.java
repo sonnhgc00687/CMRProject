@@ -10,7 +10,9 @@ package model.entity;
  * @author DELL
  */
 public class CMR_StaticalData {
-    private String id;
+
+    private int id;
+    private int cmr_id;
     private int id_mark;
     private int mean;
     private float median;
@@ -19,20 +21,28 @@ public class CMR_StaticalData {
     public CMR_StaticalData() {
     }
 
-    public CMR_StaticalData(String id, int id_mark, int mean, float median, int standard_deviation) {
-        this.id = id;
+    public CMR_StaticalData(int cmr_id, int id_mark, int mean, float median, int standard_deviation) {
+        this.cmr_id = cmr_id;
         this.id_mark = id_mark;
         this.mean = mean;
         this.median = median;
         this.standard_deviation = standard_deviation;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCmr_id() {
+        return cmr_id;
+    }
+
+    public void setCmr_id(int cmr_id) {
+        this.cmr_id = cmr_id;
     }
 
     public int getId_mark() {
@@ -66,6 +76,5 @@ public class CMR_StaticalData {
     public void setStandard_deviation(int standard_deviation) {
         this.standard_deviation = standard_deviation;
     }
-    
-    
+
 }

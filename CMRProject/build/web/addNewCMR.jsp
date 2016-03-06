@@ -93,16 +93,16 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td>Academic Session</td> <td><input class="form-control" type="text" required="" placeholder="Course code" name="studentCount" maxlength="50"/></td>
+                                                    <td>Academic Session</td> <td><input class="form-control" type="text" required="" value="${courseID}" readonly="" name="id" maxlength="50"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Course Code + title</td> <td><input class="form-control" type="number" required="" placeholder="" name="" min="0" max="100"/></td> 
+                                                    <td>Course Title</td> <td><input class="form-control" type="text" required="" value="${courseTitle}" disabled="" name="" min="0" max="100"/></td> 
                                                 </tr>
                                                 <tr>
-                                                    <td>Course Leader</td> <td><input class="form-control" type="number" required="" placeholder="" name="" min="0" max="100"/></td> 
+                                                    <td>Course Leader</td> <td><input class="form-control" type="text" required="" value="${courseLeader}" disabled="" name="" min="0" max="100"/></td> 
                                                 </tr>
                                                 <tr>
-                                                    <td>Student count</td> <td><input class="form-control" type="number" required="" placeholder="" name="" min="0" max="100"/></td> 
+                                                    <td>Student count</td> <td><input class="form-control" type="number" required="" placeholder="" name="studentCount" min="0" max="100"/></td> 
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -197,8 +197,12 @@
                                                     <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_2" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_3" min="0" max="100"/></td> 
                                                     <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_4" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_5" min="0" max="100"/></td> 
                                                     <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_6" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_7" min="0" max="100"/></td> 
+<<<<<<< HEAD
                                                     <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_9" min="0" max="100"/></td>
                                                 </tr>
+=======
+                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_9" min="0" max="100"/></td>                                                </tr>
+>>>>>>> bfd41bb6bee02b17c0cc71c5cc809a08bddbb842
                                                 <tr>
                                                     <td>OVERALL</td> 
                                                     <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_0" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_1" min="0" max="100"/></td>
