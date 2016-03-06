@@ -35,8 +35,8 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li class="active"><a href="Login">Home</a></li>
+                        <li><a href="GetAllCourse">Course</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
 
@@ -51,17 +51,17 @@
                                         <button id="" type="submit">New Course</button>
                                     </form>
                                 </li>
-                        <li><form id="btnNewCourse" action="AddCMR" method="get">
+                                <li><form id="btnNewCourse" action="AddCMR" method="get">
                                         <button id="" type="submit">New CMR</button>
                                     </form></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                    </li>     
-                    <li class="active"><a href="#">${username}</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>     
+                        <li class="active"><a href="#">${username}</a></li>
                     </ul>
                 </div>
 
@@ -77,22 +77,49 @@
                         <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                     </p>
                     <div class="jumbotron">
-                        <h1>Hello, world!</h1>
+                        <h1>Welcome to FPT University!</h1>
                         <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
                     </div>
                     <div class="row">
-                        <c:forEach items="${courseList}" var="c">
-                            <div id="courseInfo" class="col-xs-6 col-lg-4">
-                                <h3>${c.courseTitle}</h3>
-                                <p>Start Date: ${c.courseStarted}</p>
-                                <p>Finish Date: ${c.courseFinished}</p>
-                                <td></td>
-                                <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                        <ul id="navigationTab" class="nav nav-tabs" role="tablist">
+                            <li><a href="#">
+                                    Home <img src="img/ic_next.png" width="20px"/>
+                                </a></li>
+                            <!--                            <li><a href="#">
+                                                                Profile <img src="img/ic_next.png" width="20px"/>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                Messages <img src="img/ic_next.png" width="20px"/>
+                                                            </a></li>-->
+                        </ul>
+
+                        <div id="reviewContainer">
+                            <div class="row featurette">
+                                <div class="col-md-3">
+                                    <img id="reviewAvarta" src="img/review01.jpg" class="img-circle img-responsive" width="180px" height="180px">
+                                </div>
+                                <div class="col-md-9">
+                                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+                                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                                </div>
                             </div>
-                        </c:forEach>
+
+                            <hr class="featurette-divider">
+
+                            <div class="row featurette">
+                                <div class="col-md-9">
+                                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img id="reviewAvarta" src="img/review02.jpg" class="img-circle img-responsive" width="180px" height="180px">
+                                </div>
+                            </div>
+
+                            <hr class="featurette-divider">
+                        </div>
                     </div>
                 </div>
-
             </div>
             <hr>
 

@@ -35,8 +35,8 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="Login">Home</a></li>
-                        <li><a href="GetAllCourse">Course</a></li>
+                        <li><a href="Login">Home</a></li>
+                        <li class="active"><a href="GetAllCourse">Course</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
 
@@ -85,41 +85,25 @@
                             <li><a href="#">
                                     Home <img src="img/ic_next.png" width="20px"/>
                                 </a></li>
-                            <!--                            <li><a href="#">
-                                                                Profile <img src="img/ic_next.png" width="20px"/>
-                                                            </a></li>
-                                                        <li><a href="#">
-                                                                Messages <img src="img/ic_next.png" width="20px"/>
-                                                            </a></li>-->
+                            <li><a href="#">
+                                    Course <img src="img/ic_next.png" width="20px"/>
+                                </a></li><!--
+                            <li><a href="#">
+                                    Messages <img src="img/ic_next.png" width="20px"/>
+                                </a></li>-->
                         </ul>
-
-                        <div id="reviewContainer">
-                            <div class="row featurette">
-                                <div class="col-md-3">
-                                    <img id="reviewAvarta" src="img/review01.jpg" class="img-circle img-responsive" width="180px" height="180px">
-                                </div>
-                                <div class="col-md-9">
-                                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                                </div>
+                        <c:forEach items="${courseList}" var="c">
+                            <div id="courseInfo" class="col-xs-6 col-lg-4">
+                                <h3>${c.courseTitle}</h3>
+                                <p>Start Date: ${c.courseStarted}</p>
+                                <p>Finish Date: ${c.courseFinished}</p>
+                                <td></td>
+                                <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
                             </div>
-
-                            <hr class="featurette-divider">
-
-                            <div class="row featurette">
-                                <div class="col-md-9">
-                                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <img id="reviewAvarta" src="img/review02.jpg" class="img-circle img-responsive" width="180px" height="180px">
-                                </div>
-                            </div>
-
-                            <hr class="featurette-divider">
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
+
             </div>
             <hr>
 

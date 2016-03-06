@@ -10,20 +10,22 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.entity.Course;
 import model.manager.CourseManager;
-import model.manager.UserManager;
 
 /**
  *
  * @author Son
  */
-public class Login extends HttpServlet {
+@WebServlet(name = "GetAllCourse", urlPatterns = {"/GetAllCourse"})
+public class GetAllCourse extends HttpServlet {
+
     private List<Course> courseList = new ArrayList<>();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,17 +37,18 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        UserManager um = new UserManager();
-        if (um.checkUser(username, password)) {
-            session.setAttribute( "userSession", username );
-            request.setAttribute("username", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        }else{
-            System.out.println("Fail");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet GetAllCourse</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet GetAllCourse at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -61,7 +64,10 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        CourseManager cm = new CourseManager();
+        courseList = cm.getAllCourse();
+        request.setAttribute("courseList", courseList);
+        request.getRequestDispatcher("course.jsp").forward(request, response);
     }
 
     /**

@@ -74,6 +74,21 @@ footer {
 ::-webkit-outer-spin-button { -webkit-appearance: none;}
 input[type=number] {-moz-appearance: textfield;}
 
+#navigationTab{
+    margin:0px 15px 10px 15px;
+}
+
+#navigationTab li a{
+    padding: 10px 2px 10px 10px;
+}
+
+#reviewContainer{
+    padding : 10px 30px;
+}
+
+#reviewAvarta{
+    margin: 0 auto;
+}
 
 /*
  * Off Canvas
