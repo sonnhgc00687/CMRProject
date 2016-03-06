@@ -12,6 +12,8 @@ import java.sql.Date;
  * @author Son
  */
 public class Course {
+
+    private int id;
     private String courseCode;
     private String courseTitle;
     private String courseLeader;
@@ -23,7 +25,8 @@ public class Course {
     public Course() {
     }
 
-    public Course(String courseCode, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, int courseStatus) {
+    public Course(int id, String courseCode, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, int courseStatus) {
+        this.id = id;
         this.courseCode = courseCode;
         this.courseTitle = courseTitle;
         this.courseLeader = courseLeader;
@@ -31,6 +34,14 @@ public class Course {
         this.courseStarted = courseStarted;
         this.courseFinished = courseFinished;
         this.courseStatus = courseStatus;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCourseCode() {
@@ -88,6 +99,5 @@ public class Course {
     public void setCourseStatus(int courseStatus) {
         this.courseStatus = courseStatus;
     }
-    
-    
+
 }

@@ -11,7 +11,8 @@ package model.entity;
  */
 public class CMR_GradeData {
 
-    private String id;
+    private int id;
+    private int cmr_id;
     private int id_mark;
     private int mark0;
     private int mark1;
@@ -27,8 +28,8 @@ public class CMR_GradeData {
     public CMR_GradeData() {
     }
 
-    public CMR_GradeData(String id, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
-        this.id = id;
+    public CMR_GradeData(int cmr_id, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {        
+        this.cmr_id = cmr_id;
         this.id_mark = id_mark;
         this.mark0 = mark0;
         this.mark1 = mark1;
@@ -42,12 +43,20 @@ public class CMR_GradeData {
         this.mark9 = mark9;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCmr_id() {
+        return cmr_id;
+    }
+
+    public void setCmr_id(int cmr_id) {
+        this.cmr_id = cmr_id;
     }
 
     public int getId_mark() {

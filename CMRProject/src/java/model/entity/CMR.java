@@ -10,18 +10,17 @@ package model.entity;
  * @author DELL
  */
 public class CMR {
+
     private int cmr_code;
-    private String course_code;   
     private int student_count;
     private String comment;
     private int status;
 
     public CMR() {
-    }   
+    }
 
-    public CMR(String course_code, int student_count, String comment, int status) {
+    public CMR(int cmr_code, int student_count, String comment, int status) {
         this.cmr_code = cmr_code;
-        this.course_code = course_code;       
         this.student_count = student_count;
         this.comment = comment;
         this.status = status;
@@ -33,14 +32,6 @@ public class CMR {
 
     public void setCmr_code(int cmr_code) {
         this.cmr_code = cmr_code;
-    }
-
-    public String getCourse_code() {
-        return course_code;
-    }
-
-    public void setCourse_code(String course_code) {
-        this.course_code = course_code;
     }
 
     public int getStudent_count() {
@@ -66,6 +57,5 @@ public class CMR {
     public void setStatus(int status) {
         this.status = status;
     }
-    
-    
+
 }

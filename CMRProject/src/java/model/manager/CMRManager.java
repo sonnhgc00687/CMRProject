@@ -30,7 +30,7 @@ public class CMRManager {
             rs = ps.executeQuery();
             while (rs.next()) {
                 CMR c = new CMR();
-                c.setCourse_code(rs.getString("course_code"));                
+                c.setCmr_code(rs.getInt("course_code"));                
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
                 c.setStatus(rs.getInt("status"));
@@ -47,7 +47,7 @@ public class CMRManager {
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("insert into tblCMR values(?,?,?,?)");
-            ps.setString(1,c.getCourse_code());        
+            ps.setInt(1,c.getCmr_code());        
             ps.setInt(2,c.getStudent_count());
             ps.setString(3,c.getComment());
             ps.setInt(4,c.getStatus());
@@ -61,7 +61,7 @@ public class CMRManager {
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("insert into tblStaticalData values(?,?,?,?,?)");
-            ps.setString(1,s.getId());        
+            ps.setInt(1,s.getCmr_id());        
             ps.setInt(2,s.getId_mark());
             ps.setInt(3,s.getMean());
             ps.setFloat(4,s.getMedian());
@@ -77,7 +77,7 @@ public class CMRManager {
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("insert into tblGradeData values(?,?,?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1,g.getId());        
+            ps.setInt(1,g.getCmr_id());        
             ps.setInt(2,g.getId_mark());
             ps.setInt(3,g.getMark0());
             ps.setInt(4,g.getMark1());

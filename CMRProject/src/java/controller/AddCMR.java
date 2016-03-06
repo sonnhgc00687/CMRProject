@@ -40,7 +40,7 @@ public class AddCMR extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,13 +56,13 @@ public class AddCMR extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String courseID = request.getParameter("courseID");
+        int courseID = Integer.parseInt(request.getParameter("courseID"));
         CourseManager courseManager = new CourseManager();
         Course course = courseManager.getCourseByID(courseID);
         String title = course.getCourseTitle();
         String leader = course.getCourseLeader();
-        request.setAttribute("courseTitle", course.getCourseTitle());
-        request.setAttribute("courseLeader", course.getCourseLeader());
+        request.setAttribute("courseTitle", title);
+        request.setAttribute("courseLeader", leader);
         request.setAttribute("courseID", courseID);
         request.getRequestDispatcher("addNewCMR.jsp").forward(request, response);
     }
@@ -80,12 +80,11 @@ public class AddCMR extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         try {
-            String courseCode = request.getParameter("courseCode");
+            int id = Integer.parseInt(request.getParameter("id"));
             int studentCount = Integer.parseInt(request.getParameter("studentCount"));
             String comment = request.getParameter("comment");
             int status = 0;
-            CMR c = new CMR(courseCode, studentCount, comment, status);
-            CourseManager courseManager = new CourseManager();
+            CMR c = new CMR(id, studentCount, comment, status);
             CMRManager cmrm = new CMRManager();
             cmrm.AddCMR(c);
             for (int i = 1; i < 7; i++) {
@@ -93,7 +92,7 @@ public class AddCMR extends HttpServlet {
                 int mean = Integer.parseInt(request.getParameter("mean" + i));
                 float median = Float.parseFloat(request.getParameter("median" + i));
                 int standard_deviation = Integer.parseInt(request.getParameter("sd" + i));
-                CMR_StaticalData s = new CMR_StaticalData(courseCode, id_mark, mean, median, standard_deviation);
+                CMR_StaticalData s = new CMR_StaticalData(id, id_mark, mean, median, standard_deviation);
                 cmrm.AddCMR_StaticalData(s);
 
                 int mark0 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 0));
@@ -106,7 +105,7 @@ public class AddCMR extends HttpServlet {
                 int mark7 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 7));
                 int mark8 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 8));
                 int mark9 = Integer.parseInt(request.getParameter("mark_" + i + "_" + 9));
-                CMR_GradeData g = new CMR_GradeData(courseCode, id_mark, mark0, mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9);
+                CMR_GradeData g = new CMR_GradeData(id, id_mark, mark0, mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9);
                 cmrm.AddCMR_GradeData(g);
             }
             request.getRequestDispatcher("home.jsp").forward(request, response);

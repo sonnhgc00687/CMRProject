@@ -87,7 +87,7 @@
                                 <p>Start Date: ${c.courseStarted}</p>
                                 <p>Finish Date: ${c.courseFinished}</p>
                                 <td></td>
-                                <p><a class="btn btn-default" href="AddCMR?&courseID=${c.courseCode}" role="button">Add CMR for this course »</a></p>
+                                <p><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR for this course »</a></p>
                                 <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
                             </div>
                         </c:forEach>
