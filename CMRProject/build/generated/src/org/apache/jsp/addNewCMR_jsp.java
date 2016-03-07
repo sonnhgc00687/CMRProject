@@ -137,7 +137,7 @@ public final class addNewCMR_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <tbody>\r\n");
       out.write("                                                <tr>\r\n");
       out.write("                                                    <td>Academic Session</td> <td><input class=\"form-control\" type=\"text\" required=\"\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${courseID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${courseCode}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\" readonly=\"\" name=\"id\" maxlength=\"50\"/></td>\r\n");
       out.write("                                                </tr>\r\n");
       out.write("                                                <tr>\r\n");

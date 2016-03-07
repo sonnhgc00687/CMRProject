@@ -82,6 +82,21 @@ mark7 int,
 mark8 int,
 mark9 int
 )
+
+create procedure getCourseDetail 
+@courseID int
+as
+begin
+select course_code, faculty_title, course_title, a.fullname as course_leader, b.fullname as course_mod,
+tblCourse.[start_date], tblCourse.[end_date], tblCourse.[status]
+from tblCourse inner join tblFaculty on tblCourse.course_faculty = tblFaculty.faculty_code
+inner join tblEmployee as a
+on tblCourse.course_leader = a.username
+inner join tblEmployee as b
+on tblCourse.course_mod = b.username
+where tblCourse.id = @courseID
+end
+
 select * from tblCMR
 select * from tblStaticalData
 select * from tblGradeData

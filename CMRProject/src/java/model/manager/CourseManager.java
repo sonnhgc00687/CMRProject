@@ -69,13 +69,18 @@ public class CourseManager {
         Course course = new Course();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select * from tblCourse where id = ?");
+            PreparedStatement ps = conn.prepareStatement("exec getCourseDetail ?");
             ps.setInt(1, courseID);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 course.setCourseCode(rs.getString("course_code"));
+                course.setCourseFaculty(rs.getString("faculty_title"));
                 course.setCourseTitle(rs.getString("course_title"));
                 course.setCourseLeader(rs.getString("course_leader"));
+                course.setCourseModerator(rs.getString("course_mod"));
+                course.setCourseStarted(rs.getDate("start_date"));
+                course.setCourseFinished(rs.getDate("end_date"));
+                course.setCourseStatus(rs.getInt("status"));
             }
         } catch (Exception e) {
             e.printStackTrace();
