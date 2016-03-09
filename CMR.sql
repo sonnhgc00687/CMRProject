@@ -103,11 +103,12 @@ as
 begin
 select cmr_code, student_count, comment, [status], tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
 mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9 from tblCMR inner join tblStaticalData on 
-tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblStaticalData.cmr_id = tblGradeData.cmr_id 
-where cmr_code = @cmr_code
+tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_code = tblGradeData.cmr_id 
+where tblStaticalData.id_mark = tblGradeData.id_mark and cmr_code = @cmr_code
 end
-
 
 select * from tblCMR
 select * from tblStaticalData
 select * from tblGradeData
+
+exec getCMRDetail 1

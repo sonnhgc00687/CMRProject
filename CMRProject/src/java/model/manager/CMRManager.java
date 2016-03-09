@@ -21,6 +21,7 @@ import model.entity.CMR_StaticalData;
  */
 public class CMRManager {
     private List<CMR> cmrList = new ArrayList<>();
+    private List<CMR_Detail> cmrDetailList = new ArrayList<>();
     private ResultSet rs;
 
     public List<CMR> getAllCMR() {
@@ -96,7 +97,7 @@ public class CMRManager {
         }
     }
      
-    public CMR_Detail getCMRDetailByCode(int cmr_code){
+    public List<CMR_Detail> getCMRDetailByCode(int cmr_code){
         SqlConnection sql = new SqlConnection();
         CMR_Detail cmrDetail = new CMR_Detail();
         try {
@@ -104,7 +105,7 @@ public class CMRManager {
             PreparedStatement ps = conn.prepareStatement("exec getCMRDetail ?");
             ps.setInt(1, cmr_code);
             rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cmrDetail.setCmr_code(rs.getInt("cmr_code"));
                 cmrDetail.setStudent_count(rs.getInt("student_count"));
                 cmrDetail.setComment(rs.getString("comment"));
@@ -124,11 +125,12 @@ public class CMRManager {
                 cmrDetail.setMark7(rs.getInt("mark7"));
                 cmrDetail.setMark8(rs.getInt("mark8"));
                 cmrDetail.setMark9(rs.getInt("mark9"));
+                cmrDetailList.add(cmrDetail);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return cmrDetail;
+        return cmrDetailList;
     }
     
 }
