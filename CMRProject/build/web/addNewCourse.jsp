@@ -78,8 +78,7 @@
                         <h1>Hello, world!</h1>
                         <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
                     </div>
-                    <div class="row">
-                        <div class="container">
+                    <div class="row">                      
                             <form id="addCourseGroup" action="AddCourse" method="post">
                                 <h3>Add New Course</h3>
                                 <input class="form-control" type="text" required="" placeholder="Course code" name="courseCode" maxlength="50"/>
@@ -106,8 +105,7 @@
                                 <input class="form-control" type="date" required="" placeholder="End date" name="endDate" maxlength="50"/>
                                 <textarea class = "form-control" rows = "3"></textarea>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Add course</button>
-                            </form>
-                        </div>
+                            </form>      
                     </div>
                 </div>
 
