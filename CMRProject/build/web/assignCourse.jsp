@@ -1,7 +1,7 @@
 <%-- 
-    Document   : addNewCourse
-    Created on : Feb 28, 2016, 8:49:42 PM
-    Author     : Phuc
+    Document   : assignCourse
+    Created on : Mar 13, 2016, 1:47:51 PM
+    Author     : Son
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,7 +10,7 @@
     <head>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>
+        <title>Assign Course</title>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/css.css"/>
@@ -35,8 +35,8 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li class="active"><a href="Login">Home</a></li>
+                        <li><a href="GetAllCourse">Course</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
 
@@ -46,20 +46,22 @@
                                 <img src="img/ic_plus.png" width="25px" height="25px"/>
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><li><li class="active">
+                                <li class="active">
                                     <form id="btnNewCourse" action="GetAllUserAndFaculty" method="post">
                                         <button id="" type="submit">New Course</button>
                                     </form>
-                                </li></li></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                    </li>     
-                    <li class="active"><a href="#">${username}</a></li>
+                                </li>
+                                <li><form id="btnNewCourse" action="AddCMR" method="get">
+                                        <button id="" type="submit">New CMR</button>
+                                    </form></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>     
+                        <li class="active"><a href="#">${username}</a></li>
                     </ul>
                 </div>
 
@@ -75,22 +77,35 @@
                         <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                     </p>
                     <div class="jumbotron">
-                        <h1>Hello, world!</h1>
+                        <h1>Welcome to FPT University!</h1>
                         <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
                     </div>
                     <div class="row">
-                        <div class="container">
-                            <form id="addCourseGroup" action="AddCourse" method="post">
-                                <h3>Add New Course</h3>
-                                <input class="form-control" type="text" required="" placeholder="Course code" name="courseCode" maxlength="50"/>
-                                <input class="form-control" type="text" required="" placeholder="Course title" name="courseTitle" maxlength="50"/>
-                                <select class="form-control" required="" name="courseFaculty">
-                                    <option value="" disabled selected>Course Faculty</option>
-                                    <c:forEach items="${facultyList}" var="faculty">
-                                        <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
-                                    </c:forEach>                
-                                </select>
-<!--                                <select class="form-control" required="" name="courserLeader">
+                        <ul id="navigationTab" class="nav nav-tabs" role="tablist">
+                            <li><a href="#">
+                                    Home <img src="img/ic_next.png" width="20px"/>
+                                </a></li>
+                            <!--                            <li><a href="#">
+                                                                Profile <img src="img/ic_next.png" width="20px"/>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                Messages <img src="img/ic_next.png" width="20px"/>
+                                                            </a></li>-->
+                        </ul>
+
+                        <div id="assignContainer">
+                            <div id="courseAssign" class="col-xs-6 col-lg-6">
+                                <h3>${course.courseTitle}</h3>
+                                <p>Code: ${course.courseCode}</p>
+                                <p>Faculty: ${course.courseFaculty}
+                                <p>Start Date: ${course.courseStarted}</p>
+                                <p>Finish Date: ${course.courseFinished}</p>
+                                <td></td>
+                            </div>
+
+                            <div id="assignForm" class="col-xs-6 col-lg-6">
+                                <h3> </h3>
+                                <select class="form-control" required="" name="courserLeader">
                                     <option value="" disabled selected>Course leader</option>
                                     <c:forEach items="${leader}" var="user">
                                         <option value="${user.userName}">${user.fullName}</option>
@@ -101,26 +116,26 @@
                                     <c:forEach items="${moderator}" var="user">
                                         <option value="${user.userName}">${user.fullName}</option>
                                     </c:forEach>
-                                </select>-->
-                                <input class="form-control" type="date" required="" placeholder="Start date" name="startDate" maxlength="50"/>
-                                <input class="form-control" type="date" required="" placeholder="End date" name="endDate" maxlength="50"/>
-                                <textarea class = "form-control" rows = "3"></textarea>
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Add course</button>
-                            </form>
+                                </select>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Assign</button>
+                            </div>
                         </div>
+
+                        <hr class="featurette-divider">
                     </div>
                 </div>
-
             </div>
-            <hr>
+        </div>
+        <hr>
 
-            <footer>
-                <p>© 2015 Company, Inc.</p>
-            </footer>
+        <footer>
+            <p>© 2015 Company, Inc.</p>
+        </footer>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/docs.min.js"></script>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
 
-    </body>
+</body>
 </html>

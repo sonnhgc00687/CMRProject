@@ -46,7 +46,7 @@ public class CourseManager {
         return courseList;
     }
     
-    public void AddCourse(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate){
+        public void AddCourse(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate){
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();

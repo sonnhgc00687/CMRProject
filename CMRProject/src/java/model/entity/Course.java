@@ -6,6 +6,8 @@
 package model.entity;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  *
@@ -26,8 +28,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(int id, String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, int courseStatus) {
-        this.id = id;
+    public Course(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, int courseStatus) {
         this.courseCode = courseCode;
         this.courseFaculty = courseFaculty;
         this.courseTitle = courseTitle;

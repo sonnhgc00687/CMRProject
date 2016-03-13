@@ -1,7 +1,6 @@
 create database Project_CMR
 go
 use Project_CMR
-
 go
 create table tblEmployee
 (
@@ -37,10 +36,12 @@ create table tblCourse
 (
 id int primary key IDENTITY,
 course_code nvarchar(8),
-course_faculty nvarchar(8) references tblFaculty(faculty_code),
+course_faculty nvarchar(8)references tblFaculty(faculty_code),
 course_title nvarchar(50),
-course_leader nvarchar(50) references tblEmployee(username),
-course_mod nvarchar(50) references tblEmployee(username),
+course_leader nvarchar(50),
+/*references tblEmployee(username),*/
+course_mod nvarchar(50),
+/* references tblEmployee(username),*/
 [start_date] date,
 [end_date] date,
 [status] int,
@@ -108,6 +109,7 @@ where tblStaticalData.id_mark = tblGradeData.id_mark and cmr_code = @cmr_code
 end
 
 select * from tblCMR
+select * from tblCourse
 select * from tblStaticalData
 select * from tblGradeData
 

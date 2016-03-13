@@ -28,6 +28,7 @@ import model.manager.CourseManager;
 @WebServlet(name = "AddCourse", urlPatterns = {"/AddCourse"})
 public class AddCourse extends HttpServlet {
 
+    private Course course;
     private List<Course> courseList = new ArrayList<>();
 
     /**
@@ -47,20 +48,28 @@ public class AddCourse extends HttpServlet {
             String courseCode = request.getParameter("courseCode");
             String courseFaculty = request.getParameter("courseFaculty");
             String courseTitle = request.getParameter("courseTitle");
-            String courseLeader = request.getParameter("courserLeader");
-            String courseMod = request.getParameter("courseMod");
+//            String courseLeader = request.getParameter("courserLeader");
+//            String courseMod = request.getParameter("courseMod");
             String startDate = request.getParameter("startDate");
             Date startDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
             java.sql.Timestamp startDate2 = new Timestamp(startDate1.getTime());
+            java.sql.Date startDateSQL = new java.sql.Date(startDate1.getTime());
+            
             String endDate = request.getParameter("endDate");
-            Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+            Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);   
             java.sql.Timestamp endDate2 = new Timestamp(endDate1.getTime());
+            java.sql.Date endDateSQL = new java.sql.Date(endDate1.getTime());
+            
             CourseManager courseManager = new CourseManager();
+            
 
-            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, courseLeader, courseMod, startDate2, endDate2);
+            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, "", "", startDate2, endDate2);
+            course =  new Course(courseCode, courseFaculty, courseTitle, "", "", startDateSQL, endDateSQL, 1);
             courseList = courseManager.getAllCourse();
-            request.setAttribute("courseList", courseList);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            
+//            request.setAttribute("courseList", courseList);
+            request.setAttribute("course", course);
+            request.getRequestDispatcher("assignCourse.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }

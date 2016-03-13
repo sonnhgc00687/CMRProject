@@ -90,7 +90,7 @@
                                         <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
                                     </c:forEach>                
                                 </select>
-                                <select class="form-control" required="" name="courserLeader">
+<!--                                <select class="form-control" required="" name="courserLeader">
                                     <option value="" disabled selected>Course leader</option>
                                     <c:forEach items="${leader}" var="user">
                                         <option value="${user.userName}">${user.fullName}</option>
@@ -101,9 +101,10 @@
                                     <c:forEach items="${moderator}" var="user">
                                         <option value="${user.userName}">${user.fullName}</option>
                                     </c:forEach>
-                                </select>
+                                </select>-->
                                 <input class="form-control" type="date" required="" placeholder="Start date" name="startDate" maxlength="50"/>
                                 <input class="form-control" type="date" required="" placeholder="End date" name="endDate" maxlength="50"/>
+                                <textarea class = "form-control" rows = "3"></textarea>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Add course</button>
                             </form>
                         </div>
