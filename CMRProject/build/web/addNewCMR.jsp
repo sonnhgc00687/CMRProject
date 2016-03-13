@@ -93,16 +93,16 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td>Academic Session</td> <td><input class="form-control" type="text" required="" value="${courseCode}" readonly="" name="id" maxlength="50"/></td>
+                                                    <td>Academic Session</td> <td><input class="form-control" type="text"  value="${courseId}" readonly="" name="id" maxlength="50"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Course Title</td> <td><input class="form-control" type="text" required="" value="${courseTitle}" disabled="" name="" min="0" max="100"/></td> 
+                                                    <td>Course Title</td> <td><input class="form-control" type="text"  value="${courseTitle}" disabled="" name="" min="0" max="100"/></td> 
                                                 </tr>
                                                 <tr>
-                                                    <td>Course Leader</td> <td><input class="form-control" type="text" required="" value="${courseLeader}" disabled="" name="" min="0" max="100"/></td> 
+                                                    <td>Course Leader</td> <td><input class="form-control" type="text"  value="${courseLeader}" disabled="" name="" min="0" max="100"/></td> 
                                                 </tr>
                                                 <tr>
-                                                    <td>Student count</td> <td><input class="form-control" type="number" required="" placeholder="" name="studentCount" min="0" max="100"/></td> 
+                                                    <td>Student count</td> <td><input class="form-control" type="number"  placeholder="" name="studentCount" min="0" max="100"/></td> 
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -125,21 +125,21 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Mean</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mean1" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mean2" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mean3" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mean4" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mean5" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mean6" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mean1" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mean2" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mean3" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mean4" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mean5" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mean6" min="0" max="100"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Median</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="median1" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="median2" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="median3" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="median4" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="median5" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="median6" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="median1" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="median2" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="median3" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="median4" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="median5" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="median6" min="0" max="100"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Standard Deviation</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="sd1" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="sd2" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="sd3" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="sd4" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="sd5" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="sd6" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="sd1" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="sd2" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="sd3" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="sd4" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="sd5" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="sd6" min="0" max="100"/></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -161,51 +161,51 @@
                                             <tbody>
                                                 <tr>
                                                     <td>CW1</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_0" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_1" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_2" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_3" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_4" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_5" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_6" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_7" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_1_9" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_1_0" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_1_1" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_1_2" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_1_3" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_1_4" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_1_5" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_1_6" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_1_7" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_1_8" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_1_9" min="0" max="100"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>CW2</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_0" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_1" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_2" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_3" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_4" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_5" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_6" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_7" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_2_9" min="0" max="100"/></td>                                                
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_2_0" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_2_1" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_2_2" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_2_3" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_2_4" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_2_5" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_2_6" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_2_7" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_2_8" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_2_9" min="0" max="100"/></td>                                                
                                                 </tr>
                                                 <tr>
                                                     <td>CW3</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_0" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_1" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_2" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_3" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_4" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_5" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_6" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_7" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_3_9" min="0" max="100"/></td>                                                
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_3_0" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_3_1" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_3_2" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_3_3" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_3_4" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_3_5" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_3_6" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_3_7" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_3_8" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_3_9" min="0" max="100"/></td>                                                
                                                 </tr>
                                                 <tr>
                                                     <td>CW4</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_0" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_1" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_2" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_3" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_4" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_5" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_6" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_7" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_4_9" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_4_0" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_4_1" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_4_2" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_4_3" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_4_4" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_4_5" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_4_6" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_4_7" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_4_8" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_4_9" min="0" max="100"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>EXAM</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_0" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_1" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_2" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_3" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_4" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_5" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_6" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_7" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_5_9" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_5_0" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_5_1" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_5_2" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_5_3" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_5_4" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_5_5" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_5_6" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_5_7" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_5_8" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_5_9" min="0" max="100"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>OVERALL</td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_0" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_1" min="0" max="100"/></td>
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_2" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_3" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_4" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_5" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_6" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_7" min="0" max="100"/></td> 
-                                                    <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_8" min="0" max="100"/></td> <td><input class="form-control" type="number" required="" placeholder="" name="mark_6_9" min="0" max="100"/></td>                                                
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_6_0" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_6_1" min="0" max="100"/></td>
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_6_2" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_6_3" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_6_4" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_6_5" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_6_6" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_6_7" min="0" max="100"/></td> 
+                                                    <td><input class="form-control" type="number"  placeholder="" name="mark_6_8" min="0" max="100"/></td> <td><input class="form-control" type="number"  placeholder="" name="mark_6_9" min="0" max="100"/></td>                                                
                                                 </tr>
                                             </tbody>
                                         </table>

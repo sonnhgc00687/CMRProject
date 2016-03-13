@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.entity.Course;
+import model.entity.User;
 import model.manager.CourseManager;
 import model.manager.UserManager;
 
@@ -23,7 +24,9 @@ import model.manager.UserManager;
  * @author Son
  */
 public class Login extends HttpServlet {
+
     private List<Course> courseList = new ArrayList<>();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,13 +41,14 @@ public class Login extends HttpServlet {
         HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
         UserManager um = new UserManager();
-        if (um.checkUser(username, password)) {
-            session.setAttribute( "userSession", username );
+        User user = um.checkUser(username, password);
+        if (user != null) {
+            session.setAttribute("userSession", user.getUserName());
+            session.setAttribute("userRole", user.getRole());
             request.setAttribute("username", username);
             request.getRequestDispatcher("home.jsp").forward(request, response);
-        }else{
+        } else {
             System.out.println("Fail");
         }
     }
