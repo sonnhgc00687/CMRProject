@@ -107,19 +107,21 @@
                                 <div id="assignForm" class="col-xs-6 col-lg-6">
 
                                     <h3> </h3>
-                                    <select class="form-control" required="" name="courserLeader">
+                                    <select class="form-control"  name="courserLeader">
                                         <option value="" disabled selected>Course leader</option>
                                         <c:forEach items="${leader}" var="user">
                                             <option value="${user.userName}">${user.fullName}</option>
                                         </c:forEach>                
                                     </select>
-                                    <select class="form-control" required="" name="courseMod">
+                                    <select class="form-control"  name="courseMod">
                                         <option value="" disabled selected>Course mod</option>
                                         <c:forEach items="${moderator}" var="user">
                                             <option value="${user.userName}">${user.fullName}</option>
                                         </c:forEach>
                                     </select>
-                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Assign</button>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit" name="assign">Assign</button>
+                                    <br/>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit" name="cancel">Cancel</button>
                                 </div>
                             </div>
                         </form>
