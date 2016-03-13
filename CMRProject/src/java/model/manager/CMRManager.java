@@ -29,7 +29,11 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCMR");
+            PreparedStatement ps = conn.prepareStatement("SELECT tblCMR.cmr_code,tblCMR.student_count,tblCMR.comment,tblCMR.status,\n"
+                    + "tblCourse.course_code,tblCourse.course_title,tblCourse.course_faculty\n"
+                    + "FROM tblCMR\n"
+                    + "INNER JOIN tblCourse\n"
+                    + "ON tblCMR.cmr_code = tblCourse.id");
             rs = ps.executeQuery();
             while (rs.next()) {
                 CMR c = new CMR();
@@ -37,6 +41,9 @@ public class CMRManager {
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
                 c.setStatus(rs.getInt("status"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
                 cmrList.add(c);
             }
         } catch (Exception e) {

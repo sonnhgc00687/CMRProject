@@ -37,7 +37,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="Login">Home</a></li>
                         <li><a href="GetAllCourse">Course</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="GetAllCMR">CMR</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

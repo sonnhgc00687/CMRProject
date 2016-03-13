@@ -10,7 +10,7 @@
     <head>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>
+        <title>Assign Course</title>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/css.css"/>
@@ -35,8 +35,8 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="Login">Home</a></li>
-                        <li class="active"><a href="GetAllCourse">Course</a></li>
+                        <li class="active"><a href="Login">Home</a></li>
+                        <li><a href="GetAllCourse">Course</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
 
@@ -85,37 +85,57 @@
                             <li><a href="#">
                                     Home <img src="img/ic_next.png" width="20px"/>
                                 </a></li>
-                            <li><a href="#">
-                                    Course <img src="img/ic_next.png" width="20px"/>
-                                </a></li><!--
-                            <li><a href="#">
-                                    Messages <img src="img/ic_next.png" width="20px"/>
-                                </a></li>-->
+                            <!--                            <li><a href="#">
+                                                                Profile <img src="img/ic_next.png" width="20px"/>
+                                                            </a></li>
+                                                        <li><a href="#">
+                                                                Messages <img src="img/ic_next.png" width="20px"/>
+                                                            </a></li>-->
                         </ul>
-                        <c:forEach items="${courseList}" var="c">
-                            <div id="courseInfo" class="col-xs-6 col-lg-4">
-                                <h3>${c.courseTitle}</h3>
-                                <p>Start Date: ${c.courseStarted}</p>
-                                <p>Finish Date: ${c.courseFinished}</p>
+
+                        <div id="assignContainer">
+                            <div id="courseAssign" class="col-xs-6 col-lg-6">
+                                <h3>${course.courseTitle}</h3>
+                                <p>Code: ${course.courseCode}</p>
+                                <p>Faculty: ${course.courseFaculty}
+                                <p>Start Date: ${course.courseStarted}</p>
+                                <p>Finish Date: ${course.courseFinished}</p>
                                 <td></td>
-                                <p><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR for this course</a></p>
-                                <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
                             </div>
-                        </c:forEach>
+
+                            <div id="assignForm" class="col-xs-6 col-lg-6">
+                                <h3> </h3>
+                                <select class="form-control" required="" name="courserLeader">
+                                    <option value="" disabled selected>Course leader</option>
+                                    <c:forEach items="${leader}" var="user">
+                                        <option value="${user.userName}">${user.fullName}</option>
+                                    </c:forEach>                
+                                </select>
+                                <select class="form-control" required="" name="courseMod">
+                                    <option value="" disabled selected>Course mod</option>
+                                    <c:forEach items="${moderator}" var="user">
+                                        <option value="${user.userName}">${user.fullName}</option>
+                                    </c:forEach>
+                                </select>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Assign</button>
+                            </div>
+                        </div>
+
+                        <hr class="featurette-divider">
                     </div>
                 </div>
-
             </div>
-            <hr>
-
-            <footer>
-                <p>© 2015 Company, Inc.</p>
-            </footer>
-
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/docs.min.js"></script>
+        <hr>
 
-    </body>
+        <footer>
+            <p>© 2015 Company, Inc.</p>
+        </footer>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+
+</body>
 </html>

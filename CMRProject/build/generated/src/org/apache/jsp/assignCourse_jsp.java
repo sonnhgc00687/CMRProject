@@ -11,10 +11,20 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -49,7 +59,7 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("    <head>\n");
       out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Assign Course</title>\n");
+      out.write("        <title>Home Page</title>\n");
       out.write("        \n");
       out.write("        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\"/>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/css.css\"/>\n");
@@ -76,8 +86,8 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                </div>\n");
       out.write("                <div id=\"navbar\" class=\"collapse navbar-collapse\">\n");
       out.write("                    <ul class=\"nav navbar-nav\">\n");
-      out.write("                        <li class=\"active\"><a href=\"Login\">Home</a></li>\n");
-      out.write("                        <li><a href=\"GetAllCourse\">Course</a></li>\n");
+      out.write("                        <li><a href=\"Login\">Home</a></li>\n");
+      out.write("                        <li class=\"active\"><a href=\"GetAllCourse\">Course</a></li>\n");
       out.write("                        <li><a href=\"#contact\">Contact</a></li>\n");
       out.write("                    </ul>\n");
       out.write("\n");
@@ -128,20 +138,20 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                            <li><a href=\"#\">\n");
       out.write("                                    Home <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
       out.write("                                </a></li>\n");
-      out.write("                            <!--                            <li><a href=\"#\">\n");
-      out.write("                                                                Profile <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
-      out.write("                                                            </a></li>\n");
-      out.write("                                                        <li><a href=\"#\">\n");
-      out.write("                                                                Messages <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
-      out.write("                                                            </a></li>-->\n");
+      out.write("                            <li><a href=\"#\">\n");
+      out.write("                                    Course <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
+      out.write("                                </a></li><!--\n");
+      out.write("                            <li><a href=\"#\">\n");
+      out.write("                                    Messages <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
+      out.write("                                </a></li>-->\n");
       out.write("                        </ul>\n");
+      out.write("                        ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
       out.write("\n");
-      out.write("                        \n");
-      out.write("\n");
-      out.write("                            <hr class=\"featurette-divider\">\n");
-      out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
+      out.write("\n");
       out.write("            </div>\n");
       out.write("            <hr>\n");
       out.write("\n");
@@ -167,5 +177,57 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${courseList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("c");
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                            <div id=\"courseInfo\" class=\"col-xs-6 col-lg-4\">\n");
+          out.write("                                <h3>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.courseTitle}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h3>\n");
+          out.write("                                <p>Start Date: ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.courseStarted}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\n");
+          out.write("                                <p>Finish Date: ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.courseFinished}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\n");
+          out.write("                                <td></td>\n");
+          out.write("                                <p><a class=\"btn btn-default\" href=\"AddCMR?&courseID=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" role=\"button\">Add CMR for this course</a></p>\n");
+          out.write("                                <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details »</a></p>\n");
+          out.write("                            </div>\n");
+          out.write("                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
   }
 }

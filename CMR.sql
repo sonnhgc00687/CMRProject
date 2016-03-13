@@ -114,3 +114,4 @@ select * from tblStaticalData
 select * from tblGradeData
 
 exec getCMRDetail 1
+
