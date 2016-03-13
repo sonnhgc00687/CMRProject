@@ -103,7 +103,7 @@
                                 </select>-->
                                 <input class="form-control" type="date" required="" placeholder="Start date" name="startDate" maxlength="50"/>
                                 <input class="form-control" type="date" required="" placeholder="End date" name="endDate" maxlength="50"/>
-                                <textarea class = "form-control" rows = "3"></textarea>
+                                <textarea class = "form-control" name="description" rows = "3"></textarea>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Add course</button>
                             </form>      
                     </div>

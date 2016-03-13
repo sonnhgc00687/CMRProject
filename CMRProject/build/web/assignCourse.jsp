@@ -93,33 +93,36 @@
                                                             </a></li>-->
                         </ul>
 
-                        <div id="assignContainer">
-                            <div id="courseAssign" class="col-xs-6 col-lg-6">
-                                <h3>${course.courseTitle}</h3>
-                                <p>Code: ${course.courseCode}</p>
-                                <p>Faculty: ${course.courseFaculty}
-                                <p>Start Date: ${course.courseStarted}</p>
-                                <p>Finish Date: ${course.courseFinished}</p>
-                                <td></td>
-                            </div>
+                        <form action="AssignCourse" method="post">
+                            <div id="assignContainer">
+                                <div id="courseAssign" class="col-xs-6 col-lg-6">                                    
+                                    <h3><input style="border: 0" name="courseTitle" type="text" readonly="" value="${course.courseTitle}" /></h3>
+                                    <p>Code: <input style="border: 0" name="courseCode" type="text" readonly="" value="${course.courseCode}" /></p>
+                                    <p>Faculty: <input style="border: 0" name="courseFaculty" type="text" readonly="" value="${course.courseFaculty}" /></p>
+                                    <p>Start Date: <input style="border: 0" name="startDate" type="text" readonly="" value="${startDate}" /></p>
+                                    <p>Finish Date: <input style="border: 0" name="endDate" type="text" readonly="" value="${endDate}" /></p>
+                                    <p>Description: <input style="border: 0" name="description" type="text" readonly="" value="${course.description}" /></p>                                    
+                                </div>
 
-                            <div id="assignForm" class="col-xs-6 col-lg-6">
-                                <h3> </h3>
-                                <select class="form-control" required="" name="courserLeader">
-                                    <option value="" disabled selected>Course leader</option>
-                                    <c:forEach items="${leader}" var="user">
-                                        <option value="${user.userName}">${user.fullName}</option>
-                                    </c:forEach>                
-                                </select>
-                                <select class="form-control" required="" name="courseMod">
-                                    <option value="" disabled selected>Course mod</option>
-                                    <c:forEach items="${moderator}" var="user">
-                                        <option value="${user.userName}">${user.fullName}</option>
-                                    </c:forEach>
-                                </select>
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Assign</button>
+                                <div id="assignForm" class="col-xs-6 col-lg-6">
+
+                                    <h3> </h3>
+                                    <select class="form-control" required="" name="courserLeader">
+                                        <option value="" disabled selected>Course leader</option>
+                                        <c:forEach items="${leader}" var="user">
+                                            <option value="${user.userName}">${user.fullName}</option>
+                                        </c:forEach>                
+                                    </select>
+                                    <select class="form-control" required="" name="courseMod">
+                                        <option value="" disabled selected>Course mod</option>
+                                        <c:forEach items="${moderator}" var="user">
+                                            <option value="${user.userName}">${user.fullName}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Assign</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
                         <hr class="featurette-divider">
                     </div>
