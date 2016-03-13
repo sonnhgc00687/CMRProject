@@ -82,6 +82,33 @@ mark7 int,
 mark8 int,
 mark9 int
 )
+
+create procedure getCourseDetail 
+@courseID int
+as
+begin
+select course_code, faculty_title, course_title, a.fullname as course_leader, b.fullname as course_mod,
+tblCourse.[start_date], tblCourse.[end_date], tblCourse.[status]
+from tblCourse inner join tblFaculty on tblCourse.course_faculty = tblFaculty.faculty_code
+inner join tblEmployee as a
+on tblCourse.course_leader = a.username
+inner join tblEmployee as b
+on tblCourse.course_mod = b.username
+where tblCourse.id = @courseID
+end
+
+create procedure getCMRDetail
+@cmr_code int
+as
+begin
+select cmr_code, student_count, comment, [status], tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
+mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9 from tblCMR inner join tblStaticalData on 
+tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_code = tblGradeData.cmr_id 
+where tblStaticalData.id_mark = tblGradeData.id_mark and cmr_code = @cmr_code
+end
+
 select * from tblCMR
 select * from tblStaticalData
 select * from tblGradeData
+
+exec getCMRDetail 1

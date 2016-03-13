@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.entity.CMR;
+import model.entity.CMR_Detail;
 import model.entity.CMR_GradeData;
 import model.entity.CMR_StaticalData;
 
@@ -20,6 +21,7 @@ import model.entity.CMR_StaticalData;
  */
 public class CMRManager {
     private List<CMR> cmrList = new ArrayList<>();
+    private List<CMR_Detail> cmrDetailList = new ArrayList<>();
     private ResultSet rs;
 
     public List<CMR> getAllCMR() {
@@ -93,6 +95,42 @@ public class CMRManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+     
+    public List<CMR_Detail> getCMRDetailByCode(int cmr_code){
+        SqlConnection sql = new SqlConnection();
+        CMR_Detail cmrDetail = new CMR_Detail();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getCMRDetail ?");
+            ps.setInt(1, cmr_code);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                cmrDetail.setCmr_code(rs.getInt("cmr_code"));
+                cmrDetail.setStudent_count(rs.getInt("student_count"));
+                cmrDetail.setComment(rs.getString("comment"));
+                cmrDetail.setStatus(rs.getInt("status"));
+                cmrDetail.setStaticalData_id_mark(rs.getInt("staticalData_id_mark"));
+                cmrDetail.setMean(rs.getInt("mean"));
+                cmrDetail.setMedian(rs.getFloat("median"));
+                cmrDetail.setStandard_deviation(rs.getInt("standard_deviation"));
+                cmrDetail.setId_mark(rs.getInt("id_mark"));
+                cmrDetail.setMark0(rs.getInt("mark0"));
+                cmrDetail.setMark1(rs.getInt("mark1"));
+                cmrDetail.setMark2(rs.getInt("mark2"));
+                cmrDetail.setMark3(rs.getInt("mark3"));
+                cmrDetail.setMark4(rs.getInt("mark4"));
+                cmrDetail.setMark5(rs.getInt("mark5"));
+                cmrDetail.setMark6(rs.getInt("mark6"));
+                cmrDetail.setMark7(rs.getInt("mark7"));
+                cmrDetail.setMark8(rs.getInt("mark8"));
+                cmrDetail.setMark9(rs.getInt("mark9"));
+                cmrDetailList.add(cmrDetail);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cmrDetailList;
     }
     
 }

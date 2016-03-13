@@ -93,7 +93,7 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td>Academic Session</td> <td><input class="form-control" type="text" required="" value="${courseID}" readonly="" name="id" maxlength="50"/></td>
+                                                    <td>Academic Session</td> <td><input class="form-control" type="text" required="" value="${courseCode}" readonly="" name="id" maxlength="50"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Course Title</td> <td><input class="form-control" type="text" required="" value="${courseTitle}" disabled="" name="" min="0" max="100"/></td> 

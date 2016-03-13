@@ -15,25 +15,35 @@ public class Course {
 
     private int id;
     private String courseCode;
+    private String courseFaculty;
     private String courseTitle;
     private String courseLeader;
     private String courseModerator;
     private Date courseStarted;
     private Date courseFinished;
     private int courseStatus;
-
+    
     public Course() {
     }
 
-    public Course(int id, String courseCode, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, int courseStatus) {
+    public Course(int id, String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, int courseStatus) {
         this.id = id;
         this.courseCode = courseCode;
+        this.courseFaculty = courseFaculty;
         this.courseTitle = courseTitle;
         this.courseLeader = courseLeader;
         this.courseModerator = courseModerator;
         this.courseStarted = courseStarted;
         this.courseFinished = courseFinished;
         this.courseStatus = courseStatus;
+    }
+
+    public String getCourseFaculty() {
+        return courseFaculty;
+    }
+
+    public void setCourseFaculty(String courseFaculty) {
+        this.courseFaculty = courseFaculty;
     }
 
     public int getId() {
