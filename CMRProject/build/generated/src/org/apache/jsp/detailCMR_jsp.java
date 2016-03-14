@@ -210,7 +210,7 @@ public final class detailCMR_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <tbody>\n");
       out.write("                                                <tr>\n");
       out.write("                                                    <td>CW1</td> \n");
-      out.write("                                                    <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_0\" min=\"0\" max=\"100\"/></td> <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_1\" min=\"0\" max=\"100\"/></td>\n");
+      out.write("                                                    <td></td> <td></td>\n");
       out.write("                                                    <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_2\" min=\"0\" max=\"100\"/></td> <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_3\" min=\"0\" max=\"100\"/></td> \n");
       out.write("                                                    <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_4\" min=\"0\" max=\"100\"/></td> <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_5\" min=\"0\" max=\"100\"/></td> \n");
       out.write("                                                    <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_6\" min=\"0\" max=\"100\"/></td> <td><input class=\"form-control\" type=\"number\"  placeholder=\"\" name=\"mark_1_7\" min=\"0\" max=\"100\"/></td> \n");
