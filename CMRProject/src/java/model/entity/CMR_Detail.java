@@ -12,6 +12,8 @@ package model.entity;
 public class CMR_Detail {
 
     private int cmr_code;
+    private String courseTitle;
+    private String fullname;
     private int student_count;
     private String comment;
     private int status;
@@ -31,8 +33,10 @@ public class CMR_Detail {
     private int mark8;
     private int mark9;
 
-    public CMR_Detail(int cmr_code, int student_count, String comment, int status, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
+    public CMR_Detail(int cmr_code, String courseTitle, String fullname, int student_count, String comment, int status, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
         this.cmr_code = cmr_code;
+        this.courseTitle = courseTitle;
+        this.fullname = fullname;
         this.student_count = student_count;
         this.comment = comment;
         this.status = status;
@@ -55,7 +59,22 @@ public class CMR_Detail {
 
     public CMR_Detail() {
     }
-    
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
     
 
     public int getCmr_code() {

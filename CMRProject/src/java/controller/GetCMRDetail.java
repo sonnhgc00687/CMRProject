@@ -23,6 +23,7 @@ import model.manager.CMRManager;
  */
 @WebServlet(name = "GetCMRDetail", urlPatterns = {"/GetCMRDetail"})
 public class GetCMRDetail extends HttpServlet {
+
     List<CMR_Detail> cmrDetail = new ArrayList<>();
 
     /**
@@ -41,11 +42,37 @@ public class GetCMRDetail extends HttpServlet {
         int i = 0;
         for (CMR_Detail cmr_Detail : cmrDetail) {
             i = i + 1;
+            request.setAttribute("courseId", cmr_Detail.getCmr_code());
+            request.setAttribute("courseTitle", cmr_Detail.getCourseTitle());
+            request.setAttribute("courseLeader", cmr_Detail.getFullname());
+            request.setAttribute("studentCount", cmr_Detail.getStudent_count());
             request.setAttribute("mean" + i, cmr_Detail.getMean());
             request.setAttribute("median" + i, cmr_Detail.getMedian());
             request.setAttribute("sd" + i, cmr_Detail.getStandard_deviation());
+            for (int j = 0; j < 10; j++) {
+                int k = 0;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark0());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark1());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark2());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark3());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark4());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark5());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark6());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark7());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark8());
+                k = k + 1;
+                request.setAttribute("mark_" + i + "_" + k, cmr_Detail.getMark9());
+            }
         }
-        
+
         request.getRequestDispatcher("detailCMR.jsp").forward(request, response);
     }
 

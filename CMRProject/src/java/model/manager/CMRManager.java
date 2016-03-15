@@ -138,6 +138,8 @@ public class CMRManager {
             while (rs.next()) {
                 CMR_Detail cmrDetail = new CMR_Detail();
                 cmrDetail.setCmr_code(rs.getInt("cmr_code"));
+                cmrDetail.setCourseTitle(rs.getString("course_title"));
+                cmrDetail.setFullname(rs.getString("fullname"));
                 cmrDetail.setStudent_count(rs.getInt("student_count"));
                 cmrDetail.setComment(rs.getString("comment"));
                 cmrDetail.setStatus(rs.getInt("status"));
