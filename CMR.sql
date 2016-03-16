@@ -113,5 +113,11 @@ select * from tblCourse
 select * from tblStaticalData
 select * from tblGradeData
 
+SELECT tblCMR.cmr_code, tblCMR.student_count,tblCourse.course_title,tblCourse.course_faculty
+FROM tblCMR
+INNER JOIN tblCourse
+ON tblCMR.cmr_code = tblCourse.id
+
 exec getCMRDetail 1
 
+exec getCourseDetail 2

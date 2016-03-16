@@ -38,19 +38,7 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UserManager um = new UserManager();
-        User user = um.checkUser(username, password);
-        if (user != null) {
-            session.setAttribute("userSession", user.getUserName());
-            session.setAttribute("userRole", user.getRole());
-            request.setAttribute("username", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else {
-            System.out.println("Fail");
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,7 +53,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     /**
@@ -79,7 +67,19 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        UserManager um = new UserManager();
+        User user = um.checkUser(username, password);
+        if (user != null) {
+            session.setAttribute("userSession", user.getUserName());
+            session.setAttribute("userRole", user.getRole());
+            request.setAttribute("username", username);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+        } else {
+            System.out.println("Fail");
+        }
     }
 
     /**
