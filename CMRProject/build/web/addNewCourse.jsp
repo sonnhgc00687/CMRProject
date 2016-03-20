@@ -5,7 +5,17 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="masterpages/header.jsp"/>
-<div class="row">                      
+<div class="row">
+    <ul id="navigationTab" class="nav nav-tabs" role="tablist">
+        <li><a href="#">
+                Home <img src="img/ic_next.png" width="20px"/>
+            </a>
+        </li>
+        <li><a href="#">
+                New Course <img src="img/ic_next.png" width="20px"/>
+            </a>
+        </li>
+    </ul>
     <form id="addCourseGroup" action="AddCourse" method="post">
         <h3>Add New Course</h3>
         <input class="form-control" type="text" required="" placeholder="Course code" name="courseCode" maxlength="50"/>

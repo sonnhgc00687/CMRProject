@@ -119,6 +119,14 @@ input[type=number] {-moz-appearance: textfield;}
 }
 
 
+#addAccountGroup{
+    padding: 0 10px;
+}
+
+#addAccountGroup input, select, textarea{
+   margin-bottom: 12px;
+}
+
 /*
  * Off Canvas
  * --------------------------------------------------

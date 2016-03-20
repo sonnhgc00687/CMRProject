@@ -50,7 +50,11 @@
                                         <button id="" type="submit">New Course</button>
                                     </form>
                                 </li>
-                                <li><a href="#">Something else here</a></li>
+                                <li class="active">
+                                    <form id="btnNewAccount" action="Register" method="get">
+                                        <button id="" type="submit">New Account</button>
+                                    </form>
+                                </li>
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li class="divider"></li>

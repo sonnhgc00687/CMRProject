@@ -126,9 +126,6 @@ ON tblCMR.cmr_code = tblCourse.id
 
 exec getCMRDetail 1
 
-<<<<<<< HEAD
 exec getCourseDetail 2
-=======
 select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0 
 
->>>>>>> f7f3f44c316d5590bee079a3134a309eebec23fb
