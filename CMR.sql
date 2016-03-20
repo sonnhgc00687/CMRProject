@@ -120,7 +120,13 @@ select * from tblStaticalData
 select * from tblGradeData
 select * from tblEmployee
 
+SELECT tblCMR.cmr_code, tblCMR.student_count,tblCourse.course_title,tblCourse.course_faculty
+FROM tblCMR
+INNER JOIN tblCourse
+ON tblCMR.cmr_code = tblCourse.id
+
 exec getCMRDetail 1
 
+exec getCourseDetail 2
 select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0 
 
