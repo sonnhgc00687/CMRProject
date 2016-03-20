@@ -5,7 +5,7 @@ go
 create table tblEmployee
 (
 username nvarchar(50) primary key,
-[password] nvarchar(50),
+[password] nvarchar(200),
 fullname nvarchar(50),
 role int
 )
@@ -44,10 +44,11 @@ course_mod nvarchar(50),
 /* references tblEmployee(username),*/
 [start_date] date,
 [end_date] date,
+description nvarchar(100),
 [status] int,
 )
-insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 1)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 1)
+insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'abc', 1)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
 go
 create table tblCMR
 (
@@ -89,7 +90,7 @@ create procedure getCourseDetail
 as
 begin
 select course_code, faculty_title, course_title, a.fullname as course_leader, b.fullname as course_mod,
-tblCourse.[start_date], tblCourse.[end_date], tblCourse.[status]
+tblCourse.[start_date], tblCourse.[end_date], [description], tblCourse.[status]
 from tblCourse inner join tblFaculty on tblCourse.course_faculty = tblFaculty.faculty_code
 inner join tblEmployee as a
 on tblCourse.course_leader = a.username
@@ -98,13 +99,16 @@ on tblCourse.course_mod = b.username
 where tblCourse.id = @courseID
 end
 
+exec getCourseDetail 1
+
 create procedure getCMRDetail
 @cmr_code int
 as
 begin
-select cmr_code, student_count, comment, [status], tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
+select cmr_code, course_title, fullname, student_count, comment, tblCMR.[status], tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
 mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9 from tblCMR inner join tblStaticalData on 
-tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_code = tblGradeData.cmr_id 
+tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_code = tblGradeData.cmr_id
+inner join tblCourse on tblCMR.cmr_code = tblCourse.id inner join tblEmployee on tblCourse.course_leader = tblEmployee.username
 where tblStaticalData.id_mark = tblGradeData.id_mark and cmr_code = @cmr_code
 end
 
@@ -112,6 +116,7 @@ select * from tblCMR
 select * from tblCourse
 select * from tblStaticalData
 select * from tblGradeData
+select * from tblEmployee
 
 SELECT tblCMR.cmr_code, tblCMR.student_count,tblCourse.course_title,tblCourse.course_faculty
 FROM tblCMR

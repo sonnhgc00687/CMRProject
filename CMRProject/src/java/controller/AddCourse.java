@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.entity.Course;
+import model.entity.User;
 import model.manager.CourseManager;
+import model.manager.UserManager;
 
 /**
  *
@@ -50,25 +52,39 @@ public class AddCourse extends HttpServlet {
             String courseTitle = request.getParameter("courseTitle");
 //            String courseLeader = request.getParameter("courserLeader");
 //            String courseMod = request.getParameter("courseMod");
+            String description = request.getParameter("description");
             String startDate = request.getParameter("startDate");
             Date startDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
             java.sql.Timestamp startDate2 = new Timestamp(startDate1.getTime());
             java.sql.Date startDateSQL = new java.sql.Date(startDate1.getTime());
-            
+
             String endDate = request.getParameter("endDate");
-            Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);   
+            Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
             java.sql.Timestamp endDate2 = new Timestamp(endDate1.getTime());
             java.sql.Date endDateSQL = new java.sql.Date(endDate1.getTime());
-            
-            CourseManager courseManager = new CourseManager();
-            
 
-            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, "", "", startDate2, endDate2);
-            course =  new Course(courseCode, courseFaculty, courseTitle, "", "", startDateSQL, endDateSQL, 1);
-            courseList = courseManager.getAllCourse();
-            
-//            request.setAttribute("courseList", courseList);
+//            CourseManager courseManager = new CourseManager();
+//            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, "", "", startDate2, endDate2, description);
+            List<User> allUser = new ArrayList<>();
+            List<User> leader = new ArrayList<>();
+            List<User> moderator = new ArrayList<>();
+            UserManager userManager = new UserManager();
+            allUser = userManager.getAllUsers();
+            for (User user : allUser) {
+                if (user.getRole() == 1) {
+                    leader.add(user);
+                } else if (user.getRole() == 2) {
+                    moderator.add(user);
+                }
+            }
+
+            request.setAttribute("leader", leader);
+            request.setAttribute("moderator", moderator);
+            course = new Course(courseCode, courseFaculty, courseTitle, "", "", startDateSQL, endDateSQL, description, 1);
+
             request.setAttribute("course", course);
+            request.setAttribute("startDate", startDate);
+            request.setAttribute("endDate", endDate);
             request.getRequestDispatcher("assignCourse.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();

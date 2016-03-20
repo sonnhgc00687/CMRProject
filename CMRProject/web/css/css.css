@@ -105,6 +105,10 @@ input[type=number] {-moz-appearance: textfield;}
     font-size: 20px;
 }
 
+#courseAssign input{
+    background: #eee;
+}
+
 #assignForm{
     margin-top: 18px;
 }

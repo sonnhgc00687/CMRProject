@@ -23,12 +23,13 @@ public class Course {
     private String courseModerator;
     private Date courseStarted;
     private Date courseFinished;
+    private String description;
     private int courseStatus;
-    
+
     public Course() {
     }
 
-    public Course(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, int courseStatus) {
+    public Course(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseModerator, Date courseStarted, Date courseFinished, String description, int courseStatus) {
         this.courseCode = courseCode;
         this.courseFaculty = courseFaculty;
         this.courseTitle = courseTitle;
@@ -36,7 +37,16 @@ public class Course {
         this.courseModerator = courseModerator;
         this.courseStarted = courseStarted;
         this.courseFinished = courseFinished;
+        this.description = description;
         this.courseStatus = courseStatus;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCourseFaculty() {

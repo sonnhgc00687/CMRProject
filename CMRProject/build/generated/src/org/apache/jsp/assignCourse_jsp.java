@@ -40,7 +40,7 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html;charset=UTF-8");
+      response.setContentType("text/html");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -51,121 +51,76 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Home Page</title>\n");
-      out.write("        \n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\"/>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/css.css\"/>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        ");
-
-            if (request.getSession() == null) {
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-        
-      out.write("\n");
-      out.write("\n");
-      out.write("        <nav class=\"navbar navbar-fixed-top navbar-inverse\">\n");
-      out.write("            <div class=\"container\">\n");
-      out.write("                <div class=\"navbar-header\">\n");
-      out.write("                    <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n");
-      out.write("                        <span class=\"sr-only\">Toggle navigation</span>\n");
-      out.write("                        <span class=\"icon-bar\"></span>\n");
-      out.write("                        <span class=\"icon-bar\"></span>\n");
-      out.write("                        <span class=\"icon-bar\"></span>\n");
-      out.write("                    </button>\n");
-      out.write("                    <a class=\"navbar-brand\" href=\"#\">CMR</a>\n");
-      out.write("                </div>\n");
-      out.write("                <div id=\"navbar\" class=\"collapse navbar-collapse\">\n");
-      out.write("                    <ul class=\"nav navbar-nav\">\n");
-      out.write("                        <li><a href=\"Login\">Home</a></li>\n");
-      out.write("                        <li class=\"active\"><a href=\"GetAllCourse\">Course</a></li>\n");
-      out.write("                        <li><a href=\"#contact\">Contact</a></li>\n");
-      out.write("                    </ul>\n");
-      out.write("\n");
-      out.write("                    <ul class=\"nav navbar-nav navbar-right\">\n");
-      out.write("                        <li class=\"dropdown\">\n");
-      out.write("                            <a href=\"#\" id=\"btnAddDropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n");
-      out.write("                                <img src=\"img/ic_plus.png\" width=\"25px\" height=\"25px\"/>\n");
-      out.write("                                <span class=\"caret\"></span></a>\n");
-      out.write("                            <ul class=\"dropdown-menu\" role=\"menu\">\n");
-      out.write("                                <li class=\"active\">\n");
-      out.write("                                    <form id=\"btnNewCourse\" action=\"GetAllUserAndFaculty\" method=\"post\">\n");
-      out.write("                                        <button id=\"\" type=\"submit\">New Course</button>\n");
-      out.write("                                    </form>\n");
-      out.write("                                </li>\n");
-      out.write("                                <li><form id=\"btnNewCourse\" action=\"AddCMR\" method=\"get\">\n");
-      out.write("                                        <button id=\"\" type=\"submit\">New CMR</button>\n");
-      out.write("                                    </form></li>\n");
-      out.write("                                <li><a href=\"#\">Something else here</a></li>\n");
-      out.write("                                <li class=\"divider\"></li>\n");
-      out.write("                                <li><a href=\"#\">Separated link</a></li>\n");
-      out.write("                                <li class=\"divider\"></li>\n");
-      out.write("                                <li><a href=\"#\">One more separated link</a></li>\n");
-      out.write("                            </ul>\n");
-      out.write("                        </li>     \n");
-      out.write("                        <li class=\"active\"><a href=\"#\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${username}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</a></li>\n");
-      out.write("                    </ul>\n");
-      out.write("                </div>\n");
-      out.write("\n");
-      out.write("            </div>\n");
-      out.write("        </nav>\n");
-      out.write("\n");
-      out.write("        <div class=\"container\">\n");
-      out.write("\n");
-      out.write("            <div class=\"row row-offcanvas row-offcanvas-right\">\n");
-      out.write("\n");
-      out.write("                <div class=\".col-md-6 .col-md-offset-4\">\n");
-      out.write("                    <p class=\"pull-right visible-xs\">                       \n");
-      out.write("                        <button type=\"button\" class=\"btn btn-primary btn-xs\" data-toggle=\"offcanvas\">Toggle nav</button>\n");
-      out.write("                    </p>\n");
-      out.write("                    <div class=\"jumbotron\">\n");
-      out.write("                        <h1>Welcome to FPT University!</h1>\n");
-      out.write("                        <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>\n");
-      out.write("                    </div>\n");
-      out.write("                    <div class=\"row\">\n");
-      out.write("                        <ul id=\"navigationTab\" class=\"nav nav-tabs\" role=\"tablist\">\n");
-      out.write("                            <li><a href=\"#\">\n");
-      out.write("                                    Home <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
-      out.write("                                </a></li>\n");
-      out.write("                            <li><a href=\"#\">\n");
-      out.write("                                    Course <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
-      out.write("                                </a></li><!--\n");
-      out.write("                            <li><a href=\"#\">\n");
-      out.write("                                    Messages <img src=\"img/ic_next.png\" width=\"20px\"/>\n");
-      out.write("                                </a></li>-->\n");
-      out.write("                        </ul>\n");
-      out.write("                        ");
+      out.write("\r\n");
+      out.write("\r\n");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "masterpages/header.jsp", out, false);
+      out.write("    \r\n");
+      out.write("<div class=\"row\">\r\n");
+      out.write("    <ul id=\"navigationTab\" class=\"nav nav-tabs\" role=\"tablist\">\r\n");
+      out.write("        <li><a href=\"#\">\r\n");
+      out.write("                Home <img src=\"img/ic_next.png\" width=\"20px\"/>\r\n");
+      out.write("            </a>\r\n");
+      out.write("        </li>\r\n");
+      out.write("        <!--                            <li><a href=\"#\">\r\n");
+      out.write("                                            Profile <img src=\"img/ic_next.png\" width=\"20px\"/>\r\n");
+      out.write("                                        </a></li>\r\n");
+      out.write("                                    <li><a href=\"#\">\r\n");
+      out.write("                                            Messages <img src=\"img/ic_next.png\" width=\"20px\"/>\r\n");
+      out.write("                                        </a></li>-->\r\n");
+      out.write("    </ul>\r\n");
+      out.write("\r\n");
+      out.write("    <form action=\"AssignCourse\" method=\"post\">\r\n");
+      out.write("        <div id=\"assignContainer\">\r\n");
+      out.write("            <div id=\"courseAssign\" class=\"col-xs-6 col-lg-6\">                                    \r\n");
+      out.write("                <h3><input style=\"border: 0\" name=\"courseTitle\" type=\"text\" readonly=\"\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${course.courseTitle}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" /></h3>\r\n");
+      out.write("                <p>Code: <input style=\"border: 0\" name=\"courseCode\" type=\"text\" readonly=\"\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${course.courseCode}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" /></p>\r\n");
+      out.write("                <p>Faculty: <input style=\"border: 0\" name=\"courseFaculty\" type=\"text\" readonly=\"\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${course.courseFaculty}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" /></p>\r\n");
+      out.write("                <p>Start Date: <input style=\"border: 0\" name=\"startDate\" type=\"text\" readonly=\"\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${startDate}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" /></p>\r\n");
+      out.write("                <p>Finish Date: <input style=\"border: 0\" name=\"endDate\" type=\"text\" readonly=\"\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${endDate}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" /></p>\r\n");
+      out.write("                <p>Description: <input style=\"border: 0\" name=\"description\" type=\"text\" readonly=\"\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${course.description}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" /></p>                                    \r\n");
+      out.write("            </div>\r\n");
+      out.write("\r\n");
+      out.write("            <div id=\"assignForm\" class=\"col-xs-6 col-lg-6\">\r\n");
+      out.write("\r\n");
+      out.write("                <h3> </h3>\r\n");
+      out.write("                <select class=\"form-control\"  name=\"courserLeader\">\r\n");
+      out.write("                    <option value=\"\" disabled selected>Course leader</option>\r\n");
+      out.write("                    ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("                    </div>\n");
-      out.write("                </div>\n");
-      out.write("\n");
-      out.write("            </div>\n");
-      out.write("            <hr>\n");
-      out.write("\n");
-      out.write("            <footer>\n");
-      out.write("                <p>© 2015 Company, Inc.</p>\n");
-      out.write("            </footer>\n");
-      out.write("\n");
-      out.write("        </div>\n");
-      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>\n");
-      out.write("        <script src=\"js/bootstrap.min.js\"></script>\n");
-      out.write("        <script src=\"js/docs.min.js\"></script>\n");
-      out.write("\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("                \r\n");
+      out.write("                </select>\r\n");
+      out.write("                <select class=\"form-control\"  name=\"courseMod\">\r\n");
+      out.write("                    <option value=\"\" disabled selected>Course mod</option>\r\n");
+      out.write("                    ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("                </select>\r\n");
+      out.write("                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" name=\"assign\">Assign</button>\r\n");
+      out.write("                <br/>\r\n");
+      out.write("                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" name=\"cancel\">Cancel</button>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("    </form>\r\n");
+      out.write("\r\n");
+      out.write("    <hr class=\"featurette-divider\">\r\n");
+      out.write("</div>\r\n");
+      out.write("\r\n");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "masterpages/footer.jsp", out, false);
+      out.write("    \r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -187,31 +142,21 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${courseList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    _jspx_th_c_forEach_0.setVar("c");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${leader}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("user");
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
-          out.write("                            <div id=\"courseInfo\" class=\"col-xs-6 col-lg-4\">\n");
-          out.write("                                <h3>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.courseTitle}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</h3>\n");
-          out.write("                                <p>Start Date: ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.courseStarted}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</p>\n");
-          out.write("                                <p>Finish Date: ");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.courseFinished}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</p>\n");
-          out.write("                                <td></td>\n");
-          out.write("                                <p><a class=\"btn btn-default\" href=\"AddCMR?&courseID=");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\" role=\"button\">Add CMR for this course</a></p>\n");
-          out.write("                                <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details »</a></p>\n");
-          out.write("                            </div>\n");
-          out.write("                        ");
+          out.write("\r\n");
+          out.write("                        <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option>\r\n");
+          out.write("                    ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -227,6 +172,48 @@ public final class assignCourse_jsp extends org.apache.jasper.runtime.HttpJspBas
     } finally {
       _jspx_th_c_forEach_0.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${moderator}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setVar("user");
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                        <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${user.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option>\r\n");
+          out.write("                    ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
     }
     return false;
   }

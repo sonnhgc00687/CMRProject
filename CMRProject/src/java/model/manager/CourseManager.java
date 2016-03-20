@@ -18,12 +18,13 @@ import model.entity.Course;
  * @author Son
  */
 public class CourseManager {
+
     private List<Course> courseList = new ArrayList<>();
     private ResultSet rs;
 
     public List<Course> getAllCourse() {
         SqlConnection sql = new SqlConnection();
-        
+
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Select* from tblCourse");
@@ -45,12 +46,12 @@ public class CourseManager {
         }
         return courseList;
     }
-    
-        public void AddCourse(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate){
+
+    public void AddCourse(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate, String description) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("insert into tblCourse values(?,?,?,?,?,?,?,1)");
+            PreparedStatement ps = conn.prepareStatement("insert into tblCourse values(?,?,?,?,?,?,?,?,1)");
             ps.setString(1, courseCode);
             ps.setString(2, courseFaculty);
             ps.setString(3, courseTitle);
@@ -58,13 +59,14 @@ public class CourseManager {
             ps.setString(5, courseMod);
             ps.setTimestamp(6, startDate);
             ps.setTimestamp(7, endDate);
+            ps.setString(8, description);
             int result = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public Course getCourseByID(int courseID){
+
+    public Course getCourseByID(int courseID) {
         SqlConnection sql = new SqlConnection();
         Course course = new Course();
         try {
@@ -72,7 +74,7 @@ public class CourseManager {
             PreparedStatement ps = conn.prepareStatement("exec getCourseDetail ?");
             ps.setInt(1, courseID);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 course.setCourseCode(rs.getString("course_code"));
                 course.setCourseFaculty(rs.getString("faculty_title"));
                 course.setCourseTitle(rs.getString("course_title"));

@@ -59,4 +59,21 @@ public class UserManager {
         }
         return userList;
     }
+    
+    public void createUser(String username, String password, String fullname, int role){
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            EncryptPassword encrypt = new EncryptPassword();
+            String encryptedPassword = encrypt.encryptData(password);
+            PreparedStatement ps = conn.prepareStatement("insert into tblEmployee values(?,?,?,?)");
+            ps.setString(1, username);
+            ps.setString(2, encryptedPassword);
+            ps.setString(3, fullname);
+            ps.setInt(4, role);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

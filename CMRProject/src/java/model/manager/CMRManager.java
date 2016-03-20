@@ -129,14 +129,17 @@ public class CMRManager {
 
     public List<CMR_Detail> getCMRDetailByCode(int cmr_code) {
         SqlConnection sql = new SqlConnection();
-        CMR_Detail cmrDetail = new CMR_Detail();
+//        CMR_Detail cmrDetail = new CMR_Detail();
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("exec getCMRDetail ?");
             ps.setInt(1, cmr_code);
             rs = ps.executeQuery();
             while (rs.next()) {
+                CMR_Detail cmrDetail = new CMR_Detail();
                 cmrDetail.setCmr_code(rs.getInt("cmr_code"));
+                cmrDetail.setCourseTitle(rs.getString("course_title"));
+                cmrDetail.setFullname(rs.getString("fullname"));
                 cmrDetail.setStudent_count(rs.getInt("student_count"));
                 cmrDetail.setComment(rs.getString("comment"));
                 cmrDetail.setStatus(rs.getInt("status"));
