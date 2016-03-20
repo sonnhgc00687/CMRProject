@@ -15,7 +15,7 @@ role int
 --3.PVC
 --4.DLT 
 insert into tblEmployee values('sonnguyen','123456','Son Nguyen', 0)
-insert into tblEmployee values('mainghia','123456','Mai Nghia', 1)
+insert into tblEmployee values('mainghia95','123456','Mai Nghia', 1)
 insert into tblEmployee values('sondao','123456','Son Dao', 2)
 insert into tblEmployee values('ducphuc','123456','Duc Phuc', 3)
 insert into tblEmployee values('hoangha','123456','hoangha', 4)
@@ -49,6 +49,7 @@ description nvarchar(100),
 )
 insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'abc', 1)
 insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia95', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
 go
 create table tblCMR
 (
@@ -113,10 +114,12 @@ where tblStaticalData.id_mark = tblGradeData.id_mark and cmr_code = @cmr_code
 end
 
 select * from tblCMR
-select * from tblCourse
+select * from tblCourse where course_title like '%%'
 select * from tblStaticalData
 select * from tblGradeData
 select * from tblEmployee
 
 exec getCMRDetail 1
+
+select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0 
 

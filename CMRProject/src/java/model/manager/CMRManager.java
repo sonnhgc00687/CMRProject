@@ -52,11 +52,35 @@ public class CMRManager {
         return cmrList;
     }
 
-    public List<CMR> getAllApprovedCMRbyUsername(String username) {
+    public List<CMR> getAllApprovedCMR() {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status] from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id inner join tblEmployee e on c.course_mod = e.username where e.username = ? and cmr.status = 1");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1");
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CMR c = new CMR();
+                c.setCmr_code(rs.getInt("cmr_code"));
+                c.setStudent_count(rs.getInt("student_count"));
+                c.setComment(rs.getString("comment"));
+                c.setStatus(rs.getInt("status"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
+                cmrList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cmrList;
+    }
+
+    public List<CMR> getAllNotApprovedCMRbyLeader(String username) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -65,6 +89,33 @@ public class CMRManager {
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
                 c.setStatus(rs.getInt("status"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
+                cmrList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cmrList;
+    }
+
+    public List<CMR> getAllNotApprovedCMRbyMod(String username) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0");
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CMR c = new CMR();
+                c.setCmr_code(rs.getInt("cmr_code"));
+                c.setStudent_count(rs.getInt("student_count"));
+                c.setComment(rs.getString("comment"));
+                c.setStatus(rs.getInt("status"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
                 cmrList.add(c);
             }
         } catch (Exception e) {
@@ -129,7 +180,6 @@ public class CMRManager {
 
     public List<CMR_Detail> getCMRDetailByCode(int cmr_code) {
         SqlConnection sql = new SqlConnection();
-//        CMR_Detail cmrDetail = new CMR_Detail();
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("exec getCMRDetail ?");
@@ -165,5 +215,7 @@ public class CMRManager {
         }
         return cmrDetailList;
     }
+    
+    
 
 }
