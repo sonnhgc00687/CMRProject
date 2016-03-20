@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.entity.Course;
 import model.manager.CourseManager;
 
@@ -64,10 +65,24 @@ public class GetAllCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String userName = (String) session.getAttribute("userSession");
+        int userRole = (int) session.getAttribute("userRole");
         CourseManager cm = new CourseManager();
-        courseList = cm.getAllCourse();
-        request.setAttribute("courseList", courseList);
-        request.getRequestDispatcher("course.jsp").forward(request, response);
+        switch (userRole) {
+            case 0:
+                courseList = cm.getAllCourse();
+                request.setAttribute("courseList", courseList);
+                request.getRequestDispatcher("course.jsp").forward(request, response);
+                break;
+            case 1:
+                courseList = cm.getAllCourseByCourseLeader(userName);
+                request.setAttribute("courseList", courseList);
+                request.getRequestDispatcher("course.jsp").forward(request, response);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
