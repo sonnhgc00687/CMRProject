@@ -7,6 +7,7 @@ create table tblEmployee
 username nvarchar(50) primary key,
 [password] nvarchar(200),
 fullname nvarchar(50),
+email nvarchar(50),
 role int
 )
 --0.Admin
@@ -14,11 +15,11 @@ role int
 --2.Course Moderator
 --3.PVC
 --4.DLT 
-insert into tblEmployee values('sonnguyen','123456','Son Nguyen', 0)
-insert into tblEmployee values('mainghia95','123456','Mai Nghia', 1)
-insert into tblEmployee values('sondao','123456','Son Dao', 2)
-insert into tblEmployee values('ducphuc','123456','Duc Phuc', 3)
-insert into tblEmployee values('hoangha','123456','hoangha', 4)
+insert into tblEmployee values('sonnguyen','123456','Son Nguyen',null, 0)
+insert into tblEmployee values('mainghia95','123456','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
+insert into tblEmployee values('sondao','123456','Son Dao', 'sondtgc00678@fpt.edu.vn', 2)
+insert into tblEmployee values('ducphuc','123456','Duc Phuc',null, 3)
+insert into tblEmployee values('hoangha','123456','hoangha',null, 4)
 go
 create table tblFaculty
 (
@@ -100,7 +101,7 @@ on tblCourse.course_mod = b.username
 where tblCourse.id = @courseID
 end
 
-exec getCourseDetail 1
+exec getCourseDetail 3
 
 create procedure getCMRDetail
 @cmr_code int

@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +24,7 @@ import model.entity.CMR_StaticalData;
 import model.entity.Course;
 import model.manager.CMRManager;
 import model.manager.CourseManager;
+import model.manager.EmailSending;
 
 /**
  *
@@ -115,7 +118,12 @@ public class AddCMR extends HttpServlet {
                     cmrm.AddCMR_GradeData(g);
                 }
             }
-
+            List<String> emailList = new ArrayList<>();
+            emailList = cmrm.getCMEmail();
+            EmailSending email = new EmailSending();
+            for (String emailItem : emailList) {
+//                email.generateAndSendEmail(emailItem, "", "", "", "A new CMR has been add. Please comfirm it.");
+            }
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();

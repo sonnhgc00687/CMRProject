@@ -215,7 +215,22 @@ public class CMRManager {
         }
         return cmrDetailList;
     }
-    
-    
+
+    public List<String> getCMEmail() {
+        SqlConnection sql = new SqlConnection();
+        List<String> emailList = new ArrayList<>();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select email from tblEmployee where role = ?");
+            ps.setInt(1, 2);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                emailList.add(rs.getString("email"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return emailList;
+    }
 
 }
