@@ -20,8 +20,8 @@
     <form id="addAccountGroup" action="Register" method="post">
         <h3>New Account</h3>
         <input class="form-control" type="text" required="" placeholder="Username" name="username" maxlength="50"/>
-        <input class="form-control" type="text" required="" placeholder="Password" name="password" maxlength="50"/>
-        <input class="form-control" type="text" required="" placeholder="Re-Password" name="re_password" maxlength="50"/>
+        <input class="form-control" type="password" required="" placeholder="Password" name="password" maxlength="50"/>
+        <input class="form-control" type="password" required="" placeholder="Re-Password" name="re_password" maxlength="50"/>
         <input class="form-control" type="text" required="" placeholder="Full Name" name="name" maxlength="50"/>
         <select class="form-control" required="" name="role">
             <option value="" disabled selected>Role</option>
