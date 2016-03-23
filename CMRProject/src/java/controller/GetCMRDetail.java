@@ -37,8 +37,9 @@ public class GetCMRDetail extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int courseID = Integer.valueOf(request.getParameter("courseID"));
         CMRManager cmrManage = new CMRManager();
-        cmrDetail = cmrManage.getCMRDetailByCode(1);
+        cmrDetail = cmrManage.getCMRDetailByCode(courseID);
         int i = 0;
         for (CMR_Detail cmr_Detail : cmrDetail) {
             i = i + 1;

@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">CMR</a>
+                    <a class="navbar-brand" href="Login">CMR</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>     
-                        <li class="active"><a href="#">${username}</a></li>
+                        <li class="active"><a href="#">${userSession}</a></li>
                     </ul>
                 </div>
 

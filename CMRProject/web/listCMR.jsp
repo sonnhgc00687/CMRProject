@@ -25,7 +25,7 @@
             <p>
             <td></td>
             <!--<p><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR for this course</a></p>-->
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            <p><a class="btn btn-default" href="GetCMRDetail?&courseID=${cmr.cmr_code}" role="button">View details »</a></p>
         </div>
     </c:forEach>
 </div>
