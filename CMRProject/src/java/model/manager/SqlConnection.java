@@ -23,7 +23,7 @@ public class SqlConnection {
             //String url = "jdbc:sqlserver://SONNGUYEN\\SQLEXPRESS:1433;databaseName=Project_CMR";
             //String url = "jdbc:sqlserver://PHUC-PC:1433;databaseName=Project_CMR";
             String url = "jdbc:sqlserver://DELL-PC:1433;databaseName=Project_CMR";
-            //String url = "jdbc:sqlserver://DELL:1433;databaseName=Project_CMR";
+//            String url = "jdbc:sqlserver://DELL:1433;databaseName=Project_CMR";
             conn = DriverManager.getConnection(url, dbUser, dbPassword);
             return conn;
         } catch (Exception e) {

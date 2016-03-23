@@ -7,10 +7,13 @@ body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 body {
-    padding-top: 70px;
+    padding-top: 68px;
 }
 footer {
-    padding: 30px 0;
+    padding: 34px 0px;
+    background: #222;
+    color: #fff;
+    border-color: #080808;
 }
 
 #courseInfo{
@@ -78,8 +81,9 @@ footer {
 ::-webkit-outer-spin-button { -webkit-appearance: none;}
 input[type=number] {-moz-appearance: textfield;}
 
-#navigationTab{
-    margin:0px 15px 10px 15px;
+#navigationTab a{
+    font-size: 18px;
+    /*margin:0px 15px 10px 15px;*/
 }
 
 #navigationTab li a{
@@ -87,11 +91,15 @@ input[type=number] {-moz-appearance: textfield;}
 }
 
 #reviewContainer{
-    padding : 10px 30px;
+    padding : 0px 30px;
 }
 
-#reviewAvarta{
+#reviewAvatar{
     margin: 0 auto;
+}
+
+#reviewRow{
+    margin: 30px 10px;
 }
 
 #courseAssign{
@@ -118,7 +126,6 @@ input[type=number] {-moz-appearance: textfield;}
     font-size: 20px;
 }
 
-
 #addAccountGroup{
     padding: 0 10px;
 }
@@ -126,6 +133,8 @@ input[type=number] {-moz-appearance: textfield;}
 #addAccountGroup input, select, textarea{
    margin-bottom: 12px;
 }
+
+
 
 /*
  * Off Canvas

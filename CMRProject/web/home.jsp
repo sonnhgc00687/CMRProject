@@ -14,29 +14,29 @@
     </ul>
 
     <div id="reviewContainer">
-        <div class="row featurette">
+        <div id="reviewRow" class="row featurette">
             <div class="col-md-3">
-                <img id="reviewAvarta" src="img/review01.jpg" class="img-circle img-responsive" width="180px" height="180px">
+                <img id="reviewAvatar" src="img/review01.jpg" class="img-circle img-responsive" width="180px" height="180px">
             </div>
             <div class="col-md-9">
-                <h2 class="featurette-heading">Hello! I am Tuan.<span class="text-muted">See for yourself.</span></h2>
+                <h2 class="featurette-heading">Hello! I am Tuan.<span style="font-size: 20px;" class="text-muted">See for yourself.</span></h2>
                 <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             </div>
         </div>
 
         <hr class="featurette-divider">
 
-        <div class="row featurette">
-            <div class="col-md-9">
-                <h2 class="featurette-heading">Hi! My name is Jaya.<span class="text-muted">Checkmate.</span></h2>
+        <div id="reviewRow" class="row featurette">
+            <div style="text-align: right" class="col-md-9">
+                <h2 class="featurette-heading">Hi! My name is Jaya.<span style="font-size: 20px;" class="text-muted">Checkmate.</span></h2>
                 <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             </div>
             <div class="col-md-3">
-                <img id="reviewAvarta" src="img/review02.jpg" class="img-circle img-responsive" width="180px" height="180px">
+                <img id="reviewAvatar" src="img/review02.jpg" class="img-circle img-responsive" width="180px" height="180px">
             </div>
         </div>
 
-        <hr class="featurette-divider">
     </div>
 </div>
+
 <jsp:include page="masterpages/footer.jsp" />               

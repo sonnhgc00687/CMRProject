@@ -3,7 +3,7 @@
     Created on : Feb 23, 2016, 11:30:11 PM
     Author     : Son
 --%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="masterpages/header.jsp" />    
 <div class="row">
     <ul id="navigationTab" class="nav nav-tabs" role="tablist">
@@ -17,6 +17,13 @@
                 Messages <img src="img/ic_next.png" width="20px"/>
             </a></li>-->
     </ul>
+    <ul>
+        <input class="form-search" type="search" placeholder="Search for Course"/>
+        <div class="btn">
+            <button type="submit" class="btn btn-default">Search</button>
+        </div>
+    </ul>
+
     <c:forEach items="${courseList}" var="c">
         <div id="courseInfo" class="col-xs-6 col-lg-4">
             <h3>${c.courseTitle}</h3>

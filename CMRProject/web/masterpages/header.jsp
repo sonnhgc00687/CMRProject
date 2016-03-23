@@ -73,10 +73,6 @@
             <div class="row row-offcanvas row-offcanvas-right">
 
                 <div class=".col-md-6 .col-md-offset-4">
-                    <p class="pull-right visible-xs">                       
-                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                    </p>
                     <div class="jumbotron">
-                        <h1>Welcome to FPT University!</h1>
-                        <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+                        <img class="img-responsive" src="img/banner.png">
                     </div>
