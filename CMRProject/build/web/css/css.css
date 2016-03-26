@@ -1,183 +1,72 @@
-/*
- * Style tweaks
- * --------------------------------------------------
- */
-html,
-body {
-    overflow-x: hidden; /* Prevent scroll on narrow devices */
-}
-body {
-    padding-top: 68px;
-}
-footer {
-    padding: 34px 0px;
-    background: #222;
-    color: #fff;
-    border-color: #080808;
-}
-
-#courseInfo{
-    padding: 0 20px;
-}
-
-#courseInfo h3{
-    min-height: 53.8px;
-    font-size: 20px;
-}
-
-#btnAddGroup{
-    float: left;
-}
-
-#btnAddDropdown{
-    padding-top: 13px;
-    padding-bottom: 12px;
-}
-
-#btnNewCourse button{
-    border: 0px none;
-    background: transparent;
-    display: block;
-    padding: 3px 20px;
-    clear: both;
+#courseNumber{
     font-weight: 400;
-    line-height: 1.42857;
-    color: rgb(51, 51, 51);
-    white-space: nowrap;
-}
-#btnNewCourse:hover{
-    background: #f5f5f5;
-}
-
-#addCourseGroup{
-    padding: 0 10px;
-}
-
-#addCourseGroup input, select, textarea{
-   margin-bottom: 12px;
-}
-
-#addCMRGroup input, select{
-   border: 0px;
-   box-shadow: none;
-   -webkit-box-shadow: none;
-   padding: 4px 12px;
-   height: 34px;
-}
-
-#addCMRGroup table td{
-    padding: 0px;
-}
-
-#addCMRGroup table td:first-child{
-    padding: 7px;
-}
-
-#addCMRGroup table th{
+    margin: 4px 0 24px;
     text-align: center;
 }
 
-::-webkit-inner-spin-button { -webkit-appearance: none;}
-::-webkit-outer-spin-button { -webkit-appearance: none;}
-input[type=number] {-moz-appearance: textfield;}
-
-#navigationTab a{
-    font-size: 18px;
-    /*margin:0px 15px 10px 15px;*/
+#courseContainer{
+    padding: 30px 15px 0px 15px;
 }
 
-#navigationTab li a{
-    padding: 10px 2px 10px 10px;
+#tableCourse{
+    height: 260px;
+    overflow: auto;
+    display: -moz-grid;
 }
 
-#reviewContainer{
-    padding : 0px 30px;
+#addCourseContainer{
+    float: right;
+    padding: 0px 0px 0px 30px;
 }
 
-#reviewAvatar{
-    margin: 0 auto;
+#addCourseContainer h1{
+    font-size: 60px;
+    font-weight: 400;
+    margin: 4px 0 24px;
+    text-align: center;
 }
 
-#reviewRow{
-    margin: 30px 10px;
+#btnShowAddCourse{
+    width: 227px;
+    height: 180px;
+    cursor: pointer;
 }
 
-#courseAssign{
-    padding: 0 20px 50px 20px;
-    border-radius: 6px;
-    background: #eee;
+#btnShowAddCourse:hover{
+    box-shadow: 0px 0px 1px 1px #999999;
 }
 
-#courseAssign h3{
-    min-height: 53.8px;
-    font-size: 20px;
+#btnAddCourse, #btnCancelAddCourse, #btnSkipAssign{
+    width: 227px;
+    height: 180px;
+    display: none;
+    cursor: pointer;
+}
+#btnAddCourse:hover, #btnCancelAddCourse:hover, #btnSkipAssign:hover{
+    box-shadow: 0px 0px 1px 1px #999999;
+}
+#btnAddCourse h4, #btnCancelAddCourse h4, #btnSkipAssign h4{
+    text-align: center;
+    margin-top: 60px;
 }
 
-#courseAssign input{
-    background: #eee;
+#addCourseForm{
+    padding: 0px;
+    display: none;
 }
 
-#assignForm{
-    margin-top: 18px;
+#addCourseForm .content{
+    padding: 13px 15px 10px 15px;   
 }
 
-#assignForm h3{
-    min-height: 53.8px;
-    font-size: 20px;
+#addCourseForm .card{
+
 }
 
-#addAccountGroup{
-    padding: 0 10px;
+#addCourseForm .form-group{
+    margin-bottom: 12px;
 }
 
-#addAccountGroup input, select, textarea{
-   margin-bottom: 12px;
-}
-
-
-
-/*
- * Off Canvas
- * --------------------------------------------------
- */
-@media screen and (max-width: 767px) {
-    .row-offcanvas {
-        position: relative;
-        -webkit-transition: all .25s ease-out;
-        -o-transition: all .25s ease-out;
-        transition: all .25s ease-out;
-    }
-
-    .row-offcanvas-right {
-        right: 0;
-    }
-
-    .row-offcanvas-left {
-        left: 0;
-    }
-
-    .row-offcanvas-right
-    .sidebar-offcanvas {
-        right: -50%; /* 6 columns */
-    }
-
-    .row-offcanvas-left
-    .sidebar-offcanvas {
-        left: -50%; /* 6 columns */
-    }
-
-    .row-offcanvas-right.active {
-        right: 50%; /* 6 columns */
-    }
-
-    .row-offcanvas-left.active {
-        left: 50%; /* 6 columns */
-    }
-
-    .sidebar-offcanvas {
-        position: absolute;
-        top: 0;
-        width: 50%; /* 6 columns */
-    }
-    
+#addCourseForm textarea{
+    height: 100px;
 }
