@@ -36,25 +36,25 @@
                 </table>
             </div>
         </div>
-
+        
         <div id="addCourseForm" class="col-md-9">
             <div class="card">
                 <div class="header">
                     <h4 class="title">New Course</h4>
                 </div>
                 <div class="content">
-                    <form>
+                    <form action="AddCourse" method="post">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Code</label>
-                                    <input class="form-control" placeholder="Course Code" type="text">
+                                    <input class="form-control" placeholder="Course Code" type="text" required="" name="courseCode" maxlength="50">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input class="form-control" placeholder="Course Title" type="text">
+                                    <input class="form-control" placeholder="Course Title" type="text" required="" name="courseTitle" maxlength="50">
                                 </div>
                             </div>
                         </div>
@@ -63,19 +63,24 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Faculty</label>
-                                    <input class="form-control" placeholder="Course Faculty" type="text">
+                                    <select class="form-control" required="" name="courseFaculty">
+                                        <option value="" disabled selected>Course Faculty</option>
+                                        <c:forEach items="${facultyList}" var="faculty">
+                                            <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
+                                        </c:forEach>                
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Start</label>
-                                    <input class="form-control" placeholder="Start Date" type="text">
+                                    <input class="form-control" placeholder="Start Date" type="text" required="" name="startDate" maxlength="50">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>End</label>
-                                    <input class="form-control" placeholder="End Date" type="text">
+                                    <input class="form-control" placeholder="End Date" type="text" required="" name="endDate" maxlength="50">
                                 </div>
                             </div>
                         </div>
@@ -84,18 +89,19 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                        <textarea rows="5" class="form-control" placeholder="Here is a course's description..."></textarea>
+                                    <textarea rows="5" class="form-control" placeholder="Here is a course's description..."></textarea>
                                     </textarea>
                                 </div>
                             </div>
                         </div>
 
+                        <input id="addCourse" type="submit" />
                         <div class="clearfix"></div>
                     </form>
                 </div>
             </div>
         </div>
-        
+<!--
         <div id="" class="col-md-9">
             <div class="card">
                 <div class="header">
@@ -143,7 +149,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                        <textarea rows="5" class="form-control" placeholder="Here is a course's description..."></textarea>
+                                    <textarea rows="5" class="form-control" placeholder="Here is a course's description..."></textarea>
                                     </textarea>
                                 </div>
                             </div>
@@ -153,10 +159,10 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-md-3" id="addCourseContainer">
-            
+
             <div ng-click="showAddEventForm()" id="btnShowAddCourse" class="card">
                 <div class="header">
                     <h4 class="title">ADD COURSE</h4>
@@ -166,19 +172,19 @@
                     <h1 >+</h1>  
                 </div>
             </div>
-            
+
             <div ng-click="addEvent()" id="btnAddCourse" class="card">
                 <div class="content">
                     <h4 class="title">ADD</h4>
                 </div>
             </div>
-            
+
             <div ng-click="cancelAddEvent()" id="btnCancelAddCourse" class="card">
                 <div class="content">
                     <h4 class="title">CANCEL</h4>  
                 </div>
             </div>
-            
+
             <div id="btnSkipAssign" class="card">
                 <div class="content">
                     <h4 class="title">SKIP</h4>  

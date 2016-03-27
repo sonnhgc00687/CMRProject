@@ -21,5 +21,7 @@ app.controller('myCtrl', function ($scope) {
         $("#btnAddCourse").fadeOut("fast");
         $("#addCourseForm").fadeOut("fast");
         $("#btnCancelAddCourse").fadeOut("fast");
+        $("#addCourse").click();
     };
+    
 });
