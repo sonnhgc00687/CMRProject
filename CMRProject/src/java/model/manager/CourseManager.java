@@ -99,6 +99,32 @@ public class CourseManager {
         }
         return courseList;
     }
+    
+     public List<Course> getAllCourseByCourseMod(String course_mod) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ?");
+            ps.setString(1, course_mod);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
 
     public void AddCourse(String courseCode, String courseFaculty, String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate, String description) {
         SqlConnection sql = new SqlConnection();
