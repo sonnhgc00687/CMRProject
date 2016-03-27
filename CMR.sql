@@ -128,5 +128,8 @@ ON tblCMR.cmr_code = tblCourse.id
 exec getCMRDetail 1
 
 exec getCourseDetail 2
-select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0 
 
+select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0
+
+SELECT COUNT(*) AS countNum FROM 
+(Select * from tblCourse) AS subquery

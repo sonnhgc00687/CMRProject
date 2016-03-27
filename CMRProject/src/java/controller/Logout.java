@@ -6,19 +6,20 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.entity.User;
-import model.manager.UserManager;
 
 /**
  *
- * @author Son
+ * @author Dell
  */
-public class Login extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
+public class Logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +32,13 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        session.invalidate();
+        if (request.getSession() == null) {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -46,7 +53,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -60,24 +67,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        if (request.getSession() == null) {
-//            request.getRequestDispatcher("login.jsp").forward(request, response);
-//        }else{
-//            request.getRequestDispatcher("home.jsp").forward(request, response);
-//        }
-        HttpSession session = request.getSession();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UserManager um = new UserManager();
-        User user = um.checkUser(username, password);
-        if (user != null) {
-            session.setAttribute("userSession", user.getUserName());
-            session.setAttribute("userRole", user.getRole());
-            request.setAttribute("username", username);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else {
-            System.out.println("Fail");
-        }
+        processRequest(request, response);
     }
 
     /**

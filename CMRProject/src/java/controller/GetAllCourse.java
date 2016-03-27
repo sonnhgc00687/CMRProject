@@ -80,7 +80,23 @@ public class GetAllCourse extends HttpServlet {
                 request.setAttribute("courseList", courseList);
                 request.getRequestDispatcher("course.jsp").forward(request, response);
                 break;
+            case 2:
+                courseList = cm.getAllCourseByCourseMod(userName);
+                request.setAttribute("courseList", courseList);
+                request.getRequestDispatcher("course.jsp").forward(request, response);
+                break;
+            case 3:
+                courseList = cm.getAllCourse();
+                request.setAttribute("courseList", courseList);
+                request.getRequestDispatcher("course.jsp").forward(request, response);
+                break;
+            case 4:
+                courseList = cm.getAllCourse();
+                request.setAttribute("courseList", courseList);
+                request.getRequestDispatcher("course.jsp").forward(request, response);
+                break;
             default:
+                request.getRequestDispatcher("course.jsp").forward(request, response);
                 break;
         }
     }

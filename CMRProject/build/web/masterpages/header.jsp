@@ -47,9 +47,9 @@
                         </ul>
                     </li>-->
                     <li>
-                        <a href="#">
-                            Log out
-                        </a>
+                        <form action="Logout" method="GET">
+                            <input type="submit" value="Log Out" >                        
+                        </form>                       
                     </li>
                 </ul>
             </div>

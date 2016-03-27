@@ -101,6 +101,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 <!--
         <div id="" class="col-md-9">
             <div class="card">
@@ -160,6 +161,8 @@
                 </div>
             </div>
         </div> -->
+=======
+>>>>>>> d21ad608f8c54c6bc8480dec45f15fa9886507be
 
         <div class="col-md-3" id="addCourseContainer">
 

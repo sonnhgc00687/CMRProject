@@ -33,7 +33,7 @@ public class UserManager {
             ResultSet rs = ps.executeQuery();
             status = rs.next();
             if (status) {
-                user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class UserManager {
             PreparedStatement ps = conn.prepareStatement("Select * from tblEmployee");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
                 userList.add(user);
             }
 
@@ -60,17 +60,18 @@ public class UserManager {
         return userList;
     }
     
-    public void createUser(String username, String password, String fullname, int role){
+    public void createUser(String username, String password, String fullname, String email, int role){
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
             EncryptPassword encrypt = new EncryptPassword();
             String encryptedPassword = encrypt.encryptData(password);
-            PreparedStatement ps = conn.prepareStatement("insert into tblEmployee values(?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into tblEmployee values(?,?,?,?,?)");
             ps.setString(1, username);
             ps.setString(2, encryptedPassword);
             ps.setString(3, fullname);
-            ps.setInt(4, role);
+            ps.setString(4, email);
+            ps.setInt(5, role);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
