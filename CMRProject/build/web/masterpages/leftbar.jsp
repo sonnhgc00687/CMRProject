@@ -33,7 +33,7 @@
 
                 <div class="sidebar-wrapper">
                     <div class="logo">
-                        <a href="http://www.creative-tim.com" class="simple-text">
+                        <a href="Login" class="simple-text">
                             CRM
                         </a>
                     </div>
@@ -52,7 +52,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a href="GetAllCMR">
                                 <i class="pe-7s-note2"></i>
                                 <p>CMR</p>
                             </a>
