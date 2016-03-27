@@ -95,65 +95,6 @@
                 </div>
             </div>
         </div>
-        
-        <div id="" class="col-md-9">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">New Course</h4>
-                </div>
-                <div class="content">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Code</label>
-                                    <input class="form-control" placeholder="Course Code" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Title</label>
-                                    <input class="form-control" placeholder="Course Title" type="text">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Faculty</label>
-                                    <input class="form-control" placeholder="Course Faculty" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Start</label>
-                                    <input class="form-control" placeholder="Start Date" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>End</label>
-                                    <input class="form-control" placeholder="End Date" type="text">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Description</label>
-                                        <textarea rows="5" class="form-control" placeholder="Here is a course's description..."></textarea>
-                                    </textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <div class="col-md-3" id="addCourseContainer">
             
