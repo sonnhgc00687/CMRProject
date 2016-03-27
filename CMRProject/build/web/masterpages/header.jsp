@@ -51,8 +51,13 @@
                                     </form>
                                 </li>
                                 <li class="active">
-                                    <form id="btnNewAccount" action="Register" method="get">
+                                    <form id="btnNewCourse" action="Register" method="get">
                                         <button id="" type="submit">New Account</button>
+                                    </form>
+                                </li>
+                                <li class="active">
+                                    <form id="btnNewCourse" action="Logout" method="get">
+                                        <button id="" type="submit">Logout</button>
                                     </form>
                                 </li>
                                 <li class="divider"></li>

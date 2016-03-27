@@ -33,7 +33,7 @@ public class UserManager {
             ResultSet rs = ps.executeQuery();
             status = rs.next();
             if (status) {
-                user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class UserManager {
             PreparedStatement ps = conn.prepareStatement("Select * from tblEmployee");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+                User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
                 userList.add(user);
             }
 

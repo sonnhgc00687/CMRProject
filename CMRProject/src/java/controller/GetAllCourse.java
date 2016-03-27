@@ -81,6 +81,7 @@ public class GetAllCourse extends HttpServlet {
                 request.getRequestDispatcher("course.jsp").forward(request, response);
                 break;
             default:
+                request.getRequestDispatcher("course.jsp").forward(request, response);
                 break;
         }
     }
