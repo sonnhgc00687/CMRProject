@@ -26,6 +26,10 @@
     text-align: center;
 }
 
+#assignCourseForm{
+    display: none;
+}
+
 #btnShowAddCourse{
     width: 227px;
     height: 180px;
@@ -36,26 +40,26 @@
     box-shadow: 0px 0px 1px 1px #999999;
 }
 
-#btnAddCourse, #btnCancelAddCourse, #btnSkipAssign{
+#btnAddCourse, #btnCancelAddCourse, #btnSkipAssign, #btnAssignCourse{
     width: 227px;
     height: 180px;
     display: none;
     cursor: pointer;
 }
-#btnAddCourse:hover, #btnCancelAddCourse:hover, #btnSkipAssign:hover{
+#btnAddCourse:hover, #btnCancelAddCourse:hover, #btnSkipAssign:hover, #btnAssignCourse:hover{
     box-shadow: 0px 0px 1px 1px #999999;
 }
-#btnAddCourse h4, #btnCancelAddCourse h4, #btnSkipAssign h4{
+#btnAddCourse h4, #btnCancelAddCourse h4, #btnSkipAssign h4, #btnAssignCourse h4{
     text-align: center;
     margin-top: 60px;
 }
 
-#addCourseForm{
+#addCourseForm, #assignCourseForm{
     padding: 0px;
     display: none;
 }
 
-#addCourseForm .content{
+#addCourseForm .content, #assignCourseForm .content{
     padding: 13px 15px 10px 15px;   
 }
 
@@ -63,7 +67,7 @@
 
 }
 
-#addCourseForm .form-group{
+#addCourseForm .form-group, #assignCourseForm .form-group{
     margin-bottom: 12px;
 }
 

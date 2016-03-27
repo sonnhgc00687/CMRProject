@@ -19,8 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.entity.Course;
+import model.entity.Faculty;
 import model.entity.User;
 import model.manager.CourseManager;
+import model.manager.FacultyManager;
 import model.manager.UserManager;
 
 /**
@@ -32,6 +34,8 @@ public class AddCourse extends HttpServlet {
 
     private Course course;
     private List<Course> courseList = new ArrayList<>();
+    String courseCode, courseFaculty, courseTitle, description;
+    java.sql.Timestamp startDate2, endDate2;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,29 +51,34 @@ public class AddCourse extends HttpServlet {
         try {
             HttpSession session = request.getSession();
 
-            String courseCode = request.getParameter("courseCode");
-            String courseFaculty = request.getParameter("courseFaculty");
-            String courseTitle = request.getParameter("courseTitle");
-//            String courseLeader = request.getParameter("courserLeader");
-//            String courseMod = request.getParameter("courseMod");
-            String description = request.getParameter("description");
+            courseCode = request.getParameter("courseCode");
+            courseFaculty = request.getParameter("courseFaculty");
+            courseTitle = request.getParameter("courseTitle");
+            description = request.getParameter("description");
+
             String startDate = request.getParameter("startDate");
             Date startDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
-            java.sql.Timestamp startDate2 = new Timestamp(startDate1.getTime());
+            startDate2 = new Timestamp(startDate1.getTime());
             java.sql.Date startDateSQL = new java.sql.Date(startDate1.getTime());
 
             String endDate = request.getParameter("endDate");
             Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
-            java.sql.Timestamp endDate2 = new Timestamp(endDate1.getTime());
+            endDate2 = new Timestamp(endDate1.getTime());
             java.sql.Date endDateSQL = new java.sql.Date(endDate1.getTime());
 
-//            CourseManager courseManager = new CourseManager();
-//            courseManager.AddCourse(courseCode, courseFaculty, courseTitle, "", "", startDate2, endDate2, description);
+            String courseLeader = request.getParameter("courseLeader");
+            String courseMod = request.getParameter("courseModerator");
+
             List<User> allUser = new ArrayList<>();
             List<User> leader = new ArrayList<>();
             List<User> moderator = new ArrayList<>();
+            List<Faculty> facultyList = new ArrayList<>();
+
             UserManager userManager = new UserManager();
             allUser = userManager.getAllUsers();
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();
+
             for (User user : allUser) {
                 if (user.getRole() == 1) {
                     leader.add(user);
@@ -77,22 +86,33 @@ public class AddCourse extends HttpServlet {
                     moderator.add(user);
                 }
             }
-
-            request.setAttribute("leader", leader);
-            request.setAttribute("moderator", moderator);
-            course = new Course(courseCode, courseFaculty, courseTitle, "", "", startDateSQL, endDateSQL, description, 1);
-
-            request.setAttribute("course", course);
-            request.setAttribute("startDate", startDate);
-            request.setAttribute("endDate", endDate);
-            request.getRequestDispatcher("assignCourse.jsp").forward(request, response);
+            CourseManager cm = new CourseManager();
+            if (request.getParameter("assign") != null) {
+                cm.AddCourse(courseCode, courseFaculty, courseTitle, courseLeader, courseMod, startDate2, endDate2, description);
+                courseList = cm.getAllCourse();
+                request.setAttribute("leader", leader);
+                request.setAttribute("moderator", moderator);
+                request.setAttribute("facultyList", facultyList);
+                request.setAttribute("courseList", courseList);
+                request.getRequestDispatcher("course.jsp").forward(request, response);
+            } else if (request.getParameter("skip") != null) {
+                {
+                    cm.AddCourse(courseCode, courseFaculty, courseTitle, "", "", startDate2, endDate2, description);
+                    courseList = cm.getAllCourse();
+                    request.setAttribute("leader", leader);
+                    request.setAttribute("moderator", moderator);
+                    request.setAttribute("facultyList", facultyList);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

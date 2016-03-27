@@ -16,7 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.entity.Course;
+import model.entity.Faculty;
+import model.entity.User;
 import model.manager.CourseManager;
+import model.manager.FacultyManager;
+import model.manager.UserManager;
 
 /**
  *
@@ -69,6 +73,28 @@ public class GetAllCourse extends HttpServlet {
         String userName = (String) session.getAttribute("userSession");
         int userRole = (int) session.getAttribute("userRole");
         CourseManager cm = new CourseManager();
+        
+        List<User> allUser = new ArrayList<>();
+        List<User> leader = new ArrayList<>();
+        List<User> moderator = new ArrayList<>();
+        List<Faculty> facultyList = new ArrayList<>();
+        UserManager userManager = new UserManager();
+        allUser = userManager.getAllUsers();
+        FacultyManager facultyManager = new FacultyManager();
+        facultyList = facultyManager.getAllFaculty();
+        
+        for (User user : allUser) {
+            if(user.getRole() == 1){
+                leader.add(user);
+            }else if(user.getRole() == 2){
+                moderator.add(user);
+            }
+        }
+        
+        request.setAttribute("leader", leader);
+        request.setAttribute("moderator", moderator);
+        request.setAttribute("facultyList", facultyList);
+        
         switch (userRole) {
             case 0:
                 courseList = cm.getAllCourse();
