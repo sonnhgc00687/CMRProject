@@ -63,14 +63,46 @@
     padding: 13px 15px 10px 15px;   
 }
 
-#addCourseForm .card{
-
-}
-
 #addCourseForm .form-group, #assignCourseForm .form-group{
     margin-bottom: 12px;
 }
 
 #addCourseForm textarea{
     height: 100px;
+}
+
+#addCmrForm{
+    padding: 0px;
+}
+
+#addCmrForm .content{
+    padding: 13px 15px 10px 15px;   
+}
+
+#addCmrForm .form-group{
+    margin-bottom: 12px;
+}
+
+#addCmrForm textarea{
+    height: 100px;
+}
+
+#addCmrStatistic{
+    padding: 0px;
+}
+
+#addCmrStatistic td{
+    padding: 1px 6px;
+    border: 0px;
+}
+
+
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }

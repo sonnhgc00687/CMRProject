@@ -22,6 +22,8 @@
                     <th>Name</th>
                     <th>Start Date</th>
                     <th>Finish Date</th>
+                    <th>Detail</th>
+                    <th>Add CMR</th>
                     </thead>
                     <tbody>
                         <c:forEach items="${courseList}" var="c">
@@ -30,6 +32,8 @@
                                 <td>${c.courseTitle}</td>
                                 <td>${c.courseStarted}</td>
                                 <td>${c.courseFinished}</td>
+                                <td><a class="btn btn-default" href="#" role="button">Detail</a></td>
+                                <td><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -95,7 +99,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="clearfix"></div>
                     </div>
                 </div>
@@ -133,12 +136,12 @@
                         </div>
 
                         <div class="row">
-                            
+
                         </div>
-                        
+
                         <input id="skipCourse" type="submit" name="skip" style="display: none"/>
                         <input id="assignCourse" type="submit" name="assign" style="display: none"/>
-                        
+
                         <div class="clearfix"></div>
                         </form>
                     </div>

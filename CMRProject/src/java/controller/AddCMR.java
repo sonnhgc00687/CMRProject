@@ -69,7 +69,7 @@ public class AddCMR extends HttpServlet {
         request.setAttribute("courseTitle", title);
         request.setAttribute("courseLeader", leader);
         request.setAttribute("courseId", courseID);
-        request.getRequestDispatcher("addNewCMR.jsp").forward(request, response);
+        request.getRequestDispatcher("new_cmr.jsp").forward(request, response);
     }
 
     /**
