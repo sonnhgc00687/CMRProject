@@ -243,7 +243,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Update tblCMR Set cmtstatus = 1 WHERE cmr_code = ?");
+            PreparedStatement ps = conn.prepareStatement("Update tblCMR Set status = 1 WHERE cmr_code = ?");
             ps.setInt(1, cmr_code);
             int result = ps.executeUpdate();
         } catch (Exception e) {
