@@ -134,9 +134,27 @@ exec getCMRDetail 1
 
 exec getCourseDetail 2
 
-select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0
+select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0
 
 SELECT COUNT(*) AS countNum FROM 
-(Select * from tblCourse) AS subquery
+(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where cmr.cmtstatus = 1 and c.end_date >= '2016' and c.end_date < '2017'
+) AS CompletedCMR
 
-Update tblCMR Set cmtstatus = 0 WHERE cmr_code = 1
+
+
+Update tblCMR Set cmtstatus = 1 WHERE cmr_code = 1
+
+
+
+create procedure getCMRCompletedByFacultyByYear
+@year date , @year2 date , @facultyCode nvarchar(8)
+as
+begin
+SELECT COUNT(*) AS countNum FROM 
+(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where cmr.cmtstatus = 1 and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
+) AS CompletedCMR
+end
+
+exec getCMRCompletedByFacultyByYear '2016','2017', 'FPT2016'
+
+DROP PROCEDURE getCMRCompletedByFacultyByYear
