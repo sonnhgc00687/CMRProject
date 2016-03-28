@@ -134,3 +134,5 @@ select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_ti
 
 SELECT COUNT(*) AS countNum FROM 
 (Select * from tblCourse) AS subquery
+
+Update tblCMR Set cmtstatus = 0 WHERE cmr_code = 1
