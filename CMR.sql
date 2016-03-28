@@ -57,7 +57,8 @@ create table tblCMR
 cmr_code int primary key references tblCourse(id),
 student_count int,
 comment nvarchar(1000),
-[status] int
+[status] int,
+cmtstatus int
 )
 go
 create table tblStaticalData
@@ -107,7 +108,7 @@ create procedure getCMRDetail
 @cmr_code int
 as
 begin
-select cmr_code, course_title, fullname, student_count, comment, tblCMR.[status], tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
+select cmr_code, course_title, fullname, student_count, comment, tblCMR.[status], tblCMR.[cmtstatus],tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
 mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9 from tblCMR inner join tblStaticalData on 
 tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_code = tblGradeData.cmr_id
 inner join tblCourse on tblCMR.cmr_code = tblCourse.id inner join tblEmployee on tblCourse.course_leader = tblEmployee.username

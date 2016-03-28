@@ -14,7 +14,8 @@ public class CMR {
     private int cmr_code;
     private int student_count;
     private String comment;
-    private int status;
+    private int appstatus;
+    private int cmtstatus;
     private String course_code;
     private String course_title;
     private String course_faculty;
@@ -22,21 +23,38 @@ public class CMR {
     public CMR() {
     }
 
-    public CMR(int cmr_code, int student_count, String comment, int status) {
+    public CMR(int cmr_code, int student_count, String comment, int appstatus, int cmtstatus) {
         this.cmr_code = cmr_code;
         this.student_count = student_count;
         this.comment = comment;
-        this.status = status;
+        this.appstatus = appstatus;
+        this.cmtstatus = cmtstatus;
     }
 
-    public CMR(int cmr_code, int student_count, String comment, int status, String course_code, String course_title, String course_faculty) {
+    public CMR(int cmr_code, int student_count, String comment, int appstatus, String course_code, String course_title, String course_faculty) {
         this.cmr_code = cmr_code;
         this.student_count = student_count;
         this.comment = comment;
-        this.status = status;
+        this.appstatus = appstatus;
         this.course_code = course_code;
         this.course_title = course_title;
         this.course_faculty = course_faculty;
+    }
+
+    public int getAppstatus() {
+        return appstatus;
+    }
+
+    public void setAppstatus(int appstatus) {
+        this.appstatus = appstatus;
+    }
+
+    public int getCmtstatus() {
+        return cmtstatus;
+    }
+
+    public void setCmtstatus(int cmtstatus) {
+        this.cmtstatus = cmtstatus;
     }
 
     public int getCmr_code() {
@@ -61,15 +79,7 @@ public class CMR {
 
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
+    }  
 
     public String getCourse_title() {
         return course_title;

@@ -88,8 +88,9 @@ public class AddCMR extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             int studentCount = Integer.parseInt(request.getParameter("studentCount"));
             String comment = request.getParameter("comment");
-            int status = 0;
-            CMR c = new CMR(id, studentCount, comment, status);
+            int appstatus = 0;
+            int cmtstatus = 0;
+            CMR c = new CMR(id, studentCount, comment, appstatus, cmtstatus);
             CMRManager cmrm = new CMRManager();
             cmrm.AddCMR(c);
             for (int i = 1; i < 7; i++) {
