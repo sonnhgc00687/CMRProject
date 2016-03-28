@@ -250,4 +250,29 @@ public class CMRManager {
             e.printStackTrace();
         }
     }
+
+    public void CommentCMR(int cmr_code) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Update tblCMR Set cmtstatus = 1 WHERE cmr_code = ?");
+            ps.setInt(1, cmr_code);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addDLTComment(int cmr_code, String comment) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Insert into tblComment Values(?,?)");
+            ps.setInt(1, cmr_code);
+            ps.setString(2, comment);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

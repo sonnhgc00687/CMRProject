@@ -87,7 +87,11 @@ mark7 int,
 mark8 int,
 mark9 int
 )
-
+create table tblComment
+(
+cmr_code int primary key references tblCMR(cmr_code),
+comment nvarchar(1000),
+)
 create procedure getCourseDetail 
 @courseID int
 as
