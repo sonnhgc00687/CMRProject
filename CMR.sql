@@ -50,7 +50,7 @@ description nvarchar(100),
 )
 insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'abc', 1)
 insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2017-01-15', '2017-05-06', 'abc', 1)
 go
 create table tblCMR
 (
@@ -136,15 +136,7 @@ exec getCourseDetail 2
 
 select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0
 
-SELECT COUNT(*) AS countNum FROM 
-(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where cmr.cmtstatus = 1 and c.end_date >= '2016' and c.end_date < '2017'
-) AS CompletedCMR
-
-
-
 Update tblCMR Set cmtstatus = 1 WHERE cmr_code = 1
-
-
 
 create procedure getCMRCompletedByFacultyByYear
 @year date , @year2 date , @facultyCode nvarchar(8)
@@ -158,3 +150,16 @@ end
 exec getCMRCompletedByFacultyByYear '2016','2017', 'FPT2016'
 
 DROP PROCEDURE getCMRCompletedByFacultyByYear
+
+create procedure getAllCMRByFacultyByYear
+@year date , @year2 date , @facultyCode nvarchar(8)
+as
+begin
+SELECT COUNT(*) AS countNum FROM 
+(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
+) AS CompletedCMR
+end
+
+exec getAllCMRByFacultyByYear '2016','2017', 'FPT2016'
+
+DROP PROCEDURE getAllCMRByFacultyByYear

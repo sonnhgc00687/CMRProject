@@ -22,7 +22,7 @@
                         <div class="content">
 
                             <div class="row">
-                                <input class="form-control" value="1" readonly="" name="id" type="text" style="display: none">
+                                <input class="form-control" value="${courseId}" readonly="" name="id" type="text" style="display: none">
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Title</label>

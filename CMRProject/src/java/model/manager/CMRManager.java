@@ -6,6 +6,7 @@
 package model.manager;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -275,4 +276,43 @@ public class CMRManager {
             e.printStackTrace();
         }
     }
+
+    public int getNoOfCompletedCMRByFacultyByYear(String year1, String year2,String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getCMRCompletedByFacultyByYear ?,?,?");
+            ps.setString(1, year1);
+            ps.setString(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");             
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public int getNoOfCMRByFacultyByYear(String year1, String year2,String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCMRByFacultyByYear ?,?,?");
+            ps.setString(1, year1);
+            ps.setString(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");             
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }
