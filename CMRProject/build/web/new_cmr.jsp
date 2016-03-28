@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="header">
                         <h4 class="title">COURSE MONITORING REPORT</h4>
-                        <p class="category">Add an CMR for <a href="#">Interaction Design</a> course</p>
+                        <p class="category">Add an CMR for <a href="#">${courseTitle}</a> course</p>
                     </div>
                     <div class="content">
                         <form  action="AddCMR" method="post">
@@ -25,13 +25,13 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" placeholder="Course Title" type="text" required="" name="courseCode" maxlength="50">
+                                        <input class="form-control" type="text" value="${courseTitle}" required="" name="courseCode" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Leader</label>
-                                        <input class="form-control" placeholder="Course Leader" type="text" required="" name="courseTitle" maxlength="50">
+                                        <input class="form-control" type="text" value="${courseLeader}" required="" name="courseTitle" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-3">

@@ -16,7 +16,7 @@ role int
 --3.PVC
 --4.DLT 
 insert into tblEmployee values('sonnguyen','123456','Son Nguyen',null, 0)
-insert into tblEmployee values('mainghia95','123456','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
+insert into tblEmployee values('mainghia','123456','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
 insert into tblEmployee values('sondao','123456','Son Dao', 'sondtgc00678@fpt.edu.vn', 2)
 insert into tblEmployee values('ducphuc','123456','Duc Phuc',null, 3)
 insert into tblEmployee values('hoangha','123456','hoangha',null, 4)
@@ -50,7 +50,7 @@ description nvarchar(100),
 )
 insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'abc', 1)
 insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia95', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
 go
 create table tblCMR
 (
@@ -101,7 +101,7 @@ on tblCourse.course_mod = b.username
 where tblCourse.id = @courseID
 end
 
-exec getCourseDetail 3
+exec getCourseDetail 1
 
 create procedure getCMRDetail
 @cmr_code int
