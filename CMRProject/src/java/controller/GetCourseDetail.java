@@ -7,13 +7,19 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.entity.Course;
+import model.entity.Faculty;
+import model.entity.User;
 import model.manager.CourseManager;
+import model.manager.FacultyManager;
+import model.manager.UserManager;
 
 /**
  *
@@ -37,6 +43,26 @@ public class GetCourseDetail extends HttpServlet {
         Course course = new Course();
         CourseManager manager = new CourseManager();
         course = manager.getCourseByID(courseID);
+        List<User> leader = new ArrayList<>();
+        List<User> moderator = new ArrayList<>();
+        List<User> allUser = new ArrayList<>();
+        List<Faculty> facultyList = new ArrayList<>();
+        FacultyManager facultyManager = new FacultyManager();
+        facultyList = facultyManager.getAllFaculty();
+
+        UserManager userManager = new UserManager();
+        allUser = userManager.getAllUsers();
+        for (User user : allUser) {
+            if (user.getRole() == 1) {
+                leader.add(user);
+            } else if (user.getRole() == 2) {
+                moderator.add(user);
+            }
+        }
+
+        request.setAttribute("leader", leader);
+        request.setAttribute("moderator", moderator);
+        request.setAttribute("facultyList", facultyList);
         request.setAttribute("id", course.getId());
         request.setAttribute("courseCode", course.getCourseCode());
         request.setAttribute("courseFaculty", course.getCourseFaculty());

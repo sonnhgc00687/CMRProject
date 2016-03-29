@@ -15,7 +15,7 @@
             <div id="courseDetail" class="col-md-9">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">New Course</h4>
+                        <h4 class="title">Course Detail</h4>
                     </div>
                     <div class="content">
                         <form  action="AddCourse" method="post">
@@ -23,13 +23,13 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Code</label>
-                                        <input class="form-control" placeholder="Course Code" type="text" required=""  readonly="" readonly=""  name="courseCode" maxlength="50">
+                                        <input class="form-control" value="${courseCode}" type="text" required=""  readonly="" readonly=""  name="courseCode" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" placeholder="Course Title" type="text" required=""  readonly="" name="courseTitle" maxlength="50">
+                                        <input class="form-control" value="${courseTitle}" type="text" required=""  readonly="" name="courseTitle" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                     <div class="form-group">
                                         <label>Faculty</label>
                                         <select class="form-control" required="" name="courseFaculty">
-                                            <option value="" disabled selected>Course Faculty</option>
+                                            <option value="${courseFaculty}" disabled selected>${courseFaculty}}</option>
                                             <c:forEach items="${facultyList}" var="faculty">
                                                 <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
                                             </c:forEach>                
@@ -49,13 +49,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Start</label>
-                                        <input class="form-control" placeholder="Start Date" type="text" required=""  readonly="" name="startDate" maxlength="50">
+                                        <input class="form-control" value="${courseStarted}" type="text" required=""  readonly="" name="startDate" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>End</label>
-                                        <input class="form-control" placeholder="End Date" type="text" required=""  readonly="" name="endDate" maxlength="50">
+                                        <input class="form-control" value="${courseFinished}" type="text" required=""  readonly="" name="endDate" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea rows="5" class="form-control" readonly="" placeholder="Here is a course's description..."></textarea>
+                                        <textarea rows="5" class="form-control" readonly="" name="description" >${description}</textarea>
                                         </textarea>
                                     </div>
                                 </div>
@@ -84,9 +84,9 @@
                             <div class="form-group">
                                 <label>Leader</label>
                                 <select class="form-control" required="" name="courseLeader">
-                                    <option value="" disabled selected>Course Leader</option>
+                                    <option value="${courseLeader}" disabled selected>${courseLeader}</option>
                                     <c:forEach items="${leader}" var="leader">
-                                        <option value="${leader.fullName}">${leader.fullName}</option>
+                                        <option value="${leader.userName}">${leader.fullName}</option>
                                     </c:forEach>                
                                 </select>
                             </div>
@@ -95,9 +95,9 @@
                             <div class="form-group">
                                 <label>Moderator</label>
                                 <select class="form-control" required="" name="courseModerator">
-                                    <option value="" disabled selected>Course Moderator</option>
+                                    <option value="${courseModerator}" disabled selected>${courseModerator}</option>
                                     <c:forEach items="${moderator}" var="moderator">
-                                        <option value="${moderator.fullName}">${moderator.fullName}</option>
+                                        <option value="${moderator.userName}">${moderator.fullName}</option>
                                     </c:forEach>                
                                 </select>
                             </div>
