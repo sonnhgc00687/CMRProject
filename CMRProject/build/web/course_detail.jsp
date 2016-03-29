@@ -15,7 +15,7 @@
             <div id="courseDetail" class="col-md-9">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">New Course</h4>
+                        <h4 class="title">Course Detail</h4>
                     </div>
                     <div class="content">
                         <form  action="AddCourse" method="post">
@@ -84,9 +84,9 @@
                             <div class="form-group">
                                 <label>Leader</label>
                                 <select class="form-control" required="" name="courseLeader">
-                                    <option value="" disabled selected>Course Leader</option>
+                                    <option value="${courseLeader}" disabled selected>${courseLeader}</option>
                                     <c:forEach items="${leader}" var="leader">
-                                        <option value="${leader.fullName}">${leader.fullName}</option>
+                                        <option value="${leader.userName}">${leader.fullName}</option>
                                     </c:forEach>                
                                 </select>
                             </div>
@@ -95,9 +95,9 @@
                             <div class="form-group">
                                 <label>Moderator</label>
                                 <select class="form-control" required="" name="courseModerator">
-                                    <option value="" disabled selected>Course Moderator</option>
+                                    <option value="${courseModerator}" disabled selected>${courseModerator}</option>
                                     <c:forEach items="${moderator}" var="moderator">
-                                        <option value="${moderator.fullName}">${moderator.fullName}</option>
+                                        <option value="${moderator.userName}">${moderator.fullName}</option>
                                     </c:forEach>                
                                 </select>
                             </div>
