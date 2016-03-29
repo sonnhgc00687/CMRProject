@@ -32,7 +32,7 @@
                                 <td>${c.courseTitle}</td>
                                 <td>${c.courseStarted}</td>
                                 <td>${c.courseFinished}</td>
-                                <td><a class="btn btn-default" href="#" role="button">Detail</a></td>
+                                <td><a class="btn btn-default" href="GetCourseDetail?&courseID=${c.id}" role="button">Detail</a></td>
                                 <td><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR</a></td>
                             </tr>
                         </c:forEach>
