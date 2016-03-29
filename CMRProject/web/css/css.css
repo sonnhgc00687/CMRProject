@@ -132,6 +132,45 @@
     font-size: 15px;
 }
 
+#cmrStatisticDetail, #cmrGradeDetail{
+    padding: 0px;
+}
+
+#courseDetail{
+    padding: 0px;
+}
+
+#assignCourseButton, #assignTo{
+    padding: 0px 0px 0px 30px;
+}
+
+#btnAssign{
+    width: 227px;
+    height: 75px;
+    cursor: pointer;
+}
+
+#btnAssign:hover{
+    box-shadow: 0px 0px 1px 1px #999999;
+}
+
+#btnAssign h4{
+    margin-top: 10px;
+    text-align: center;
+}
+
+#btnApprove{
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+    border: 0px;
+    padding: 12px;
+    float: right;
+    font-size: 22px;
+    font-weight: 100;
+}
+
 
 input[type='number'] {
     -moz-appearance:textfield;
