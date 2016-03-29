@@ -16,7 +16,7 @@ role int
 --3.PVC
 --4.DLT 
 insert into tblEmployee values('sonnguyen','123456','Son Nguyen',null, 0)
-insert into tblEmployee values('mainghia95','123456','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
+insert into tblEmployee values('mainghia','123456','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
 insert into tblEmployee values('sondao','123456','Son Dao', 'sondtgc00678@fpt.edu.vn', 2)
 insert into tblEmployee values('ducphuc','123456','Duc Phuc',null, 3)
 insert into tblEmployee values('hoangha','123456','hoangha',null, 4)
@@ -50,14 +50,15 @@ description nvarchar(100),
 )
 insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'abc', 1)
 insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia95', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2017-01-15', '2017-05-06', 'abc', 1)
 go
 create table tblCMR
 (
 cmr_code int primary key references tblCourse(id),
 student_count int,
 comment nvarchar(1000),
-[status] int
+[status] int,
+cmtstatus int
 )
 go
 create table tblStaticalData
@@ -86,7 +87,11 @@ mark7 int,
 mark8 int,
 mark9 int
 )
-
+create table tblComment
+(
+cmr_code int primary key references tblCMR(cmr_code),
+comment nvarchar(1000),
+)
 create procedure getCourseDetail 
 @courseID int
 as
@@ -101,13 +106,13 @@ on tblCourse.course_mod = b.username
 where tblCourse.id = @courseID
 end
 
-exec getCourseDetail 3
+exec getCourseDetail 1
 
 create procedure getCMRDetail
 @cmr_code int
 as
 begin
-select cmr_code, course_title, fullname, student_count, comment, tblCMR.[status], tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
+select cmr_code, course_title, fullname, student_count, comment, tblCMR.[status], tblCMR.[cmtstatus],tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
 mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9 from tblCMR inner join tblStaticalData on 
 tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_code = tblGradeData.cmr_id
 inner join tblCourse on tblCMR.cmr_code = tblCourse.id inner join tblEmployee on tblCourse.course_leader = tblEmployee.username
@@ -129,7 +134,32 @@ exec getCMRDetail 1
 
 exec getCourseDetail 2
 
-select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0
+select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0
 
+Update tblCMR Set cmtstatus = 1 WHERE cmr_code = 1
+
+create procedure getCMRCompletedByFacultyByYear
+@year date , @year2 date , @facultyCode nvarchar(8)
+as
+begin
 SELECT COUNT(*) AS countNum FROM 
-(Select * from tblCourse) AS subquery
+(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where cmr.cmtstatus = 1 and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
+) AS CompletedCMR
+end
+
+exec getCMRCompletedByFacultyByYear '2016','2017', 'FPT2016'
+
+DROP PROCEDURE getCMRCompletedByFacultyByYear
+
+create procedure getAllCMRByFacultyByYear
+@year date , @year2 date , @facultyCode nvarchar(8)
+as
+begin
+SELECT COUNT(*) AS countNum FROM 
+(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
+) AS CompletedCMR
+end
+
+exec getAllCMRByFacultyByYear '2016','2017', 'FPT2016'
+
+DROP PROCEDURE getAllCMRByFacultyByYear

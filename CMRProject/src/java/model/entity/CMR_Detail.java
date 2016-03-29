@@ -16,7 +16,8 @@ public class CMR_Detail {
     private String fullname;
     private int student_count;
     private String comment;
-    private int status;
+    private int appStatus;
+    private int cmtStatus;
     private int staticalData_id_mark;
     private int mean;
     private float median;
@@ -33,13 +34,14 @@ public class CMR_Detail {
     private int mark8;
     private int mark9;
 
-    public CMR_Detail(int cmr_code, String courseTitle, String fullname, int student_count, String comment, int status, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
+    public CMR_Detail(int cmr_code, String courseTitle, String fullname, int student_count, String comment, int appStatus, int cmtStatus, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
         this.cmr_code = cmr_code;
         this.courseTitle = courseTitle;
         this.fullname = fullname;
         this.student_count = student_count;
         this.comment = comment;
-        this.status = status;
+        this.appStatus = appStatus;
+        this.cmtStatus = cmtStatus;
         this.staticalData_id_mark = staticalData_id_mark;
         this.mean = mean;
         this.median = median;
@@ -60,6 +62,14 @@ public class CMR_Detail {
     public CMR_Detail() {
     }
 
+    public int getCmtStatus() {
+        return cmtStatus;
+    }
+
+    public void setCmtStatus(int cmtStatus) {
+        this.cmtStatus = cmtStatus;
+    }
+
     public String getCourseTitle() {
         return courseTitle;
     }
@@ -75,7 +85,6 @@ public class CMR_Detail {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
-    
 
     public int getCmr_code() {
         return cmr_code;
@@ -101,12 +110,12 @@ public class CMR_Detail {
         this.comment = comment;
     }
 
-    public int getStatus() {
-        return status;
+    public int getAppStatus() {
+        return appStatus;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setAppStatus(int appStatus) {
+        this.appStatus = appStatus;
     }
 
     public int getStaticalData_id_mark() {
@@ -228,6 +237,5 @@ public class CMR_Detail {
     public void setMark9(int mark9) {
         this.mark9 = mark9;
     }
-    
-    
+
 }

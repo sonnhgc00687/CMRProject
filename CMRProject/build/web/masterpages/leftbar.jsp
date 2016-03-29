@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="typography.html">
+                            <a href="StatisticalReport">
                                 <i class="pe-7s-news-paper"></i>
                                 <p>Statistical Report</p>
                             </a>

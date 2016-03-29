@@ -6,6 +6,7 @@
 package model.manager;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("SELECT tblCMR.cmr_code,tblCMR.student_count,tblCMR.comment,tblCMR.status,\n"
+            PreparedStatement ps = conn.prepareStatement("SELECT tblCMR.cmr_code,tblCMR.student_count,tblCMR.comment,tblCMR.status,tblCMR.cmtstatus,\n"
                     + "tblCourse.course_code,tblCourse.course_title,tblCourse.course_faculty\n"
                     + "FROM tblCMR\n"
                     + "INNER JOIN tblCourse\n"
@@ -40,7 +41,8 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
-                c.setStatus(rs.getInt("status"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
                 c.setCourse_title(rs.getString("course_title"));
                 c.setCourse_faculty(rs.getString("course_faculty"));
@@ -56,7 +58,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1");
 
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -64,7 +66,8 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
-                c.setStatus(rs.getInt("status"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
                 c.setCourse_title(rs.getString("course_title"));
                 c.setCourse_faculty(rs.getString("course_faculty"));
@@ -80,7 +83,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -88,7 +91,8 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
-                c.setStatus(rs.getInt("status"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
                 c.setCourse_title(rs.getString("course_title"));
                 c.setCourse_faculty(rs.getString("course_faculty"));
@@ -104,7 +108,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -112,7 +116,8 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
-                c.setStatus(rs.getInt("status"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
                 c.setCourse_title(rs.getString("course_title"));
                 c.setCourse_faculty(rs.getString("course_faculty"));
@@ -128,11 +133,12 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("insert into tblCMR values(?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into tblCMR values(?,?,?,?,?)");
             ps.setInt(1, c.getCmr_code());
             ps.setInt(2, c.getStudent_count());
             ps.setString(3, c.getComment());
-            ps.setInt(4, c.getStatus());
+            ps.setInt(4, c.getAppstatus());
+            ps.setInt(5, c.getCmtstatus());
             int result = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -192,7 +198,8 @@ public class CMRManager {
                 cmrDetail.setFullname(rs.getString("fullname"));
                 cmrDetail.setStudent_count(rs.getInt("student_count"));
                 cmrDetail.setComment(rs.getString("comment"));
-                cmrDetail.setStatus(rs.getInt("status"));
+                cmrDetail.setAppStatus(rs.getInt("status"));
+                cmrDetail.setCmtStatus(rs.getInt("cmtstatus"));
                 cmrDetail.setStaticalData_id_mark(rs.getInt("staticalData_id_mark"));
                 cmrDetail.setMean(rs.getInt("mean"));
                 cmrDetail.setMedian(rs.getFloat("median"));
@@ -224,13 +231,88 @@ public class CMRManager {
             PreparedStatement ps = conn.prepareStatement("select email from tblEmployee where role = ?");
             ps.setInt(1, 2);
             rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 emailList.add(rs.getString("email"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return emailList;
+    }
+
+    public void ApproveCMR(int cmr_code) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Update tblCMR Set status = 1 WHERE cmr_code = ?");
+            ps.setInt(1, cmr_code);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void CommentCMR(int cmr_code) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Update tblCMR Set cmtstatus = 1 WHERE cmr_code = ?");
+            ps.setInt(1, cmr_code);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addDLTComment(int cmr_code, String comment) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Insert into tblComment Values(?,?)");
+            ps.setInt(1, cmr_code);
+            ps.setString(2, comment);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getNoOfCompletedCMRByFacultyByYear(String year1, String year2,String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getCMRCompletedByFacultyByYear ?,?,?");
+            ps.setString(1, year1);
+            ps.setString(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");             
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public int getNoOfCMRByFacultyByYear(String year1, String year2,String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCMRByFacultyByYear ?,?,?");
+            ps.setString(1, year1);
+            ps.setString(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");             
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }
