@@ -22,7 +22,7 @@
                     <th>Name</th>
                     <th>Start Date</th>
                     <th>Finish Date</th>
-                    <th>Detail</th>
+                    <th>Detail</th>     
                     <th>Add CMR</th>
                     </thead>
                     <tbody>

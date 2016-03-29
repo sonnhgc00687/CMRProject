@@ -73,27 +73,27 @@ public class GetAllCMR extends HttpServlet {
             case 0:
                 listCMR = cmrManager.getAllCMR();
                 request.setAttribute("listCMR", listCMR);
-                request.getRequestDispatcher("listCMR.jsp").forward(request, response);
+                request.getRequestDispatcher("cmr.jsp").forward(request, response);
                 break;
             case 1:
                 listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
                 request.setAttribute("listCMR", listCMR);
-                request.getRequestDispatcher("listCMR.jsp").forward(request, response);
+                request.getRequestDispatcher("cmr.jsp").forward(request, response);
                 break;
             case 2:
                 listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
                 request.setAttribute("listCMR", listCMR);
-                request.getRequestDispatcher("listCMR.jsp").forward(request, response);
+                request.getRequestDispatcher("cmr.jsp").forward(request, response);
                 break;
             case 3:
                 listCMR = cmrManager.getAllApprovedCMR();
                 request.setAttribute("listCMR", listCMR);
-                request.getRequestDispatcher("listCMR.jsp").forward(request, response);
+                request.getRequestDispatcher("cmr.jsp").forward(request, response);
                 break;
             case 4:
                 listCMR = cmrManager.getAllApprovedCMR();
                 request.setAttribute("listCMR", listCMR);
-                request.getRequestDispatcher("listCMR.jsp").forward(request, response);
+                request.getRequestDispatcher("cmr.jsp").forward(request, response);
                 break;
             default:
                 break;

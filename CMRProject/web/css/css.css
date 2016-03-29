@@ -96,7 +96,15 @@
     border: 0px;
 }
 
+#cmrContainer{
+    padding: 30px 15px 0px 15px;
+}
 
+#tableCmr{
+    height: 380px;
+    overflow: auto;
+    display: -moz-grid;
+}
 
 input[type='number'] {
     -moz-appearance:textfield;
