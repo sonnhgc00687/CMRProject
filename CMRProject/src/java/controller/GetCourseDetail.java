@@ -43,6 +43,7 @@ public class GetCourseDetail extends HttpServlet {
         Course course = new Course();
         CourseManager manager = new CourseManager();
         course = manager.getCourseByID(courseID);
+        
         List<User> leader = new ArrayList<>();
         List<User> moderator = new ArrayList<>();
         List<User> allUser = new ArrayList<>();

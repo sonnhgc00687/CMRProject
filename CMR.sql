@@ -50,7 +50,7 @@ description nvarchar(100),
 )
 insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'abc', 1)
 insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'abc', 1)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2017-01-15', '2017-05-06', 'abc', 1)
+insert into tblCourse values('COMP1650', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2017-01-15', '2017-05-06', 'abc', 1)
 go
 create table tblCMR
 (
@@ -222,3 +222,18 @@ end
 Go
 
 exec getAllCourseWithNotCompletedCMR
+
+Go
+
+create procedure getCourseDetailWithoutCLCM 
+@courseID int
+as
+begin
+select course_code, faculty_title, course_title,tblCourse.[start_date], tblCourse.[end_date], [description], tblCourse.[status]
+from tblCourse inner join tblFaculty on tblCourse.course_faculty = tblFaculty.faculty_code
+where tblCourse.id = @courseID
+end
+  
+Go
+    
+exec getCourseDetailWithoutCLCM 7
