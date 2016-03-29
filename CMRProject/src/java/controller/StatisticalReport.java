@@ -66,7 +66,7 @@ public class StatisticalReport extends HttpServlet {
         request.setAttribute("noOfCompletedCMR", noOfCompletedCMR);
         request.setAttribute("noOfAllCMR", noOfAllCMR);
         request.setAttribute("percentageCompleted", percentage);
-        request.getRequestDispatcher("statisReport.jsp").forward(request, response);
+        request.getRequestDispatcher("statis_exception_report.jsp").forward(request, response);
     }
 
     /**

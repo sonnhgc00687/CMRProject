@@ -172,15 +172,6 @@
         </div>
     </div>
 
-    <div class="col-md-3" id="addCourseContainer">
-
-        <div ng-click="" id="btnAddCmr" class="card">
-            <div class="content">
-                <h4>ADD</h4>  
-            </div>
-        </div>
-
-    </div>
 </div>
 
 <jsp:include page="masterpages/footer.jsp"/>
