@@ -47,7 +47,7 @@ public class GetCourseDetail extends HttpServlet {
         request.setAttribute("courseFinished", course.getCourseFinished());
         request.setAttribute("description", course.getDescription());
         request.setAttribute("courseStatus", course.getCourseStatus());
-        request.getRequestDispatcher("").forward(request, response);
+        request.getRequestDispatcher("course_detail.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

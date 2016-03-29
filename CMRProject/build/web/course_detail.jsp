@@ -23,13 +23,13 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Code</label>
-                                        <input class="form-control" placeholder="Course Code" type="text" required="" name="courseCode" maxlength="50">
+                                        <input class="form-control" placeholder="Course Code" type="text" required=""  readonly="" readonly=""  name="courseCode" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" placeholder="Course Title" type="text" required="" name="courseTitle" maxlength="50">
+                                        <input class="form-control" placeholder="Course Title" type="text" required=""  readonly="" name="courseTitle" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -49,13 +49,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Start</label>
-                                        <input class="form-control" placeholder="Start Date" type="text" required="" name="startDate" maxlength="50">
+                                        <input class="form-control" placeholder="Start Date" type="text" required=""  readonly="" name="startDate" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>End</label>
-                                        <input class="form-control" placeholder="End Date" type="text" required="" name="endDate" maxlength="50">
+                                        <input class="form-control" placeholder="End Date" type="text" required=""  readonly="" name="endDate" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea rows="5" class="form-control" placeholder="Here is a course's description..."></textarea>
+                                        <textarea rows="5" class="form-control" readonly="" placeholder="Here is a course's description..."></textarea>
                                         </textarea>
                                     </div>
                                 </div>

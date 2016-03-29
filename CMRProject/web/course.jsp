@@ -32,11 +32,8 @@
                                 <td>${c.courseTitle}</td>
                                 <td>${c.courseStarted}</td>
                                 <td>${c.courseFinished}</td>
-<<<<<<< HEAD
-                                <td><a class="btn btn-default" href="course_detail.jsp" role="button">Detail</a></td>
-=======
+
                                 <td><a class="btn btn-default" href="GetCourseDetail?&courseID=${c.id}" role="button">Detail</a></td>
->>>>>>> ba494a6da581cbfa54643c46f70492af2e45fc69
                                 <td><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR</a></td>
                             </tr>
                         </c:forEach>
