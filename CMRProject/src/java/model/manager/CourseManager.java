@@ -161,6 +161,7 @@ public class CourseManager {
                 course.setCourseModerator(rs.getString("course_mod"));
                 course.setCourseStarted(rs.getDate("start_date"));
                 course.setCourseFinished(rs.getDate("end_date"));
+                course.setDescription(rs.getString("description"));
                 course.setCourseStatus(rs.getInt("status"));
             }
         } catch (Exception e) {
