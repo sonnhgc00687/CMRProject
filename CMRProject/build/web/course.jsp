@@ -117,7 +117,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Leader</label>
-                                        <select class="form-control" required="" name="courseLeader">
+                                        <select class="form-control" name="courseLeader">
                                             <option value="" disabled selected>Course Leader</option>
                                             <c:forEach items="${leader}" var="leader">
                                                 <option value="${leader.userName}">${leader.fullName}</option>
@@ -128,7 +128,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Moderator</label>
-                                        <select class="form-control" required="" name="courseModerator">
+                                        <select class="form-control" name="courseModerator">
                                             <option value="" disabled selected>Course Moderator</option>
                                             <c:forEach items="${moderator}" var="moderator">
                                                 <option value="${moderator.userName}">${moderator.fullName}</option>

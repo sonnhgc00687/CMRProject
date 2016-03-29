@@ -92,6 +92,10 @@ create table tblComment
 cmr_code int primary key references tblCMR(cmr_code),
 comment nvarchar(1000),
 )
+
+
+Go
+
 create procedure getCourseDetail 
 @courseID int
 as
@@ -106,7 +110,11 @@ on tblCourse.course_mod = b.username
 where tblCourse.id = @courseID
 end
 
+Go
+
 exec getCourseDetail 1
+
+Go
 
 create procedure getCMRDetail
 @cmr_code int
@@ -118,6 +126,11 @@ tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_c
 inner join tblCourse on tblCMR.cmr_code = tblCourse.id inner join tblEmployee on tblCourse.course_leader = tblEmployee.username
 where tblStaticalData.id_mark = tblGradeData.id_mark and cmr_code = @cmr_code
 end
+Go
+
+exec getCMRDetail 1
+
+Go
 
 select * from tblCMR
 select * from tblCourse where course_title like '%%'
@@ -125,18 +138,22 @@ select * from tblStaticalData
 select * from tblGradeData
 select * from tblEmployee
 
+Go
+
 SELECT tblCMR.cmr_code, tblCMR.student_count,tblCourse.course_title,tblCourse.course_faculty
 FROM tblCMR
 INNER JOIN tblCourse
 ON tblCMR.cmr_code = tblCourse.id
 
-exec getCMRDetail 1
-
-exec getCourseDetail 2
+Go
 
 select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = 'sondao' and cmr.status = 0
 
+Go
+
 Update tblCMR Set cmtstatus = 1 WHERE cmr_code = 1
+
+Go
 
 create procedure getCMRCompletedByFacultyByYear
 @year date , @year2 date , @facultyCode nvarchar(8)
@@ -146,10 +163,10 @@ SELECT COUNT(*) AS countNum FROM
 (select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where cmr.cmtstatus = 1 and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
 ) AS CompletedCMR
 end
-
+Go
 exec getCMRCompletedByFacultyByYear '2016','2017', 'FPT2016'
 
-DROP PROCEDURE getCMRCompletedByFacultyByYear
+Go
 
 create procedure getAllCMRByFacultyByYear
 @year date , @year2 date , @facultyCode nvarchar(8)
@@ -160,6 +177,48 @@ SELECT COUNT(*) AS countNum FROM
 ) AS CompletedCMR
 end
 
+Go
+
 exec getAllCMRByFacultyByYear '2016','2017', 'FPT2016'
 
-DROP PROCEDURE getAllCMRByFacultyByYear
+Go
+
+create procedure getAllCourseWithoutCLorCM
+as
+begin
+SELECT COUNT(*) AS countNum FROM 
+(select  * from tblCourse where course_leader = '' OR course_mod = ''
+) AS CourseWithoutCLCM
+end
+
+Go
+
+exec getAllCourseWithoutCLorCM
+
+Go
+
+create procedure getAllCourseWithoutCMR
+as
+begin
+SELECT COUNT(*) AS countNum FROM 
+(Select * from tblCourse where id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)
+) AS CourseWithoutCMR
+end
+
+Go
+
+exec getAllCourseWithoutCMR
+
+Go
+
+create procedure getAllCourseWithNotCompletedCMR
+as
+begin
+SELECT COUNT(*) AS countNum FROM 
+(Select * from tblCourse where id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code where cmr.cmtstatus = 1)
+) AS CourseWithoutCMR
+end
+
+Go
+
+exec getAllCourseWithNotCompletedCMR

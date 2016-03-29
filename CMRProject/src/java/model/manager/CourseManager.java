@@ -46,7 +46,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByTitle(String course_title) {
         SqlConnection sql = new SqlConnection();
 
@@ -54,7 +54,7 @@ public class CourseManager {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_title like ? ");
             String title = "%" + course_title + "%";
-            ps.setString(1,title);
+            ps.setString(1, title);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();
@@ -73,7 +73,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByCourseLeader(String course_leader) {
         SqlConnection sql = new SqlConnection();
 
@@ -99,8 +99,8 @@ public class CourseManager {
         }
         return courseList;
     }
-    
-     public List<Course> getAllCourseByCourseMod(String course_mod) {
+
+    public List<Course> getAllCourseByCourseMod(String course_mod) {
         SqlConnection sql = new SqlConnection();
 
         try {
@@ -168,5 +168,53 @@ public class CourseManager {
             e.printStackTrace();
         }
         return course;
+    }
+
+    public int getNoOfCourseWithoutCLCM() {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCourseWithoutCLorCM");           
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");             
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public int getNoOfCourseWithoutCMR() {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCourseWithoutCMR");           
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");             
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public int getNoOfCourseWithNotCompletedCMR() {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCourseWithNotCompletedCMR");           
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");             
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
