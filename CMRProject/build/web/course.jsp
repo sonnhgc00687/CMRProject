@@ -53,13 +53,13 @@
 
                         <div class="content">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Code</label>
                                         <input class="form-control" placeholder="Course Code" type="text" required="" name="courseCode" maxlength="50">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Title</label>
                                         <input class="form-control" placeholder="Course Title" type="text" required="" name="courseTitle" maxlength="50">

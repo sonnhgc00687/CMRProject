@@ -58,9 +58,15 @@
                             </a>
                         </li>
                         <li>
+                            <a href="GetAllUser">
+                                <i class="pe-7s-users"></i>
+                                <p>Staff</p>
+                            </a>
+                        </li>                        
+                        <li>
                             <a href="StatisticalReport">
                                 <i class="pe-7s-news-paper"></i>
-                                <p>Statistical Report</p>
+                                <p>Report</p>
                             </a>
                         </li>
                     </ul>

@@ -30,28 +30,48 @@
     display: none;
 }
 
-#btnShowAddCourse{
+#addAccountContainer{
+    padding: 0px;
+}
+
+#btnShowAddCourse, #btnShowAddAccount{
     width: 227px;
     height: 180px;
     cursor: pointer;
 }
 
-#btnShowAddCourse:hover{
+#btnShowAddCourse:hover, #btnShowAddAccount:hover{
     box-shadow: 0px 0px 1px 1px #999999;
 }
 
-#btnAddCourse, #btnCancelAddCourse, #btnSkipAssign, #btnAssignCourse{
+#btnAddCourse, #btnCancelAddCourse, #btnSkipAssign,
+#btnAssignCourse{
     width: 227px;
     height: 180px;
     display: none;
     cursor: pointer;
 }
-#btnAddCourse:hover, #btnCancelAddCourse:hover, #btnSkipAssign:hover, #btnAssignCourse:hover{
+#btnAddCourse:hover, #btnCancelAddCourse:hover, #btnSkipAssign:hover,
+#btnAssignCourse:hover, #btnAddAccount:hover, #btnCancelAddAccount:hover{
     box-shadow: 0px 0px 1px 1px #999999;
 }
-#btnAddCourse h4, #btnCancelAddCourse h4, #btnSkipAssign h4, #btnAssignCourse h4{
+
+#btnAddCourse h4, #btnCancelAddCourse h4, #btnSkipAssign h4,
+#btnAssignCourse h4{
     text-align: center;
     margin-top: 60px;
+}
+
+#btnAddAccount, #btnCancelAddAccount{
+    width: 227px;
+    height: 98px;
+    display: none;
+    cursor: pointer;
+}
+
+#btnAddAccount h4, #btnCancelAddAccount h4{
+    margin-top: 18px;
+    text-align: center;
 }
 
 #addCourseForm, #assignCourseForm{
