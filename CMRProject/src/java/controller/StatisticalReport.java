@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.manager.CMRManager;
+import model.manager.CourseManager;
 
 /**
  *
@@ -62,7 +63,17 @@ public class StatisticalReport extends HttpServlet {
         CMRManager cm = new CMRManager();
         int noOfCompletedCMR = cm.getNoOfCompletedCMRByFacultyByYear("2016", "2017", "FPT2016");
         int noOfAllCMR = cm.getNoOfCMRByFacultyByYear("2016", "2017", "FPT2016");
-        float percentage = (noOfCompletedCMR*100)/noOfAllCMR;
+        float percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
+
+        CourseManager courseM = new CourseManager();
+        int noOfCourseWithoutCLCM = courseM.getNoOfCourseWithoutCLCM();
+        int noOfCourseWithoutCMR = courseM.getNoOfCourseWithoutCMR();
+        int noOfCourseWithoutCompletedCMR = courseM.getNoOfCourseWithNotCompletedCMR();
+
+        request.setAttribute("noOfCourseWithoutCLCM", noOfCourseWithoutCLCM);
+        request.setAttribute("noOfCourseWithoutCMR", noOfCourseWithoutCMR);
+        request.setAttribute("noOfCourseWithoutCompletedCMR", noOfCourseWithoutCompletedCMR);
+
         request.setAttribute("noOfCompletedCMR", noOfCompletedCMR);
         request.setAttribute("noOfAllCMR", noOfAllCMR);
         request.setAttribute("percentageCompleted", percentage);

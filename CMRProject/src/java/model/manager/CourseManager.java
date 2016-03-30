@@ -46,7 +46,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByTitle(String course_title) {
         SqlConnection sql = new SqlConnection();
 
@@ -54,7 +54,7 @@ public class CourseManager {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_title like ? ");
             String title = "%" + course_title + "%";
-            ps.setString(1,title);
+            ps.setString(1, title);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();
@@ -73,7 +73,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByCourseLeader(String course_leader) {
         SqlConnection sql = new SqlConnection();
 
@@ -99,8 +99,8 @@ public class CourseManager {
         }
         return courseList;
     }
-    
-     public List<Course> getAllCourseByCourseMod(String course_mod) {
+
+    public List<Course> getAllCourseByCourseMod(String course_mod) {
         SqlConnection sql = new SqlConnection();
 
         try {
@@ -163,10 +163,87 @@ public class CourseManager {
                 course.setCourseFinished(rs.getDate("end_date"));
                 course.setDescription(rs.getString("description"));
                 course.setCourseStatus(rs.getInt("status"));
+            } else {
+                PreparedStatement ps2 = conn.prepareStatement("exec getCourseDetailWithoutCLCM ?");
+                ps2.setInt(1, courseID);
+                ResultSet rs2 = ps2.executeQuery();
+                if (rs2.next()) {
+                    course.setCourseCode(rs2.getString("course_code"));
+                    course.setCourseFaculty(rs2.getString("faculty_title"));
+                    course.setCourseTitle(rs2.getString("course_title"));
+                    course.setCourseLeader("");
+                    course.setCourseModerator("");
+                    course.setCourseStarted(rs2.getDate("start_date"));
+                    course.setCourseFinished(rs2.getDate("end_date"));
+                    course.setDescription(rs2.getString("description"));
+                    course.setCourseStatus(rs2.getInt("status"));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return course;
+    }
+
+    public int getNoOfCourseWithoutCLCM() {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCourseWithoutCLorCM");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public int getNoOfCourseWithoutCMR() {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCourseWithoutCMR");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public int getNoOfCourseWithNotCompletedCMR() {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCourseWithNotCompletedCMR");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public void AssignCourse(String courseCode, String courseLeader, String courseMod) {
+         SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Update tblCourse set course_leader = ?, course_mod = ? where course_code = ?");
+            ps.setString(3, courseCode);           
+            ps.setString(1, courseLeader);
+            ps.setString(2, courseMod);           
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

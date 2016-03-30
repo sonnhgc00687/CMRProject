@@ -12,13 +12,14 @@
     <div class="container-fluid">
 
         <div id="addNewCourse">
-            <div id="courseDetail" class="col-md-9">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Course Detail</h4>
-                    </div>
-                    <div class="content">
-                        <form  action="AddCourse" method="post">
+            <form  action="AssignCourse" method="get">
+                <div id="courseDetail" class="col-md-9">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Course Detail</h4>
+                        </div>
+                        <div class="content">
+
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -70,69 +71,68 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="assignTo" class="col-md-3">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Assign To</h4>
-                    </div>
-                    <div class="content">
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Leader</label>
-                                <select class="form-control" required="" name="courseLeader">
-                                    <option value="${courseLeader}" disabled selected>${courseLeader}</option>
-                                    <c:forEach items="${leader}" var="leader">
-                                        <option value="${leader.userName}">${leader.fullName}</option>
-                                    </c:forEach>                
-                                </select>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Moderator</label>
-                                <select class="form-control" required="" name="courseModerator">
-                                    <option value="${courseModerator}" disabled selected>${courseModerator}</option>
-                                    <c:forEach items="${moderator}" var="moderator">
-                                        <option value="${moderator.userName}">${moderator.fullName}</option>
-                                    </c:forEach>                
-                                </select>
-                            </div>
+                    </div>
+                </div>
+
+                <div id="assignTo" class="col-md-3">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Assign To</h4>
                         </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Leader</label>
+                                    <select class="form-control" required="" name="courseLeader">
+                                        <option value="${courseLeader}" disabled selected>${courseLeader}</option>
+                                        <c:forEach items="${leader}" var="leader">
+                                            <option value="${leader.userName}">${leader.fullName}</option>
+                                        </c:forEach>                
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Moderator</label>
+                                    <select class="form-control" required="" name="courseModerator">
+                                        <option value="${courseModerator}" disabled selected>${courseModerator}</option>
+                                        <c:forEach items="${moderator}" var="moderator">
+                                            <option value="${moderator.userName}">${moderator.fullName}</option>
+                                        </c:forEach>                
+                                    </select>
+                                </div>
+                            </div>
 
 
-                        <input id="assignCourse" type="submit" name="assign" style="display: none"/>
+                            <input id="assignCourse" type="submit" name="assign" style="display: none"/>
 
-                        <div class="clearfix"></div>
-                        </form>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div> 
+
+
+                <div class="col-md-3" id="assignCourseButton">
+                    <div ng-click="assignCourse()" id="btnAssign" class="card" style="display: block">
+                        <div class="header">
+                            <h4 class="title">ASSIGN</h4>
+                            <p class="category"></p>
+                        </div>
                     </div>
                 </div>
-            </div> 
 
-
-            <div class="col-md-3" id="assignCourseButton">
-                <div ng-click="" id="btnAssign" class="card" style="display: block">
-                    <div class="header">
-                        <h4 class="title">ASSIGN</h4>
-                        <p class="category"></p>
+                <div class="col-md-3" id="assignCourseButton">
+                    <div ng-click="" id="btnAssign" class="card" style="display: block">
+                        <div class="header">
+                            <h4 class="title">CANCEL</h4>
+                            <p class="category"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-md-3" id="assignCourseButton">
-                <div ng-click="" id="btnAssign" class="card" style="display: block">
-                    <div class="header">
-                        <h4 class="title">CANCEL</h4>
-                        <p class="category"></p>
-                    </div>
-                </div>
-            </div>
-
+            </form>
         </div>
     </div>
 </div>
 
-    <jsp:include page="masterpages/footer.jsp"/>
+<jsp:include page="masterpages/footer.jsp"/>
