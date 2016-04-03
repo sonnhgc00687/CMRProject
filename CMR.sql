@@ -237,3 +237,16 @@ end
 Go
     
 exec getCourseDetailWithoutCLCM 7
+
+Go
+
+create procedure getNumberOfCourseByFaculty
+as
+begin
+SELECT faculty_title, COUNT(*) AS countNum FROM  
+(select course_code, faculty_title from tblCourse inner join tblFaculty on tblCourse.course_faculty = tblFaculty.faculty_code
+) AS CourseWithoutCMR Group by faculty_title
+end
+
+exec getNumberOfCourseByFaculty
+

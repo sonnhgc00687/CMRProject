@@ -12,11 +12,11 @@
     <div class="col-md-3">
         <div class="card">
             <div class="header">
-                <h4 class="title">COURSE</h4>
+                <h4 class="title">${Faculty}</h4>
                 <p class="category"></p>
             </div>
             <div class="content">
-                <h1 id="courseNumber" >4</h1>  
+                <h1 id="courseNumber" >${courseNum}</h1>  
                 <hr>
                 <div class="stats">
                     <i class="fa fa-clock-o"></i> FPT Faculty
