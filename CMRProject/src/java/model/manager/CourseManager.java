@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import model.entity.CountCourse;
 import model.entity.Course;
 
 /**
@@ -233,14 +234,30 @@ public class CourseManager {
         return result;
     }
 
+    public CountCourse getNoOfCourseByFaculty() {
+        SqlConnection sql = new SqlConnection();
+        CountCourse cc = new CountCourse();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getNumberOfCourseByFaculty");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                cc = new CountCourse(rs.getString("faculty_title"), rs.getInt("countNum"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cc;
+    }
+
     public void AssignCourse(String courseCode, String courseLeader, String courseMod) {
-         SqlConnection sql = new SqlConnection();
+        SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Update tblCourse set course_leader = ?, course_mod = ? where course_code = ?");
-            ps.setString(3, courseCode);           
+            ps.setString(3, courseCode);
             ps.setString(1, courseLeader);
-            ps.setString(2, courseMod);           
+            ps.setString(2, courseMod);
             int result = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

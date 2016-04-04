@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.entity.CountCourse;
 import model.entity.User;
+import model.manager.CourseManager;
 import model.manager.EncryptPassword;
 import model.manager.UserManager;
 
@@ -72,11 +74,18 @@ public class Login extends HttpServlet {
         EncryptPassword encrypt = new EncryptPassword();
         String encryptedPassword = encrypt.encryptData(password);
         UserManager um = new UserManager();
+
+        CourseManager cm = new CourseManager();
+        CountCourse cc = cm.getNoOfCourseByFaculty();
+
         User user = um.checkUser(username, encryptedPassword);
+
         if (user != null) {
             session.setAttribute("userSession", user.getUserName());
             session.setAttribute("userRole", user.getRole());
             request.setAttribute("username", username);
+            request.setAttribute("Faculty", cc.getFacultyCode());
+            request.setAttribute("courseNum", cc.getCourseNum());
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } else {
             System.out.println("Fail");
