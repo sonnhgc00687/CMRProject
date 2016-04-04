@@ -38,7 +38,7 @@
         </div>
 
         <div id="addNewAccout">
-            <form  action="AddCourse" method="post">
+            <form  action="AddAccount" method="post">
                 <div id="addAccountContainer" class="col-md-9">
                     <div class="card">
                         <div class="header">
@@ -49,13 +49,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input class="form-control" placeholder="Username" type="text" required="" name="courseCode" maxlength="50">
+                                        <input class="form-control" placeholder="Username" type="text" required="" name="username" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Fullname</label>
-                                        <input class="form-control" placeholder="Fullname" type="text" required="" name="courseTitle" maxlength="50">
+                                        <input class="form-control" placeholder="Fullname" type="text" required="" name="fullname" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -66,20 +66,34 @@
                                         <label>Role</label>
                                         <select class="form-control" required="" name="role">
                                             <option value="" disabled selected>Role</option>
-                                            <c:forEach items="${facultyList}" var="faculty">
-                                                <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
-                                            </c:forEach>                
+                                            <option value="0">Admin</option>
+                                            <option value="1">Course Leader</option>
+                                            <option value="2">Course Moderator</option>
+                                            <option value="3">PVC</option>
+                                            <option value="4">DLT</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input class="form-control" placeholder="Email" type="date" required="" name="email" maxlength="120">
+                                        <input class="form-control" placeholder="Email" type="email" required="" name="email" maxlength="120">
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" value="Add Account" style="display: none" />
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input class="form-control" placeholder="Password" type="password" required="" name="password" maxlength="50">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <input type="submit" value="Add Account" />
                             <div class="clearfix"></div>
                         </div>
                     </div>

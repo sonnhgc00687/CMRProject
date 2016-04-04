@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/StatisticalReport.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/home.jsp</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/manager/CMRManager.java</file>
@@ -13,6 +14,15 @@
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/entity/CountCourse.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/Login.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/course_detail.jsp</file>
+=======
+            <file>file:/C:/Users/Dell/Documents/CMRProject/CMRProject/src/java/model/entity/Course.java</file>
+            <file>file:/C:/Users/Dell/Documents/CMRProject/CMRProject/src/java/controller/Logout.java</file>
+            <file>file:/C:/Users/Dell/Documents/CMRProject/CMRProject/src/java/model/manager/CMRManager.java</file>
+            <file>file:/C:/Users/Dell/Documents/CMRProject/CMRProject/src/java/controller/GetAllCourse.java</file>
+            <file>file:/C:/Users/Dell/Documents/CMRProject/CMRProject/src/java/model/manager/CourseManager.java</file>
+            <file>file:/C:/Users/Dell/Documents/CMRProject/CMRProject/src/java/controller/Login.java</file>
+            <file>file:/C:/Users/Dell/Documents/CMRProject/CMRProject/src/java/model/manager/SqlConnection.java</file>
+>>>>>>> 38d8d8ca68cc44c780e137b47b55c15156ed9548
         </group>
     </open-files>
 </project-private>

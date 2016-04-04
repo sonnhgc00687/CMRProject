@@ -39,8 +39,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Faculty</label>
+<<<<<<< HEAD
                                         <select disabled="" class="form-control" required="" name="courseFaculty">
                                             <option value="" disabled selected>${courseFaculty}</option>
+=======
+                                        <select class="form-control" required="" name="courseFaculty">
+                                            <option value="${courseFaculty}" disabled selected>${courseFaculty}</option>
+>>>>>>> 1199e4fef3f10d879d9a1eac71c4b24a63a41f86
                                             <c:forEach items="${facultyList}" var="faculty">
                                                 <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
                                             </c:forEach>                
