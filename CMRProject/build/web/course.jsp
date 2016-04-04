@@ -27,7 +27,7 @@
                 
                 <div id="search" class="col-md-4">
                     <div class="form-group">
-                        <i id="filter" class="pe-7s-search"></i>
+                        <i class="pe-7s-search"></i>
                         <input class="form-control" placeholder="Search" type="text" required="" name="searchCourse" maxlength="100">
                     </div>
                 </div>
