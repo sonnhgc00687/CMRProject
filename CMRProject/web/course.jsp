@@ -11,9 +11,26 @@
 <div class="content" id="courseContainer">
     <div class="container-fluid">
         <div class="card">
-            <div class="header">
-                <!--<h4 class="title">Striped Table with Hover</h4>-->
-                <p class="category">List course of <a href="#">Honours Programme</a> Faculty</p>
+            <div class="header">  
+                <p class="category" style="float: left">List course of <a href="#">Honours Programme</a> Faculty</p>
+
+                <div id="cardFilter" class="card dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i id="filter" class="pe-7s-filter"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something</a></li>
+                    </ul>
+                </div>
+                
+                <div id="search" class="col-md-4">
+                    <div class="form-group">
+                        <i id="filter" class="pe-7s-search"></i>
+                        <input class="form-control" placeholder="Search" type="text" required="" name="searchCourse" maxlength="100">
+                    </div>
+                </div>
             </div>
             <div class="content table-responsive table-full-width">
                 <table id="tableCourse" class="table table-hover table-striped">

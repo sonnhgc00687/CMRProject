@@ -38,7 +38,7 @@
         </div>
 
         <div id="addNewAccout">
-            <form  action="AddAccount" method="post">
+            <form  action="GetAllUser" method="post">
                 <div id="addAccountContainer" class="col-md-9">
                     <div class="card">
                         <div class="header">
@@ -46,21 +46,12 @@
                         </div>
                         <div class="content">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input class="form-control" placeholder="Username" type="text" required="" name="username" maxlength="50">
-                                    </div>
-                                </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Fullname</label>
-                                        <input class="form-control" placeholder="Fullname" type="text" required="" name="fullname" maxlength="50">
+                                        <input class="form-control" placeholder="Fullname" type="text" required="" name="fullname" value="${fullname}" maxlength="50">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Role</label>
@@ -74,26 +65,41 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input class="form-control" placeholder="Email" type="email" required="" name="email" maxlength="120">
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label>Username</label>
+                                        <input class="form-control" placeholder="Username" type="text" required="" name="username" value="${username}" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <label>Password</label>
                                         <input class="form-control" placeholder="Password" type="password" required="" name="password" maxlength="50">
                                     </div>
-                                </div>
+                                </div> 
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input class="form-control" placeholder="Confirm Password" type="password" required="" name="repassword" maxlength="50">
+                                    </div>
+                                </div> 
+                            </div>
 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input class="form-control" placeholder="Email" type="email" required="" name="email" value="${email}" maxlength="120">
+                                    </div>
+                                </div>
                             </div>
 
 
-                            <input type="submit" value="Add Account" />
+                            <input id="addAccount" type="submit" value="Add Account" style="display: none" />
+                            <a style="color: red">${message}</a>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -103,9 +109,9 @@
 
         <div class="col-md-3" id="addCourseContainer">
 
-            <div ng-click="" id="btnShowAddAccount" class="card">
+            <div ng-click="addAccount()" id="btnShowAddAccount" class="card">
                 <div class="header">
-                    <h4 class="title">NEW ACCOUNT</h4>
+                    <h4 class="title">ADD ACCOUNT</h4>
                     <p class="category"></p>
                 </div>
                 <div class="content">

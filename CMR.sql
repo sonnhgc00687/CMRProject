@@ -15,11 +15,11 @@ role int
 --2.Course Moderator
 --3.PVC
 --4.DLT 
-insert into tblEmployee values('sonnguyen','123456','Son Nguyen',null, 0)
-insert into tblEmployee values('mainghia','123456','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
-insert into tblEmployee values('sondao','123456','Son Dao', 'sondtgc00678@fpt.edu.vn', 2)
-insert into tblEmployee values('ducphuc','123456','Duc Phuc',null, 3)
-insert into tblEmployee values('hoangha','123456','hoangha',null, 4)
+insert into tblEmployee values('sonnguyen','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Son Nguyen',null, 0)
+insert into tblEmployee values('mainghia','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
+insert into tblEmployee values('sondao','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Son Dao', 'sondtgc00678@fpt.edu.vn', 2)
+insert into tblEmployee values('ducphuc','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Duc Phuc',null, 3)
+insert into tblEmployee values('hoangha','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','hoangha',null, 4)
 go
 create table tblFaculty
 (
@@ -92,7 +92,6 @@ create table tblComment
 cmr_code int primary key references tblCMR(cmr_code),
 comment nvarchar(1000),
 )
-
 
 Go
 

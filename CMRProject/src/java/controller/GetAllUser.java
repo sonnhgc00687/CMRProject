@@ -52,29 +52,7 @@ public class GetAllUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<User> users = new ArrayList<>();
-        List<User> leader = new ArrayList<>();
-        List<User> moderator = new ArrayList<>();
-        
-        UserManager userManager = new UserManager();
-        users = userManager.getAllUsers();
-        
-        for (int i=0; i<users.size(); i++) {
-            if(users.get(i).getRole() == 1){
-                users.get(i).setRoleName("Leader");
-            }else if(users.get(i).getRole() == 2){
-                users.get(i).setRoleName("Moderator");
-            }else if(users.get(i).getRole() == 3){
-                users.get(i).setRoleName("PVC");
-            }else if(users.get(i).getRole() == 4){
-                users.get(i).setRoleName("DLT");
-            }
-        }
-        
-        request.setAttribute("leader", leader);
-        request.setAttribute("moderator", moderator);
-        request.setAttribute("users", users);
-        request.getRequestDispatcher("staff.jsp").forward(request, response);
+        getAllStaff(request, response);
     }
 
     /**
@@ -88,7 +66,24 @@ public class GetAllUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String username = request.getParameter("username");
+        String fullname = request.getParameter("fullname");
+        int role = Integer.valueOf(request.getParameter("role"));
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String repassword = request.getParameter("repassword");
+        UserManager manager = new UserManager();
+        if (password.equals(repassword)) {
+            request.setAttribute("message", "");
+            manager.createUser(username, password, fullname, email, role);
+        } else {
+            request.setAttribute("username", username);
+            request.setAttribute("fullname", fullname);
+            request.setAttribute("role", role);
+            request.setAttribute("email", email);
+            request.setAttribute("message", "Confirm Password is not correct!");
+        }
+        getAllStaff(request, response);
     }
 
     /**
@@ -101,4 +96,34 @@ public class GetAllUser extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    public void getAllStaff(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            List<User> users = new ArrayList<>();
+            List<User> leader = new ArrayList<>();
+            List<User> moderator = new ArrayList<>();
+
+            UserManager userManager = new UserManager();
+            users = userManager.getAllUsers();
+
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getRole() == 1) {
+                    users.get(i).setRoleName("Leader");
+                } else if (users.get(i).getRole() == 2) {
+                    users.get(i).setRoleName("Moderator");
+                } else if (users.get(i).getRole() == 3) {
+                    users.get(i).setRoleName("PVC");
+                } else if (users.get(i).getRole() == 4) {
+                    users.get(i).setRoleName("DLT");
+                }
+            }
+
+            request.setAttribute("leader", leader);
+            request.setAttribute("moderator", moderator);
+            request.setAttribute("users", users);
+            request.getRequestDispatcher("staff.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

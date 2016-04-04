@@ -33,4 +33,8 @@ app.controller('myCtrl', function ($scope) {
         $("#assignCourse").click();
     };
     
+    $scope.addAccount = function(){
+        $("#addAccount").click();
+    }
+    
 });
