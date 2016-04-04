@@ -221,7 +221,8 @@
 
 #search i{
     position: absolute;
-    padding-left: 10px;
+    padding: 8px 8px 8px 10px;
+    font-size: 22px;
 }
 
 
