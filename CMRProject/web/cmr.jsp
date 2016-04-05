@@ -19,7 +19,7 @@
                     <thead>
                     <th>Crm</th>
                     <th>Code</th>
-                    <th>Titlte</th>
+                    <th>Title</th>
                     <th>Faculty</th>
                     <th>Detail</th>     
                     </thead>

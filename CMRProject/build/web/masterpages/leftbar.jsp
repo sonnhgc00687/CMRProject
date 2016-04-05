@@ -46,8 +46,14 @@
                             </a>
                         </li>
                         <li>
+                            <a href="GetAllUserAndFaculty">
+                                <i class="pe-7s-study"></i>
+                                <p>Faculty</p>
+                            </a>
+                        </li>
+                        <li>
                             <a href="GetAllCourse">
-                                <i class="pe-7s-pen"></i>
+                                <i class="pe-7s-notebook"></i>
                                 <p>Course</p>
                             </a>
                         </li>

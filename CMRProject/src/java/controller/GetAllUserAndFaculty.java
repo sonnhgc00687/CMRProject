@@ -37,6 +37,21 @@ public class GetAllUserAndFaculty extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         List<User> allUser = new ArrayList<>();
         List<User> leader = new ArrayList<>();
         List<User> moderator = new ArrayList<>();
@@ -59,23 +74,7 @@ public class GetAllUserAndFaculty extends HttpServlet {
         request.setAttribute("leader", leader);
         request.setAttribute("moderator", moderator);
         request.setAttribute("facultyList", facultyList);
-        request.getRequestDispatcher("addNewCourse.jsp").forward(request, response);
-        
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("faculty.jsp").forward(request, response);
     }
 
     /**

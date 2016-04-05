@@ -49,6 +49,11 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        CourseManager cm = new CourseManager();
+        CountCourse cc = cm.getNoOfCourseByFaculty();
+        request.setAttribute("Faculty", cc.getFacultyCode());
+        request.setAttribute("courseNum", cc.getCourseNum());
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
