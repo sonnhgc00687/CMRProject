@@ -20,6 +20,7 @@ import model.entity.Course;
  */
 public class CourseManager {
 
+    private List<CountCourse> countCourseList = new ArrayList<>();
     private List<Course> courseList = new ArrayList<>();
     private ResultSet rs;
 
@@ -29,6 +30,56 @@ public class CourseManager {
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Select* from tblCourse");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
+     public List<Course> getAllCourseWithCMR() {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
+      public List<Course> getAllCourseWithoutCMR() {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();
@@ -80,7 +131,59 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ?");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? ");
+            ps.setString(1, course_leader);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
+    public List<Course> getAllCourseByCourseLeaderWithCMR(String course_leader) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? and id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code) ");
+            ps.setString(1, course_leader);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
+    public List<Course> getAllCourseByCourseLeaderWithoutCMR(String course_leader) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? and id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             ps.setString(1, course_leader);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -107,6 +210,58 @@ public class CourseManager {
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ?");
+            ps.setString(1, course_mod);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
+    public List<Course> getAllCourseByCourseModWithCMR(String course_mod) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ? and id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
+            ps.setString(1, course_mod);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
+    public List<Course> getAllCourseByCourseModWithoutCMR(String course_mod) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ? and id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             ps.setString(1, course_mod);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -234,20 +389,21 @@ public class CourseManager {
         return result;
     }
 
-    public CountCourse getNoOfCourseByFaculty() {
-        SqlConnection sql = new SqlConnection();
-        CountCourse cc = new CountCourse();
+    public List<CountCourse> getNoOfCourseByFaculty() {
+        SqlConnection sql = new SqlConnection();        
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("exec getNumberOfCourseByFaculty");
             rs = ps.executeQuery();
             while (rs.next()) {
+                CountCourse cc = new CountCourse();
                 cc = new CountCourse(rs.getString("faculty_title"), rs.getInt("countNum"));
+                countCourseList.add(cc);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return cc;
+        return countCourseList;
     }
 
     public void AssignCourse(String courseCode, String courseLeader, String courseMod) {

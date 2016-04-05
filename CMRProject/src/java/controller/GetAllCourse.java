@@ -70,10 +70,11 @@ public class GetAllCourse extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String filter = request.getParameter("filter");
         String userName = (String) session.getAttribute("userSession");
         int userRole = (int) session.getAttribute("userRole");
         CourseManager cm = new CourseManager();
-        
+
         List<User> allUser = new ArrayList<>();
         List<User> leader = new ArrayList<>();
         List<User> moderator = new ArrayList<>();
@@ -82,48 +83,172 @@ public class GetAllCourse extends HttpServlet {
         allUser = userManager.getAllUsers();
         FacultyManager facultyManager = new FacultyManager();
         facultyList = facultyManager.getAllFaculty();
-        
+
         for (User user : allUser) {
-            if(user.getRole() == 1){
+            if (user.getRole() == 1) {
                 leader.add(user);
-            }else if(user.getRole() == 2){
+            } else if (user.getRole() == 2) {
                 moderator.add(user);
             }
         }
-        
+
         request.setAttribute("leader", leader);
         request.setAttribute("moderator", moderator);
         request.setAttribute("facultyList", facultyList);
-        
-        switch (userRole) {
-            case 0:
-                courseList = cm.getAllCourse();
-                request.setAttribute("courseList", courseList);
-                request.getRequestDispatcher("course.jsp").forward(request, response);
-                break;
-            case 1:
-                courseList = cm.getAllCourseByCourseLeader(userName);
-                request.setAttribute("courseList", courseList);
-                request.getRequestDispatcher("course.jsp").forward(request, response);
-                break;
-            case 2:
-                courseList = cm.getAllCourseByCourseMod(userName);
-                request.setAttribute("courseList", courseList);
-                request.getRequestDispatcher("course.jsp").forward(request, response);
-                break;
-            case 3:
-                courseList = cm.getAllCourse();
-                request.setAttribute("courseList", courseList);
-                request.getRequestDispatcher("course.jsp").forward(request, response);
-                break;
-            case 4:
-                courseList = cm.getAllCourse();
-                request.setAttribute("courseList", courseList);
-                request.getRequestDispatcher("course.jsp").forward(request, response);
-                break;
-            default:
-                request.getRequestDispatcher("course.jsp").forward(request, response);
-                break;
+        if (filter != null) {
+            switch (userRole) {
+                case 0:
+                    switch (filter) {
+                        case "noCMR":
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "CMR":
+                            courseList = cm.getAllCourseWithCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "all":
+                            courseList = cm.getAllCourse();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        default:
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                    }
+                case 1:
+                    switch (filter) {
+                        case "noCMR":
+                            courseList = cm.getAllCourseByCourseLeaderWithoutCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "CMR":
+                            courseList = cm.getAllCourseByCourseLeaderWithCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "all":
+                            courseList = cm.getAllCourseByCourseLeader(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        default:
+                            courseList = cm.getAllCourseByCourseLeaderWithoutCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                    }
+                case 2:
+                    switch (filter) {
+                        case "noCMR":
+                            courseList = cm.getAllCourseByCourseModWithoutCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "CMR":
+                            courseList = cm.getAllCourseByCourseModWithCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "all":
+                            courseList = cm.getAllCourseByCourseMod(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        default:
+                            courseList = cm.getAllCourseByCourseModWithoutCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                    }
+
+                case 3:
+                    switch (filter) {
+                        case "noCMR":
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "CMR":
+                            courseList = cm.getAllCourseWithCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "all":
+                            courseList = cm.getAllCourse();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        default:
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                    }
+                case 4:
+                    switch (filter) {
+                        case "noCMR":
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "CMR":
+                            courseList = cm.getAllCourseWithCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case "all":
+                            courseList = cm.getAllCourse();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        default:
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                    }
+                default:
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+            }
+        } else {
+            switch (userRole) {
+                case 0:
+                    courseList = cm.getAllCourseWithoutCMR();
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                case 1:
+                    courseList = cm.getAllCourseByCourseLeaderWithoutCMR(userName);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                case 2:
+                    courseList = cm.getAllCourseByCourseModWithoutCMR(userName);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                case 3:
+                    courseList = cm.getAllCourseWithoutCMR();
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+
+                case 4:
+                    courseList = cm.getAllCourseWithoutCMR();
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                default:
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+            }
         }
     }
 

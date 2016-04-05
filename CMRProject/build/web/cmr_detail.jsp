@@ -12,7 +12,7 @@
     <div class="container-fluid">
 
         <div id="addNewCmr">
-            <form  action="AddCMR" method="post">
+            <form  action="ApproveCMR" method="post">
                 <div id="addCmrForm" class="col-md-12">
                     <div class="card">
                         <div class="header">
@@ -46,7 +46,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Comment</label>
-                                        <textarea rows="5" class="form-control" name="comment" readonly=""></textarea>
+                                        <textarea rows="5" class="form-control" name="comment" readonly="">${comment}</textarea>
                                         </textarea>
                                     </div>
                                 </div>

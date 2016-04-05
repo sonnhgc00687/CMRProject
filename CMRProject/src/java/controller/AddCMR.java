@@ -88,9 +88,14 @@ public class AddCMR extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             int studentCount = Integer.parseInt(request.getParameter("studentCount"));
             String comment = request.getParameter("comment");
+            Date today = new Date();
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy/MM/dd");
+            String dateString = formatter.format(today);
+            Date crDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
+            java.sql.Timestamp crDate2 = new Timestamp(crDate1.getTime());
             int appstatus = 0;
             int cmtstatus = 0;
-            CMR c = new CMR(id, studentCount, comment, appstatus, cmtstatus);
+            CMR c = new CMR(id, studentCount, comment, crDate2, appstatus, cmtstatus);
             CMRManager cmrm = new CMRManager();
             cmrm.AddCMR(c);
             for (int i = 1; i < 7; i++) {

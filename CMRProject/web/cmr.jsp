@@ -12,7 +12,25 @@
     <div class="container-fluid">
         <div class="card">
             <div class="header">
-                <p class="category">List crm of <a href="#">Honours Programme</a> Faculty</p>
+                <p class="category" style="float: left">LIST CMR </p>
+
+                <div id="cardFilter" class="card dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i id="filter" class="pe-7s-filter"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="GetAllCMR?=&filter=approved">Approved CMR (Only CM, DLT , PVC, Admin)</a></li>
+                        <li><a href="GetAllCMR?=&filter=commented">Completed CMR</a></li>
+                        <li><a href="GetAllCMR?=&filter=all">All CMR (Only Admin)</a></li>
+                    </ul>
+                </div>
+
+                <div id="search" class="col-md-4">
+                    <div class="form-group">
+                        <i class="pe-7s-search"></i>
+                        <input class="form-control" placeholder="Search" type="text" required="" name="searchCMR" maxlength="100">
+                    </div>
+                </div>
             </div>
             <div class="content table-responsive table-full-width">
                 <table id="tableCmr" class="table table-hover table-striped">

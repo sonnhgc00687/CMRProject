@@ -12,16 +12,16 @@
     <div class="container-fluid">
         <div class="card">
             <div class="header">  
-                <p class="category" style="float: left">List course of <a href="#">Honours Programme</a> Faculty</p>
+                <p class="category" style="float: left">LIST COURSE </p>
 
                 <div id="cardFilter" class="card dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i id="filter" class="pe-7s-filter"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something</a></li>
+                        <li><a href="GetAllCourse?=&filter=noCMR">Course without CMR</a></li>
+                        <li><a href="GetAllCourse?=&filter=CMR">Course with CMR</a></li>
+                        <li><a href="GetAllCourse?=&filter=all">All Course</a></li>
                     </ul>
                 </div>
                 

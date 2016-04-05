@@ -6,6 +6,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +24,8 @@ import model.manager.UserManager;
  * @author Son
  */
 public class Login extends HttpServlet {
+
+    private List<CountCourse> countCourseList = new ArrayList<>();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,11 +53,9 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         CourseManager cm = new CourseManager();
-        CountCourse cc = cm.getNoOfCourseByFaculty();
-        request.setAttribute("Faculty", cc.getFacultyCode());
-        request.setAttribute("courseNum", cc.getCourseNum());
+        countCourseList = cm.getNoOfCourseByFaculty();
+        request.setAttribute("countCourseList", countCourseList);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
@@ -81,7 +83,7 @@ public class Login extends HttpServlet {
         UserManager um = new UserManager();
 
         CourseManager cm = new CourseManager();
-        CountCourse cc = cm.getNoOfCourseByFaculty();
+        countCourseList = cm.getNoOfCourseByFaculty();
 
         User user = um.checkUser(username, encryptedPassword);
 
@@ -89,8 +91,7 @@ public class Login extends HttpServlet {
             session.setAttribute("userSession", user.getUserName());
             session.setAttribute("userRole", user.getRole());
             request.setAttribute("username", username);
-            request.setAttribute("Faculty", cc.getFacultyCode());
-            request.setAttribute("courseNum", cc.getCourseNum());
+            request.setAttribute("countCourseList", countCourseList);
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } else {
             System.out.println("Fail");

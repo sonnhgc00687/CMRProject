@@ -81,12 +81,12 @@ public class ApproveCMR extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String userName = (String) session.getAttribute("userSession");
-        int cmr_code = Integer.parseInt(request.getParameter("cmr_code"));
+        int cmr_code = Integer.parseInt(request.getParameter("id"));
         CMRManager cm = new CMRManager();
         cm.ApproveCMR(cmr_code);
         listCMR = cm.getAllNotApprovedCMRbyMod(userName);
         request.setAttribute("listCMR", listCMR);
-        request.getRequestDispatcher("listCMR.jsp").forward(request, response);
+        request.getRequestDispatcher("cmr.jsp").forward(request, response);
 
     }
 

@@ -5,6 +5,8 @@
  */
 package model.entity;
 
+import java.sql.Date;
+
 /**
  *
  * @author W7
@@ -16,6 +18,7 @@ public class CMR_Detail {
     private String fullname;
     private int student_count;
     private String comment;
+    private Date createDate;
     private int appStatus;
     private int cmtStatus;
     private int staticalData_id_mark;
@@ -34,12 +37,13 @@ public class CMR_Detail {
     private int mark8;
     private int mark9;
 
-    public CMR_Detail(int cmr_code, String courseTitle, String fullname, int student_count, String comment, int appStatus, int cmtStatus, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
+    public CMR_Detail(int cmr_code, String courseTitle, String fullname, int student_count, String comment, Date createDate, int appStatus, int cmtStatus, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
         this.cmr_code = cmr_code;
         this.courseTitle = courseTitle;
         this.fullname = fullname;
         this.student_count = student_count;
         this.comment = comment;
+        this.createDate = createDate;
         this.appStatus = appStatus;
         this.cmtStatus = cmtStatus;
         this.staticalData_id_mark = staticalData_id_mark;
@@ -57,6 +61,16 @@ public class CMR_Detail {
         this.mark7 = mark7;
         this.mark8 = mark8;
         this.mark9 = mark9;
+    }
+
+   
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public CMR_Detail() {
