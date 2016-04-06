@@ -115,7 +115,10 @@ public class GetAllUser extends HttpServlet {
                     users.get(i).setRoleName("PVC");
                 } else if (users.get(i).getRole() == 4) {
                     users.get(i).setRoleName("DLT");
+                } else if (users.get(i).getRole() == 0) {
+                    users.get(i).setRoleName("Administrator");
                 }
+                
             }
 
             request.setAttribute("leader", leader);

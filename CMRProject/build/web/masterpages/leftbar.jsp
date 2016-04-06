@@ -34,7 +34,7 @@
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a href="Login" class="simple-text">
-                            CRM
+                            CMR
                         </a>
                     </div>
 
