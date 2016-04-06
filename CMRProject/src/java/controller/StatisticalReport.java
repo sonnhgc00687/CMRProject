@@ -61,10 +61,14 @@ public class StatisticalReport extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CMRManager cm = new CMRManager();
+        float percentage = 0;
         int noOfCompletedCMR = cm.getNoOfCompletedCMRByFacultyByYear("2016", "2017", "FPT2016");
         int noOfAllCMR = cm.getNoOfCMRByFacultyByYear("2016", "2017", "FPT2016");
-        float percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
-
+        if (noOfAllCMR != 0){ 
+        percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
+        }else{
+            percentage = 0;
+        }
         CourseManager courseM = new CourseManager();
         int noOfCourseWithoutCLCM = courseM.getNoOfCourseWithoutCLCM();
         int noOfCourseWithoutCMR = courseM.getNoOfCourseWithoutCMR();
