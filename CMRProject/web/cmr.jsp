@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="header">
-                <p class="category" style="float: left">LIST CMR </p>
+                <p class="category" style="float: left">LIST CMR ${facultyName} </p>
 
                 <div id="cardFilter" class="card dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

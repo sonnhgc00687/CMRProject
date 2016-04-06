@@ -36,8 +36,8 @@
                                 <td>${f.facultyDLT}</td>
                                 <td>${f.facultyStartDate}</td>
                                 <td>${f.facultyEndDate}</td>
-                                <td><a class="btn btn-default" href="" role="button">Course</a></td>
-                                <td><a class="btn btn-default" href="" role="button">CMR</a></td>
+                                <td><a class="btn btn-default" href="GetAllCourse?&filterFaculty=${f.facultyCode}" role="button">View Courses</a></td>
+                                <td><a class="btn btn-default" href="GetAllCMR?&filterFaculty=${f.facultyCode}" role="button">View CMR</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>

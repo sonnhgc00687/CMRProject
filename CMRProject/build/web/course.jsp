@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="header">  
-                <p class="category" style="float: left">LIST COURSE </p>
+                <p class="category" style="float: left">LIST COURSE ${facultyName}</p>
 
                 <div id="cardFilter" class="card dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -24,7 +24,7 @@
                         <li><a href="GetAllCourse?=&filter=all">All Course</a></li>
                     </ul>
                 </div>
-                
+
                 <div id="search" class="col-md-4">
                     <div class="form-group">
                         <i class="pe-7s-search"></i>

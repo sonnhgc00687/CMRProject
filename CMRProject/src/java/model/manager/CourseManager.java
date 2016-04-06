@@ -49,6 +49,32 @@ public class CourseManager {
         return courseList;
     }
     
+    public List<Course> getAllCourseByFaculty(String facultyCode) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_faculty = ?");
+            ps.setString(1, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
      public List<Course> getAllCourseWithCMR() {
         SqlConnection sql = new SqlConnection();
 
@@ -152,6 +178,33 @@ public class CourseManager {
         return courseList;
     }
     
+    public List<Course> getAllCourseByCourseLeaderByFaculty(String course_leader,String facultyCode) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? and course_faculty = ? ");
+            ps.setString(1, course_leader);
+            ps.setString(2, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
     public List<Course> getAllCourseByCourseLeaderWithCMR(String course_leader) {
         SqlConnection sql = new SqlConnection();
 
@@ -211,6 +264,33 @@ public class CourseManager {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ?");
             ps.setString(1, course_mod);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+    
+     public List<Course> getAllCourseByCourseModByFaculty(String course_mod, String facultyCode) {
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ? and course_faculty = ?");
+            ps.setString(1, course_mod);
+            ps.setString(2, facultyCode);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();

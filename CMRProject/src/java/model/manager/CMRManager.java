@@ -53,6 +53,31 @@ public class CMRManager {
         }
         return cmrList;
     }
+    
+    public List<CMR> getAllCMRByFaculty(String facultyCode) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id and c.course_faculty = ?");
+            ps.setString(1, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CMR c = new CMR();
+                c.setCmr_code(rs.getInt("cmr_code"));
+                c.setStudent_count(rs.getInt("student_count"));
+                c.setComment(rs.getString("comment"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
+                cmrList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cmrList;
+    }
 
     public List<CMR> getAllApprovedCMR() {
         SqlConnection sql = new SqlConnection();
@@ -60,6 +85,31 @@ public class CMRManager {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1");
 
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CMR c = new CMR();
+                c.setCmr_code(rs.getInt("cmr_code"));
+                c.setStudent_count(rs.getInt("student_count"));
+                c.setComment(rs.getString("comment"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
+                cmrList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cmrList;
+    }
+    
+     public List<CMR> getAllApprovedCMRByFaculty(String facultyCode) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1 and c.course_faculty = ?");
+            ps.setString(1, facultyCode);
             rs = ps.executeQuery();
             while (rs.next()) {
                 CMR c = new CMR();
@@ -129,6 +179,32 @@ public class CMRManager {
         return cmrList;
     }
     
+    public List<CMR> getAllNotApprovedCMRbyLeaderByFaculty(String username,String facultyCode) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0 and c.course_faculty = ?");
+            ps.setString(1, username);
+            ps.setString(2, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CMR c = new CMR();
+                c.setCmr_code(rs.getInt("cmr_code"));
+                c.setStudent_count(rs.getInt("student_count"));
+                c.setComment(rs.getString("comment"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
+                cmrList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cmrList;
+    }
+    
      public List<CMR> getAllApprovedCMRbyLeader(String username) {
         SqlConnection sql = new SqlConnection();
         try {
@@ -160,6 +236,32 @@ public class CMRManager {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0");
             ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CMR c = new CMR();
+                c.setCmr_code(rs.getInt("cmr_code"));
+                c.setStudent_count(rs.getInt("student_count"));
+                c.setComment(rs.getString("comment"));
+                c.setAppstatus(rs.getInt("status"));
+                c.setCmtstatus(rs.getInt("cmtstatus"));
+                c.setCourse_code(rs.getString("course_code"));
+                c.setCourse_title(rs.getString("course_title"));
+                c.setCourse_faculty(rs.getString("course_faculty"));
+                cmrList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cmrList;
+    }
+    
+     public List<CMR> getAllNotApprovedCMRbyModByFaculty(String username,String facultyCode) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0 and c.course_faculty = ?");
+            ps.setString(1, username);
+            ps.setString(2, facultyCode);
             rs = ps.executeQuery();
             while (rs.next()) {
                 CMR c = new CMR();

@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.entity.CMR;
+import model.entity.Faculty;
 import model.manager.CMRManager;
+import model.manager.FacultyManager;
 
 /**
  *
@@ -67,33 +69,38 @@ public class GetAllCMR extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String filter = request.getParameter("filter");
+        String filterFaculty = request.getParameter("filterFaculty");
+        FacultyManager facultyManager = new FacultyManager();
+        Faculty faculty = facultyManager.getFacultyByCode(filterFaculty);
+        request.setAttribute("filter", filter);
+        request.setAttribute("facultyName", faculty.getFacultyTitle());
         CMRManager cmrManager = new CMRManager();
         String userName = (String) session.getAttribute("userSession");
         int userRole = (int) session.getAttribute("userRole");
-        if (filter == null) {
+        if (filterFaculty != null) {
             switch (userRole) {
                 case 0:
-                    listCMR = cmrManager.getAllCMR();
+                    listCMR = cmrManager.getAllCMRByFaculty(filterFaculty);
                     request.setAttribute("listCMR", listCMR);
                     request.getRequestDispatcher("cmr.jsp").forward(request, response);
                     break;
                 case 1:
-                    listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
+                    listCMR = cmrManager.getAllNotApprovedCMRbyLeaderByFaculty(userName,filterFaculty);
                     request.setAttribute("listCMR", listCMR);
                     request.getRequestDispatcher("cmr.jsp").forward(request, response);
                     break;
                 case 2:
-                    listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
+                    listCMR = cmrManager.getAllNotApprovedCMRbyModByFaculty(userName,filterFaculty);
                     request.setAttribute("listCMR", listCMR);
                     request.getRequestDispatcher("cmr.jsp").forward(request, response);
                     break;
                 case 3:
-                    listCMR = cmrManager.getAllApprovedCMR();
+                    listCMR = cmrManager.getAllApprovedCMRByFaculty(filterFaculty);
                     request.setAttribute("listCMR", listCMR);
                     request.getRequestDispatcher("cmr.jsp").forward(request, response);
                     break;
                 case 4:
-                    listCMR = cmrManager.getAllApprovedCMR();
+                    listCMR = cmrManager.getAllApprovedCMRByFaculty(filterFaculty);
                     request.setAttribute("listCMR", listCMR);
                     request.getRequestDispatcher("cmr.jsp").forward(request, response);
                     break;
@@ -101,124 +108,155 @@ public class GetAllCMR extends HttpServlet {
                     break;
             }
         } else {
-            switch (userRole) {
-                case 0:
-                    switch (filter) {
-                        case "approved":
-                            listCMR = cmrManager.getAllApprovedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "commented":
-                            listCMR = cmrManager.getAllCommentedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "all":
-                            listCMR = cmrManager.getAllCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        default:
-                            listCMR = cmrManager.getAllCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                    }
-                case 1:
-                    switch (filter) {
-                        case "commented":
-                            listCMR = cmrManager.getAllcommentedCMRbyLeader(userName);
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "all":
-                            listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        default:
-                            listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                    }
-                case 2:
-                    switch (filter) {
-                        case "approved":
-                            listCMR = cmrManager.getAllApprovedCMRbyMod(userName);
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "commented":
-                            listCMR = cmrManager.getAllCommentedCMRbyMod(userName);
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "all":
-                            listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        default:
-                            listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                    }
+            if (filter == null) {
+                switch (userRole) {
+                    case 0:
+                        listCMR = cmrManager.getAllCMR();
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 1:
+                        listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 2:
+                        listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 3:
+                        listCMR = cmrManager.getAllApprovedCMR();
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 4:
+                        listCMR = cmrManager.getAllApprovedCMR();
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                switch (userRole) {
+                    case 0:
+                        switch (filter) {
+                            case "approved":
+                                listCMR = cmrManager.getAllApprovedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "commented":
+                                listCMR = cmrManager.getAllCommentedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "all":
+                                listCMR = cmrManager.getAllCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            default:
+                                listCMR = cmrManager.getAllCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                        }
+                    case 1:
+                        switch (filter) {
+                            case "commented":
+                                listCMR = cmrManager.getAllcommentedCMRbyLeader(userName);
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "all":
+                                listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            default:
+                                listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                        }
+                    case 2:
+                        switch (filter) {
+                            case "approved":
+                                listCMR = cmrManager.getAllApprovedCMRbyMod(userName);
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "commented":
+                                listCMR = cmrManager.getAllCommentedCMRbyMod(userName);
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "all":
+                                listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            default:
+                                listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                        }
 
-                case 3:
-                    switch (filter) {
-                        case "approved":
-                            listCMR = cmrManager.getAllApprovedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "commented":
-                            listCMR = cmrManager.getAllCommentedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "all":
-                            listCMR = cmrManager.getAllApprovedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        default:
-                            listCMR = cmrManager.getAllApprovedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                    }
-                case 4:
-                    switch (filter) {
-                        case "approved":
-                            listCMR = cmrManager.getAllApprovedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "commented":
-                            listCMR = cmrManager.getAllCommentedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        case "all":
-                            listCMR = cmrManager.getAllApprovedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                        default:
-                            listCMR = cmrManager.getAllApprovedCMR();
-                            request.setAttribute("listCMR", listCMR);
-                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                            break;
-                    }
-                default:
-                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
-                    break;
+                    case 3:
+                        switch (filter) {
+                            case "approved":
+                                listCMR = cmrManager.getAllApprovedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "commented":
+                                listCMR = cmrManager.getAllCommentedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "all":
+                                listCMR = cmrManager.getAllApprovedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            default:
+                                listCMR = cmrManager.getAllApprovedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                        }
+                    case 4:
+                        switch (filter) {
+                            case "approved":
+                                listCMR = cmrManager.getAllApprovedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "commented":
+                                listCMR = cmrManager.getAllCommentedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            case "all":
+                                listCMR = cmrManager.getAllApprovedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                            default:
+                                listCMR = cmrManager.getAllApprovedCMR();
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
+                        }
+                    default:
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                }
             }
         }
-
     }
 
     /**

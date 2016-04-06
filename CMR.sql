@@ -269,4 +269,3 @@ SELECT faculty_title, COUNT(*) AS countNum FROM
 end
 
 exec getNumberOfCourseByFaculty
-
