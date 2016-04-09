@@ -28,6 +28,7 @@ import model.manager.CourseManager;
 public class AssignCourse extends HttpServlet {
 
     private List<Course> courseList = new ArrayList<>();
+    java.sql.Timestamp startDate2, endDate2;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -56,27 +57,7 @@ public class AssignCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String courseCode = request.getParameter("courseCode");
-            String courseLeader = request.getParameter("courseLeader");
-            String courseMod = request.getParameter("courseModerator");
-            CourseManager cm = new CourseManager();
-            if (request.getParameter("assign") != null) {
-                cm.assignCourse(courseCode,courseLeader, courseMod);
-                courseList = cm.getAllCourse();                
-                request.setAttribute("courseList", courseList);
-                request.getRequestDispatcher("course.jsp").forward(request, response);
-            } else if (request.getParameter("skip") != null) {
-                {                    
-                    courseList = cm.getAllCourse();                    
-                    request.setAttribute("courseList", courseList);
-                    request.getRequestDispatcher("course.jsp").forward(request, response);
-                }
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     /**
@@ -90,7 +71,36 @@ public class AssignCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        try {
+            String courseCode = request.getParameter("courseCode");
+            String courseTitle = request.getParameter("courseTitle");
+            String courseLeader = request.getParameter("courseLeader");
+            String courseMod = request.getParameter("courseModerator");
+            String startDate = request.getParameter("startDate");
+            Date startDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            startDate2 = new Timestamp(startDate1.getTime());
+            String endDate = request.getParameter("endDate");
+            Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+            endDate2 = new Timestamp(endDate1.getTime());
+            String description = request.getParameter("description");
+
+            CourseManager cm = new CourseManager();
+            if (request.getParameter("assign") != null) {
+                cm.updateCourse(courseTitle, courseLeader, courseMod, startDate2, endDate2, description, courseCode);
+                courseList = cm.getAllCourse();
+                request.setAttribute("courseList", courseList);
+                request.getRequestDispatcher("course.jsp").forward(request, response);
+            } else if (request.getParameter("skip") != null) {
+                {
+                    courseList = cm.getAllCourse();
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

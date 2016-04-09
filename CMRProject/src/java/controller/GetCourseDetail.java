@@ -43,14 +43,14 @@ public class GetCourseDetail extends HttpServlet {
         Course course = new Course();
         CourseManager manager = new CourseManager();
         course = manager.getCourseByID(courseID);
-        
+
         List<User> leader = new ArrayList<>();
         List<User> moderator = new ArrayList<>();
         List<User> allUser = new ArrayList<>();
         List<Faculty> facultyList = new ArrayList<>();
         FacultyManager facultyManager = new FacultyManager();
         facultyList = facultyManager.getAllFaculty();
-
+        Faculty faculty = facultyManager.getFacultyByTitle(course.getCourseFaculty());
         UserManager userManager = new UserManager();
         allUser = userManager.getAllUsers();
         for (User user : allUser) {
@@ -67,6 +67,7 @@ public class GetCourseDetail extends HttpServlet {
         request.setAttribute("id", course.getId());
         request.setAttribute("courseCode", course.getCourseCode());
         request.setAttribute("courseFaculty", course.getCourseFaculty());
+        request.setAttribute("courseFacultyCode", faculty.getFacultyCode());
         request.setAttribute("courseTitle", course.getCourseTitle());
         request.setAttribute("courseLeader", course.getCourseLeader());
         request.setAttribute("courseModerator", course.getCourseModerator());

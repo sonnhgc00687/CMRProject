@@ -12,7 +12,7 @@
     <div class="container-fluid">
 
         <div id="addNewCourse">
-            <form  action="AssignCourse" method="get">
+            <form  action="AssignCourse" method="post">
                 <div id="courseDetail" class="col-md-9">
                     <div class="card">
                         <div class="header">
@@ -24,13 +24,13 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Code</label>
-                                        <input class="form-control" value="${courseCode}" placeholder="Course Code" type="text" required=""  readonly="" readonly=""  name="courseCode" maxlength="50">
+                                        <input class="form-control" value="${courseCode}" placeholder="Course Code" type="text" required=""  readonly="" name="courseCode" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" value="${courseTitle}" placeholder="Course Title" type="text" required=""  readonly="" name="courseTitle" maxlength="50">
+                                        <input class="form-control" value="${courseTitle}" placeholder="Course Title" type="text" required="" name="courseTitle" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -39,8 +39,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Faculty</label>
-                                        <select disabled="" class="form-control" required="" name="courseFaculty">
-                                            <option value="" disabled selected>${courseFaculty}</option>
+                                        <select class="form-control" required="" name="courseFaculty">
+                                            <option value="${courseFacultyCode}" selected>${courseFaculty}</option>
                                             <c:forEach items="${facultyList}" var="faculty">
                                                 <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
                                             </c:forEach>                
@@ -50,13 +50,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Start</label>
-                                        <input class="form-control" value="${courseStarted}" placeholder="Start Date" type="text" required=""  readonly="" name="startDate" maxlength="50">
+                                        <input class="form-control" value="${courseStarted}" placeholder="Start Date" type="text" required=""  name="startDate" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>End</label>
-                                        <input class="form-control" value="${courseFinished}" placeholder="End Date" type="text" required=""  readonly="" name="endDate" maxlength="50">
+                                        <input class="form-control" value="${courseFinished}" placeholder="End Date" type="text" required=""  name="endDate" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea rows="5" class="form-control" readonly="" placeholder="Here is a course's description...">${description}</textarea>
+                                        <textarea rows="5" class="form-control" name="description" placeholder="Here is a course's description...">${description}</textarea>
                                         </textarea>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                 <div class="col-md-3" id="assignCourseButton">
                     <div ng-click="assignCourse()" id="btnAssign" class="card" style="display: block">
                         <div class="header">
-                            <h4 class="title">ASSIGN</h4>
+                            <h4 class="title">SAVE</h4>
                             <p class="category"></p>
                         </div>
                     </div>

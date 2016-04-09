@@ -63,4 +63,25 @@ public class FacultyManager {
         }
         return faculty;
     }
+    
+    public Faculty getFacultyByTitle(String faculty_title) {
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblFaculty where faculty_title = ?");
+            ps.setString(1, faculty_title);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                faculty.setFacultyCode(rs.getString("faculty_code"));
+                faculty.setFacultyTitle(rs.getString("faculty_title"));
+                faculty.setFacultyPVC(rs.getString("faculty_pvc"));
+                faculty.setFacultyDLT(rs.getString("faculty_dlt"));
+                faculty.setFacultyStartDate(rs.getDate("start_date"));
+                faculty.setFacultyEndDate(rs.getDate("end_date"));
+                faculty.setFacultyStatus(rs.getInt("status"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return faculty;
+    }
 }
