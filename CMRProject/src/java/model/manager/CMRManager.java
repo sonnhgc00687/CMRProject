@@ -30,7 +30,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("SELECT tblCMR.cmr_code,tblCMR.student_count,tblCMR.comment,tblCMR.status,tblCMR.cmtstatus,\n"
+            PreparedStatement ps = conn.prepareStatement("SELECT tblCMR.cmr_code,tblCMR.student_count,tblCMR.comment, tblCMR.createDate,tblCMR.status,tblCMR.cmtstatus,\n"
                     + "tblCourse.course_code,tblCourse.course_title,tblCourse.course_faculty\n"
                     + "FROM tblCMR\n"
                     + "INNER JOIN tblCourse\n"
@@ -42,6 +42,7 @@ public class CMRManager {
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
                 c.setAppstatus(rs.getInt("status"));
+                c.setDate(rs.getDate("createDate"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
                 c.setCourse_title(rs.getString("course_title"));
@@ -58,7 +59,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id and c.course_faculty = ?");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id and c.course_faculty = ?");
             ps.setString(1, facultyCode);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -66,6 +67,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -83,7 +85,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1");
 
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -91,6 +93,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -108,7 +111,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1 and c.course_faculty = ?");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.status = 1 and c.course_faculty = ?");
             ps.setString(1, facultyCode);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -116,6 +119,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -133,7 +137,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.cmtstatus = 1");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id where cmr.cmtstatus = 1");
 
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -141,6 +145,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -158,7 +163,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -166,6 +171,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -183,7 +189,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0 and c.course_faculty = ?");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 0 and c.course_faculty = ?");
             ps.setString(1, username);
             ps.setString(2, facultyCode);
             rs = ps.executeQuery();
@@ -192,6 +198,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -209,7 +216,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 1");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 1");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -217,6 +224,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -234,7 +242,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -242,6 +250,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -259,7 +268,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0 and c.course_faculty = ?");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 0 and c.course_faculty = ?");
             ps.setString(1, username);
             ps.setString(2, facultyCode);
             rs = ps.executeQuery();
@@ -268,6 +277,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -285,7 +295,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 1 and cmr.cmtstatus = 1 ");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_leader = ? and cmr.status = 1 and cmr.cmtstatus = 1 ");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -293,6 +303,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -310,7 +321,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 1");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 1");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -318,6 +329,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));
@@ -335,7 +347,7 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 1 and cmr.cmtstatus = 1");
+            PreparedStatement ps = conn.prepareStatement("select  cmr_code, student_count, comment, createDate, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where c.course_mod = ? and cmr.status = 1 and cmr.cmtstatus = 1");
             ps.setString(1, username);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -343,6 +355,7 @@ public class CMRManager {
                 c.setCmr_code(rs.getInt("cmr_code"));
                 c.setStudent_count(rs.getInt("student_count"));
                 c.setComment(rs.getString("comment"));
+                c.setDate(rs.getDate("createDate"));
                 c.setAppstatus(rs.getInt("status"));
                 c.setCmtstatus(rs.getInt("cmtstatus"));
                 c.setCourse_code(rs.getString("course_code"));

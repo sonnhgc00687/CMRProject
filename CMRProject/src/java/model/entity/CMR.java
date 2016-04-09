@@ -17,6 +17,7 @@ public class CMR {
     private int student_count;
     private String comment;
     private java.sql.Timestamp createDate;
+    private Date date;
     private int appstatus;
     private int cmtstatus;
     private String course_code;
@@ -33,6 +34,14 @@ public class CMR {
         this.createDate = createDate;
         this.appstatus = appstatus;
         this.cmtstatus = cmtstatus;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public java.sql.Timestamp getCreateDate() {
