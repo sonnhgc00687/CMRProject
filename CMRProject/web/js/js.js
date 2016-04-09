@@ -37,4 +37,8 @@ app.controller('myCtrl', function ($scope) {
         $("#addAccount").click();
     }
     
+    $scope.approveCmr = function(){
+        $("#btnApprove").click();
+    }
+    
 });

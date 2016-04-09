@@ -40,7 +40,7 @@
                     <th>Start Date</th>
                     <th>Finish Date</th>
                     <th>Detail</th>     
-                    <th>Add CMR</th>
+                    <th ng-if="${userRole} == 1">Add CMR</th>
                     </thead>
                     <tbody>
                         <c:forEach items="${courseList}" var="c">
@@ -49,9 +49,8 @@
                                 <td>${c.courseTitle}</td>
                                 <td>${c.courseStarted}</td>
                                 <td>${c.courseFinished}</td>
-
                                 <td><a class="btn btn-default" href="GetCourseDetail?&courseID=${c.id}" role="button">Detail</a></td>
-                                <td><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR</a></td>
+                                <td ng-if="${userRole} == 1"><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -170,7 +169,7 @@
             </form>
         </div>
 
-        <div class="col-md-3" id="addCourseContainer">
+        <div class="col-md-3" id="addCourseContainer" ng-if="${userRole} == 0">
 
             <div ng-click="showAddCourseForm()" id="btnShowAddCourse" class="card">
                 <div class="header">

@@ -166,7 +166,44 @@
                             </div>
                         </div>
 
-                        <input type="submit" class="col-md-3" id="btnApprove" value="APPROVE">
+                        <div id="addCmrForm" class="col-md-9" ng-if="${userRole} == 4">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">COMMENT</h4>
+                                </div>
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Comment</label>
+                                                <textarea rows="5" class="form-control" name="comment"></textarea>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                
+                        <input type="submit" class="" id="btnApprove" value="APPROVE" ng-if="${userRole} == 2" style="display: none">
+
+                        <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 2" style="float: right">
+                            <div ng-click="approveCmr()" id="btnAssign" class="card">
+                                <div class="header">
+                                    <h4 class="title">APPROVE</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 4">
+                            <div ng-click="" id="btnAssign" class="card" style="display: block">
+                                <div class="header">
+                                    <h4 class="title">RESPOND</h4>
+                                    <p class="category"></p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>  
 
                     <div class="clearfix"></div>

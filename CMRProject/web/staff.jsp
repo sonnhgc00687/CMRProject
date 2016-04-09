@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div id="addNewAccout">
+        <div id="addNewAccout" ng-if="${userRole} == 0">
             <form  action="GetAllUser" method="post">
                 <div id="addAccountContainer" class="col-md-9">
                     <div class="card">
@@ -107,7 +107,7 @@
             </form>
         </div>
 
-        <div class="col-md-3" id="addCourseContainer">
+        <div class="col-md-3" id="addCourseContainer" ng-if="${userRole} == 0">
 
             <div ng-click="addAccount()" id="btnShowAddAccount" class="card">
                 <div class="header">
