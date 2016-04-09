@@ -39,37 +39,37 @@
                     </div>
 
                     <ul class="nav">
-                        <li class="active">
+                        <li id="home">
                             <a href="Login">
                                 <i class="pe-7s-home"></i>
                                 <p>Home</p>
                             </a>
                         </li>
-                        <li>
+                        <li id="faculty">
                             <a href="GetAllUserAndFaculty">
                                 <i class="pe-7s-study"></i>
                                 <p>Faculty</p>
                             </a>
                         </li>
-                        <li>
+                        <li id="course">
                             <a href="GetAllCourse">
                                 <i class="pe-7s-notebook"></i>
                                 <p>Course</p>
                             </a>
                         </li>
-                        <li>
+                        <li id="cmr">
                             <a href="GetAllCMR">
                                 <i class="pe-7s-note2"></i>
                                 <p>CMR</p>
                             </a>
                         </li>
-                        <li>
+                        <li id="staff" ng-if="${userRole} == 0">
                             <a href="GetAllUser">
                                 <i class="pe-7s-users"></i>
                                 <p>Staff</p>
                             </a>
                         </li>                        
-                        <li>
+                        <li id="report">
                             <a href="StatisticalReport">
                                 <i class="pe-7s-news-paper"></i>
                                 <p>Report</p>

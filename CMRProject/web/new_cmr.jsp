@@ -165,7 +165,16 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit"></div>
+                        <input id="btnCreateCmr" type="submit" style="display: none"></div>
+
+                    <div class="col-md-3 ng-scope" id="assignCourseButton" style="float: right">
+                        <div ng-click="createCmr()" id="btnAssign" class="card">
+                            <div class="header">
+                                <h4 class="title">CREATE</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="clearfix"></div>
                 </div>
             </form>
