@@ -91,6 +91,12 @@
     height: 100px;
 }
 
+#createdDate{
+    position: absolute;
+    right: 22px;
+    top: 18px;
+}
+
 #addCmrForm{
     padding: 0px;
 }
