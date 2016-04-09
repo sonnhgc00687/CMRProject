@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,7 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.entity.Course;
+import model.entity.Faculty;
 import model.manager.CourseManager;
+import model.manager.FacultyManager;
 
 /**
  *
@@ -83,6 +84,11 @@ public class AssignCourse extends HttpServlet {
             Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
             endDate2 = new Timestamp(endDate1.getTime());
             String description = request.getParameter("description");
+            
+            List<Faculty> facultyList = new ArrayList<>();
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();
+            request.setAttribute("facultyList", facultyList);
 
             CourseManager cm = new CourseManager();
             if (request.getParameter("assign") != null) {

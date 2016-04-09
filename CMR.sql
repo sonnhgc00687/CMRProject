@@ -43,15 +43,16 @@ id int primary key IDENTITY,
 course_code nvarchar(8),
 course_faculty nvarchar(8)references tblFaculty(faculty_code),
 course_title nvarchar(50),
-course_leader nvarchar(50),
-course_mod nvarchar(50),
+course_leader nvarchar(50) references tblEmployee(username) NULL,
+course_mod nvarchar(50) references tblEmployee(username) NULL,
 [start_date] date,
 [end_date] date,
 description nvarchar(100),
 [status] int,
 )
+select * from tblCourse
 insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'Course of Web development', 1)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'maimai', 'huyhuy', '2016-01-15', '2016-05-06', 'Course of Interaction Design', 1)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', NULL, NULL, '2016-01-15', '2016-05-06', 'Course of Interaction Design', 1)
 insert into tblCourse values('COMP1650', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'Course of Development of Mobile App', 1)
 insert into tblCourse values('COMP1610', 'FPT2015', 'Java App Dev', 'maimai', 'huyhuy', '2015-01-15', '2015-05-06', 'Course of Development of Java App', 1)
 insert into tblCourse values('COMP1600', 'FPT2015', 'C sharp App Dev', 'mainghia', 'sondao', '2015-01-15', '2015-05-06', 'Course of Development of C sharp App', 1)
