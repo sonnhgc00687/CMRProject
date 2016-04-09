@@ -13,7 +13,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">COMPLETED CMR</h4>
+                    <h4 class="title">NUMBER OF COMPLETED CMR</h4>
                     <p class="category"></p>
                 </div>
                 <div class="content">
@@ -29,7 +29,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">CMR</h4>
+                    <h4 class="title">NUMBER OF ALL CMR</h4>
                     <p class="category"></p>
                 </div>
                 <div class="content">
@@ -68,11 +68,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">COMPLETED CMR</h4>
+                    <h4 class="title">NUMBER OF COURSE WITHOUT CM OR CL</h4>
                     <p class="category"></p>
                 </div>
                 <div class="content">
-                    <h1 id="courseNumber" >${noOfCompletedCMR}</h1>  
+                    <h1 id="courseNumber" >${noOfCourseWithoutCLCM}</h1>  
                     <hr>
                     <div class="stats">
                         <i class="fa fa-clock-o"></i> 2016 of FPT2016
@@ -84,11 +84,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">CMR</h4>
+                    <h4 class="title">NUMBER OF COURSE WITHOUT CMR</h4>
                     <p class="category"></p>
                 </div>
                 <div class="content">
-                    <h1 id="courseNumber" >${noOfAllCMR}</h1>  
+                    <h1 id="courseNumber" >${noOfCourseWithoutCMR}</h1>  
                     <hr>
                     <div class="stats">
                         <i class="fa fa-clock-o"></i> 2016 of FPT2016
@@ -98,18 +98,14 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card" style="margin-bottom: 0px;">
+   <div class="col-md-6">
+            <div class="card">
                 <div class="header">
-                    <h4 class="title">CMR PERCENTAGE COMPLETED</h4>
+                    <h4 class="title">NUMBER OF COURSE WITHOUT COMPLETED CMR</h4>
                     <p class="category"></p>
                 </div>
                 <div class="content">
-                    <div id="cmrBar">
-                        <div id="completedPercent" style="width: ${percentageCompleted}%;"></div>
-                        <h6 id="percent">${percentageCompleted}%</h6>
-                    </div>
+                    <h1 id="courseNumber" >${noOfCourseWithoutCompletedCMR}</h1>  
                     <hr>
                     <div class="stats">
                         <i class="fa fa-clock-o"></i> 2016 of FPT2016
