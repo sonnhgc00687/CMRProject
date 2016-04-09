@@ -17,6 +17,7 @@
                     <div class="card">
                         <div class="header">
                             <h4 class="title">COURSE MONITORING REPORT</h4>
+                            <h5 id="createdDate" class="category">Created at: April 30, 2016 10:30pm</h5>
                             <p class="category">CMR for <a href="#">${courseTitle}</a> course</p>
                         </div>
                         <div class="content">

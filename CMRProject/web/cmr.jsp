@@ -39,6 +39,7 @@
                     <th>Code</th>
                     <th>Title</th>
                     <th>Faculty</th>
+                    <th>Create Date</th>
                     <th>Detail</th>     
                     </thead>
                     <tbody>
@@ -48,6 +49,7 @@
                                 <td>${cmr.course_code}</td>
                                 <td>${cmr.course_title}</td>
                                 <td>${cmr.course_faculty}</td>
+                                <td>${cmr.createDate}</td>
                                 <td><a class="btn btn-default" href="GetCMRDetail?&courseID=${cmr.cmr_code}" role="button">Detail</a></td>
                             </tr>
                         </c:forEach>
