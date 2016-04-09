@@ -60,7 +60,9 @@ insert into tblCourse values('COMP1590', 'FPT2015', 'C++ App Dev', 'maimai', 'hu
 insert into tblCourse values('COMP1550', 'FPT2014', 'Web Interface', 'mainghia', 'sondao', '2014-01-15', '2014-05-06', 'Course of Development of Web UI', 1)
 insert into tblCourse values('COMP1557', 'FPT2014', 'Basic Java', 'maimai', 'sondao', '2014-01-15', '2014-05-06', 'Course of Basic Java App', 1)
 insert into tblCourse values('COMP1520', 'FPT2014', 'Basic C++', 'mainghia', 'huyhuy', '2014-01-15', '2014-05-06', 'Course of Basic C++', 1)
+
 go
+
 create table tblCMR
 (
 cmr_code int primary key references tblCourse(id),
@@ -70,10 +72,12 @@ createDate date,
 [status] int,
 cmtstatus int
 )
+
 go
 Insert into tblCMR values(7,25,'Most students passed the course with high grade','2014-05-07',0,0)
 Insert into tblCMR values(8,30,'Most students did not pass the course with high grade','2014-05-10',0,0)
 Insert into tblCMR values(9,30,'Most students did not passed the course with high grade','2014-05-08',0,0)
+
 go
 create table tblStaticalData
 (
