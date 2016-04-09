@@ -29,7 +29,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status = 1");
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();
@@ -54,7 +54,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_faculty = ?");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_faculty = ? and status = 1");
             ps.setString(1, facultyCode);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -80,7 +80,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();
@@ -105,7 +105,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             rs = ps.executeQuery();
             while (rs.next()) {
                 Course c = new Course();
@@ -130,7 +130,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_title like ? ");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_title like ? ");
             String title = "%" + course_title + "%";
             ps.setString(1, title);
             rs = ps.executeQuery();
@@ -157,7 +157,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? ");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_leader = ? ");
             ps.setString(1, course_leader);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -183,7 +183,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? and course_faculty = ? ");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_leader = ? and course_faculty = ? ");
             ps.setString(1, course_leader);
             ps.setString(2, facultyCode);
             rs = ps.executeQuery();
@@ -210,7 +210,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? and id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code) ");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_leader = ? and id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code) ");
             ps.setString(1, course_leader);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -236,7 +236,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_leader = ? and id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_leader = ? and id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             ps.setString(1, course_leader);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -262,7 +262,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ?");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_mod = ?");
             ps.setString(1, course_mod);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -288,7 +288,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ? and course_faculty = ?");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_mod = ? and course_faculty = ?");
             ps.setString(1, course_mod);
             ps.setString(2, facultyCode);
             rs = ps.executeQuery();
@@ -315,7 +315,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ? and id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_mod = ? and id IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             ps.setString(1, course_mod);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -341,7 +341,7 @@ public class CourseManager {
 
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where course_mod = ? and id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_mod = ? and id NOT IN (Select c.id from tblCourse c inner join tblCMR cmr on c.id = cmr.cmr_code)");
             ps.setString(1, course_mod);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -486,7 +486,7 @@ public class CourseManager {
         return countCourseList;
     }
 
-    public void AssignCourse(String courseCode, String courseLeader, String courseMod) {
+    public void assignCourse(String courseCode, String courseLeader, String courseMod) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -499,4 +499,35 @@ public class CourseManager {
             e.printStackTrace();
         }
     }
+    
+    public void updateCourse(String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate, String description, String courseCode) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Update tblCourse set course_title = ?, course_leader = ?, course_mod = ?,[start_date] = ?, [end_date] = ?, description = ? where course_code = ?");
+            ps.setString(1,courseTitle);
+            ps.setString(2, courseLeader);
+            ps.setString(3, courseMod);
+            ps.setTimestamp(4, startDate);
+            ps.setTimestamp(5, endDate);
+            ps.setString(6, description);
+            ps.setString(7, courseCode);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void deleteCourse(String courseCode) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Update tblCourse set [status] = 0 where course_code = ?");
+            ps.setString(1, courseCode);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

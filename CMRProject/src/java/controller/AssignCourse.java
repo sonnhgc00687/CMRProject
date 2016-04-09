@@ -62,7 +62,7 @@ public class AssignCourse extends HttpServlet {
             String courseMod = request.getParameter("courseModerator");
             CourseManager cm = new CourseManager();
             if (request.getParameter("assign") != null) {
-                cm.AssignCourse(courseCode,courseLeader, courseMod);
+                cm.assignCourse(courseCode,courseLeader, courseMod);
                 courseList = cm.getAllCourse();                
                 request.setAttribute("courseList", courseList);
                 request.getRequestDispatcher("course.jsp").forward(request, response);
