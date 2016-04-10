@@ -16,9 +16,9 @@
                     <i class="pe-7s-filter" ></i>
                 </a>
                 <ul class="dropdown-menu">
-                <li><a href="GetAllCourse?=&amp;filter=noCMR">Course without CMR</a></li>
-                <li><a href="GetAllCourse?=&amp;filter=CMR">Course with CMR</a></li>
-                <li><a href="GetAllCourse?=&amp;filter=all">All Course</a></li>
+                    <c:forEach items="${facultyList}" var="f">
+                        <li><a href="">${f.facultyTitle}</a></li>
+                    </c:forEach>
             </ul>
                 <input class="form-control" placeholder="Search" type="submit" required="" name="searchCourse" value="Faculty" maxlength="100">
             </div>

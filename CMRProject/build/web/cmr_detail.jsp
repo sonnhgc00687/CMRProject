@@ -167,7 +167,7 @@
                             </div>
                         </div>
 
-                        <div id="addCmrForm" class="col-md-9" ng-if="${userRole} == 4">
+                        <div id="addCmrForm" class="col-md-9" >
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">COMMENT</h4>
@@ -177,7 +177,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Comment</label>
-                                                <textarea rows="5" class="form-control" name="comment"></textarea>
+                                                <textarea rows="5" class="form-control" name="comment" ng-disabled="${userRole} != 4 && ${commentStatus} != 1"></textarea>
                                                 </textarea>
                                             </div>
                                         </div>

@@ -7,13 +7,17 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.entity.Faculty;
 import model.manager.CMRManager;
 import model.manager.CourseManager;
+import model.manager.FacultyManager;
 
 /**
  *
@@ -60,20 +64,26 @@ public class StatisticalReport extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<Faculty> facultyList = new ArrayList<>();
+
         CMRManager cm = new CMRManager();
+        FacultyManager facultyManager = new FacultyManager();
+        facultyList = facultyManager.getAllFaculty();
+
         float percentage = 0;
         int noOfCompletedCMR = cm.getNoOfCompletedCMRByFacultyByYear("2016", "2017", "FPT2016");
         int noOfAllCMR = cm.getNoOfCMRByFacultyByYear("2016", "2017", "FPT2016");
-        if (noOfAllCMR != 0){ 
-        percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
-        }else{
+        if (noOfAllCMR != 0) {
+            percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
+        } else {
             percentage = 0;
         }
         CourseManager courseM = new CourseManager();
         int noOfCourseWithoutCLCM = courseM.getNoOfCourseWithoutCLCM();
         int noOfCourseWithoutCMR = courseM.getNoOfCourseWithoutCMR();
         int noOfCourseWithoutCompletedCMR = courseM.getNoOfCourseWithNotCompletedCMR();
-
+        
+        request.setAttribute("facultyList", facultyList);
         request.setAttribute("noOfCourseWithoutCLCM", noOfCourseWithoutCLCM);
         request.setAttribute("noOfCourseWithoutCMR", noOfCourseWithoutCMR);
         request.setAttribute("noOfCourseWithoutCompletedCMR", noOfCourseWithoutCompletedCMR);
