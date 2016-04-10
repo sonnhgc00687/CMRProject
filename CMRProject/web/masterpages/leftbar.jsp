@@ -57,7 +57,7 @@
                                 <p>CMR</p>
                             </a>
                         </li>
-                        <li id="staff" ng-if="${userRole} == 0">
+                        <li id="staff" ng-class="class" ng-if="${userRole} == 0">
                             <a href="GetAllUser">
                                 <i class="pe-7s-users"></i>
                                 <p>Staff</p>
@@ -69,6 +69,6 @@
                                 <p>Report</p>
                             </a>
                         </li>
-                    </ul>
+                    </ul>  
                 </div>
             </div>

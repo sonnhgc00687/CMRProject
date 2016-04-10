@@ -10,7 +10,7 @@ app.controller('myCtrl', function ($scope) {
     } else if (searchURL("GetAllCMR") || searchURL("GetCMRDetail") || searchURL("AddCMR")) {
         $("#cmr").addClass("active");
     } else if (searchURL("GetAllUser")) {
-        $("#staff").addClass("active");
+        $scope.class = "active";
     } else if (searchURL("StatisticalReport")) {
         $("#report").addClass("active");
     }
