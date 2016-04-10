@@ -80,8 +80,8 @@
                                         <label>PVC</label>
                                         <select class="form-control" required="" name="pvc">
                                             <option value="" disabled selected>Pro-Vice Chancellor</option>
-                                            <c:forEach items="${facultyList}" var="faculty">
-                                                <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
+                                            <c:forEach items="${pvcList}" var="pvc">
+                                                <option value="${pvc.userName}">${pvc.fullName}</option>
                                             </c:forEach>                
                                         </select>
                                     </div>
@@ -100,8 +100,8 @@
                                         <label>DLT</label>
                                         <select class="form-control" required="" name="dlt">
                                             <option value="" disabled selected>Director of Learning and Quality</option>
-                                            <c:forEach items="${facultyList}" var="faculty">
-                                                <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
+                                            <c:forEach items="${dltList}" var="dlt">
+                                                <option value="${dlt.userName}">${dlt.fullName}</option>
                                             </c:forEach>                
                                         </select>
                                     </div>
