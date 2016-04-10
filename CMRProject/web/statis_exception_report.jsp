@@ -9,28 +9,29 @@
 <jsp:include page="masterpages/header.jsp"/>
 
 <div class="content">
-    <div class="row" >    
-        <div id="search" class="col-md-6">
-            <div class="form-group">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="pe-7s-filter" ></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <c:forEach items="${facultyList}" var="f">
-                        <li><a href="">${f.facultyTitle}</a></li>
-                    </c:forEach>
-            </ul>
-                <input class="form-control" placeholder="Search" type="submit" required="" name="searchCourse" value="Faculty" maxlength="100">
+    <div class="row" >
+        <form action="StatisticalReport" method="post" >
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Faculty</label>
+                    <select class="form-control" required="" name="courseFaculty">
+                        <option value="" disabled selected>Course Faculty</option>
+                        <c:forEach items="${facultyList}" var="faculty">
+                            <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
+                        </c:forEach>                
+                    </select>
+                </div>
             </div>
-        </div>      
-        <div id="endDate" class="col-md-3">
-            <div class="form-group">
-                <input class="form-control" placeholder="End Date" type="date" required="" name="startDate" maxlength="50"/>            </div>
-        </div>
-        <div id="startDate" class="col-md-3">
-            <div class="form-group">
-                <input class="form-control" placeholder="Start Date" type="date" required="" name="startDate" maxlength="50"/>            </div>
-        </div>      
+            <div id="startDate" class="col-md-3">
+                <div class="form-group">
+                    <input class="form-control" placeholder="Start Date" type="date" required="" name="startDate" maxlength="50"/>            </div>
+            </div>
+            <div id="endDate" class="col-md-3">
+                <div class="form-group">
+                    <input class="form-control" placeholder="End Date" type="date" required="" name="endDate" maxlength="50"/>            </div>
+            </div>
+            <div><input type="submit" value="Search"/></div>
+        </form>
     </div>
 
     <div class="row">
@@ -44,7 +45,7 @@
                     <h1 id="courseNumber" >${noOfCompletedCMR}</h1>  
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> 2016 of FPT2016
+                        <i class="fa fa-clock-o"></i> ${facultyTitle}
                     </div>
                 </div>
             </div>
@@ -60,7 +61,7 @@
                     <h1 id="courseNumber" >${noOfAllCMR}</h1>  
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> 2016 of FPT2016
+                        <i class="fa fa-clock-o"></i>  ${facultyTitle}
                     </div>
                 </div>
             </div>
@@ -81,7 +82,7 @@
                     </div>
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> 2016 of FPT2016
+                        <i class="fa fa-clock-o"></i>  ${facultyTitle}
                     </div>
                 </div>
             </div>
@@ -99,7 +100,7 @@
                     <h1 id="courseNumber" >${noOfCourseWithoutCLCM}</h1>  
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> 2016 of FPT2016
+                        <i class="fa fa-clock-o"></i> All Faculty
                     </div>
                 </div>
             </div>
@@ -115,7 +116,7 @@
                     <h1 id="courseNumber" >${noOfCourseWithoutCMR}</h1>  
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> 2016 of FPT2016
+                        <i class="fa fa-clock-o"></i> All Faculty
                     </div>
                 </div>
             </div>
@@ -132,13 +133,11 @@
                 <h1 id="courseNumber" >${noOfCourseWithoutCompletedCMR}</h1>  
                 <hr>
                 <div class="stats">
-                    <i class="fa fa-clock-o"></i> 2016 of FPT2016
+                    <i class="fa fa-clock-o"></i>  All Faculty
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 </div>
 
 

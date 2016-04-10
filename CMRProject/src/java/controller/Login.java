@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.entity.CountCourse;
+import model.entity.Faculty;
 import model.entity.User;
 import model.manager.CourseManager;
 import model.manager.EncryptPassword;
+import model.manager.FacultyManager;
 import model.manager.UserManager;
 
 /**
@@ -53,10 +55,6 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CourseManager cm = new CourseManager();
-        countCourseList = cm.getNoOfCourseByFaculty();
-        request.setAttribute("countCourseList", countCourseList);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     /**
@@ -81,18 +79,35 @@ public class Login extends HttpServlet {
         EncryptPassword encrypt = new EncryptPassword();
         String encryptedPassword = encrypt.encryptData(password);
         UserManager um = new UserManager();
+        List<User> allUser = new ArrayList<>();
+        List<User> leader = new ArrayList<>();
+        List<User> moderator = new ArrayList<>();
+        List<Faculty> facultyList = new ArrayList<>();
+        allUser = um.getAllUsers();
 
+        FacultyManager facultyManager = new FacultyManager();
+        facultyList = facultyManager.getAllFaculty();
+
+        for (User user : allUser) {
+            if (user.getRole() == 1) {
+                leader.add(user);
+            } else if (user.getRole() == 2) {
+                moderator.add(user);
+            }
+        }
         CourseManager cm = new CourseManager();
         countCourseList = cm.getNoOfCourseByFaculty();
 
         User user = um.checkUser(username, encryptedPassword);
 
         if (user != null) {
+            request.setAttribute("leader", leader);
+            request.setAttribute("moderator", moderator);
+            request.setAttribute("facultyList", facultyList);
             session.setAttribute("userSession", user.getUserName());
             session.setAttribute("userRole", user.getRole());
             request.setAttribute("username", username);
-            request.setAttribute("countCourseList", countCourseList);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            request.getRequestDispatcher("faculty.jsp").forward(request, response);
         } else {
             System.out.println("Fail");
         }

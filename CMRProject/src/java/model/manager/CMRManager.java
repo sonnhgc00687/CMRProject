@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.entity.CMR;
@@ -519,6 +520,25 @@ public class CMRManager {
         }
     }
 
+    public int getNoOfCompletedCMRByFacultyByYearTS(Timestamp year1, Timestamp year2, String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getCMRCompletedByFacultyByYear ?,?,?");
+            ps.setTimestamp(1, year1);
+            ps.setTimestamp(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     public int getNoOfCompletedCMRByFacultyByYear(String year1, String year2, String facultyCode) {
         int result = 0;
         SqlConnection sql = new SqlConnection();
@@ -538,6 +558,25 @@ public class CMRManager {
         return result;
     }
 
+    public int getNoOfCMRByFacultyByYearTS(Timestamp year1, Timestamp year2, String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCMRByFacultyByYear ?,?,?");
+            ps.setTimestamp(1, year1);
+            ps.setTimestamp(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     public int getNoOfCMRByFacultyByYear(String year1, String year2, String facultyCode) {
         int result = 0;
         SqlConnection sql = new SqlConnection();

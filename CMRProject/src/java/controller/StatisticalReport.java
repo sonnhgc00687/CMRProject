@@ -7,7 +7,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +28,8 @@ import model.manager.FacultyManager;
  */
 @WebServlet(name = "StatisticalReport", urlPatterns = {"/StatisticalReport"})
 public class StatisticalReport extends HttpServlet {
+
+    List<Faculty> facultyList = new ArrayList<>();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,34 +69,37 @@ public class StatisticalReport extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Faculty> facultyList = new ArrayList<>();
+        try {
+            CMRManager cm = new CMRManager();
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();           
+            float percentage = 0;
+            int noOfCompletedCMR = cm.getNoOfCompletedCMRByFacultyByYear("2016", "2017", "FPT2016");
+            int noOfAllCMR = cm.getNoOfCMRByFacultyByYear("2016", "2017", "FPT2016");
+            if (noOfAllCMR != 0) {
+                percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
+            } else {
+                percentage = 0;
+            }
+            CourseManager courseM = new CourseManager();
+            int noOfCourseWithoutCLCM = courseM.getNoOfCourseWithoutCLCM();
+            int noOfCourseWithoutCMR = courseM.getNoOfCourseWithoutCMR();
+            int noOfCourseWithoutCompletedCMR = courseM.getNoOfCourseWithNotCompletedCMR();
 
-        CMRManager cm = new CMRManager();
-        FacultyManager facultyManager = new FacultyManager();
-        facultyList = facultyManager.getAllFaculty();
+            request.setAttribute("facultyList", facultyList);
+            request.setAttribute("facultyTitle", "FPT2016");
+            request.setAttribute("noOfCourseWithoutCLCM", noOfCourseWithoutCLCM);
+            request.setAttribute("noOfCourseWithoutCMR", noOfCourseWithoutCMR);
+            request.setAttribute("noOfCourseWithoutCompletedCMR", noOfCourseWithoutCompletedCMR);
 
-        float percentage = 0;
-        int noOfCompletedCMR = cm.getNoOfCompletedCMRByFacultyByYear("2016", "2017", "FPT2016");
-        int noOfAllCMR = cm.getNoOfCMRByFacultyByYear("2016", "2017", "FPT2016");
-        if (noOfAllCMR != 0) {
-            percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
-        } else {
-            percentage = 0;
+            request.setAttribute("noOfCompletedCMR", noOfCompletedCMR);
+            request.setAttribute("noOfAllCMR", noOfAllCMR);
+            request.setAttribute("percentageCompleted", percentage);
+            request.getRequestDispatcher("statis_exception_report.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        CourseManager courseM = new CourseManager();
-        int noOfCourseWithoutCLCM = courseM.getNoOfCourseWithoutCLCM();
-        int noOfCourseWithoutCMR = courseM.getNoOfCourseWithoutCMR();
-        int noOfCourseWithoutCompletedCMR = courseM.getNoOfCourseWithNotCompletedCMR();
-        
-        request.setAttribute("facultyList", facultyList);
-        request.setAttribute("noOfCourseWithoutCLCM", noOfCourseWithoutCLCM);
-        request.setAttribute("noOfCourseWithoutCMR", noOfCourseWithoutCMR);
-        request.setAttribute("noOfCourseWithoutCompletedCMR", noOfCourseWithoutCompletedCMR);
 
-        request.setAttribute("noOfCompletedCMR", noOfCompletedCMR);
-        request.setAttribute("noOfAllCMR", noOfAllCMR);
-        request.setAttribute("percentageCompleted", percentage);
-        request.getRequestDispatcher("statis_exception_report.jsp").forward(request, response);
     }
 
     /**
@@ -105,7 +113,47 @@ public class StatisticalReport extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            CMRManager cm = new CMRManager();
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();
+            
+            String facultyCode = request.getParameter("courseFaculty");
+            Faculty faculty = facultyManager.getFacultyByCode(facultyCode);
+            String startDate = request.getParameter("startDate");
+            Date startDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            java.sql.Timestamp startDate2 = new Timestamp(startDate1.getTime());
+
+            String endDate = request.getParameter("endDate");
+            Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+            java.sql.Timestamp endDate2 = new Timestamp(endDate1.getTime());
+            float percentage = 0;
+            int noOfCompletedCMR = cm.getNoOfCompletedCMRByFacultyByYearTS(startDate2, endDate2, facultyCode);
+            int noOfAllCMR = cm.getNoOfCMRByFacultyByYearTS(startDate2, endDate2, facultyCode);
+            if (noOfAllCMR != 0) {
+                percentage = (noOfCompletedCMR * 100) / noOfAllCMR;
+            } else {
+                percentage = 0;
+            }
+            CourseManager courseM = new CourseManager();
+            int noOfCourseWithoutCLCM = courseM.getNoOfCourseWithoutCLCM();
+            int noOfCourseWithoutCMR = courseM.getNoOfCourseWithoutCMR();
+            int noOfCourseWithoutCompletedCMR = courseM.getNoOfCourseWithNotCompletedCMR();
+
+            request.setAttribute("facultyList", facultyList);
+            request.setAttribute("facultyTitle", faculty.getFacultyTitle());
+            
+            request.setAttribute("noOfCourseWithoutCLCM", noOfCourseWithoutCLCM);
+            request.setAttribute("noOfCourseWithoutCMR", noOfCourseWithoutCMR);
+            request.setAttribute("noOfCourseWithoutCompletedCMR", noOfCourseWithoutCompletedCMR);
+
+            request.setAttribute("noOfCompletedCMR", noOfCompletedCMR);
+            request.setAttribute("noOfAllCMR", noOfAllCMR);
+            request.setAttribute("percentageCompleted", percentage);
+            request.getRequestDispatcher("statis_exception_report.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
