@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.entity.CMR;
 import model.entity.CMR_Detail;
 import model.entity.CMR_GradeData;
@@ -85,6 +86,8 @@ public class AddCMR extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         try {
+            HttpSession session = request.getSession();
+            String creator = (String) session.getAttribute("userSession");
             int id = Integer.parseInt(request.getParameter("id"));
             int studentCount = Integer.parseInt(request.getParameter("studentCount"));
             String comment = request.getParameter("comment");
@@ -93,9 +96,11 @@ public class AddCMR extends HttpServlet {
             java.sql.Timestamp crDate2 = new Timestamp(today.getTime());
             int appstatus = 0;
             int cmtstatus = 0;
-            CMR c = new CMR(id, studentCount, comment, crDate2, appstatus, cmtstatus);
+            CMR c = new CMR(id, studentCount, comment, creator, crDate2, appstatus, cmtstatus);
             CMRManager cmrm = new CMRManager();
             cmrm.AddCMR(c);
+            CourseManager cm = new CourseManager();
+            cm.addCMRtoCourse(id);
             for (int i = 1; i < 7; i++) {
                 int id_mark = i;
                 if (((request.getParameter("mean" + i).isEmpty()) || (request.getParameter("median" + i).isEmpty())) || (request.getParameter("sd" + i).isEmpty())) {

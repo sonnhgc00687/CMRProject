@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="header">
                             <h4 class="title">COURSE MONITORING REPORT</h4>
-                            <h5 id="createdDate" class="category">Created at: ${createDate}</h5>
+                            <h5 id="createdDate" class="category">Creator: ${creator} &nbsp;&nbsp;&nbsp; Created at: ${createDate}</h5>
                             <p class="category">CMR for <a href="#">${courseTitle}</a> course</p>
                         </div>
                         <div class="content">

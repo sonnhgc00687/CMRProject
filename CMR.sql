@@ -22,6 +22,11 @@ insert into tblEmployee values('ducphuc','8d969eef6ecad3c29a3a629280e686cf0c3f5d
 insert into tblEmployee values('hoangha','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','hoangha','hanhgc00661@fpt.edu.vn', 4)
 insert into tblEmployee values('maimai','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Mai Mai','misugi296@gmail.com', 1)
 insert into tblEmployee values('huyhuy','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Huy Huy', 'sondtgc00678@fpt.edu.vn', 2)
+insert into tblEmployee values('admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','System Administrator', 'sondtgc00678@fpt.edu.vn', 0)
+insert into tblEmployee values('leader','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Leader', 'sondtgc00678@fpt.edu.vn', 1)
+insert into tblEmployee values('mod','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Moderator', 'sondtgc00678@fpt.edu.vn', 2)
+insert into tblEmployee values('pvc','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Pro Vice Counsellor', 'sondtgc00678@fpt.edu.vn', 3)
+insert into tblEmployee values('dlt','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Director of Learning', 'sondtgc00678@fpt.edu.vn', 4)
 go
 create table tblFaculty
 (
@@ -33,9 +38,10 @@ faculty_dlt nvarchar(50) references tblEmployee(username),
 [end_date] date,
 [status] int
 )
-insert into tblFaculty values('FPT2016', 'Honours Programme', 'ducphuc', 'hoangha','2016-01-01', '2016-12-31', 1)
+go
+insert into tblFaculty values('FPT2016', 'Honours Programme', 'pvc', 'dlt','2016-01-01', '2016-12-31', 1)
 insert into tblFaculty values('FPT2015', 'Top-Up Programme', 'ducphuc', 'hoangha','2015-01-01', '2015-12-31', 1)
-insert into tblFaculty values('FPT2014', 'Aptech Programme', 'ducphuc', 'hoangha','2014-01-01', '2014-12-31', 1)
+insert into tblFaculty values('FPT2014', 'Aptech Programme', 'pvc', 'dlt','2014-01-01', '2014-12-31', 1)
 go
 create table tblCourse
 (
@@ -49,17 +55,17 @@ course_mod nvarchar(50) references tblEmployee(username) NULL,
 [end_date] date,
 description nvarchar(100),
 [status] int,
-)
-select * from tblCourse
-insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'Course of Web development', 1)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', NULL, NULL, '2016-01-15', '2016-05-06', 'Course of Interaction Design', 1)
-insert into tblCourse values('COMP1650', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'Course of Development of Mobile App', 1)
-insert into tblCourse values('COMP1610', 'FPT2015', 'Java App Dev', 'maimai', 'huyhuy', '2015-01-15', '2015-05-06', 'Course of Development of Java App', 1)
-insert into tblCourse values('COMP1600', 'FPT2015', 'C sharp App Dev', 'mainghia', 'sondao', '2015-01-15', '2015-05-06', 'Course of Development of C sharp App', 1)
-insert into tblCourse values('COMP1590', 'FPT2015', 'C++ App Dev', 'maimai', 'huyhuy', '2015-01-15', '2015-05-06', 'Course of Development of C++ App', 1)
-insert into tblCourse values('COMP1550', 'FPT2014', 'Web Interface', 'mainghia', 'sondao', '2014-01-15', '2014-05-06', 'Course of Development of Web UI', 1)
-insert into tblCourse values('COMP1557', 'FPT2014', 'Basic Java', 'maimai', 'sondao', '2014-01-15', '2014-05-06', 'Course of Basic Java App', 1)
-insert into tblCourse values('COMP1520', 'FPT2014', 'Basic C++', 'mainghia', 'huyhuy', '2014-01-15', '2014-05-06', 'Course of Basic C++', 1)
+cmrstatus int
+)go
+insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'Course of Web development', 1,0)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', NULL, NULL, '2016-01-15', '2016-05-06', 'Course of Interaction Design', 1,0)
+insert into tblCourse values('COMP1650', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'Course of Development of Mobile App', 1,0)
+insert into tblCourse values('COMP1610', 'FPT2015', 'Java App Dev', 'maimai', 'huyhuy', '2015-01-15', '2015-05-06', 'Course of Development of Java App', 1,0)
+insert into tblCourse values('COMP1600', 'FPT2015', 'C sharp App Dev', 'mainghia', 'sondao', '2015-01-15', '2015-05-06', 'Course of Development of C sharp App', 1,0)
+insert into tblCourse values('COMP1590', 'FPT2015', 'C++ App Dev', 'maimai', 'huyhuy', '2015-01-15', '2015-05-06', 'Course of Development of C++ App', 1,0)
+insert into tblCourse values('COMP1550', 'FPT2014', 'Web Interface', 'mainghia', 'sondao', '2014-01-15', '2014-05-06', 'Course of Development of Web UI', 1,1)
+insert into tblCourse values('COMP1557', 'FPT2014', 'Basic Java', 'maimai', 'sondao', '2014-01-15', '2014-05-06', 'Course of Basic Java App', 1,1)
+insert into tblCourse values('COMP1520', 'FPT2014', 'Basic C++', 'mainghia', 'huyhuy', '2014-01-15', '2014-05-06', 'Course of Basic C++', 1,1)
 
 go
 
@@ -68,15 +74,16 @@ create table tblCMR
 cmr_code int primary key references tblCourse(id),
 student_count int,
 comment nvarchar(1000),
+creator nvarchar(50) references tblEmployee(username),
 createDate date,
 [status] int,
 cmtstatus int
 )
 
 go
-Insert into tblCMR values(7,25,'Most students passed the course with high grade','2014-05-07',0,0)
-Insert into tblCMR values(8,30,'Most students did not pass the course with high grade','2014-05-10',0,0)
-Insert into tblCMR values(9,30,'Most students did not passed the course with high grade','2014-05-08',0,0)
+Insert into tblCMR values(7,25,'Most students passed the course with high grade','mainghia','2014-05-07',0,0)
+Insert into tblCMR values(8,30,'Most students did not pass the course with high grade','maimai','2014-05-10',0,0)
+Insert into tblCMR values(9,30,'Most students did not passed the course with high grade','mainghia','2014-05-08',0,0)
 
 go
 create table tblStaticalData
@@ -161,7 +168,7 @@ create procedure getCMRDetail
 @cmr_code int
 as
 begin
-select cmr_code, course_title, fullname, student_count, comment,tblCMR.createDate, tblCMR.[status], tblCMR.[cmtstatus],tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
+select cmr_code, course_title, fullname, student_count, comment, creator,tblCMR.createDate, tblCMR.[status], tblCMR.[cmtstatus],tblStaticalData.id_mark as staticalData_id_mark, mean, median, standard_deviation, tblGradeData.id_mark, mark0,
 mark1, mark2, mark3, mark4, mark5, mark6, mark7, mark8, mark9 from tblCMR inner join tblStaticalData on 
 tblCMR.cmr_code = tblStaticalData.cmr_id inner join tblGradeData on tblCMR.cmr_code = tblGradeData.cmr_id
 inner join tblCourse on tblCMR.cmr_code = tblCourse.id inner join tblEmployee on tblCourse.course_leader = tblEmployee.username
@@ -186,7 +193,7 @@ create procedure getCMRCompletedByFacultyByYear
 as
 begin
 SELECT COUNT(*) AS countNum FROM 
-(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where cmr.cmtstatus = 1 and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
+(select  cmr_code, student_count, comment, creator, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id  where cmr.cmtstatus = 1 and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
 ) AS CompletedCMR
 end
 Go
@@ -199,7 +206,7 @@ create procedure getAllCMRByFacultyByYear
 as
 begin
 SELECT COUNT(*) AS countNum FROM 
-(select  cmr_code, student_count, comment, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
+(select  cmr_code, student_count, comment, creator, cmr.[status],cmr.[cmtstatus],c.course_code,c.course_title,c.course_faculty, c.start_date, c.end_date from tblCMR cmr inner join tblCourse c on cmr.cmr_code = c.id and c.course_faculty = @facultyCode and c.end_date >= @year and c.end_date < @year2
 ) AS CompletedCMR
 end
 

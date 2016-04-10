@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.entity.CMR;
@@ -373,13 +374,14 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("insert into tblCMR values(?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into tblCMR values(?,?,?,?,?,?,?)");
             ps.setInt(1, c.getCmr_code());
             ps.setInt(2, c.getStudent_count());
             ps.setString(3, c.getComment());
-            ps.setTimestamp(4, c.getCreateDate());
-            ps.setInt(5, c.getAppstatus());
-            ps.setInt(6, c.getCmtstatus());
+            ps.setString(4, c.getCreator());
+            ps.setTimestamp(5, c.getCreateDate());
+            ps.setInt(6, c.getAppstatus());
+            ps.setInt(7, c.getCmtstatus());
             int result = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -439,6 +441,7 @@ public class CMRManager {
                 cmrDetail.setFullname(rs.getString("fullname"));
                 cmrDetail.setStudent_count(rs.getInt("student_count"));
                 cmrDetail.setComment(rs.getString("comment"));
+                cmrDetail.setCreator(rs.getString("creator"));
                 cmrDetail.setCreateDate(rs.getDate("createDate"));
                 cmrDetail.setAppStatus(rs.getInt("status"));
                 cmrDetail.setCmtStatus(rs.getInt("cmtstatus"));
@@ -519,6 +522,25 @@ public class CMRManager {
         }
     }
 
+    public int getNoOfCompletedCMRByFacultyByYearTS(Timestamp year1, Timestamp year2, String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getCMRCompletedByFacultyByYear ?,?,?");
+            ps.setTimestamp(1, year1);
+            ps.setTimestamp(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     public int getNoOfCompletedCMRByFacultyByYear(String year1, String year2, String facultyCode) {
         int result = 0;
         SqlConnection sql = new SqlConnection();
@@ -538,6 +560,25 @@ public class CMRManager {
         return result;
     }
 
+    public int getNoOfCMRByFacultyByYearTS(Timestamp year1, Timestamp year2, String facultyCode) {
+        int result = 0;
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("exec getAllCMRByFacultyByYear ?,?,?");
+            ps.setTimestamp(1, year1);
+            ps.setTimestamp(2, year2);
+            ps.setString(3, facultyCode);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt("countNum");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     public int getNoOfCMRByFacultyByYear(String year1, String year2, String facultyCode) {
         int result = 0;
         SqlConnection sql = new SqlConnection();

@@ -18,6 +18,7 @@ public class CMR_Detail {
     private String fullname;
     private int student_count;
     private String comment;
+    private String creator;
     private Date createDate;
     private int appStatus;
     private int cmtStatus;
@@ -37,12 +38,13 @@ public class CMR_Detail {
     private int mark8;
     private int mark9;
 
-    public CMR_Detail(int cmr_code, String courseTitle, String fullname, int student_count, String comment, Date createDate, int appStatus, int cmtStatus, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
+    public CMR_Detail(int cmr_code, String courseTitle, String fullname, int student_count, String comment, String creator, Date createDate, int appStatus, int cmtStatus, int staticalData_id_mark, int mean, float median, int standard_deviation, int id_mark, int mark0, int mark1, int mark2, int mark3, int mark4, int mark5, int mark6, int mark7, int mark8, int mark9) {
         this.cmr_code = cmr_code;
         this.courseTitle = courseTitle;
         this.fullname = fullname;
         this.student_count = student_count;
         this.comment = comment;
+        this.creator = creator;
         this.createDate = createDate;
         this.appStatus = appStatus;
         this.cmtStatus = cmtStatus;
@@ -63,7 +65,13 @@ public class CMR_Detail {
         this.mark9 = mark9;
     }
 
-   
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
 
     public Date getCreateDate() {
         return createDate;

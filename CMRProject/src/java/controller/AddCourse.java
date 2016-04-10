@@ -59,12 +59,10 @@ public class AddCourse extends HttpServlet {
             String startDate = request.getParameter("startDate");
             Date startDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
             startDate2 = new Timestamp(startDate1.getTime());
-//            java.sql.Date startDateSQL = new java.sql.Date(startDate1.getTime());
 
             String endDate = request.getParameter("endDate");
             Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
             endDate2 = new Timestamp(endDate1.getTime());
-//            java.sql.Date endDateSQL = new java.sql.Date(endDate1.getTime());
 
             String courseLeader = request.getParameter("courseLeader");
             String courseMod = request.getParameter("courseModerator");

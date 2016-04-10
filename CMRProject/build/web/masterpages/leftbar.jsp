@@ -38,13 +38,7 @@
                         </a>
                     </div>
 
-                    <ul class="nav">
-                        <li id="home">
-                            <a href="Login">
-                                <i class="pe-7s-home"></i>
-                                <p>Home</p>
-                            </a>
-                        </li>
+                    <ul class="nav">                        
                         <li id="faculty">
                             <a href="GetAllUserAndFaculty">
                                 <i class="pe-7s-study"></i>
