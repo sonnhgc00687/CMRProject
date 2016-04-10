@@ -55,7 +55,7 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
+
     public List<CMR> getAllCMRByFaculty(String facultyCode) {
         SqlConnection sql = new SqlConnection();
         try {
@@ -107,8 +107,8 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
-     public List<CMR> getAllApprovedCMRByFaculty(String facultyCode) {
+
+    public List<CMR> getAllApprovedCMRByFaculty(String facultyCode) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -133,7 +133,7 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
+
     public List<CMR> getAllCommentedCMR() {
         SqlConnection sql = new SqlConnection();
         try {
@@ -185,8 +185,8 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
-    public List<CMR> getAllNotApprovedCMRbyLeaderByFaculty(String username,String facultyCode) {
+
+    public List<CMR> getAllNotApprovedCMRbyLeaderByFaculty(String username, String facultyCode) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -212,8 +212,8 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
-     public List<CMR> getAllApprovedCMRbyLeader(String username) {
+
+    public List<CMR> getAllApprovedCMRbyLeader(String username) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -264,8 +264,8 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
-     public List<CMR> getAllNotApprovedCMRbyModByFaculty(String username,String facultyCode) {
+
+    public List<CMR> getAllNotApprovedCMRbyModByFaculty(String username, String facultyCode) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -291,7 +291,7 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
+
     public List<CMR> getAllcommentedCMRbyLeader(String username) {
         SqlConnection sql = new SqlConnection();
         try {
@@ -317,7 +317,7 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
+
     public List<CMR> getAllApprovedCMRbyMod(String username) {
         SqlConnection sql = new SqlConnection();
         try {
@@ -343,7 +343,7 @@ public class CMRManager {
         }
         return cmrList;
     }
-    
+
     public List<CMR> getAllCommentedCMRbyMod(String username) {
         SqlConnection sql = new SqlConnection();
         try {
@@ -522,6 +522,23 @@ public class CMRManager {
         }
     }
 
+    public String findCommentCMR(int cmrCode) {
+        SqlConnection sql = new SqlConnection();
+        String comment = "";
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select * from tblComment where cmr_code = ?");
+            ps.setInt(1, cmrCode);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                comment = rs.getString("comment");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return comment;
+    }
+
     public int getNoOfCompletedCMRByFacultyByYearTS(Timestamp year1, Timestamp year2, String facultyCode) {
         int result = 0;
         SqlConnection sql = new SqlConnection();
@@ -540,7 +557,7 @@ public class CMRManager {
         }
         return result;
     }
-    
+
     public int getNoOfCompletedCMRByFacultyByYear(String year1, String year2, String facultyCode) {
         int result = 0;
         SqlConnection sql = new SqlConnection();
@@ -578,7 +595,7 @@ public class CMRManager {
         }
         return result;
     }
-    
+
     public int getNoOfCMRByFacultyByYear(String year1, String year2, String facultyCode) {
         int result = 0;
         SqlConnection sql = new SqlConnection();

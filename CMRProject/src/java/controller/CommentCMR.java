@@ -80,9 +80,9 @@ public class CommentCMR extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String commentOfDLT = request.getParameter("DLTcomment");
+        String commentOfDLT = request.getParameter("comment");
         String userName = (String) session.getAttribute("userSession");
-        int cmr_code = Integer.parseInt(request.getParameter("cmr_code"));
+        int cmr_code = Integer.parseInt(request.getParameter("id"));
         CMRManager cm = new CMRManager();
         cm.CommentCMR(cmr_code);
         cm.addDLTComment(cmr_code, commentOfDLT);

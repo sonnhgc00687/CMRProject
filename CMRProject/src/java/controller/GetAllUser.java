@@ -66,24 +66,30 @@ public class GetAllUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String fullname = request.getParameter("fullname");
-        int role = Integer.valueOf(request.getParameter("role"));
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String repassword = request.getParameter("repassword");
-        UserManager manager = new UserManager();
-        if (password.equals(repassword)) {
-            request.setAttribute("message", "");
-            manager.createUser(username, password, fullname, email, role);
-        } else {
-            request.setAttribute("username", username);
-            request.setAttribute("fullname", fullname);
-            request.setAttribute("role", role);
-            request.setAttribute("email", email);
-            request.setAttribute("message", "Confirm Password is not correct!");
+        try {
+            String username = request.getParameter("username");
+            String fullname = request.getParameter("fullname");
+            int role = Integer.valueOf(request.getParameter("role"));
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String repassword = request.getParameter("repassword");
+            UserManager manager = new UserManager();
+            if (password.equals(repassword)) {
+                request.setAttribute("message", "");
+                manager.createUser(username, password, fullname, email, role);
+            } else {
+                request.setAttribute("username", username);
+                request.setAttribute("fullname", fullname);
+                request.setAttribute("role", role);
+                request.setAttribute("email", email);
+                request.setAttribute("message", "Confirm Password is not correct!");
+            }
+            getAllStaff(request, response);
+        } catch (Exception e) {
+            String errorMessage = "An error has occured. Add staff failed. Please try again";
+            getAllStaff(request, response);
         }
-        getAllStaff(request, response);
+
     }
 
     /**
@@ -96,7 +102,6 @@ public class GetAllUser extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
     public void getAllStaff(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<User> users = new ArrayList<>();
@@ -118,7 +123,7 @@ public class GetAllUser extends HttpServlet {
                 } else if (users.get(i).getRole() == 0) {
                     users.get(i).setRoleName("Administrator");
                 }
-                
+
             }
 
             request.setAttribute("leader", leader);

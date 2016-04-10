@@ -177,7 +177,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Comment</label>
-                                                <textarea rows="5" class="form-control" name="comment" ng-disabled="${userRole} != 4 && ${commentStatus} != 1"></textarea>
+                                                <textarea rows="5" class="form-control" name="DLTcomment" ng-disabled="${userRole} != 4 && ${commentStatus} != 1">${DLTcomment}</textarea>
                                                 </textarea>
                                             </div>
                                         </div>
@@ -185,9 +185,11 @@
                                 </div>
                             </div>
                         </div>
-                                                
-                        <input type="submit" class="" id="btnApprove" value="APPROVE" ng-if="${userRole} == 2" style="display: none">
 
+                        <input type="submit" class="" id="btnApprove" name="btnApprove" value="APPROVE" ng-if="${userRole} == 2" style="display: none">
+                        
+                        <input type="submit" class="" id="btnComment" name="btnComment" value="Comment" ng-if="${userRole} == 4" style="display: none">
+                        
                         <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 2" style="float: right">
                             <div ng-click="approveCmr()" id="btnAssign" class="card">
                                 <div class="header">
@@ -197,7 +199,7 @@
                         </div>
 
                         <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 4">
-                            <div ng-click="" id="btnAssign" class="card" style="display: block">
+                            <div ng-click="commentCmr()" id="btnAssign" class="card" style="display: block">
                                 <div class="header">
                                     <h4 class="title">RESPOND</h4>
                                     <p class="category"></p>

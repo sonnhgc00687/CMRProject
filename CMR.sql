@@ -38,6 +38,7 @@ faculty_dlt nvarchar(50) references tblEmployee(username),
 [end_date] date,
 [status] int
 )
+select * from tblFaculty
 go
 insert into tblFaculty values('FPT2016', 'Honours Programme', 'pvc', 'dlt','2016-01-01', '2016-12-31', 1)
 insert into tblFaculty values('FPT2015', 'Top-Up Programme', 'ducphuc', 'hoangha','2015-01-01', '2015-12-31', 1)
@@ -141,7 +142,8 @@ create table tblComment
 cmr_code int primary key references tblCMR(cmr_code),
 comment nvarchar(1000),
 )
-
+go
+select * from tblComment
 Go
 
 create procedure getCourseDetail 

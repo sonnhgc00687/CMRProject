@@ -74,6 +74,7 @@ public class Login extends HttpServlet {
 //            request.getRequestDispatcher("home.jsp").forward(request, response);
 //        }
         HttpSession session = request.getSession();
+        String errorMessage = "Your ID or Password was incorrect. Please try again";
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         EncryptPassword encrypt = new EncryptPassword();
@@ -117,7 +118,8 @@ public class Login extends HttpServlet {
             request.setAttribute("username", username);
             request.getRequestDispatcher("faculty.jsp").forward(request, response);
         } else {
-            System.out.println("Fail");
+            request.setAttribute("message", errorMessage);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

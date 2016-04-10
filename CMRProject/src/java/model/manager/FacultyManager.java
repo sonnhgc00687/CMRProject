@@ -8,6 +8,7 @@ package model.manager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.entity.Faculty;
@@ -17,6 +18,7 @@ import model.entity.Faculty;
  * @author Phuc
  */
 public class FacultyManager {
+
     Faculty faculty = new Faculty();
     List<Faculty> facultyList = new ArrayList<>();
     SqlConnection sql = new SqlConnection();
@@ -63,7 +65,7 @@ public class FacultyManager {
         }
         return faculty;
     }
-    
+
     public Faculty getFacultyByTitle(String faculty_title) {
         try {
             Connection conn = sql.connectSql();
@@ -83,5 +85,23 @@ public class FacultyManager {
             e.printStackTrace();
         }
         return faculty;
+    }
+
+    public void addFaculty(String facultyCode, String facultyTitle, Timestamp startDate, Timestamp endDate, String pvc, String dlt) {
+
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("insert into tblFaculty values(?,?,?,?,?,?,1)");
+            ps.setString(1, facultyCode);
+            ps.setString(2, facultyTitle);
+            ps.setString(3, pvc);
+            ps.setString(4, dlt);
+            ps.setTimestamp(5, startDate);
+            ps.setTimestamp(6, endDate);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

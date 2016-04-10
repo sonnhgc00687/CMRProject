@@ -7,7 +7,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +40,7 @@ public class GetAllUserAndFaculty extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,25 +61,25 @@ public class GetAllUserAndFaculty extends HttpServlet {
         List<User> pvcList = new ArrayList<>();
         List<User> dltList = new ArrayList<>();
         List<Faculty> facultyList = new ArrayList<>();
-        
+
         UserManager userManager = new UserManager();
         allUser = userManager.getAllUsers();
-        
+
         FacultyManager facultyManager = new FacultyManager();
         facultyList = facultyManager.getAllFaculty();
-        
+
         for (User user : allUser) {
-            if(user.getRole() == 1){
+            if (user.getRole() == 1) {
                 leader.add(user);
-            }else if(user.getRole() == 2){
+            } else if (user.getRole() == 2) {
                 moderator.add(user);
-            }else if(user.getRole() == 3){
+            } else if (user.getRole() == 3) {
                 pvcList.add(user);
-            }else if(user.getRole() == 4){
+            } else if (user.getRole() == 4) {
                 dltList.add(user);
             }
         }
-        
+
         request.setAttribute("leader", leader);
         request.setAttribute("moderator", moderator);
         request.setAttribute("pvcList", pvcList);
@@ -96,7 +99,89 @@ public class GetAllUserAndFaculty extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            String facultyCode = request.getParameter("facultyCode");
+            String facultyTitle = request.getParameter("facultyTitle");
+            String startDate = request.getParameter("startDate");
+            Date startDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            java.sql.Timestamp startDate2 = new Timestamp(startDate1.getTime());
+
+            String endDate = request.getParameter("endDate");
+            Date endDate1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+            java.sql.Timestamp endDate2 = new Timestamp(endDate1.getTime());
+
+            String pvc = request.getParameter("pvc");
+            String dlt = request.getParameter("dlt");
+
+            FacultyManager fm = new FacultyManager();
+            fm.addFaculty(facultyCode, facultyTitle, startDate2, endDate2, pvc, dlt);
+            List<User> allUser = new ArrayList<>();
+            List<User> leader = new ArrayList<>();
+            List<User> moderator = new ArrayList<>();
+            List<User> pvcList = new ArrayList<>();
+            List<User> dltList = new ArrayList<>();
+            List<Faculty> facultyList = new ArrayList<>();
+
+            UserManager userManager = new UserManager();
+            allUser = userManager.getAllUsers();
+
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();
+
+            for (User user : allUser) {
+                if (user.getRole() == 1) {
+                    leader.add(user);
+                } else if (user.getRole() == 2) {
+                    moderator.add(user);
+                } else if (user.getRole() == 3) {
+                    pvcList.add(user);
+                } else if (user.getRole() == 4) {
+                    dltList.add(user);
+                }
+            }
+
+            request.setAttribute("leader", leader);
+            request.setAttribute("moderator", moderator);
+            request.setAttribute("pvcList", pvcList);
+            request.setAttribute("dltList", dltList);
+            request.setAttribute("facultyList", facultyList);
+            request.getRequestDispatcher("faculty.jsp").forward(request, response);
+        } catch (Exception e) {
+            String errorMessage = "An error has occured. Add Faculty failed. Please try again";
+            List<User> allUser = new ArrayList<>();
+            List<User> leader = new ArrayList<>();
+            List<User> moderator = new ArrayList<>();
+            List<User> pvcList = new ArrayList<>();
+            List<User> dltList = new ArrayList<>();
+            List<Faculty> facultyList = new ArrayList<>();
+
+            UserManager userManager = new UserManager();
+            allUser = userManager.getAllUsers();
+
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();
+
+            for (User user : allUser) {
+                if (user.getRole() == 1) {
+                    leader.add(user);
+                } else if (user.getRole() == 2) {
+                    moderator.add(user);
+                } else if (user.getRole() == 3) {
+                    pvcList.add(user);
+                } else if (user.getRole() == 4) {
+                    dltList.add(user);
+                }
+            }
+
+            request.setAttribute("leader", leader);
+            request.setAttribute("moderator", moderator);
+            request.setAttribute("pvcList", pvcList);
+            request.setAttribute("dltList", dltList);
+            request.setAttribute("facultyList", facultyList);
+            request.setAttribute("message", errorMessage);
+            request.getRequestDispatcher("faculty.jsp").forward(request, response);
+        }
+
     }
 
     /**

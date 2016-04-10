@@ -4,22 +4,22 @@ app.controller('myCtrl', function ($scope) {
     var url = document.URL;
     if (searchURL("Login")) {
         $("#home").addClass("active");
-    }else if (searchURL("GetAllUserAndFaculty")) {
+    } else if (searchURL("GetAllUserAndFaculty")) {
         $("#faculty").addClass("active");
-    }else if (searchURL("GetAllCourse")|| searchURL("GetCourseDetail")) {
+    } else if (searchURL("GetAllCourse") || searchURL("GetCourseDetail")) {
         $("#course").addClass("active");
-    }else if (searchURL("GetAllCMR") || searchURL("GetCMRDetail") || searchURL("AddCMR")) {
+    } else if (searchURL("GetAllCMR") || searchURL("GetCMRDetail") || searchURL("AddCMR")) {
         $("#cmr").addClass("active");
-    }else if (searchURL("GetAllUser")) {
+    } else if (searchURL("GetAllUser")) {
         $("#staff").addClass("active");
-    }else if (searchURL("StatisticalReport")) {
+    } else if (searchURL("StatisticalReport")) {
         $("#report").addClass("active");
     }
-    
-    function searchURL(link){
-        if(url.indexOf(link) > 0){
+
+    function searchURL(link) {
+        if (url.indexOf(link) > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -59,11 +59,18 @@ app.controller('myCtrl', function ($scope) {
         $("#addAccount").click();
     };
 
+    $scope.addFaculty = function () {
+        $("#btnFaculty").click();
+    };
+    $scope.commentCmr = function () {
+        $("#btnComment").click();
+    };
+
     $scope.approveCmr = function () {
         $("#btnApprove").click();
     };
-    
-    $scope.createCmr = function (){
+
+    $scope.createCmr = function () {
         $("#btnCreateCmr").click();
     };
 

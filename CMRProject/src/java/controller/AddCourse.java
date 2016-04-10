@@ -48,6 +48,7 @@ public class AddCourse extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String errorMessage = "An error has occured. Add Course failed. Please try again";
         try {
             HttpSession session = request.getSession();
 
@@ -105,7 +106,31 @@ public class AddCourse extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            List<User> allUser = new ArrayList<>();
+            List<User> leader = new ArrayList<>();
+            List<User> moderator = new ArrayList<>();
+            List<Faculty> facultyList = new ArrayList<>();
+
+            UserManager userManager = new UserManager();
+            allUser = userManager.getAllUsers();
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();
+
+            for (User user : allUser) {
+                if (user.getRole() == 1) {
+                    leader.add(user);
+                } else if (user.getRole() == 2) {
+                    moderator.add(user);
+                }
+            }
+            CourseManager cm = new CourseManager();
+            courseList = cm.getAllCourse();
+            request.setAttribute("leader", leader);
+            request.setAttribute("moderator", moderator);
+            request.setAttribute("facultyList", facultyList);
+            request.setAttribute("courseList", courseList);
+            request.setAttribute("message", errorMessage);
+            request.getRequestDispatcher("course.jsp").forward(request, response);
         }
 
     }

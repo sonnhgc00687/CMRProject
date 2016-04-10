@@ -99,7 +99,6 @@
 
 
                             <input id="addAccount" type="submit" value="Add Account" style="display: none" />
-                            <a style="color: red">${message}</a>
                             <div class="clearfix"></div>
                         </div>
                     </div>

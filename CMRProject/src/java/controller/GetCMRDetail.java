@@ -39,6 +39,8 @@ public class GetCMRDetail extends HttpServlet {
             throws ServletException, IOException {
         int courseID = Integer.valueOf(request.getParameter("courseID"));
         CMRManager cmrManage = new CMRManager();
+        String DltComment = cmrManage.findCommentCMR(courseID);
+        request.setAttribute("DLTcomment", DltComment);
         cmrDetail = cmrManage.getCMRDetailByCode(courseID);
         int i = 0;
         for (CMR_Detail cmr_Detail : cmrDetail) {

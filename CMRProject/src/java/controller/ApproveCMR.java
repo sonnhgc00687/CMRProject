@@ -79,14 +79,38 @@ public class ApproveCMR extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String userName = (String) session.getAttribute("userSession");
-        int cmr_code = Integer.parseInt(request.getParameter("id"));
-        CMRManager cm = new CMRManager();
-        cm.ApproveCMR(cmr_code);
-        listCMR = cm.getAllNotApprovedCMRbyMod(userName);
-        request.setAttribute("listCMR", listCMR);
-        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+        if (request.getParameter("btnComment") != null) {
+            HttpSession session = request.getSession();
+            String commentOfDLT = request.getParameter("DLTcomment");
+            String userName = (String) session.getAttribute("userSession");
+            int cmr_code = Integer.parseInt(request.getParameter("id"));
+            CMRManager cm = new CMRManager();
+            cm.CommentCMR(cmr_code);
+            cm.addDLTComment(cmr_code, commentOfDLT);
+            listCMR = cm.getAllCommentedCMR();
+            request.setAttribute("listCMR", listCMR);
+            request.getRequestDispatcher("cmr.jsp").forward(request, response);
+        } else {
+            try {
+                HttpSession session = request.getSession();
+                String userName = (String) session.getAttribute("userSession");
+                int cmr_code = Integer.parseInt(request.getParameter("id"));
+                CMRManager cm = new CMRManager();
+                cm.ApproveCMR(cmr_code);
+                listCMR = cm.getAllNotApprovedCMRbyMod(userName);
+                request.setAttribute("listCMR", listCMR);
+                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+            } catch (Exception e) {
+                CMRManager cm = new CMRManager();
+                HttpSession session = request.getSession();
+                String userName = (String) session.getAttribute("userSession");
+                String errorMessage = "An error has occured. Approve CMR failed. Please try again";
+                listCMR = cm.getAllNotApprovedCMRbyMod(userName);
+                request.setAttribute("message", errorMessage);
+                request.setAttribute("listCMR", listCMR);
+                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+            }
+        }
 
     }
 

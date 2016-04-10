@@ -23,9 +23,13 @@ import model.entity.CMR_Detail;
 import model.entity.CMR_GradeData;
 import model.entity.CMR_StaticalData;
 import model.entity.Course;
+import model.entity.Faculty;
+import model.entity.User;
 import model.manager.CMRManager;
 import model.manager.CourseManager;
 import model.manager.EmailSending;
+import model.manager.FacultyManager;
+import model.manager.UserManager;
 
 /**
  *
@@ -33,6 +37,9 @@ import model.manager.EmailSending;
  */
 @WebServlet(name = "AddCMR", urlPatterns = {"/AddCMR"})
 public class AddCMR extends HttpServlet {
+
+    private List<CMR> listCMR = new ArrayList<>();
+    private List<Course> courseList = new ArrayList<>();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -84,9 +91,10 @@ public class AddCMR extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String errorMessage = "An error has occured. Submit CMR failed. Please try again.";
         try {
             HttpSession session = request.getSession();
+
             String creator = (String) session.getAttribute("userSession");
             int id = Integer.parseInt(request.getParameter("id"));
             int studentCount = Integer.parseInt(request.getParameter("studentCount"));
@@ -133,9 +141,415 @@ public class AddCMR extends HttpServlet {
             for (String emailItem : emailList) {
 //                email.generateAndSendEmail(emailItem, "", "", "", "A new CMR has been add. Please comfirm it.");
             }
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            String filter = request.getParameter("filter");
+            String filterFaculty = request.getParameter("filterFaculty");
+            FacultyManager facultyManager = new FacultyManager();
+            Faculty faculty = facultyManager.getFacultyByCode(filterFaculty);
+            request.setAttribute("filter", filter);
+            request.setAttribute("facultyName", faculty.getFacultyTitle());
+            CMRManager cmrManager = new CMRManager();
+            String userName = (String) session.getAttribute("userSession");
+            int userRole = (int) session.getAttribute("userRole");
+            if (filterFaculty != null) {
+                switch (userRole) {
+                    case 0:
+                        listCMR = cmrManager.getAllCMRByFaculty(filterFaculty);
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 1:
+                        listCMR = cmrManager.getAllNotApprovedCMRbyLeaderByFaculty(userName, filterFaculty);
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 2:
+                        listCMR = cmrManager.getAllNotApprovedCMRbyModByFaculty(userName, filterFaculty);
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 3:
+                        listCMR = cmrManager.getAllApprovedCMRByFaculty(filterFaculty);
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    case 4:
+                        listCMR = cmrManager.getAllApprovedCMRByFaculty(filterFaculty);
+                        request.setAttribute("listCMR", listCMR);
+                        request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                if (filter == null) {
+                    switch (userRole) {
+                        case 0:
+                            listCMR = cmrManager.getAllCMR();
+                            request.setAttribute("listCMR", listCMR);
+                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                            break;
+                        case 1:
+                            listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
+                            request.setAttribute("listCMR", listCMR);
+                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                            break;
+                        case 2:
+                            listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
+                            request.setAttribute("listCMR", listCMR);
+                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                            break;
+                        case 3:
+                            listCMR = cmrManager.getAllApprovedCMR();
+                            request.setAttribute("listCMR", listCMR);
+                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                            break;
+                        case 4:
+                            listCMR = cmrManager.getAllApprovedCMR();
+                            request.setAttribute("listCMR", listCMR);
+                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    switch (userRole) {
+                        case 0:
+                            switch (filter) {
+                                case "approved":
+                                    listCMR = cmrManager.getAllApprovedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "commented":
+                                    listCMR = cmrManager.getAllCommentedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    listCMR = cmrManager.getAllCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    listCMR = cmrManager.getAllCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                            }
+                        case 1:
+                            switch (filter) {
+                                case "commented":
+                                    listCMR = cmrManager.getAllcommentedCMRbyLeader(userName);
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    listCMR = cmrManager.getAllNotApprovedCMRbyLeader(userName);
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                            }
+                        case 2:
+                            switch (filter) {
+                                case "approved":
+                                    listCMR = cmrManager.getAllApprovedCMRbyMod(userName);
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "commented":
+                                    listCMR = cmrManager.getAllCommentedCMRbyMod(userName);
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    listCMR = cmrManager.getAllNotApprovedCMRbyMod(userName);
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                            }
+
+                        case 3:
+                            switch (filter) {
+                                case "approved":
+                                    listCMR = cmrManager.getAllApprovedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "commented":
+                                    listCMR = cmrManager.getAllCommentedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    listCMR = cmrManager.getAllApprovedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    listCMR = cmrManager.getAllApprovedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                            }
+                        case 4:
+                            switch (filter) {
+                                case "approved":
+                                    listCMR = cmrManager.getAllApprovedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "commented":
+                                    listCMR = cmrManager.getAllCommentedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    listCMR = cmrManager.getAllApprovedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    listCMR = cmrManager.getAllApprovedCMR();
+                                    request.setAttribute("listCMR", listCMR);
+                                    request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                    break;
+                            }
+                        default:
+                            request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                            break;
+                    }
+                }
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            HttpSession session = request.getSession();
+            request.setAttribute("message", errorMessage);
+            String filter = request.getParameter("filter");
+            String filterFaculty = request.getParameter("filterFaculty");
+            String userName = (String) session.getAttribute("userSession");
+            int userRole = (int) session.getAttribute("userRole");
+            CourseManager cm = new CourseManager();
+
+            List<User> allUser = new ArrayList<>();
+            List<User> leader = new ArrayList<>();
+            List<User> moderator = new ArrayList<>();
+            List<Faculty> facultyList = new ArrayList<>();
+            UserManager userManager = new UserManager();
+            allUser = userManager.getAllUsers();
+            FacultyManager facultyManager = new FacultyManager();
+            facultyList = facultyManager.getAllFaculty();
+            Faculty faculty = facultyManager.getFacultyByCode(filterFaculty);
+            for (User user : allUser) {
+                if (user.getRole() == 1) {
+                    leader.add(user);
+                } else if (user.getRole() == 2) {
+                    moderator.add(user);
+                }
+            }
+
+            request.setAttribute("leader", leader);
+            request.setAttribute("moderator", moderator);
+            request.setAttribute("facultyList", facultyList);
+            request.setAttribute("filter", filter);
+            request.setAttribute("facultyName", faculty.getFacultyTitle());
+            if (filterFaculty != null) {
+                switch (userRole) {
+                    case 0:
+                        courseList = cm.getAllCourseByFaculty(filterFaculty);
+                        request.setAttribute("courseList", courseList);
+                        request.getRequestDispatcher("course.jsp").forward(request, response);
+                        break;
+                    case 1:
+                        courseList = cm.getAllCourseByCourseLeaderByFaculty(userName, filterFaculty);
+                        request.setAttribute("courseList", courseList);
+                        request.getRequestDispatcher("course.jsp").forward(request, response);
+                        break;
+                    case 2:
+                        courseList = cm.getAllCourseByCourseModByFaculty(userName, filterFaculty);
+                        request.setAttribute("courseList", courseList);
+                        request.getRequestDispatcher("course.jsp").forward(request, response);
+                        break;
+                    case 3:
+                        courseList = cm.getAllCourseByFaculty(filterFaculty);
+                        request.setAttribute("courseList", courseList);
+                        request.getRequestDispatcher("course.jsp").forward(request, response);
+                        break;
+
+                    case 4:
+                        courseList = cm.getAllCourseByFaculty(filterFaculty);
+                        request.setAttribute("courseList", courseList);
+                        request.getRequestDispatcher("course.jsp").forward(request, response);
+                        break;
+                    default:
+                        request.getRequestDispatcher("course.jsp").forward(request, response);
+                        break;
+                }
+            } else {
+                if (filter != null) {
+                    switch (userRole) {
+                        case 0:
+                            switch (filter) {
+                                case "noCMR":
+                                    courseList = cm.getAllCourseWithoutCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "CMR":
+                                    courseList = cm.getAllCourseWithCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    courseList = cm.getAllCourse();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    courseList = cm.getAllCourseWithoutCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                            }
+                        case 1:
+                            switch (filter) {
+                                case "noCMR":
+                                    courseList = cm.getAllCourseByCourseLeaderWithoutCMR(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "CMR":
+                                    courseList = cm.getAllCourseByCourseLeaderWithCMR(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    courseList = cm.getAllCourseByCourseLeader(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    courseList = cm.getAllCourseByCourseLeaderWithoutCMR(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                            }
+                        case 2:
+                            switch (filter) {
+                                case "noCMR":
+                                    courseList = cm.getAllCourseByCourseModWithoutCMR(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "CMR":
+                                    courseList = cm.getAllCourseByCourseModWithCMR(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    courseList = cm.getAllCourseByCourseMod(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    courseList = cm.getAllCourseByCourseModWithoutCMR(userName);
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                            }
+
+                        case 3:
+                            switch (filter) {
+                                case "noCMR":
+                                    courseList = cm.getAllCourseWithoutCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "CMR":
+                                    courseList = cm.getAllCourseWithCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    courseList = cm.getAllCourse();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    courseList = cm.getAllCourseWithoutCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                            }
+                        case 4:
+                            switch (filter) {
+                                case "noCMR":
+                                    courseList = cm.getAllCourseWithoutCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "CMR":
+                                    courseList = cm.getAllCourseWithCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                case "all":
+                                    courseList = cm.getAllCourse();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                                default:
+                                    courseList = cm.getAllCourseWithoutCMR();
+                                    request.setAttribute("courseList", courseList);
+                                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                                    break;
+                            }
+                        default:
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                    }
+                } else {
+                    switch (userRole) {
+                        case 0:
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case 1:
+                            courseList = cm.getAllCourseByCourseLeaderWithoutCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case 2:
+                            courseList = cm.getAllCourseByCourseModWithoutCMR(userName);
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        case 3:
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+
+                        case 4:
+                            courseList = cm.getAllCourseWithoutCMR();
+                            request.setAttribute("courseList", courseList);
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                        default:
+                            request.getRequestDispatcher("course.jsp").forward(request, response);
+                            break;
+                    }
+                }
+            }
         }
     }
 
