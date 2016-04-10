@@ -47,6 +47,7 @@ public class GetCMRDetail extends HttpServlet {
             request.setAttribute("courseTitle", cmr_Detail.getCourseTitle());
             request.setAttribute("courseLeader", cmr_Detail.getFullname());
             request.setAttribute("createDate", cmr_Detail.getCreateDate());
+            request.setAttribute("creator", cmr_Detail.getCreator());
             request.setAttribute("comment", cmr_Detail.getComment());
             request.setAttribute("commentStatus", cmr_Detail.getCmtStatus());
             request.setAttribute("studentCount", cmr_Detail.getStudent_count());

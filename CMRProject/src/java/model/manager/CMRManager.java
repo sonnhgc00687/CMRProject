@@ -374,13 +374,14 @@ public class CMRManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("insert into tblCMR values(?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into tblCMR values(?,?,?,?,?,?,?)");
             ps.setInt(1, c.getCmr_code());
             ps.setInt(2, c.getStudent_count());
             ps.setString(3, c.getComment());
-            ps.setTimestamp(4, c.getCreateDate());
-            ps.setInt(5, c.getAppstatus());
-            ps.setInt(6, c.getCmtstatus());
+            ps.setString(4, c.getCreator());
+            ps.setTimestamp(5, c.getCreateDate());
+            ps.setInt(6, c.getAppstatus());
+            ps.setInt(7, c.getCmtstatus());
             int result = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -440,6 +441,7 @@ public class CMRManager {
                 cmrDetail.setFullname(rs.getString("fullname"));
                 cmrDetail.setStudent_count(rs.getInt("student_count"));
                 cmrDetail.setComment(rs.getString("comment"));
+                cmrDetail.setCreator(rs.getString("creator"));
                 cmrDetail.setCreateDate(rs.getDate("createDate"));
                 cmrDetail.setAppStatus(rs.getInt("status"));
                 cmrDetail.setCmtStatus(rs.getInt("cmtstatus"));

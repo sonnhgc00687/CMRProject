@@ -41,6 +41,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -48,7 +49,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByFaculty(String facultyCode) {
         SqlConnection sql = new SqlConnection();
 
@@ -67,6 +68,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -74,8 +76,8 @@ public class CourseManager {
         }
         return courseList;
     }
-    
-     public List<Course> getAllCourseWithCMR() {
+
+    public List<Course> getAllCourseWithCMR() {
         SqlConnection sql = new SqlConnection();
 
         try {
@@ -92,6 +94,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -99,8 +102,8 @@ public class CourseManager {
         }
         return courseList;
     }
-    
-      public List<Course> getAllCourseWithoutCMR() {
+
+    public List<Course> getAllCourseWithoutCMR() {
         SqlConnection sql = new SqlConnection();
 
         try {
@@ -117,6 +120,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -144,6 +148,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -170,6 +175,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -177,8 +183,8 @@ public class CourseManager {
         }
         return courseList;
     }
-    
-    public List<Course> getAllCourseByCourseLeaderByFaculty(String course_leader,String facultyCode) {
+
+    public List<Course> getAllCourseByCourseLeaderByFaculty(String course_leader, String facultyCode) {
         SqlConnection sql = new SqlConnection();
 
         try {
@@ -197,6 +203,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -204,7 +211,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByCourseLeaderWithCMR(String course_leader) {
         SqlConnection sql = new SqlConnection();
 
@@ -223,6 +230,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -230,7 +238,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByCourseLeaderWithoutCMR(String course_leader) {
         SqlConnection sql = new SqlConnection();
 
@@ -249,6 +257,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -275,6 +284,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -282,8 +292,8 @@ public class CourseManager {
         }
         return courseList;
     }
-    
-     public List<Course> getAllCourseByCourseModByFaculty(String course_mod, String facultyCode) {
+
+    public List<Course> getAllCourseByCourseModByFaculty(String course_mod, String facultyCode) {
         SqlConnection sql = new SqlConnection();
 
         try {
@@ -302,6 +312,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -309,7 +320,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByCourseModWithCMR(String course_mod) {
         SqlConnection sql = new SqlConnection();
 
@@ -328,6 +339,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -335,7 +347,7 @@ public class CourseManager {
         }
         return courseList;
     }
-    
+
     public List<Course> getAllCourseByCourseModWithoutCMR(String course_mod) {
         SqlConnection sql = new SqlConnection();
 
@@ -354,6 +366,7 @@ public class CourseManager {
                 c.setCourseStarted(rs.getDate("start_date"));
                 c.setCourseFinished(rs.getDate("end_date"));
                 c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
                 courseList.add(c);
             }
         } catch (Exception e) {
@@ -366,7 +379,7 @@ public class CourseManager {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("insert into tblCourse values(?,?,?,?,?,?,?,?,1)");
+            PreparedStatement ps = conn.prepareStatement("insert into tblCourse values(?,?,?,?,?,?,?,?,1,0)");
             ps.setString(1, courseCode);
             ps.setString(2, courseFaculty);
             ps.setString(3, courseTitle);
@@ -470,7 +483,7 @@ public class CourseManager {
     }
 
     public List<CountCourse> getNoOfCourseByFaculty() {
-        SqlConnection sql = new SqlConnection();        
+        SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("exec getNumberOfCourseByFaculty");
@@ -499,13 +512,13 @@ public class CourseManager {
             e.printStackTrace();
         }
     }
-    
+
     public void updateCourse(String courseTitle, String courseLeader, String courseMod, Timestamp startDate, Timestamp endDate, String description, String courseCode) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("Update tblCourse set course_title = ?, course_leader = ?, course_mod = ?,[start_date] = ?, [end_date] = ?, description = ? where course_code = ?");
-            ps.setString(1,courseTitle);
+            ps.setString(1, courseTitle);
             ps.setString(2, courseLeader);
             ps.setString(3, courseMod);
             ps.setTimestamp(4, startDate);
@@ -517,7 +530,19 @@ public class CourseManager {
             e.printStackTrace();
         }
     }
-    
+
+    public void addCMRtoCourse(int id) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Update tblCourse set cmrstatus = 1 where id = ?");
+            ps.setInt(1, id);
+            int result = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void deleteCourse(String courseCode) {
         SqlConnection sql = new SqlConnection();
         try {
@@ -529,5 +554,5 @@ public class CourseManager {
             e.printStackTrace();
         }
     }
-    
+
 }

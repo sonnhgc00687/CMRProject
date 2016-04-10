@@ -23,6 +23,7 @@ public class Course {
     private Date courseFinished;
     private String description;
     private int courseStatus;
+    private int cmrStatus;
 
     public Course() {
     }
@@ -37,6 +38,14 @@ public class Course {
         this.courseFinished = courseFinished;
         this.description = description;
         this.courseStatus = courseStatus;
+    }
+
+    public int getCmrStatus() {
+        return cmrStatus;
+    }
+
+    public void setCmrStatus(int cmrStatus) {
+        this.cmrStatus = cmrStatus;
     }
 
     public String getDescription() {

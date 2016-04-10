@@ -16,6 +16,7 @@ public class CMR {
     private int cmr_code;
     private int student_count;
     private String comment;
+    private String creator;
     private java.sql.Timestamp createDate;
     private Date date;
     private int appstatus;
@@ -27,13 +28,22 @@ public class CMR {
     public CMR() {
     }
 
-    public CMR(int cmr_code, int student_count, String comment, java.sql.Timestamp createDate, int appstatus, int cmtstatus) {
+    public CMR(int cmr_code, int student_count, String comment, String creator, java.sql.Timestamp createDate, int appstatus, int cmtstatus) {
         this.cmr_code = cmr_code;
         this.student_count = student_count;
         this.comment = comment;
+        this.creator = creator;
         this.createDate = createDate;
         this.appstatus = appstatus;
         this.cmtstatus = cmtstatus;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public Date getDate() {
