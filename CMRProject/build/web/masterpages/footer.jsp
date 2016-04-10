@@ -17,5 +17,7 @@
 </body>
 <script src="js/js.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/bootstrap-notify.js"></script>
 <script src="js/light-bootstrap-dashboard.js"></script>
+
 </html>

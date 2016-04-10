@@ -50,7 +50,7 @@
                                 <td>${c.courseStarted}</td>
                                 <td>${c.courseFinished}</td>
                                 <td><a class="btn btn-default" href="GetCourseDetail?&courseID=${c.id}" role="button">Detail</a></td>
-                                <td ng-if="${userRole} == 1"><a class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR</a></td>
+                                <td ng-if="${userRole} == 1"><a ng-disabled="${c.cmrStatus} != 0" class="btn btn-default" href="AddCMR?&courseID=${c.id}" role="button">Add CMR</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>

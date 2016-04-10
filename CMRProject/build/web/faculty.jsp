@@ -45,8 +45,10 @@
             </div>
         </div>
 
-        <div id="addNewAccout">
-            <form  action="GetAllUserAndFaculty" method="post">
+
+        <div ng-if="${userRole} == 0" id="addNewAccout">
+            <form  action="GetAllUser" method="post">
+
                 <div id="addAccountContainer" class="col-md-9">
                     <div class="card">
                         <div class="header">
@@ -118,7 +120,7 @@
             </form>
         </div>
 
-        <div class="col-md-3" id="addCourseContainer">
+        <div ng-if="${userRole} == 0" class="col-md-3" id="addCourseContainer">
 
             <div ng-click="addFaculty()" id="btnShowAddAccount" class="card">
                 <div class="header">

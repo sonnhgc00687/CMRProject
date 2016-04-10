@@ -8,10 +8,21 @@
 <jsp:include page="masterpages/leftbar.jsp"/>
 <jsp:include page="masterpages/header.jsp"/>
 
-<div class="content">
+<div class="content" id="reportFilter">
     <div class="row" >
+
         <form action="StatisticalReport" method="post" >
-            <div class="col-md-4">
+            <div id="startDate" class="col-md-3">
+                <div class="form-group">
+                    <label>From</label>
+                    <input class="form-control" placeholder="Start Date" type="date" required="" name="startDate" maxlength="50"/>            </div>
+            </div> 
+            <div id="endDate" class="col-md-3">
+                <div class="form-group">
+                    <label>To</label>
+                    <input class="form-control" placeholder="End Date" type="date" required="" name="endDate" maxlength="50"/>            </div>
+            </div>
+            <div id="filterFaculty" class="col-md-4">
                 <div class="form-group">
                     <label>Faculty</label>
                     <select class="form-control" required="" name="courseFaculty">
@@ -21,16 +32,13 @@
                         </c:forEach>                
                     </select>
                 </div>
-            </div>
-            <div id="startDate" class="col-md-3">
+            </div>  
+            <div id="searchReport" class="col-md-2">
                 <div class="form-group">
-                    <input class="form-control" placeholder="Start Date" type="date" required="" name="startDate" maxlength="50"/>            </div>
-            </div>
-            <div id="endDate" class="col-md-3">
-                <div class="form-group">
-                    <input class="form-control" placeholder="End Date" type="date" required="" name="endDate" maxlength="50"/>            </div>
-            </div>
-            <div><input type="submit" value="Search"/></div>
+                    <label style="color: transparent">Search</label>
+                    <input class="form-control" type="submit" value="Search"/>
+                </div>
+            </div>  
         </form>
     </div>
 

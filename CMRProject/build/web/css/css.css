@@ -253,8 +253,34 @@
     position: absolute;
 }
 
-#startDate, #endDate{
-    float: right;
+#startDate, #endDate, #filterFaculty, #searchReport{
+    float: left;
+}
+
+#reportFilter label{
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #9A9A9A;
+}
+
+#notify{
+    display: inline-block;
+    margin: 0px auto;
+    position: fixed;
+    transition: all 0.5s ease-in-out 0s;
+    z-index: 1031;
+    top: 20px; 
+    right: 20px;
+}
+
+#closeNotify{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -13px;
+    z-index: 1033;
 }
 
 input[type='number'] {
