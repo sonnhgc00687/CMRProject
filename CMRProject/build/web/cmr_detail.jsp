@@ -170,14 +170,14 @@
                         <div id="addCmrForm" class="col-md-9" >
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">COMMENT</h4>
+                                    <h4 class="title">DLT RESPONSE</h4>
                                 </div>
                                 <div class="content">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Comment</label>
-                                                <textarea rows="5" class="form-control" name="DLTcomment" ng-disabled="${userRole} != 4 && ${commentStatus} != 1">${DLTcomment}</textarea>
+                                                <textarea rows="5" class="form-control" name="DLTcomment" ng-disabled="${userRole} != 4 || ${commentStatus} == 1">${DLTcomment}</textarea>
                                                 </textarea>
                                             </div>
                                         </div>
@@ -198,7 +198,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 4">
+                        <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 4 && ${commentStatus} === 0">
                             <div ng-click="commentCmr()" id="btnAssign" class="card" style="display: block">
                                 <div class="header">
                                     <h4 class="title">RESPOND</h4>
