@@ -55,6 +55,8 @@ public class GetAllUserAndFaculty extends HttpServlet {
         List<User> allUser = new ArrayList<>();
         List<User> leader = new ArrayList<>();
         List<User> moderator = new ArrayList<>();
+        List<User> pvcList = new ArrayList<>();
+        List<User> dltList = new ArrayList<>();
         List<Faculty> facultyList = new ArrayList<>();
         
         UserManager userManager = new UserManager();
@@ -68,11 +70,17 @@ public class GetAllUserAndFaculty extends HttpServlet {
                 leader.add(user);
             }else if(user.getRole() == 2){
                 moderator.add(user);
+            }else if(user.getRole() == 3){
+                pvcList.add(user);
+            }else if(user.getRole() == 4){
+                dltList.add(user);
             }
         }
         
         request.setAttribute("leader", leader);
         request.setAttribute("moderator", moderator);
+        request.setAttribute("pvcList", pvcList);
+        request.setAttribute("dltList", dltList);
         request.setAttribute("facultyList", facultyList);
         request.getRequestDispatcher("faculty.jsp").forward(request, response);
     }
