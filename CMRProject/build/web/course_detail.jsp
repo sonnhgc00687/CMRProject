@@ -30,7 +30,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" value="${courseTitle}" placeholder="Course Title" type="text" required="" name="courseTitle" maxlength="50">
+                                        <input ng-disabled="${userRole} != 0" class="form-control" value="${courseTitle}" placeholder="Course Title" type="text" required="" name="courseTitle" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Faculty</label>
-                                        <select class="form-control" required="" name="courseFaculty">
+                                        <select ng-disabled="${userRole} != 0" class="form-control" required="" name="courseFaculty">
                                             <option value="${courseFacultyCode}" selected>${courseFaculty}</option>
                                             <c:forEach items="${facultyList}" var="faculty">
                                                 <option value="${faculty.facultyCode}">${faculty.facultyTitle}</option>
@@ -50,13 +50,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Start</label>
-                                        <input class="form-control" value="${courseStarted}" placeholder="Start Date" type="text" required=""  name="startDate" maxlength="50">
+                                        <input ng-disabled="${userRole} != 0" class="form-control" value="${courseStarted}" placeholder="Start Date" type="text" required=""  name="startDate" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>End</label>
-                                        <input class="form-control" value="${courseFinished}" placeholder="End Date" type="text" required=""  name="endDate" maxlength="50">
+                                        <input ng-disabled="${userRole} != 0" class="form-control" value="${courseFinished}" placeholder="End Date" type="text" required=""  name="endDate" maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea rows="5" class="form-control" name="description" placeholder="Here is a course's description...">${description}</textarea>
+                                        <textarea ng-disabled="${userRole} != 0" rows="5" class="form-control" name="description" placeholder="Here is a course's description...">${description}</textarea>
                                         </textarea>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label>Leader</label>
-                                    <select class="form-control" required="" name="courseLeader">
+                                    <select ng-disabled="${userRole} != 0" class="form-control" required="" name="courseLeader">
                                         <option value="${courseLeader}" disabled selected>${courseLeader}</option>
                                         <c:forEach items="${leader}" var="leader">
                                             <option value="${leader.userName}">${leader.fullName}</option>
@@ -95,7 +95,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     <label>Moderator</label>
-                                    <select class="form-control" required="" name="courseModerator">
+                                    <select ng-disabled="${userRole} != 0" class="form-control" required="" name="courseModerator">
                                         <option value="${courseModerator}" disabled selected>${courseModerator}</option>
                                         <c:forEach items="${moderator}" var="moderator">
                                             <option value="${moderator.userName}">${moderator.fullName}</option>
@@ -113,7 +113,7 @@
                 </div> 
 
 
-                <div class="col-md-3" id="assignCourseButton">
+                <div ng-if="${userRole} == 0" class="col-md-3" id="assignCourseButton">
                     <div ng-click="assignCourse()" id="btnAssign" class="card" style="display: block">
                         <div class="header">
                             <h4 class="title">SAVE</h4>
@@ -122,7 +122,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3" id="assignCourseButton">
+                <div ng-if="${userRole} == 0" class="col-md-3" id="assignCourseButton">
                     <div ng-click="" id="btnAssign" class="card" style="display: block">
                         <div class="header">
                             <h4 class="title">CANCEL</h4>

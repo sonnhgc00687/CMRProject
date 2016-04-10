@@ -253,8 +253,16 @@
     position: absolute;
 }
 
-#startDate, #endDate{
-    float: right;
+#startDate, #endDate, #filterFaculty, #searchReport{
+    float: left;
+}
+
+#reportFilter label{
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #9A9A9A;
 }
 
 input[type='number'] {

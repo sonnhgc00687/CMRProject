@@ -27,7 +27,7 @@
     </head>
 
     <body>
-        <img id="background" src ="img/bd.jpg">
+        <img id="background" src ="img/bd.png">
         </div>
         <div class="container">
             <div class="pager">

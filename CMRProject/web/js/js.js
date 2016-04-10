@@ -2,9 +2,7 @@ var app = angular.module('myApp', []);
 
 app.controller('myCtrl', function ($scope) {
     var url = document.URL;
-    if (searchURL("Login")) {
-        $("#home").addClass("active");
-    }else if (searchURL("GetAllUserAndFaculty")) {
+    if (searchURL("GetAllUserAndFaculty") || searchURL("Login")) {
         $("#faculty").addClass("active");
     }else if (searchURL("GetAllCourse")|| searchURL("GetCourseDetail")) {
         $("#course").addClass("active");

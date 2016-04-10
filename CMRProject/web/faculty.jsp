@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div id="addNewAccout">
+        <div ng-if="${userRole} == 0" id="addNewAccout">
             <form  action="GetAllUser" method="post">
                 <div id="addAccountContainer" class="col-md-9">
                     <div class="card">
@@ -66,19 +66,6 @@
                                         <input class="form-control" placeholder="Faculty Title" type="text" required="" name="facultyTitle" value="${facultyTitle}" maxlength="50">
                                     </div>
                                 </div>
-                                <!--                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Role</label>
-                                                                        <select class="form-control" required="" name="role">
-                                                                            <option value="" disabled selected>Role</option>
-                                                                            <option value="0">Admin</option>
-                                                                            <option value="1">Course Leader</option>
-                                                                            <option value="2">Course Moderator</option>
-                                                                            <option value="3">PVC</option>
-                                                                            <option value="4">DLT</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>-->
                             </div>
 
                             <div class="row">
@@ -131,7 +118,7 @@
             </form>
         </div>
 
-        <div class="col-md-3" id="addCourseContainer">
+        <div ng-if="${userRole} == 0" class="col-md-3" id="addCourseContainer">
 
             <div ng-click="addAccount()" id="btnShowAddAccount" class="card">
                 <div class="header">
