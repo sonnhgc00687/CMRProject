@@ -35,7 +35,7 @@
             <div class="content table-responsive table-full-width">
                 <table id="tableCmr" class="table table-hover table-striped">
                     <thead>
-                    <th>Crm</th>
+                    <th>CMR</th>
                     <th>Code</th>
                     <th>Title</th>
                     <th>Faculty</th>
