@@ -75,18 +75,22 @@ public class GetAllUser extends HttpServlet {
             String repassword = request.getParameter("repassword");
             UserManager manager = new UserManager();
             if (password.equals(repassword)) {
-                request.setAttribute("message", "");
+//                request.setAttribute("message", "");
                 manager.createUser(username, password, fullname, email, role);
             } else {
                 request.setAttribute("username", username);
                 request.setAttribute("fullname", fullname);
                 request.setAttribute("role", role);
                 request.setAttribute("email", email);
-                request.setAttribute("message", "Confirm Password is not correct!");
+                request.setAttribute("errorCode", 1);
+                String errorMessage = "Confirm Password is not correct!";
+                request.setAttribute("message", errorMessage);
             }
             getAllStaff(request, response);
         } catch (Exception e) {
+            request.setAttribute("errorCode", 1);
             String errorMessage = "An error has occured. Add staff failed. Please try again";
+            request.setAttribute("message", errorMessage);
             getAllStaff(request, response);
         }
 

@@ -17,14 +17,6 @@
                 <a class="navbar-brand" href="#">Course Monitoring Report System</a>
             </div>
             <div class="collapse navbar-collapse">
-                <!--                <ul class="nav navbar-nav navbar-left">    
-                                    <li>
-                                        <a href="">
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                    </li>
-                                </ul>-->
-
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="">
@@ -43,10 +35,10 @@
         </div>
     </nav>
 
-    <div id="notify" data-notify-position="top-right" data-notify="container" class="col-xs-11 col-sm-4 alert alert-danger alert-with-icon animated fadeInDown" role="alert">
+    <div id="notify" ng-if="${errorCode} != 0" data-notify-position="top-right" data-notify="container" class="col-xs-11 col-sm-4 alert alert-danger alert-with-icon animated fadeInDown" role="alert">
         <button id="closeNotify" onclick="closeNotify()" type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
         <span class="pe-7s-attention" data-notify="icon"></span>
-        <span data-notify="message">Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>
+        <span data-notify="message">${message}</span>
         <a href="#" target="_blank" data-notify="url"></a>
     </div>
 

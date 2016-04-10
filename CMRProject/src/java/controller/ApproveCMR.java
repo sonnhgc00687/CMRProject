@@ -106,6 +106,7 @@ public class ApproveCMR extends HttpServlet {
                 String userName = (String) session.getAttribute("userSession");
                 String errorMessage = "An error has occured. Approve CMR failed. Please try again";
                 listCMR = cm.getAllNotApprovedCMRbyMod(userName);
+                request.setAttribute("errorCode", 1);
                 request.setAttribute("message", errorMessage);
                 request.setAttribute("listCMR", listCMR);
                 request.getRequestDispatcher("cmr.jsp").forward(request, response);

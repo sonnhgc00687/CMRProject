@@ -118,6 +118,7 @@ public class Login extends HttpServlet {
             request.setAttribute("username", username);
             request.getRequestDispatcher("faculty.jsp").forward(request, response);
         } else {
+            request.setAttribute("errorCode", 1);
             request.setAttribute("message", errorMessage);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

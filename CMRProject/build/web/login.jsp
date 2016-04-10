@@ -22,11 +22,12 @@
         <link href="css/light-bootstrap-dashboard.css" rel="stylesheet"/>
         <link href="css/pe-icon-7-stroke.css" rel="stylesheet" />
         <link href="css/css.css" rel="stylesheet"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
     </head>
 
-    <body>
+    <body ng-app="">
         <img id="background" src ="img/bd.png">
     </div>
     <div class="container">
@@ -44,15 +45,15 @@
         </form>
     </div> 
 
-    <div id="notify" data-notify-position="top-right" data-notify="container" class="col-xs-11 col-sm-4 alert alert-danger alert-with-icon animated fadeInDown" role="alert">
+    <div ng-if="${errorCode} != 0" id="notify" data-notify-position="top-right" data-notify="container" class="col-xs-11 col-sm-4 alert alert-danger alert-with-icon animated fadeInDown" role="alert">
         <button id="closeNotify" onclick="closeNotify()" type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
         <span class="pe-7s-attention" data-notify="icon"></span>
-        <span data-notify="message">Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>
+        <span data-notify="message">${message}</span>
         <a href="#" target="_blank" data-notify="url"></a>
     </div>
-    
+
     <script>
-        function closeNotify(){
+        function closeNotify() {
             document.getElementById('notify').style.display = 'none';
         }
     </script>

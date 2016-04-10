@@ -178,6 +178,7 @@ public class GetAllUserAndFaculty extends HttpServlet {
             request.setAttribute("pvcList", pvcList);
             request.setAttribute("dltList", dltList);
             request.setAttribute("facultyList", facultyList);
+            request.setAttribute("errorCode", 1);
             request.setAttribute("message", errorMessage);
             request.getRequestDispatcher("faculty.jsp").forward(request, response);
         }

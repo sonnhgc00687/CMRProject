@@ -129,6 +129,7 @@ public class AddCourse extends HttpServlet {
             request.setAttribute("moderator", moderator);
             request.setAttribute("facultyList", facultyList);
             request.setAttribute("courseList", courseList);
+            request.setAttribute("errorCode", 1);
             request.setAttribute("message", errorMessage);
             request.getRequestDispatcher("course.jsp").forward(request, response);
         }

@@ -1,3 +1,9 @@
+#hover{
+    color: #FFFFFF;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.23);
+}
+
 #courseNumber{
     font-weight: 400;
     margin: 4px 0 24px;

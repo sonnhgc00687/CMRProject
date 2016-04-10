@@ -332,6 +332,7 @@ public class AddCMR extends HttpServlet {
             }
         } catch (Exception e) {
             HttpSession session = request.getSession();
+            request.setAttribute("errorCode", 1);
             request.setAttribute("message", errorMessage);
             String filter = request.getParameter("filter");
             String filterFaculty = request.getParameter("filterFaculty");

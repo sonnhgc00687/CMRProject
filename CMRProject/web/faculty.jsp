@@ -47,7 +47,7 @@
 
 
         <div ng-if="${userRole} == 0" id="addNewAccout">
-            <form  action="GetAllUser" method="post">
+            <form  action="GetAllUserAndFaculty" method="post">
 
                 <div id="addAccountContainer" class="col-md-9">
                     <div class="card">
@@ -112,7 +112,6 @@
 
 
                             <input id="btnFaculty" type="submit" value="Add Faculty" style="display: none" />
-                            <a style="color: red">${message}</a>
                             <div class="clearfix"></div>
                         </div>
                     </div>
