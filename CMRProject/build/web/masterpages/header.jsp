@@ -44,8 +44,14 @@
     </nav>
 
     <div id="notify" data-notify-position="top-right" data-notify="container" class="col-xs-11 col-sm-4 alert alert-danger alert-with-icon animated fadeInDown" role="alert">
-        <button id="closeNotify" type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
+        <button id="closeNotify" onclick="closeNotify()" type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
         <span class="pe-7s-attention" data-notify="icon"></span>
         <span data-notify="message">Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>
         <a href="#" target="_blank" data-notify="url"></a>
     </div>
+
+    <script>
+        function closeNotify() {
+            document.getElementById('notify').style.display = 'none';
+        }
+    </script>

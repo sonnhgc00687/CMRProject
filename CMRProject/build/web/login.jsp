@@ -28,24 +28,38 @@
 
     <body>
         <img id="background" src ="img/bd.png">
+    </div>
+    <div class="container">
+        <div class="pager">
+            <img id="logo" src="img/cmr.png" class="img-responsive" width="210px" height="210px"/>
         </div>
-        <div class="container">
-            <div class="pager">
-                <img id="logo" src="img/cmr.png" class="img-responsive" width="210px" height="210px"/>
-            </div>
-            <form class="form-signin" role="form" action="Login" method="post">
-                <h2 class="form-signin-heading" id="loginText">SIGN IN</h2>
-                <input id="username" class="form-control" name="username" placeholder="Username" required="" autofocus="" maxlength="50">
-                <input id="password" class="form-control" name="password" placeholder="Password" required="" type="password" maxlength="50">
-                <label class="checkbox">
-                    <input value="remember-me">
-                </label>
-                <button id="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            </form>
-        </div> 
+        <form class="form-signin" role="form" action="Login" method="post">
+            <h2 class="form-signin-heading" id="loginText">SIGN IN</h2>
+            <input id="username" class="form-control" name="username" placeholder="Username" required="" autofocus="" maxlength="50">
+            <input id="password" class="form-control" name="password" placeholder="Password" required="" type="password" maxlength="50">
+            <label class="checkbox">
+                <input value="remember-me">
+            </label>
+            <button id="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div> 
 
-        <script src="js/js.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/light-bootstrap-dashboard.js"></script>
-    </body>
+    <div id="notify" data-notify-position="top-right" data-notify="container" class="col-xs-11 col-sm-4 alert alert-danger alert-with-icon animated fadeInDown" role="alert">
+        <button id="closeNotify" onclick="closeNotify()" type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>
+        <span class="pe-7s-attention" data-notify="icon"></span>
+        <span data-notify="message">Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>
+        <a href="#" target="_blank" data-notify="url"></a>
+    </div>
+    
+    <script>
+        function closeNotify(){
+            document.getElementById('notify').style.display = 'none';
+        }
+    </script>
+
+    <script src="js/js.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap-notify.js"></script>
+    <script src="js/light-bootstrap-dashboard.js"></script>
+</body>
 </html>
