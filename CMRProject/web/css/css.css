@@ -220,6 +220,14 @@
     float: right;
 }
 
+#search ul{
+    left: 15px;
+    border-radius: 4px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    width: 95%;
+}
+
 #search input{
     height: 38px;
     padding-left: 38px;
@@ -229,11 +237,18 @@
     position: absolute;
     padding: 8px 8px 8px 10px;
     font-size: 22px;
+    color: #333;
 }
 
+#facultyFilter{
+    width: 36px;
+    height: 36px;
+    float: right;
+}
 
-
-
+#startDate, #endDate{
+    float: right;
+}
 
 input[type='number'] {
     -moz-appearance:textfield;

@@ -9,6 +9,30 @@
 <jsp:include page="masterpages/header.jsp"/>
 
 <div class="content">
+    <div class="row" >    
+        <div id="search" class="col-md-6">
+            <div class="form-group">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="pe-7s-filter" ></i>
+                </a>
+                <ul class="dropdown-menu">
+                <li><a href="GetAllCourse?=&amp;filter=noCMR">Course without CMR</a></li>
+                <li><a href="GetAllCourse?=&amp;filter=CMR">Course with CMR</a></li>
+                <li><a href="GetAllCourse?=&amp;filter=all">All Course</a></li>
+            </ul>
+                <input class="form-control" placeholder="Search" type="submit" required="" name="searchCourse" value="Faculty" maxlength="100">
+            </div>
+        </div>      
+        <div id="endDate" class="col-md-3">
+            <div class="form-group">
+                <input class="form-control" placeholder="End Date" type="date" required="" name="startDate" maxlength="50"/>            </div>
+        </div>
+        <div id="startDate" class="col-md-3">
+            <div class="form-group">
+                <input class="form-control" placeholder="Start Date" type="date" required="" name="startDate" maxlength="50"/>            </div>
+        </div>      
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <div class="card">
@@ -98,22 +122,22 @@
         </div>
     </div>
 
-   <div class="col-md-6">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">NUMBER OF COURSE WITHOUT COMPLETED CMR</h4>
-                    <p class="category"></p>
-                </div>
-                <div class="content">
-                    <h1 id="courseNumber" >${noOfCourseWithoutCompletedCMR}</h1>  
-                    <hr>
-                    <div class="stats">
-                        <i class="fa fa-clock-o"></i> 2016 of FPT2016
-                    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">NUMBER OF COURSE WITHOUT COMPLETED CMR</h4>
+                <p class="category"></p>
+            </div>
+            <div class="content">
+                <h1 id="courseNumber" >${noOfCourseWithoutCompletedCMR}</h1>  
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-clock-o"></i> 2016 of FPT2016
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 </div>
 
