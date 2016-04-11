@@ -12,20 +12,20 @@
     <div class="container-fluid">
         <div class="card">
             <div class="header">
-                <p class="category" style="float: left">LIST CMR ${facultyName} </p>
+                <p class="category" style="float: left">LIST CMR ${facultyName} ${filterContent} </p>
 
                 <div id="cardFilter" class="card dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i id="filter" class="pe-7s-filter"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="GetAllCMR?=&filter=approved">Approved CMR (Only CM, DLT , PVC, Admin)</a></li>
+                        <li><a href="GetAllCMR?=&filter=approved">Approved CMR</a></li>
                         <li><a href="GetAllCMR?=&filter=commented">Completed CMR</a></li>
-                        <li><a href="GetAllCMR?=&filter=all">All CMR (Only Admin)</a></li>
+                        <li><a href="GetAllCMR?=&filter=all">All CMR</a></li>
                     </ul>
                 </div>
 
-                <div id="search" class="col-md-4">
+                <div id="search" class="col-md-4" style="display: none">
                     <div class="form-group">
                         <i class="pe-7s-search"></i>
                         <input class="form-control" placeholder="Search" type="text" required="" name="searchCMR" maxlength="100">

@@ -94,16 +94,6 @@ median float,
 standard_deviation int
 )
 go
-insert into tblStaticalData values (7,1,7,7.5,7)
-insert into tblStaticalData values (7,5,7,7.5,7)
-insert into tblStaticalData values (7,6,8,8.5,8)
-insert into tblStaticalData values (8,1,4,5,5)
-insert into tblStaticalData values (8,5,4,5,5)
-insert into tblStaticalData values (8,6,4,5,5)
-insert into tblStaticalData values (9,1,5,5,5)
-insert into tblStaticalData values (9,5,5,5,5)
-insert into tblStaticalData values (9,6,5,5,5)
-go
 create table tblGradeData
 (
 id int primary key IDENTITY,
@@ -120,17 +110,6 @@ mark7 int,
 mark8 int,
 mark9 int
 )
-
-Go
-Insert into tblGradeData values (7,1,0,0,0,0,0,0,90,10,0,0)
-Insert into tblGradeData values (7,5,0,0,0,0,0,0,80,20,0,0)
-Insert into tblGradeData values (7,6,0,0,0,0,0,0,0,30,70,0)
-Insert into tblGradeData values (8,1,0,0,0,20,80,0,0,0,0,0)
-Insert into tblGradeData values (8,5,0,0,0,20,80,0,0,0,0,0)
-Insert into tblGradeData values (8,6,0,0,0,20,80,0,0,0,0,0)
-Insert into tblGradeData values (9,1,0,0,0,0,20,80,0,0,0,0)
-Insert into tblGradeData values (9,5,0,0,0,0,20,80,0,0,0,0)
-Insert into tblGradeData values (9,6,0,0,0,0,20,80,0,0,0,0)
 
 Go
 

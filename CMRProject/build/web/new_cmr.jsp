@@ -26,13 +26,13 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" type="text" value="${courseTitle}" required="" name="courseCode" maxlength="50">
+                                        <input class="form-control" type="text" value="${courseTitle}" readonly="" required="" name="courseCode" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Leader</label>
-                                        <input class="form-control" type="text" value="${courseLeader}" required="" name="courseTitle" maxlength="50">
+                                        <input class="form-control" type="text" value="${courseLeader}" readonly="" required="" name="courseTitle" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -46,7 +46,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Comment</label>
-                                        <textarea rows="5" class="form-control" name="comment" placeholder="Comment the crm here..."></textarea>
+                                        <textarea rows="5" class="form-control" name="comment" placeholder="Comment the cmr here..."></textarea>
                                         </textarea>
                                     </div>
                                 </div>

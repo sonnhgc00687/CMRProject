@@ -100,36 +100,36 @@ public class GetAllCourse extends HttpServlet {
         request.setAttribute("facultyName", faculty.getFacultyTitle());
         if (filterFaculty != null) {
             switch (userRole) {
-                    case 0:
-                        courseList = cm.getAllCourseByFaculty(filterFaculty);
-                        request.setAttribute("courseList", courseList);
-                        request.getRequestDispatcher("course.jsp").forward(request, response);
-                        break;
-                    case 1:
-                        courseList = cm.getAllCourseByCourseLeaderByFaculty(userName,filterFaculty);
-                        request.setAttribute("courseList", courseList);
-                        request.getRequestDispatcher("course.jsp").forward(request, response);
-                        break;
-                    case 2:
-                        courseList = cm.getAllCourseByCourseModByFaculty(userName,filterFaculty);
-                        request.setAttribute("courseList", courseList);
-                        request.getRequestDispatcher("course.jsp").forward(request, response);
-                        break;
-                    case 3:
-                        courseList = cm.getAllCourseByFaculty(filterFaculty);
-                        request.setAttribute("courseList", courseList);
-                        request.getRequestDispatcher("course.jsp").forward(request, response);
-                        break;
+                case 0:
+                    courseList = cm.getAllCourseByFaculty(filterFaculty);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                case 1:
+                    courseList = cm.getAllCourseByCourseLeaderByFaculty(userName, filterFaculty);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                case 2:
+                    courseList = cm.getAllCourseByCourseModByFaculty(userName, filterFaculty);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                case 3:
+                    courseList = cm.getAllCourseByFaculty(filterFaculty);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
 
-                    case 4:
-                        courseList = cm.getAllCourseByFaculty(filterFaculty);
-                        request.setAttribute("courseList", courseList);
-                        request.getRequestDispatcher("course.jsp").forward(request, response);
-                        break;
-                    default:
-                        request.getRequestDispatcher("course.jsp").forward(request, response);
-                        break;
-                }            
+                case 4:
+                    courseList = cm.getAllCourseByFaculty(filterFaculty);
+                    request.setAttribute("courseList", courseList);
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+                default:
+                    request.getRequestDispatcher("course.jsp").forward(request, response);
+                    break;
+            }
         } else {
             if (filter != null) {
                 switch (userRole) {
@@ -137,16 +137,19 @@ public class GetAllCourse extends HttpServlet {
                         switch (filter) {
                             case "noCMR":
                                 courseList = cm.getAllCourseWithoutCMR();
+                                request.setAttribute("filterContent", "Course without CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "CMR":
                                 courseList = cm.getAllCourseWithCMR();
+                                request.setAttribute("filterContent", "Course with CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "all":
                                 courseList = cm.getAllCourse();
+                                request.setAttribute("filterContent", "All Course");                                
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
@@ -160,16 +163,19 @@ public class GetAllCourse extends HttpServlet {
                         switch (filter) {
                             case "noCMR":
                                 courseList = cm.getAllCourseByCourseLeaderWithoutCMR(userName);
+                                request.setAttribute("filterContent", "Course without CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "CMR":
                                 courseList = cm.getAllCourseByCourseLeaderWithCMR(userName);
+                                request.setAttribute("filterContent", "Course with CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "all":
                                 courseList = cm.getAllCourseByCourseLeader(userName);
+                                request.setAttribute("filterContent", "All Course");  
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
@@ -183,16 +189,19 @@ public class GetAllCourse extends HttpServlet {
                         switch (filter) {
                             case "noCMR":
                                 courseList = cm.getAllCourseByCourseModWithoutCMR(userName);
+                                request.setAttribute("filterContent", "Course without CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "CMR":
                                 courseList = cm.getAllCourseByCourseModWithCMR(userName);
+                                request.setAttribute("filterContent", "Course with CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "all":
                                 courseList = cm.getAllCourseByCourseMod(userName);
+                                request.setAttribute("filterContent", "All Course");  
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
@@ -207,16 +216,19 @@ public class GetAllCourse extends HttpServlet {
                         switch (filter) {
                             case "noCMR":
                                 courseList = cm.getAllCourseWithoutCMR();
+                                request.setAttribute("filterContent", "Course without CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "CMR":
                                 courseList = cm.getAllCourseWithCMR();
+                                request.setAttribute("filterContent", "Course with CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "all":
                                 courseList = cm.getAllCourse();
+                                request.setAttribute("filterContent", "All Course");  
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
@@ -230,16 +242,19 @@ public class GetAllCourse extends HttpServlet {
                         switch (filter) {
                             case "noCMR":
                                 courseList = cm.getAllCourseWithoutCMR();
+                                request.setAttribute("filterContent", "Course without CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "CMR":
                                 courseList = cm.getAllCourseWithCMR();
+                                request.setAttribute("filterContent", "Course with CMR");
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;
                             case "all":
                                 courseList = cm.getAllCourse();
+                                request.setAttribute("filterContent", "All Course");  
                                 request.setAttribute("courseList", courseList);
                                 request.getRequestDispatcher("course.jsp").forward(request, response);
                                 break;

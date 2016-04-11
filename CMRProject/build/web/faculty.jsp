@@ -59,13 +59,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Code</label>
-                                        <input class="form-control" placeholder="Faculty Code" type="text" required="" name="facultyCode" maxlength="50">
+                                        <input class="form-control" placeholder="Faculty Code" type="text" required="" name="facultyCode" maxlength="50"  aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" placeholder="Faculty Title" type="text" required="" name="facultyTitle" maxlength="50">
+                                        <input class="form-control" placeholder="Faculty Title" type="text" required="" name="facultyTitle" maxlength="50" aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
                                 </div>
                             </div>

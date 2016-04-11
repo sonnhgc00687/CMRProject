@@ -52,6 +52,7 @@ public class GetCMRDetail extends HttpServlet {
             request.setAttribute("creator", cmr_Detail.getCreator());
             request.setAttribute("comment", cmr_Detail.getComment());
             request.setAttribute("commentStatus", cmr_Detail.getCmtStatus());
+            request.setAttribute("appStatus", cmr_Detail.getAppStatus());
             request.setAttribute("studentCount", cmr_Detail.getStudent_count());
             request.setAttribute("mean" + cmr_Detail.getStaticalData_id_mark() + "", cmr_Detail.getMean());
             request.setAttribute("median" + cmr_Detail.getStaticalData_id_mark() + "", cmr_Detail.getMedian());

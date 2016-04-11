@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="header">  
-                <p class="category" style="float: left">LIST COURSE ${facultyName}</p>
+                <p class="category" style="float: left">LIST COURSE ${facultyName} ${filterContent}</p>
 
                 <div id="cardFilter" class="card dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -25,7 +25,7 @@
                     </ul>
                 </div>
 
-                <div id="search" class="col-md-4">
+                <div id="search" class="col-md-4" style="display: none">
                     <div class="form-group">
                         <i class="pe-7s-search"></i>
                         <input class="form-control" placeholder="Search" type="text" required="" name="searchCourse" maxlength="100">
@@ -72,7 +72,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Code</label>
-                                        <input class="form-control" placeholder="Course Code" type="text" required="" name="courseCode" maxlength="50">
+                                        <input class="form-control" placeholder="Course Code" type="text" required="" name="courseCode" maxlength="50" aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
                                 </div>
                                 <div class="col-md-8">

@@ -36,8 +36,8 @@
         </div>
         <form class="form-signin" role="form" action="Login" method="post">
             <h2 class="form-signin-heading" id="loginText">SIGN IN</h2>
-            <input id="username" class="form-control" name="username" placeholder="Username" required="" autofocus="" maxlength="50">
-            <input id="password" class="form-control" name="password" placeholder="Password" required="" type="password" maxlength="50">
+            <input id="username" class="form-control" name="username" aria-describeby="name-format" placeholder="Username" required="" autofocus="" maxlength="50"  aria-describedby="name-format" required aria-required=”true” pattern="[A-Za-z-0-9]+" title="Not include special characters">
+            <input id="password" class="form-control" name="password" placeholder="Password" required="" type="password" maxlength="50" >
             <label class="checkbox">
                 <input value="remember-me">
             </label>

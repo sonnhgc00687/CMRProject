@@ -190,7 +190,7 @@
                         
                         <input type="submit" class="" id="btnComment" name="btnComment" value="Comment" ng-if="${userRole} == 4" style="display: none">
                         
-                        <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 2" style="float: right">
+                        <div class="col-md-3" id="assignCourseButton" ng-if="${userRole} == 2  && ${appStatus} != 1" style="float: right">
                             <div ng-click="approveCmr()" id="btnAssign" class="card">
                                 <div class="header">
                                     <h4 class="title">APPROVE</h4>

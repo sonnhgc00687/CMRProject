@@ -71,19 +71,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Username</label>
-                                        <input class="form-control" placeholder="Username" type="text" required="" name="username" value="${username}" maxlength="50">
+                                        <input class="form-control" placeholder="Username" type="text" required="" name="username" value="${username}" maxlength="50"  aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input class="form-control" placeholder="Password" type="password" required="" name="password" maxlength="50">
+                                        <input class="form-control" placeholder="Password" type="password" required="" name="password" maxlength="50" aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
                                 </div> 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Confirm Password</label>
-                                        <input class="form-control" placeholder="Confirm Password" type="password" required="" name="repassword" maxlength="50">
+                                        <input class="form-control" placeholder="Confirm Password" type="password" required="" name="repassword" maxlength="50" aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
                                 </div> 
                             </div>
