@@ -15,18 +15,20 @@ role int
 --2.Course Moderator
 --3.PVC
 --4.DLT 
-insert into tblEmployee values('sonnguyen','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Son Nguyen','sonnhgc00687@fpt.edu.vn', 0)
-insert into tblEmployee values('mainghia','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Mai Nghia','nghiamtgc00662@fpt.edu.vn', 1)
-insert into tblEmployee values('sondao','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Son Dao', 'sondtgc00678@fpt.edu.vn', 2)
-insert into tblEmployee values('ducphuc','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Duc Phuc','phucbdgc00669@fpt.edu.vn', 3)
-insert into tblEmployee values('hoangha','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','hoangha','hanhgc00661@fpt.edu.vn', 4)
-insert into tblEmployee values('maimai','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Mai Mai','misugi296@gmail.com', 1)
-insert into tblEmployee values('huyhuy','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Huy Huy', 'sondtgc00678@fpt.edu.vn', 2)
-insert into tblEmployee values('admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','System Administrator', 'sondtgc00678@fpt.edu.vn', 0)
+Go
+insert into tblEmployee values('admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','System Administrator', 'sonnhgc00687@fpt.edu.vn', 0)
 insert into tblEmployee values('leader','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Leader', 'nghiamtgc00662@fpt.edu.vn', 1)
+insert into tblEmployee values('leaderAptech','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Leader Aptech', 'nghiamtgc00662@fpt.edu.vn', 1)
+insert into tblEmployee values('leaderTopup','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Leader Top Up', 'nghiamtgc00662@fpt.edu.vn', 1)
 insert into tblEmployee values('mod','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Moderator', 'sondtgc00678@fpt.edu.vn', 2)
-insert into tblEmployee values('pvc','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Pro-Vice Chancellor', 'phucbdgc00669@fpt.edu.vn', 3)
-insert into tblEmployee values('dlt','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Director of Learning and Quality', 'sonlumpy@gmail.com', 4)
+insert into tblEmployee values('modAptech','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Moderator Aptech', 'sondtgc00678@fpt.edu.vn', 2)
+insert into tblEmployee values('modTopup','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Moderator Top Up', 'sondtgc00678@fpt.edu.vn', 2)
+insert into tblEmployee values('pvc','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Pro-Vice Chancellor', 'misugi296@gmail.com', 3)
+insert into tblEmployee values('pvcAptech','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Pro-Vice Chancellor Aptech', 'misugi296@gmail.com', 3)
+insert into tblEmployee values('pvcTopup','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Pro-Vice Chancellor Top Up', 'misugi296@gmail.com', 3)
+insert into tblEmployee values('dlt','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Director of Learning and Quality', 'phucbdgc00669@fpt.edu.vn', 4)
+insert into tblEmployee values('dltAptech','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Director Aptech', 'phucbdgc00669@fpt.edu.vn', 4)
+insert into tblEmployee values('dltTopup','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Director Top Up', 'phucbdgc00669@fpt.edu.vn', 4)
 go
 create table tblFaculty
 (
@@ -41,8 +43,8 @@ faculty_dlt nvarchar(50) references tblEmployee(username),
 select * from tblFaculty
 go
 insert into tblFaculty values('FPT2016', 'Honours Programme', 'pvc', 'dlt','2016-01-01', '2016-12-31', 1)
-insert into tblFaculty values('FPT2015', 'Top-Up Programme', 'pvc', 'dlt','2015-01-01', '2015-12-31', 1)
-insert into tblFaculty values('FPT2014', 'Aptech Programme', 'pvc', 'dlt','2014-01-01', '2014-12-31', 1)
+insert into tblFaculty values('FPT2015', 'Top-Up Programme', 'pvcTopup', 'dltTopup','2015-01-01', '2015-12-31', 1)
+insert into tblFaculty values('FPT2014', 'Aptech Programme', 'pvcAptech', 'dltAptech','2014-01-01', '2014-12-31', 1)
 go
 create table tblCourse
 (
@@ -59,16 +61,16 @@ description nvarchar(100),
 cmrstatus int
 )
 go
-insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'mainghia', 'sondao','2016-01-16', '2016-05-04', 'Course of Web development', 1,0)
-insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', NULL, NULL, '2016-01-15', '2016-05-06', 'Course of Interaction Design', 1,0)
-insert into tblCourse values('COMP1650', 'FPT2016', 'Mobile App Dev', 'mainghia', 'sondao', '2016-01-15', '2016-05-06', 'Course of Development of Mobile App', 1,0)
-insert into tblCourse values('COMP1610', 'FPT2015', 'Java App Dev', 'maimai', 'huyhuy', '2015-01-15', '2015-05-06', 'Course of Development of Java App', 1,0)
-insert into tblCourse values('COMP1600', 'FPT2015', 'C sharp App Dev', 'mainghia', 'sondao', '2015-01-15', '2015-05-06', 'Course of Development of C sharp App', 1,0)
-insert into tblCourse values('COMP1590', 'FPT2015', 'C++ App Dev', 'maimai', 'huyhuy', '2015-01-15', '2015-05-06', 'Course of Development of C++ App', 1,0)
-insert into tblCourse values('COMP1550', 'FPT2014', 'Web Interface', 'leader', 'mod', '2014-01-15', '2014-05-06', 'Course of Development of Web UI', 1,1)
-insert into tblCourse values('COMP1557', 'FPT2014', 'Basic Java', 'leader', 'mod', '2014-01-15', '2014-05-06', 'Course of Basic Java App', 1,1)
-insert into tblCourse values('COMP1520', 'FPT2014', 'Basic C++', 'leader', 'mod', '2014-01-15', '2014-05-06', 'Course of Basic C++', 1,1)
-
+insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'leader', 'mod','2016-01-16', '2016-05-04', 'Course of Web development', 1,0)
+insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'leader', 'mod', '2016-01-15', '2016-05-06', 'Course of Interaction Design', 1,0)
+insert into tblCourse values('COMP1650', 'FPT2016', 'Mobile App Dev', 'leader', 'mod', '2016-01-15', '2016-05-06', 'Course of Development of Mobile App', 1,0)
+insert into tblCourse values('COMP1610', 'FPT2015', 'Java App Dev', 'leaderTopup', 'modTopup', '2015-01-15', '2015-05-06', 'Course of Development of Java App', 1,0)
+insert into tblCourse values('COMP1600', 'FPT2015', 'C sharp App Dev', 'leaderTopup', 'modTopup', '2015-01-15', '2015-05-06', 'Course of Development of C sharp App', 1,0)
+insert into tblCourse values('COMP1590', 'FPT2015', 'C++ App Dev', 'leaderTopup', 'modTopup', '2015-01-15', '2015-05-06', 'Course of Development of C++ App', 1,0)
+insert into tblCourse values('COMP1550', 'FPT2014', 'Web Interface', 'leaderAptech', 'modAptech', '2014-01-15', '2014-05-06', 'Course of Development of Web UI', 1,0)
+insert into tblCourse values('COMP1557', 'FPT2014', 'Basic Java', 'leaderAptech', 'modAptech', '2014-01-15', '2014-05-06', 'Course of Basic Java App', 1,0)
+insert into tblCourse values('COMP1520', 'FPT2014', 'Basic C++', 'leaderAptech', 'modAptech', '2014-01-15', '2014-05-06', 'Course of Basic C++', 1,0)
+select * from tblCourse
 go
 
 create table tblCMR
@@ -81,12 +83,6 @@ createDate date,
 [status] int,
 cmtstatus int
 )
-
-go
-Insert into tblCMR values(4,25,'Most students passed the course with high grade','leader','2014-05-07',0,0)
-Insert into tblCMR values(5,30,'Most students did not pass the course with high grade','leader','2014-05-10',0,0)
-Insert into tblCMR values(6,30,'Most students did not passed the course with high grade','leader','2014-05-08',0,0)
-
 go
 create table tblStaticalData
 (

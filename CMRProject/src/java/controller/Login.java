@@ -102,8 +102,6 @@ public class Login extends HttpServlet {
                 dltList.add(user);
             }
         }
-        CourseManager cm = new CourseManager();
-        countCourseList = cm.getNoOfCourseByFaculty();
 
         User user = um.checkUser(username, encryptedPassword);
 
