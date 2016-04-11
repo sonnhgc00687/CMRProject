@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.entity.CMR;
 import model.manager.CMRManager;
+import model.manager.CourseManager;
+import model.manager.EmailSending;
 
 /**
  *
@@ -87,6 +89,14 @@ public class ApproveCMR extends HttpServlet {
             CMRManager cm = new CMRManager();
             cm.CommentCMR(cmr_code);
             cm.addDLTComment(cmr_code, commentOfDLT);
+            CourseManager courseManager = new CourseManager();
+            String mod = courseManager.findModById(cmr_code);
+            String emailMod = cm.getEmail(2,mod);
+            EmailSending email = new EmailSending();
+            email.generateAndSendEmail(emailMod, "group1cmr@gmail.com", "mainghia95", "CMR notification", "A new CMR has been responded by your falcuty's DLT. Please check it out.");
+            String leader = courseManager.findLeaderById(cmr_code);
+            String emailLeader = cm.getEmail(1, leader);
+            email.generateAndSendEmail(emailLeader, "group1cmr@gmail.com", "mainghia95", "CMR notification", "A new CMR has been responded by your falcuty's DLT. Please check it out.");
             listCMR = cm.getAllCommentedCMR();
             request.setAttribute("listCMR", listCMR);
             request.getRequestDispatcher("cmr.jsp").forward(request, response);
@@ -97,6 +107,11 @@ public class ApproveCMR extends HttpServlet {
                 int cmr_code = Integer.parseInt(request.getParameter("id"));
                 CMRManager cm = new CMRManager();
                 cm.ApproveCMR(cmr_code);
+                CourseManager courseManager = new CourseManager();
+                String dlt = courseManager.findDLTById(cmr_code);
+                String emaildlt = cm.getEmail(4,dlt);
+                EmailSending em = new EmailSending();
+                em.generateAndSendEmail(emaildlt, "group1cmr@gmail.com", "mainghia95", "New CMR approved", "A new CMR of your Faculty has been approved. Please check it out");
                 listCMR = cm.getAllNotApprovedCMRbyMod(userName);
                 request.setAttribute("listCMR", listCMR);
                 request.getRequestDispatcher("cmr.jsp").forward(request, response);

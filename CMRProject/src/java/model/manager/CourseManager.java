@@ -410,6 +410,40 @@ public class CourseManager {
         }
         return mod;
     }
+    
+     public String findLeaderById(int courseCode) {
+        SqlConnection sql = new SqlConnection();
+        String leader = "";
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select course_leader from tblCourse where id = ?");
+            ps.setInt(1, courseCode);
+            ResultSet result = ps.executeQuery();
+            while(result.next()){
+                leader = result.getString("course_leader");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return leader;
+    }
+    
+     public String findDLTById(int courseCode) {
+        SqlConnection sql = new SqlConnection();
+        String dlt = "";
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("select faculty_dlt from tblFaculty t inner join tblCourse c on t.faculty_code = c.course_faculty where c.id = ?");
+            ps.setInt(1, courseCode);
+            ResultSet result = ps.executeQuery();
+            while(result.next()){
+                dlt = result.getString("faculty_dlt");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dlt;
+    }
 
     public Course getCourseByID(int courseID) {
         SqlConnection sql = new SqlConnection();

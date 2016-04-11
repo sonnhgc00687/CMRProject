@@ -468,13 +468,13 @@ public class CMRManager {
         return cmrDetailList;
     }
 
-    public String getCMEmail(String mod) {
+    public String getEmail(int role,String mod) {
         SqlConnection sql = new SqlConnection();
         String email = "";
         try {
             Connection conn = sql.connectSql();
             PreparedStatement ps = conn.prepareStatement("select email from tblEmployee where role = ? and username = ?");
-            ps.setInt(1, 2);
+            ps.setInt(1, role);
             ps.setString(2, mod);
             rs = ps.executeQuery();
             while (rs.next()) {

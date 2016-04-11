@@ -15,6 +15,7 @@ role int
 --2.Course Moderator
 --3.PVC
 --4.DLT 
+select faculty_dlt from tblFaculty t inner join tblCourse c on t.faculty_code = c.course_faculty where c.id = 1 
 Go
 insert into tblEmployee values('admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','System Administrator', 'sonnhgc00687@fpt.edu.vn', 0)
 insert into tblEmployee values('leader','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','Course Leader', 'nghiamtgc00662@fpt.edu.vn', 1)

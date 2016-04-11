@@ -136,7 +136,7 @@ public class AddCMR extends HttpServlet {
                 }
             }
             String mod = cm.findModById(id);
-            String emailMod = cmrm.getCMEmail(mod);
+            String emailMod = cmrm.getEmail(2,mod);
             EmailSending email = new EmailSending();
             email.generateAndSendEmail(emailMod, "group1cmr@gmail.com", "mainghia95", "CMR notification", "A new CMR has been submitted. Please comfirm it.");
             String filter = request.getParameter("filter");
