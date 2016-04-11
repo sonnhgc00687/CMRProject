@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.entity.Faculty;
 import model.entity.User;
+import model.manager.EmailSending;
 import model.manager.FacultyManager;
 import model.manager.UserManager;
 
@@ -71,21 +73,12 @@ public class GetAllUser extends HttpServlet {
             String fullname = request.getParameter("fullname");
             int role = Integer.valueOf(request.getParameter("role"));
             String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            UserManager manager = new UserManager();
-            if (password.equals(repassword)) {
-//                request.setAttribute("message", "");
-                manager.createUser(username, password, fullname, email, role);
-            } else {
-                request.setAttribute("username", username);
-                request.setAttribute("fullname", fullname);
-                request.setAttribute("role", role);
-                request.setAttribute("email", email);
-                request.setAttribute("errorCode", 1);
-                String errorMessage = "Confirm Password is not correct!";
-                request.setAttribute("message", errorMessage);
-            }
+            UserManager um = new UserManager();
+            Random rng = new Random();
+            String password = um.genPass(rng, "ABCDEFGHIKLMNOPQRSTUVWXYZ", 8);
+            um.createUser(username, password, fullname, email, role);
+            EmailSending es = new EmailSending();
+            es.generateAndSendEmail(email, "group1cmr@gmail.com", "mainghia95", "Password delivered", "This is your password :"+ password+"");
             getAllStaff(request, response);
         } catch (Exception e) {
             request.setAttribute("errorCode", 1);

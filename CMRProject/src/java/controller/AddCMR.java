@@ -135,12 +135,10 @@ public class AddCMR extends HttpServlet {
                     cmrm.AddCMR_GradeData(g);
                 }
             }
-            List<String> emailList = new ArrayList<>();
-            emailList = cmrm.getCMEmail();
+            String mod = cm.findModById(id);
+            String emailMod = cmrm.getCMEmail(mod);
             EmailSending email = new EmailSending();
-            for (String emailItem : emailList) {
-//                email.generateAndSendEmail(emailItem, "", "", "", "A new CMR has been add. Please comfirm it.");
-            }
+            email.generateAndSendEmail(emailMod, "group1cmr@gmail.com", "mainghia95", "CMR notification", "A new CMR has been submitted. Please comfirm it.");
             String filter = request.getParameter("filter");
             String filterFaculty = request.getParameter("filterFaculty");
             FacultyManager facultyManager = new FacultyManager();

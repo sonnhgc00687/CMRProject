@@ -393,6 +393,23 @@ public class CourseManager {
             e.printStackTrace();
         }
     }
+    
+    public String findModById(int courseCode) {
+        SqlConnection sql = new SqlConnection();
+        String mod = "";
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select course_mod from tblCourse where id = ?");
+            ps.setInt(1, courseCode);
+            ResultSet result = ps.executeQuery();
+            while(result.next()){
+                mod = result.getString("course_mod");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mod;
+    }
 
     public Course getCourseByID(int courseID) {
         SqlConnection sql = new SqlConnection();

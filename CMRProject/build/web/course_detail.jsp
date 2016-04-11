@@ -106,7 +106,8 @@
 
 
                             <input id="assignCourse" type="submit" name="assign" style="display: none"/>
-
+                            
+                            <input id="btnDelete" type="submit" name="delete" style="display: none"/>
                             <div class="clearfix"></div>
                         </div>
                     </div>

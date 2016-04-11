@@ -468,21 +468,22 @@ public class CMRManager {
         return cmrDetailList;
     }
 
-    public List<String> getCMEmail() {
+    public String getCMEmail(String mod) {
         SqlConnection sql = new SqlConnection();
-        List<String> emailList = new ArrayList<>();
+        String email = "";
         try {
             Connection conn = sql.connectSql();
-            PreparedStatement ps = conn.prepareStatement("select email from tblEmployee where role = ?");
+            PreparedStatement ps = conn.prepareStatement("select email from tblEmployee where role = ? and username = ?");
             ps.setInt(1, 2);
+            ps.setString(2, mod);
             rs = ps.executeQuery();
             while (rs.next()) {
-                emailList.add(rs.getString("email"));
+                email = rs.getString("email");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return emailList;
+        return email;
     }
 
     public void ApproveCMR(int cmr_code) {

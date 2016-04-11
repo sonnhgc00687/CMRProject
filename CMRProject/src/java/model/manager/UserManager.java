@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import model.entity.User;
 
 /**
@@ -97,8 +98,8 @@ public class UserManager {
             e.printStackTrace();
         }
     }
-    
-    public List<User> searchUserByNameOrID(String username, String fullname){
+
+    public List<User> searchUserByNameOrID(String username, String fullname) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -115,8 +116,8 @@ public class UserManager {
         }
         return userSearch;
     }
-    
-    public void deleteUserByUsername(String username){
+
+    public void deleteUserByUsername(String username) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -126,5 +127,13 @@ public class UserManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String genPass(Random rng, String character, int length) {
+        char[] text = new char[length];
+        for(int i = 0; i<length;i++){
+            text[i] = character.charAt(rng.nextInt(character.length()));
+        }
+        return new String(text);
     }
 }
