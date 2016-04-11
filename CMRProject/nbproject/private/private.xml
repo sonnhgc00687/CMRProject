@@ -5,25 +5,26 @@
         <group>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/login.jsp</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/ApproveCMR.java</file>
-            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/manager/SqlConnection.java</file>
+            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/new_cmr.jsp</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/manager/CMRManager.java</file>
-            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/js/js.js</file>
+            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/GetAllUserAndFaculty.java</file>
+            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/course.jsp</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/manager/CourseManager.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/staff.jsp</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/GetAllCMR.java</file>
+            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/cmr.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/manager/FacultyManager.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/GetCMRDetail.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/course_detail.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/manager/EmailSending.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/Login.java</file>
-            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/CommentCMR.java</file>
+            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/AddCMR.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/entity/CMR.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/model/manager/UserManager.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/AddCourse.java</file>
-            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/css/signin.css</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/GetAllCourse.java</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/faculty.jsp</file>
             <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/src/java/controller/GetAllUser.java</file>
-            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/cmr_detail.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/CMRProject/CMRProject/web/css/css.css</file>
         </group>
     </open-files>
 </project-private>

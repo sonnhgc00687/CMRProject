@@ -73,19 +73,7 @@
                                         <label>Username</label>
                                         <input class="form-control" placeholder="Username" type="text" required="" name="username" value="${username}" maxlength="50"  aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
-                                </div>
-<!--                                <div class="col-md-4" style="display: none">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input class="form-control" placeholder="Password" type="password" name="password" maxlength="50" aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
-                                    </div>
-                                </div> 
-                                <div class="col-md-4" style="display: none">
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input class="form-control" placeholder="Confirm Password" type="password" name="repassword" maxlength="50" aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
-                                    </div>
-                                </div> -->
+                                </div>          
                             </div>
 
                             <div class="row">
@@ -98,7 +86,7 @@
                             </div>
 
 
-                            <input id="addAccount" type="submit" value="Add Account" style="display: " />
+                            <input id="addAccount" type="submit" value="Add Account" style="display: none " />
                             <div class="clearfix"></div>
                         </div>
                     </div>

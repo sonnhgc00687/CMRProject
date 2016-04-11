@@ -78,7 +78,7 @@ public class GetAllUser extends HttpServlet {
             String password = um.genPass(rng, "ABCDEFGHIKLMNOPQRSTUVWXYZ", 8);
             um.createUser(username, password, fullname, email, role);
             EmailSending es = new EmailSending();
-            es.generateAndSendEmail(email, "group1cmr@gmail.com", "mainghia95", "Password delivered","This is your username: "+ username + "\nThis is your password :"+ password+"");
+            es.generateAndSendEmail(email, "group1cmr@gmail.com", "mainghia95", "Password delivered","Your account at CMR system has been created.<br/>This is your username: "+ username + "<br/>This is your password :"+ password+"<br/> Click this link to go CMR homepage: http://projectcmrapp.azurewebsites.net/");
             getAllStaff(request, response);
         } catch (Exception e) {
             request.setAttribute("errorCode", 1);

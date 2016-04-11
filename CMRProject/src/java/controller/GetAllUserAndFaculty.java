@@ -114,38 +114,75 @@ public class GetAllUserAndFaculty extends HttpServlet {
             String dlt = request.getParameter("dlt");
 
             FacultyManager fm = new FacultyManager();
-            fm.addFaculty(facultyCode, facultyTitle, startDate2, endDate2, pvc, dlt);
-            List<User> allUser = new ArrayList<>();
-            List<User> leader = new ArrayList<>();
-            List<User> moderator = new ArrayList<>();
-            List<User> pvcList = new ArrayList<>();
-            List<User> dltList = new ArrayList<>();
-            List<Faculty> facultyList = new ArrayList<>();
+            boolean flag = fm.addFaculty(facultyCode, facultyTitle, startDate2, endDate2, pvc, dlt);
+            if (flag) {
+                List<User> allUser = new ArrayList<>();
+                List<User> leader = new ArrayList<>();
+                List<User> moderator = new ArrayList<>();
+                List<User> pvcList = new ArrayList<>();
+                List<User> dltList = new ArrayList<>();
+                List<Faculty> facultyList = new ArrayList<>();
 
-            UserManager userManager = new UserManager();
-            allUser = userManager.getAllUsers();
+                UserManager userManager = new UserManager();
+                allUser = userManager.getAllUsers();
 
-            FacultyManager facultyManager = new FacultyManager();
-            facultyList = facultyManager.getAllFaculty();
+                FacultyManager facultyManager = new FacultyManager();
+                facultyList = facultyManager.getAllFaculty();
 
-            for (User user : allUser) {
-                if (user.getRole() == 1) {
-                    leader.add(user);
-                } else if (user.getRole() == 2) {
-                    moderator.add(user);
-                } else if (user.getRole() == 3) {
-                    pvcList.add(user);
-                } else if (user.getRole() == 4) {
-                    dltList.add(user);
+                for (User user : allUser) {
+                    if (user.getRole() == 1) {
+                        leader.add(user);
+                    } else if (user.getRole() == 2) {
+                        moderator.add(user);
+                    } else if (user.getRole() == 3) {
+                        pvcList.add(user);
+                    } else if (user.getRole() == 4) {
+                        dltList.add(user);
+                    }
                 }
-            }
 
-            request.setAttribute("leader", leader);
-            request.setAttribute("moderator", moderator);
-            request.setAttribute("pvcList", pvcList);
-            request.setAttribute("dltList", dltList);
-            request.setAttribute("facultyList", facultyList);
-            request.getRequestDispatcher("faculty.jsp").forward(request, response);
+                request.setAttribute("leader", leader);
+                request.setAttribute("moderator", moderator);
+                request.setAttribute("pvcList", pvcList);
+                request.setAttribute("dltList", dltList);
+                request.setAttribute("facultyList", facultyList);
+                request.getRequestDispatcher("faculty.jsp").forward(request, response);
+            } else {
+                String errorMessage = "An error has occured. Add Faculty failed. Please try again";
+                List<User> allUser = new ArrayList<>();
+                List<User> leader = new ArrayList<>();
+                List<User> moderator = new ArrayList<>();
+                List<User> pvcList = new ArrayList<>();
+                List<User> dltList = new ArrayList<>();
+                List<Faculty> facultyList = new ArrayList<>();
+
+                UserManager userManager = new UserManager();
+                allUser = userManager.getAllUsers();
+
+                FacultyManager facultyManager = new FacultyManager();
+                facultyList = facultyManager.getAllFaculty();
+
+                for (User user : allUser) {
+                    if (user.getRole() == 1) {
+                        leader.add(user);
+                    } else if (user.getRole() == 2) {
+                        moderator.add(user);
+                    } else if (user.getRole() == 3) {
+                        pvcList.add(user);
+                    } else if (user.getRole() == 4) {
+                        dltList.add(user);
+                    }
+                }
+
+                request.setAttribute("leader", leader);
+                request.setAttribute("moderator", moderator);
+                request.setAttribute("pvcList", pvcList);
+                request.setAttribute("dltList", dltList);
+                request.setAttribute("facultyList", facultyList);
+                request.setAttribute("errorCode", 1);
+                request.setAttribute("message", errorMessage);
+                request.getRequestDispatcher("faculty.jsp").forward(request, response);
+            }
         } catch (Exception e) {
             String errorMessage = "An error has occured. Add Faculty failed. Please try again";
             List<User> allUser = new ArrayList<>();

@@ -87,8 +87,7 @@ public class FacultyManager {
         return faculty;
     }
 
-    public void addFaculty(String facultyCode, String facultyTitle, Timestamp startDate, Timestamp endDate, String pvc, String dlt) {
-
+    public boolean addFaculty(String facultyCode, String facultyTitle, Timestamp startDate, Timestamp endDate, String pvc, String dlt) {
         SqlConnection sql = new SqlConnection();
         try {
             Connection conn = sql.connectSql();
@@ -102,6 +101,8 @@ public class FacultyManager {
             int result = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 }

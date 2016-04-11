@@ -65,7 +65,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input class="form-control" placeholder="Faculty Title" type="text" required="" name="facultyTitle" maxlength="50" aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
+                                        <input class="form-control" placeholder="Faculty Title" type="text" required="" name="facultyTitle" maxlength="50">
                                     </div>
                                 </div>
                             </div>
