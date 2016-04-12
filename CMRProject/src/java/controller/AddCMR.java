@@ -113,9 +113,9 @@ public class AddCMR extends HttpServlet {
                 int id_mark = i;
                 if (((request.getParameter("mean" + i).isEmpty()) || (request.getParameter("median" + i).isEmpty())) || (request.getParameter("sd" + i).isEmpty())) {
                 } else {
-                    int mean = Integer.parseInt(request.getParameter("mean" + i));
+                    float mean = Float.parseFloat(request.getParameter("mean" + i));
                     float median = Float.parseFloat(request.getParameter("median" + i));
-                    int standard_deviation = Integer.parseInt(request.getParameter("sd" + i));
+                    float standard_deviation = Float.parseFloat(request.getParameter("sd" + i));
                     CMR_StaticalData s = new CMR_StaticalData(id, id_mark, mean, median, standard_deviation);
                     cmrm.AddCMR_StaticalData(s);
                 }

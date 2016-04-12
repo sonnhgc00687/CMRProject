@@ -90,9 +90,9 @@ create table tblStaticalData
 id int primary key IDENTITY,
 cmr_id int references tblCMR(cmr_code), 
 id_mark int,
-mean int,
+mean float,
 median float,
-standard_deviation int
+standard_deviation float
 )
 go
 create table tblGradeData

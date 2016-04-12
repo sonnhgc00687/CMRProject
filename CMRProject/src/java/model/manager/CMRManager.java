@@ -395,9 +395,9 @@ public class CMRManager {
             PreparedStatement ps = conn.prepareStatement("insert into tblStaticalData values(?,?,?,?,?)");
             ps.setInt(1, s.getCmr_id());
             ps.setInt(2, s.getId_mark());
-            ps.setInt(3, s.getMean());
+            ps.setFloat(3, s.getMean());
             ps.setFloat(4, s.getMedian());
-            ps.setInt(5, s.getStandard_deviation());
+            ps.setFloat(5, s.getStandard_deviation());
             int result = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
