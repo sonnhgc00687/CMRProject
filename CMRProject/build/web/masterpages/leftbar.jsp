@@ -10,7 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Monitoring System</title>
+        
+        <title>CMR-Course Monitoring Report System.</title>
 
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/animate.min.css" rel="stylesheet"/>

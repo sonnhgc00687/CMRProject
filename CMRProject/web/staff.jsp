@@ -73,18 +73,14 @@
                                         <label>Username</label>
                                         <input class="form-control" placeholder="Username" type="text" required="" name="username" value="${username}" maxlength="50"  aria-describedby="name-format" required aria-required=?true? pattern="[A-Za-z-0-9]+" title="Not include special characters">
                                     </div>
-                                </div>          
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
+                                </div>
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input class="form-control" placeholder="Email" type="email" required="" name="email" value="${email}" maxlength="120">
                                     </div>
                                 </div>
                             </div>
-
 
                             <input id="addAccount" type="submit" value="Add Account" style="display: none " />
                             <div class="clearfix"></div>

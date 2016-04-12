@@ -13,8 +13,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-
-        <title>Login Page</title>
+        <title>CMR-Login</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
