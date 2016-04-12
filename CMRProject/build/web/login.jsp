@@ -14,7 +14,7 @@
         <meta name="author" content="">
 
 
-        <title>Signin Template for Bootstrap</title>
+        <title>CMR-Login</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
