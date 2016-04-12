@@ -168,6 +168,12 @@ public class GetAllCMR extends HttpServlet {
                         }
                     case 1:
                         switch (filter) {
+                            case "approved":
+                                listCMR = cmrManager.getAllcommentedCMRbyLeader(userName);
+                                request.setAttribute("filterContent", "Completed CMR");
+                                request.setAttribute("listCMR", listCMR);
+                                request.getRequestDispatcher("cmr.jsp").forward(request, response);
+                                break;
                             case "commented":
                                 listCMR = cmrManager.getAllcommentedCMRbyLeader(userName);
                                 request.setAttribute("filterContent", "Completed CMR");

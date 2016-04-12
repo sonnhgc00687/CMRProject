@@ -14,14 +14,14 @@ public class CMR_StaticalData {
     private int id;
     private int cmr_id;
     private int id_mark;
-    private int mean;
+    private float mean;
     private float median;
-    private int standard_deviation;
+    private float standard_deviation;
 
     public CMR_StaticalData() {
     }
 
-    public CMR_StaticalData(int cmr_id, int id_mark, int mean, float median, int standard_deviation) {
+    public CMR_StaticalData(int cmr_id, int id_mark, float mean, float median, float standard_deviation) {
         this.cmr_id = cmr_id;
         this.id_mark = id_mark;
         this.mean = mean;
@@ -53,11 +53,11 @@ public class CMR_StaticalData {
         this.id_mark = id_mark;
     }
 
-    public int getMean() {
+    public float getMean() {
         return mean;
     }
 
-    public void setMean(int mean) {
+    public void setMean(float mean) {
         this.mean = mean;
     }
 
@@ -69,11 +69,11 @@ public class CMR_StaticalData {
         this.median = median;
     }
 
-    public int getStandard_deviation() {
+    public float getStandard_deviation() {
         return standard_deviation;
     }
 
-    public void setStandard_deviation(int standard_deviation) {
+    public void setStandard_deviation(float standard_deviation) {
         this.standard_deviation = standard_deviation;
     }
 

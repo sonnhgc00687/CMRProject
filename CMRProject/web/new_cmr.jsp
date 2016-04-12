@@ -72,7 +72,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>Mean</td> 
-                                                <td><input class="form-control" placeholder="" name="mean1" min="0" max="100" type="number"></td> <td><input class="form-control" placeholder="" name="mean2" min="0" max="100" type="number"></td> 
+                                                <td><input class="form-control" placeholder="" name="mean1" min="0" max="100" type="number" set="0.01"></td> <td><input class="form-control" placeholder="" name="mean2" min="0" max="100" type="number"></td> 
                                                 <td><input class="form-control" placeholder="" name="mean3" min="0" max="100" type="number"></td> <td><input class="form-control" placeholder="" name="mean4" min="0" max="100" type="number"></td> 
                                                 <td><input class="form-control" placeholder="" name="mean5" min="0" max="100" type="number"></td> <td><input class="form-control" placeholder="" name="mean6" min="0" max="100" type="number"></td>
                                             </tr>

@@ -19,7 +19,7 @@
                         <i id="filter" class="pe-7s-filter"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="GetAllCMR?=&filter=approved">Approved CMR</a></li>
+                        <li ng-if="${userRole} == 0 || ${userRole} == 3 || ${userRole} == 4"><a href="GetAllCMR?=&filter=approved">Approved CMR</a></li>
                         <li><a href="GetAllCMR?=&filter=commented">Completed CMR</a></li>
                         <li><a href="GetAllCMR?=&filter=all">All CMR</a></li>
                     </ul>
