@@ -105,9 +105,8 @@
                             </div>
 
 
-                            <input id="assignCourse" type="submit" name="assign" style="display: none"/>
-                            
-                            <input id="btnDelete" type="submit" name="delete" style="display: none"/>
+                            <input id="assignCourse" type="submit" name="assign" style="display: none"/>                           
+                            <input id="deleteCourse" type="submit" name="skip" style="display: none "/>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -124,7 +123,7 @@
                 </div>
 
                 <div ng-if="${userRole} == 0" class="col-md-3" id="assignCourseButton">
-                    <div ng-click="" id="btnAssign" class="card" style="display: block">
+                    <div ng-click="deleteCourse()" id="btnAssign" class="card" style="display: block">
                         <div class="header">
                             <h4 class="title">CANCEL</h4>
                             <p class="category"></p>

@@ -53,6 +53,9 @@ app.controller('myCtrl', function ($scope) {
     $scope.assignCourse = function () {
         $("#assignCourse").click();
     };
+    $scope.deleteCourse = function () {
+        $("#deleteCourse").click();
+    };
 
     $scope.addAccount = function () {
         $("#addAccount").click();
