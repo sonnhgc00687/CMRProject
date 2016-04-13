@@ -62,6 +62,26 @@ public class UserManager {
         return userList;
     }
 
+    public List<User> getAllUsersByName(String name) {
+        boolean status = false;
+        SqlConnection sql = new SqlConnection();
+
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select * from tblEmployee where fullname like ?");
+            ps.setString(1, "%" + name + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+                userList.add(user);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
     public void createUser(String username, String password, String fullname, String email, int role) {
         SqlConnection sql = new SqlConnection();
         try {
@@ -131,7 +151,7 @@ public class UserManager {
 
     public static String genPass(Random rng, String character, int length) {
         char[] text = new char[length];
-        for(int i = 0; i<length;i++){
+        for (int i = 0; i < length; i++) {
             text[i] = character.charAt(rng.nextInt(character.length()));
         }
         return new String(text);

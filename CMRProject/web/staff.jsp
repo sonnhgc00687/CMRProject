@@ -14,7 +14,18 @@
             <div class="header">
                 <!--<h4 class="title">Striped Table with Hover</h4>-->
                 <p class="category">List account of FPT University</p>
+                
+                <form action="SearchStaff" method="post">
+                    <div id="search" class="col-md-4" style="display: ">
+                        <div class="form-group">
+                            <i class="pe-7s-search"></i>
+                            <input class="form-control" placeholder="Search" type="text" required="" name="staffName" maxlength="100">
+                            <input type="submit" style="display: none">
+                        </div>
+                    </div>
+                </form>
             </div>
+            
             <div class="content table-responsive table-full-width">
                 <table id="tableCourse" class="table table-hover table-striped">
                     <thead>

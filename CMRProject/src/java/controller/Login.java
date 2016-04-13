@@ -89,7 +89,6 @@ public class Login extends HttpServlet {
         allUser = um.getAllUsers();
 
         FacultyManager facultyManager = new FacultyManager();
-        facultyList = facultyManager.getAllFaculty();
 
         for (User user : allUser) {
             if (user.getRole() == 1) {
@@ -106,6 +105,26 @@ public class Login extends HttpServlet {
         User user = um.checkUser(username, encryptedPassword);
 
         if (user != null) {
+            switch (user.getRole()) {
+                case 0:
+                    facultyList = facultyManager.getAllFaculty();
+                    break;
+                case 1:
+                    facultyList = facultyManager.getAllFaculty();
+                    break;
+                case 2:
+                    facultyList = facultyManager.getAllFaculty();
+                    break;
+                case 3:
+                    facultyList = facultyManager.getAllFacultyByPVC(user.getUserName());
+                    break;
+
+                case 4:
+                    facultyList = facultyManager.getAllFacultyByDLT(user.getUserName());
+                    break;
+                default:
+                    break;
+            }
             request.setAttribute("pvcList", pvcList);
             request.setAttribute("dltList", dltList);
             request.setAttribute("leader", leader);
