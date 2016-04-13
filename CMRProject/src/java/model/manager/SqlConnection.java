@@ -13,6 +13,7 @@ import java.sql.DriverManager;
  * @author Son
  */
 public class SqlConnection {
+
     public Connection connectSql() {
         Connection conn;
 
@@ -27,7 +28,8 @@ public class SqlConnection {
             String hosturl = "jdbc:sqlserver://group1cmr.database.windows.net:1433;database=Project_CMR;user=mainghia@group1cmr;password=Asdf1234;encrypt=false;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
 //            String url = "jdbc:sqlserver://DELL:1433;databaseName=Project_CMR";
-            conn = DriverManager.getConnection(url,dbUser,dbPassword);
+//            conn = DriverManager.getConnection(url,dbUser,dbPassword);
+            conn = DriverManager.getConnection(hosturl);
             return conn;
         } catch (Exception e) {
             e.printStackTrace();
