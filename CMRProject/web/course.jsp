@@ -24,13 +24,15 @@
                         <li><a href="GetAllCourse?=&filter=all">All Course</a></li>
                     </ul>
                 </div>
-
-                <div id="search" class="col-md-4" style="display: none">
-                    <div class="form-group">
-                        <i class="pe-7s-search"></i>
-                        <input class="form-control" placeholder="Search" type="text" required="" name="searchCourse" maxlength="100">
+                <form action="SearchCourse" method="post">
+                    <div id="search" class="col-md-4" style="display: ">
+                        <div class="form-group">
+                            <i class="pe-7s-search"></i>
+                            <input class="form-control" placeholder="Search" type="text" required="" name="searchCourse" maxlength="100">
+                            <input type="submit" style="display: none">
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="content table-responsive table-full-width">
                 <table id="tableCourse" class="table table-hover table-striped">

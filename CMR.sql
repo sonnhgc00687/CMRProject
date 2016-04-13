@@ -61,6 +61,7 @@ description nvarchar(100),
 cmrstatus int
 )
 go
+insert into tblCourse values('COMP1661', 'FPT2015', 'Mobile Development', 'leader', 'mod','2016-01-16', '2016-05-04', 'Course of Mobile development', 1,0)
 insert into tblCourse values('COMP1640', 'FPT2016', 'Enterprise Web Software Development', 'leader', 'mod','2016-01-16', '2016-05-04', 'Course of Web development', 1,0)
 insert into tblCourse values('COMP1649', 'FPT2016', 'Interaction Design', 'leader', 'mod', '2016-01-15', '2016-05-06', 'Course of Interaction Design', 1,0)
 insert into tblCourse values('COMP1650', 'FPT2016', 'Mobile App Dev', 'leader', 'mod', '2016-01-15', '2016-05-06', 'Course of Development of Mobile App', 1,0)

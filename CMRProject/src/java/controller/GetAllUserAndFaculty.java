@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.entity.Faculty;
 import model.entity.User;
 import model.manager.FacultyManager;
@@ -55,6 +55,9 @@ public class GetAllUserAndFaculty extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String userName = (String) session.getAttribute("userSession");
+        int userRole = (int) session.getAttribute("userRole");
         List<User> allUser = new ArrayList<>();
         List<User> leader = new ArrayList<>();
         List<User> moderator = new ArrayList<>();
@@ -66,7 +69,6 @@ public class GetAllUserAndFaculty extends HttpServlet {
         allUser = userManager.getAllUsers();
 
         FacultyManager facultyManager = new FacultyManager();
-        facultyList = facultyManager.getAllFaculty();
 
         for (User user : allUser) {
             if (user.getRole() == 1) {
@@ -80,6 +82,26 @@ public class GetAllUserAndFaculty extends HttpServlet {
             }
         }
 
+        switch (userRole) {
+            case 0:
+                facultyList = facultyManager.getAllFaculty();
+                break;
+            case 1:
+                facultyList = facultyManager.getAllFaculty();
+                break;
+            case 2:
+                facultyList = facultyManager.getAllFaculty();
+                break;
+            case 3:
+                facultyList = facultyManager.getAllFacultyByPVC(userName);
+                break;
+
+            case 4:
+                facultyList = facultyManager.getAllFacultyByDLT(userName);
+                break;
+            default:
+                break;
+        }
         request.setAttribute("leader", leader);
         request.setAttribute("moderator", moderator);
         request.setAttribute("pvcList", pvcList);

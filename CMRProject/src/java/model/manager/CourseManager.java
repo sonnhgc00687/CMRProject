@@ -393,7 +393,7 @@ public class CourseManager {
             e.printStackTrace();
         }
     }
-    
+
     public String findModById(int courseCode) {
         SqlConnection sql = new SqlConnection();
         String mod = "";
@@ -402,7 +402,7 @@ public class CourseManager {
             PreparedStatement ps = conn.prepareStatement("Select course_mod from tblCourse where id = ?");
             ps.setInt(1, courseCode);
             ResultSet result = ps.executeQuery();
-            while(result.next()){
+            while (result.next()) {
                 mod = result.getString("course_mod");
             }
         } catch (Exception e) {
@@ -410,8 +410,8 @@ public class CourseManager {
         }
         return mod;
     }
-    
-     public String findLeaderById(int courseCode) {
+
+    public String findLeaderById(int courseCode) {
         SqlConnection sql = new SqlConnection();
         String leader = "";
         try {
@@ -419,7 +419,7 @@ public class CourseManager {
             PreparedStatement ps = conn.prepareStatement("Select course_leader from tblCourse where id = ?");
             ps.setInt(1, courseCode);
             ResultSet result = ps.executeQuery();
-            while(result.next()){
+            while (result.next()) {
                 leader = result.getString("course_leader");
             }
         } catch (Exception e) {
@@ -427,8 +427,8 @@ public class CourseManager {
         }
         return leader;
     }
-    
-     public String findDLTById(int courseCode) {
+
+    public String findDLTById(int courseCode) {
         SqlConnection sql = new SqlConnection();
         String dlt = "";
         try {
@@ -436,7 +436,7 @@ public class CourseManager {
             PreparedStatement ps = conn.prepareStatement("select faculty_dlt from tblFaculty t inner join tblCourse c on t.faculty_code = c.course_faculty where c.id = ?");
             ps.setInt(1, courseCode);
             ResultSet result = ps.executeQuery();
-            while(result.next()){
+            while (result.next()) {
                 dlt = result.getString("faculty_dlt");
             }
         } catch (Exception e) {
@@ -606,4 +606,137 @@ public class CourseManager {
         }
     }
 
+    public List<Course> searchCourseByTitleByLeader(String course_leader, String title) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_leader = ? and course_title like ? ");
+            ps.setString(1, course_leader);
+            ps.setString(2, "%" + title + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+
+    public List<Course> searchCourseByTitleByMod(String course_mod, String title) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status =1 and course_mod = ? and course_title like ? ");
+            ps.setString(1, course_mod);
+            ps.setString(2, "%" + title + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+
+    public List<Course> searchCourseByTitle(String title) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse where status = 1 and course_title like ? ");
+            ps.setString(1, "%" + title + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+
+    public List<Course> searchCourseByTitleByDLT(String dlt, String title) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse c inner join tblFaculty f on c.course_faculty = f.faculty_code where c.status =1 and f.faculty_dlt = ? and course_title like ? ");
+            ps.setString(1, dlt);
+            ps.setString(2, "%" + title + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
+
+    public List<Course> searchCourseByTitleByPVC(String pvc, String title) {
+        SqlConnection sql = new SqlConnection();
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblCourse c inner join tblFaculty f on c.course_faculty = f.faculty_code where c.status =1 and f.faculty_pvc = ? and course_title like ? ");
+            ps.setString(1, pvc);
+            ps.setString(2, "%" + title + "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setId(rs.getInt("id"));
+                c.setCourseCode(rs.getString("course_code"));
+                c.setCourseTitle(rs.getString("course_title"));
+                c.setCourseLeader(rs.getString("course_leader"));
+                c.setCourseModerator(rs.getString("course_mod"));
+                c.setCourseStarted(rs.getDate("start_date"));
+                c.setCourseFinished(rs.getDate("end_date"));
+                c.setCourseStatus(rs.getInt("status"));
+                c.setCmrStatus(rs.getInt("cmrstatus"));
+                courseList.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courseList;
+    }
 }

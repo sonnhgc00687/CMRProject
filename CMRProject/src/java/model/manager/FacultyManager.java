@@ -44,6 +44,98 @@ public class FacultyManager {
         }
         return facultyList;
     }
+    
+     public List<Faculty> getAllFacultyByDLT(String dlt) {
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblFaculty where faculty_dlt = ?");
+            ps.setString(1, dlt);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Faculty faculty = new Faculty();
+                faculty.setFacultyCode(rs.getString("faculty_code"));
+                faculty.setFacultyTitle(rs.getString("faculty_title"));
+                faculty.setFacultyPVC(rs.getString("faculty_pvc"));
+                faculty.setFacultyDLT(rs.getString("faculty_dlt"));
+                faculty.setFacultyStartDate(rs.getDate("start_date"));
+                faculty.setFacultyEndDate(rs.getDate("end_date"));
+                faculty.setFacultyStatus(rs.getInt("status"));
+                facultyList.add(faculty);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return facultyList;
+    }
+     
+      public List<Faculty> getAllFacultyByPVC(String pvc) {
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblFaculty where faculty_pvc = ?");
+            ps.setString(1, pvc);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Faculty faculty = new Faculty();
+                faculty.setFacultyCode(rs.getString("faculty_code"));
+                faculty.setFacultyTitle(rs.getString("faculty_title"));
+                faculty.setFacultyPVC(rs.getString("faculty_pvc"));
+                faculty.setFacultyDLT(rs.getString("faculty_dlt"));
+                faculty.setFacultyStartDate(rs.getDate("start_date"));
+                faculty.setFacultyEndDate(rs.getDate("end_date"));
+                faculty.setFacultyStatus(rs.getInt("status"));
+                facultyList.add(faculty);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return facultyList;
+    }
+    
+    public List<Faculty> getAllFacultyByLeader(String leader) {
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblFaculty f inner join tblCourse c on f.faculty_code = c.course_faculty where c.course_leader = ?");
+            ps.setString(1, leader);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Faculty faculty = new Faculty();
+                faculty.setFacultyCode(rs.getString("faculty_code"));
+                faculty.setFacultyTitle(rs.getString("faculty_title"));
+                faculty.setFacultyPVC(rs.getString("faculty_pvc"));
+                faculty.setFacultyDLT(rs.getString("faculty_dlt"));
+                faculty.setFacultyStartDate(rs.getDate("start_date"));
+                faculty.setFacultyEndDate(rs.getDate("end_date"));
+                faculty.setFacultyStatus(rs.getInt("status"));
+                facultyList.add(faculty);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return facultyList;
+    }
+    
+    public List<Faculty> getAllFacultyByMod(String mod) {
+        try {
+            Connection conn = sql.connectSql();
+            PreparedStatement ps = conn.prepareStatement("Select* from tblFaculty f inner join tblCourse c on f.faculty_code = c.course_faculty where c.course_mod = ?");
+            ps.setString(1, mod);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Faculty faculty = new Faculty();
+                faculty.setFacultyCode(rs.getString("faculty_code"));
+                faculty.setFacultyTitle(rs.getString("faculty_title"));
+                faculty.setFacultyPVC(rs.getString("faculty_pvc"));
+                faculty.setFacultyDLT(rs.getString("faculty_dlt"));
+                faculty.setFacultyStartDate(rs.getDate("start_date"));
+                faculty.setFacultyEndDate(rs.getDate("end_date"));
+                faculty.setFacultyStatus(rs.getInt("status"));
+                facultyList.add(faculty);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return facultyList;
+    }
 
     public Faculty getFacultyByCode(String faculty_code) {
         try {
